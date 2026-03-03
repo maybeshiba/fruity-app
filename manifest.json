@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fruity 🍓</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff7043">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fruity">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fff9f0;
+  --card: #ffffff;
+  --border: #f0e6d6;
+  --text: #3d2c1e;
+  --muted: #a08878;
+  --orange: #ff7043;
+  --orange-light: #fff0eb;
+  --green: #43a047;
+  --green-light: #e8f5e9;
+  --yellow: #ffb300;
+  --yellow-light: #fff8e1;
+  --pink: #e91e8c;
+  --pink-light: #fce4ec;
+  --blue: #1e88e5;
+  --blue-light: #e3f2fd;
+  --purple: #8e24aa;
+  --purple-light: #f3e5f5;
+  --red: #e53935;
+  --shadow: 0 4px 20px rgba(61,44,30,0.08);
+  --shadow-lg: 0 8px 32px rgba(61,44,30,0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  max-width: 430px;
+  margin: 0 auto;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ---- TOP HEADER ---- */
+.header {
+  background: linear-gradient(160deg, #ff7043 0%, #ff8f00 60%, #ffb300 100%);
+  padding: 48px 20px 28px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 6px 24px rgba(255,112,67,0.3);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.18) 0%, transparent 60%);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.app-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 34px;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  letter-spacing: 0.5px;
+}
+
+.app-subtitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.streak-badge {
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 18px;
+  padding: 8px 14px;
+  text-align: center;
+  color: white;
+}
+
+.streak-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px;
+  line-height: 1;
+  display: block;
+}
+
+.streak-label { font-size: 11px; font-weight: 800; opacity: 0.9; }
+
+/* XP bar */
+.xp-section {
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.xp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.xp-level {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  color: white;
+}
+
+.xp-text { font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 700; }
+
+.xp-track {
+  height: 10px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.xp-fill {
+  height: 100%;
+  background: white;
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(0.34,1.3,0.64,1);
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* ---- NAV ---- */
+.nav {
+  position: fixed;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  border-top: 2px solid var(--border);
+  display: flex;
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(61,44,30,0.08);
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 0 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--muted);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.nav-btn .nav-icon { font-size: 22px; transition: transform 0.2s; }
+.nav-btn.active { color: var(--orange); }
+.nav-btn.active .nav-icon { transform: scale(1.2); }
+
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 32px; height: 3px;
+  background: var(--orange);
+  border-radius: 99px 99px 0 0;
+}
+
+/* ---- PAGES ---- */
+.page { display: none; padding: 20px 16px; }
+.page.active { display: block; }
+
+/* ---- TODAY PAGE ---- */
+.date-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  color: var(--text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Today's fruits logged */
+.logged-area {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 20px;
+  min-height: 80px;
+  box-shadow: var(--shadow);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 16px 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.empty-emoji { font-size: 36px; display: block; margin-bottom: 6px; }
+
+.logged-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fruit-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orange-light);
+  border: 2px solid #ffd0be;
+  border-radius: 99px;
+  padding: 7px 14px 7px 10px;
+  font-size: 14px;
+  font-weight: 800;
+  animation: chipPop 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  transition: transform 0.15s;
+}
+
+.fruit-chip:active { transform: scale(0.93); }
+
+@keyframes chipPop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.chip-emoji { font-size: 20px; }
+
+.chip-remove {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  margin-left: 2px;
+  transition: color 0.15s;
+}
+.chip-remove:hover { color: var(--red); }
+
+/* Fruit picker */
+.picker-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.search-box {
+  width: 100%;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  outline: none;
+  margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+
+.search-box:focus { border-color: var(--orange); }
+.search-box::placeholder { color: var(--muted); }
+
+.fruit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.fruit-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 4px 8px;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.34,1.3,0.64,1);
+  font-family: 'Nunito', sans-serif;
+}
+
+.fruit-btn:active { transform: scale(0.9); }
+
+.fruit-btn .fb-emoji { font-size: 26px; }
+.fruit-btn .fb-name { font-size: 10px; font-weight: 800; color: var(--text); text-align: center; line-height: 1.2; }
+.fruit-btn .fb-season { font-size: 9px; color: var(--muted); font-weight: 700; }
+
+.fruit-btn.in-season {
+  background: var(--green-light);
+  border-color: #a5d6a7;
+}
+
+.fruit-btn.in-season .fb-name { color: var(--green); }
+
+/* Season badge */
+.season-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.season-tag {
+  background: var(--green-light);
+  border: 2px solid #a5d6a7;
+  border-radius: 99px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+/* ---- NUTRITION PAGE ---- */
+.nutrition-summary {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+
+.vit-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.vit-icon { font-size: 20px; width: 28px; flex-shrink: 0; }
+.vit-name { font-size: 13px; font-weight: 800; width: 80px; flex-shrink: 0; }
+.vit-track { flex: 1; height: 10px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.vit-fill { height: 100%; border-radius: 99px; transition: width 0.9s cubic-bezier(0.16,1,0.3,1); }
+.vit-pct { font-size: 12px; font-weight: 800; width: 36px; text-align: right; }
+
+.nutrition-tip {
+  background: var(--yellow-light);
+  border: 2px solid #ffe082;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #5d4037;
+}
+
+.tip-header {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  color: var(--yellow);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Suggestions */
+.suggest-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+  animation: slideUp 0.35s ease both;
+  transition: transform 0.15s;
+}
+
+.suggest-card:active { transform: scale(0.97); }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.suggest-emoji { font-size: 38px; flex-shrink: 0; }
+
+.suggest-info { flex: 1; }
+.suggest-name { font-family: 'Fredoka One', cursive; font-size: 18px; margin-bottom: 2px; }
+.suggest-why { font-size: 12px; color: var(--muted); font-weight: 700; line-height: 1.5; }
+
+.suggest-tag {
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.tag-season { background: var(--green-light); color: var(--green); border: 2px solid #a5d6a7; }
+.tag-vitamin { background: var(--yellow-light); color: #e65100; border: 2px solid #ffe082; }
+.tag-try { background: var(--pink-light); color: var(--pink); border: 2px solid #f48fb1; }
+
+/* ---- HISTORY PAGE ---- */
+.history-day {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+
+.history-date {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-score {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+.score-great { background: var(--green-light); color: var(--green); }
+.score-ok    { background: var(--yellow-light); color: #e65100; }
+.score-low   { background: #fce4ec; color: var(--pink); }
+
+.history-fruits { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.h-fruit {
+  font-size: 22px;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 4px 8px;
+  border: 1.5px solid var(--border);
+}
+
+/* ---- STATS / ACHIEVEMENTS ---- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 14px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.stat-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label { font-size: 12px; font-weight: 800; color: var(--muted); }
+
+.achievement {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.achievement.unlocked { opacity: 1; }
+
+.ach-emoji { font-size: 36px; }
+.ach-info { flex: 1; }
+.ach-name { font-family: 'Fredoka One', cursive; font-size: 16px; }
+.ach-desc { font-size: 12px; color: var(--muted); font-weight: 700; margin-top: 2px; }
+.ach-lock { font-size: 20px; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--text);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34,1.3,0.64,1);
+  z-index: 200;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Confetti particle */
+@keyframes confettiFall {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.confetti-dot {
+  position: fixed;
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  animation: confettiFall 1.4s ease-in forwards;
+  pointer-events: none;
+  z-index: 300;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="app-title">Fruity 🍓</div>
+      <div class="app-subtitle">Daily fruit tracker</div>
+    </div>
+    <div class="streak-badge">
+      <span class="streak-num" id="streakNum">0</span>
+      <span class="streak-label">🔥 streak</span>
+    </div>
+  </div>
+  <div class="xp-section">
+    <div class="xp-row">
+      <span class="xp-level" id="levelLabel">🌱 Seedling</span>
+      <span class="xp-text" id="xpText">0 / 100 XP</span>
+    </div>
+    <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
+  </div>
+</div>
+
+<!-- PAGES -->
+
+<!-- TODAY -->
+<div class="page active" id="pageToda">
+  <div class="date-label" id="todayLabel"></div>
+
+  <div class="section-title">🍽️ Today's fruits</div>
+  <div class="logged-area" id="loggedArea">
+    <div class="empty-state" id="emptyState">
+      <span class="empty-emoji">🫙</span>
+      No fruits logged yet — let's fix that!
+    </div>
+    <div class="logged-chips" id="loggedChips"></div>
+  </div>
+
+  <div class="picker-card">
+    <div class="section-title" style="margin-bottom:10px">➕ Log a fruit</div>
+    <div class="season-row" id="seasonRow"></div>
+    <input class="search-box" id="searchBox" placeholder="🔍 Search fruit..." oninput="filterFruits()">
+    <div class="fruit-grid" id="fruitGrid"></div>
+  </div>
+</div>
+
+<!-- NUTRITION -->
+<div class="page" id="pageNutr">
+  <div class="section-title" style="margin-top:4px">🧬 Today's nutrition</div>
+
+  <div class="nutrition-summary" id="nutritionSummary">
+    <!-- filled by JS -->
+  </div>
+
+  <div class="nutrition-tip" id="nutritionTip">
+    <div class="tip-header">💡 Today's tip</div>
+    <span id="tipText">Log some fruit to get personalised nutrition insights!</span>
+  </div>
+
+  <div class="section-title">✨ Suggestions for you</div>
+  <div id="suggestionsArea"></div>
+</div>
+
+<!-- HISTORY -->
+<div class="page" id="pageHist">
+  <div class="section-title" style="margin-top:4px">📅 History</div>
+  <div id="historyArea"></div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="page" id="pageAchi">
+  <div class="section-title" style="margin-top:4px">🏆 Stats & Achievements</div>
+  <div class="stats-grid" id="statsGrid"></div>
+  <div id="achievementsArea"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="nav-btn active" onclick="showPage('Toda',this)">
+    <span class="nav-icon">🍎</span>Today
+  </button>
+  <button class="nav-btn" onclick="showPage('Nutr',this)">
+    <span class="nav-icon">🧬</span>Nutrition
+  </button>
+  <button class="nav-btn" onclick="showPage('Hist',this)">
+    <span class="nav-icon">📅</span>History
+  </button>
+  <button class="nav-btn" onclick="showPage('Achi',this)">
+    <span class="nav-icon">🏆</span>Achieve
+  </button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const FRUITS = [
+  // emoji, name, months available in Germany (1-12), vitamins (keys), xp
+  { e:'🍓', n:'Strawberry',   months:[5,6,7],        v:['C','folate'],         xp:15, note:'High in vitamin C & folate' },
+  { e:'🫐', n:'Blueberry',    months:[7,8,9],         v:['C','K','manganese'],  xp:18, note:'Packed with antioxidants & vitamin K' },
+  { e:'🍒', n:'Cherry',       months:[6,7,8],         v:['C','A','potassium'],  xp:16, note:'Great source of vitamin A & potassium' },
+  { e:'🍑', n:'Peach',        months:[7,8,9],         v:['C','A','E'],          xp:16, note:'Rich in vitamins A, C & E' },
+  { e:'🍇', n:'Grape',        months:[8,9,10],        v:['C','K','B6'],         xp:14, note:'Contains vitamin K & B6' },
+  { e:'🍐', n:'Pear',         months:[8,9,10,11],     v:['C','K','copper'],     xp:13, note:'Good source of vitamin K & copper' },
+  { e:'🍈', n:'Melon',        months:[7,8,9],         v:['C','A','B6'],         xp:14, note:'Hydrating, rich in vitamins A & C' },
+  { e:'🥝', n:'Kiwi',         months:[1,2,3,11,12],   v:['C','K','E'],          xp:20, note:'Exceptional vitamin C content' },
+  { e:'🍊', n:'Mandarin',     months:[11,12,1,2,3],   v:['C','A','folate'],     xp:13, note:'Classic winter vitamin C boost' },
+  { e:'🫒', n:'Plum',         months:[7,8,9,10],      v:['C','K','A'],          xp:15, note:'Good fibre & vitamin K source' },
+  { e:'🍋', n:'Lemon',        months:[1,2,3,4,11,12], v:['C','B6','folate'],    xp:12, note:'Zesty vitamin C & folate hit' },
+  { e:'🍉', n:'Watermelon',   months:[7,8,9],         v:['C','A','B1'],         xp:14, note:'Hydrating, lycopene & vitamins A, C' },
+  { e:'🥭', n:'Mango',        months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6','E'], xp:17, note:'Tropical vitamin A & C powerhouse' },
+  { e:'🍍', n:'Pineapple',    months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B1','manganese'], xp:16, note:'Bromelain + vitamin C + manganese' },
+  { e:'🥥', n:'Coconut',      months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['B5','iron','copper'], xp:15, note:'Unique iron & copper source' },
+  { e:'🫐', n:'Gooseberry',   months:[6,7,8],         v:['C','B5','copper'],    xp:20, note:'Underrated — huge vitamin C punch' },
+  { e:'🍓', n:'Raspberry',    months:[7,8,9],         v:['C','K','E','folate'], xp:18, note:'High in folate & vitamin E' },
+  { e:'🟡', n:'Mirabelle',    months:[7,8],           v:['A','C','potassium'],  xp:22, note:'Tiny German gem — vitamin A & potassium' },
+  { e:'🌑', n:'Blackberry',   months:[8,9,10],        v:['C','K','E','manganese'], xp:18, note:'Rich in vitamin K & manganese' },
+  { e:'🟠', n:'Physalis',     months:[9,10,11],       v:['C','A','B1','B3'],    xp:22, note:'Exotic vitamin A & B vitamins boost' },
+  { e:'🫑', n:'Elderberry',   months:[8,9],           v:['C','A','B6'],         xp:24, note:'Immune powerhouse, very high C & A' },
+  { e:'🍠', n:'Quince',       months:[10,11],         v:['C','copper','iron'],  xp:22, note:'Rare autumn find — copper & iron' },
+  { e:'🟤', n:'Sloe',         months:[10,11],         v:['C','A','E'],          xp:25, note:'Tiny wild berry, huge vitamin payload' },
+  { e:'🍈', n:'Honeydew',     months:[7,8,9],         v:['C','B6','potassium'], xp:14, note:'Potassium & B6 in every bite' },
+  { e:'🫐', n:'Cranberry',    months:[10,11,12],      v:['C','E','K'],          xp:18, note:'Autumn classic — vitamins C, E & K' },
+];
+
+const VITAMINS = [
+  { key:'C',         label:'Vitamin C',  color:'#ff7043', icon:'🍊' },
+  { key:'A',         label:'Vitamin A',  color:'#ffb300', icon:'🥕' },
+  { key:'K',         label:'Vitamin K',  color:'#43a047', icon:'🥦' },
+  { key:'E',         label:'Vitamin E',  color:'#e91e8c', icon:'🌻' },
+  { key:'B6',        label:'Vitamin B6', color:'#1e88e5', icon:'🌾' },
+  { key:'folate',    label:'Folate',     color:'#8e24aa', icon:'🫘' },
+  { key:'potassium', label:'Potassium',  color:'#00897b', icon:'🍌' },
+  { key:'manganese', label:'Manganese',  color:'#6d4c41', icon:'🪨' },
+];
+
+const LEVELS = [
+  { name:'🌱 Seedling', xp:0 },
+  { name:'🌿 Sprout',   xp:100 },
+  { name:'🌳 Grower',   xp:250 },
+  { name:'🍀 Forager',  xp:500 },
+  { name:'🏡 Orcharder',xp:900 },
+  { name:'🌟 Fruit Sage',xp:1500 },
+];
+
+// ============================================================
+// STATE (persisted in localStorage)
+// ============================================================
+function todayKey() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem('fruity_state') || 'null') || defaultState(); }
+  catch(e) { return defaultState(); }
+}
+
+function defaultState() {
+  return { history: {}, totalXP: 0, lastDate: null, streak: 0 };
+}
+
+function saveState() { localStorage.setItem('fruity_state', JSON.stringify(STATE)); }
+
+let STATE = loadState();
+
+// Ensure today exists
+const TODAY = todayKey();
+if (!STATE.history[TODAY]) STATE.history[TODAY] = [];
+
+// ============================================================
+// STREAK
+// ============================================================
+function updateStreak() {
+  const keys = Object.keys(STATE.history).sort().reverse();
+  let streak = 0;
+  let d = new Date();
+  for (let i = 0; i < 60; i++) {
+    const k = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (STATE.history[k] && STATE.history[k].length > 0) {
+      streak++;
+      d.setDate(d.getDate() - 1);
+    } else {
+      if (i === 0) break; // today empty, don't break streak yet
+      break;
+    }
+  }
+  STATE.streak = streak;
+}
+
+// ============================================================
+// SEASON
+// ============================================================
+function currentMonth() { return new Date().getMonth() + 1; }
+
+function isInSeason(fruit) { return fruit.months.includes(currentMonth()); }
+
+function getSeasonName() {
+  const m = currentMonth();
+  if ([12,1,2].includes(m)) return '❄️ Winter';
+  if ([3,4,5].includes(m))  return '🌸 Spring';
+  if ([6,7,8].includes(m))  return '☀️ Summer';
+  return '🍂 Autumn';
+}
+
+// ============================================================
+// RENDER HEADER
+// ============================================================
+function renderHeader() {
+  updateStreak();
+  document.getElementById('streakNum').textContent = STATE.streak;
+
+  const xp = STATE.totalXP;
+  let lvlIdx = 0;
+  for (let i = LEVELS.length - 1; i >= 0; i--) {
+    if (xp >= LEVELS[i].xp) { lvlIdx = i; break; }
+  }
+  const cur = LEVELS[lvlIdx];
+  const next = LEVELS[lvlIdx + 1];
+  document.getElementById('levelLabel').textContent = cur.name;
+
+  if (next) {
+    const pct = Math.min(100, ((xp - cur.xp) / (next.xp - cur.xp)) * 100);
+    document.getElementById('xpText').textContent = `${xp - cur.xp} / ${next.xp - cur.xp} XP`;
+    document.getElementById('xpFill').style.width = pct + '%';
+  } else {
+    document.getElementById('xpText').textContent = `${xp} XP — MAX LEVEL 🌟`;
+    document.getElementById('xpFill').style.width = '100%';
+  }
+}
+
+// ============================================================
+// TODAY PAGE
+// ============================================================
+function renderToday() {
+  const d = new Date();
+  document.getElementById('todayLabel').textContent =
+    d.toLocaleDateString('en-DE', { weekday:'long', day:'numeric', month:'long' });
+
+  document.getElementById('seasonRow').innerHTML =
+    `<div class="season-tag">${getSeasonName()} in Germany</div>
+     <div class="season-tag" style="background:var(--orange-light);border-color:#ffd0be;color:var(--orange)">🟢 = in season now</div>`;
+
+  renderLoggedChips();
+  renderFruitGrid(FRUITS);
+}
+
+function renderLoggedChips() {
+  const fruits = STATE.history[TODAY] || [];
+  const chips = document.getElementById('loggedChips');
+  const empty = document.getElementById('emptyState');
+
+  if (fruits.length === 0) {
+    empty.style.display = 'block';
+    chips.innerHTML = '';
+    return;
+  }
+  empty.style.display = 'none';
+  chips.innerHTML = fruits.map((fn, i) => {
+    const f = FRUITS.find(x => x.n === fn);
+    return `<div class="fruit-chip">
+      <span class="chip-emoji">${f ? f.e : '🍎'}</span>
+      <span>${fn}</span>
+      <button class="chip-remove" onclick="removeFruit(${i})">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function renderFruitGrid(list) {
+  const m = currentMonth();
+  document.getElementById('fruitGrid').innerHTML = list.map(f => {
+    const season = f.months.includes(m);
+    return `<button class="fruit-btn ${season ? 'in-season' : ''}" onclick="addFruit('${f.n}')">
+      <span class="fb-emoji">${f.e}</span>
+      <span class="fb-name">${f.n}</span>
+      <span class="fb-season">${season ? '🟢 now' : '💤 off'}</span>
+    </button>`;
+  }).join('');
+}
+
+function filterFruits() {
+  const q = document.getElementById('searchBox').value.toLowerCase();
+  const filtered = q ? FRUITS.filter(f => f.n.toLowerCase().includes(q)) : FRUITS;
+  renderFruitGrid(filtered);
+}
+
+function addFruit(name) {
+  STATE.history[TODAY].push(name);
+  const f = FRUITS.find(x => x.n === name);
+  STATE.totalXP += f ? f.xp : 10;
+  saveState();
+  renderLoggedChips();
+  renderHeader();
+  confetti();
+  showToast(`${f ? f.e : '🍎'} ${name} added! +${f ? f.xp : 10} XP`);
+  if (document.getElementById('pageNutr').classList.contains('active')) renderNutrition();
+}
+
+function removeFruit(idx) {
+  const name = STATE.history[TODAY][idx];
+  const f = FRUITS.find(x => x.n === name);
+  STATE.history[TODAY].splice(idx, 1);
+  STATE.totalXP = Math.max(0, STATE.totalXP - (f ? f.xp : 10));
+  saveState();
+  renderLoggedChips();
+  renderHeader();
+}
+
+// ============================================================
+// NUTRITION PAGE
+// ============================================================
+function renderNutrition() {
+  const fruits = STATE.history[TODAY] || [];
+  const vitCount = {};
+  VITAMINS.forEach(v => vitCount[v.key] = 0);
+
+  fruits.forEach(fn => {
+    const f = FRUITS.find(x => x.n === fn);
+    if (f) f.v.forEach(v => { if (vitCount[v] !== undefined) vitCount[v]++; });
+  });
+
+  const maxPerVit = fruits.length > 0 ? Math.max(...Object.values(vitCount), 1) : 1;
+
+  // Nutrition bars
+  let html = '';
+  if (fruits.length === 0) {
+    html = '<div class="empty-state"><span class="empty-emoji">🧬</span>Log some fruit to see your nutrition!</div>';
+  } else {
+    VITAMINS.forEach(v => {
+      const pct = Math.min(100, (vitCount[v.key] / Math.max(fruits.length * 0.4, 1)) * 100);
+      html += `<div class="vit-row">
+        <span class="vit-icon">${v.icon}</span>
+        <span class="vit-name">${v.label}</span>
+        <div class="vit-track"><div class="vit-fill" style="background:${v.color};width:0%" id="vf-${v.key}"></div></div>
+        <span class="vit-pct" style="color:${v.color}">${vitCount[v.key]}x</span>
+      </div>`;
+    });
+  }
+  document.getElementById('nutritionSummary').innerHTML = html;
+  setTimeout(() => {
+    VITAMINS.forEach(v => {
+      const el = document.getElementById('vf-' + v.key);
+      if (!el) return;
+      const pct = Math.min(100, (vitCount[v.key] / Math.max(fruits.length * 0.4, 1)) * 100);
+      el.style.width = pct + '%';
+    });
+  }, 80);
+
+  // Tip
+  let tipText = 'Great mix today! Try adding more variety tomorrow 🌈';
+  if (fruits.length === 0) {
+    tipText = 'Log some fruit to get personalised nutrition insights!';
+  } else {
+    const weakVit = VITAMINS.filter(v => vitCount[v.key] === 0);
+    if (weakVit.length > 0) {
+      const wv = weakVit[0];
+      const suggFruit = FRUITS.find(f => f.v.includes(wv.key) && isInSeason(f));
+      tipText = suggFruit
+        ? `You haven't had any ${wv.label} today. Try adding ${suggFruit.e} ${suggFruit.n} — ${suggFruit.note}!`
+        : `You haven't had any ${wv.label} today. Look for foods rich in ${wv.label.toLowerCase()} to round out your nutrition!`;
+    }
+  }
+  document.getElementById('tipText').textContent = tipText;
+
+  // Suggestions
+  const loggedNames = new Set(fruits);
+  const m = currentMonth();
+  const suggestions = [];
+
+  // Find vitamins the user is missing
+  const missingVits = VITAMINS.filter(v => vitCount[v.key] === 0).map(v => v.key);
+
+  FRUITS.filter(f => !loggedNames.has(f.n)).forEach(f => {
+    let score = 0;
+    let tags = [];
+    if (f.months.includes(m)) { score += 3; tags.push('season'); }
+    const overlap = f.v.filter(v => missingVits.includes(v));
+    if (overlap.length > 0) { score += overlap.length * 2; tags.push('vitamin'); }
+    if (f.xp >= 20) { score += 1; tags.push('try'); }
+    if (score > 0) suggestions.push({ f, score, tags });
+  });
+
+  suggestions.sort((a,b) => b.score - a.score);
+  const top = suggestions.slice(0, 4);
+
+  const area = document.getElementById('suggestionsArea');
+  if (top.length === 0) {
+    area.innerHTML = '<div class="empty-state"><span class="empty-emoji">🎉</span>Amazing variety today! Nothing left to suggest.</div>';
+    return;
+  }
+
+  area.innerHTML = top.map((s, i) => {
+    const tagEl = s.tags.includes('season')
+      ? `<span class="suggest-tag tag-season">🟢 In season</span>`
+      : s.tags.includes('vitamin')
+        ? `<span class="suggest-tag tag-vitamin">💊 Fills gap</span>`
+        : `<span class="suggest-tag tag-try">✨ Try it</span>`;
+    return `<div class="suggest-card" style="animation-delay:${i*0.07}s">
+      <span class="suggest-emoji">${s.f.e}</span>
+      <div class="suggest-info">
+        <div class="suggest-name">${s.f.n}</div>
+        <div class="suggest-why">${s.f.note}</div>
+      </div>
+      ${tagEl}
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// HISTORY PAGE
+// ============================================================
+function renderHistory() {
+  const area = document.getElementById('historyArea');
+  const keys = Object.keys(STATE.history).sort().reverse().slice(0, 14);
+
+  if (keys.length === 0 || (keys.length === 1 && STATE.history[keys[0]].length === 0)) {
+    area.innerHTML = '<div class="empty-state"><span class="empty-emoji">📅</span>No history yet — start logging!</div>';
+    return;
+  }
+
+  area.innerHTML = keys.filter(k => STATE.history[k].length > 0).map(k => {
+    const fruits = STATE.history[k];
+    const d = new Date(k + 'T12:00:00');
+    const label = d.toLocaleDateString('en-DE', { weekday:'short', day:'numeric', month:'short' });
+    const scoreClass = fruits.length >= 4 ? 'score-great' : fruits.length >= 2 ? 'score-ok' : 'score-low';
+    const scoreText = fruits.length >= 4 ? '🌟 Great' : fruits.length >= 2 ? '👍 Good' : '😴 Low';
+    const emojis = fruits.map(fn => {
+      const f = FRUITS.find(x => x.n === fn);
+      return `<div class="h-fruit">${f ? f.e : '🍎'}</div>`;
+    }).join('');
+    return `<div class="history-day">
+      <div class="history-date">
+        ${label}
+        <span class="history-score ${scoreClass}">${scoreText} · ${fruits.length} fruit${fruits.length!==1?'s':''}</span>
+      </div>
+      <div class="history-fruits">${emojis}</div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// ACHIEVEMENTS PAGE
+// ============================================================
+function renderAchievements() {
+  const allFruits = Object.values(STATE.history).flat();
+  const uniqueFruits = new Set(allFruits);
+  const totalDays = Object.values(STATE.history).filter(d => d.length > 0).length;
+
+  const stats = [
+    { num: allFruits.length, label: 'Total fruits logged', color: 'var(--orange)' },
+    { num: uniqueFruits.size, label: 'Unique varieties',   color: 'var(--green)' },
+    { num: STATE.streak,      label: 'Current streak 🔥',  color: 'var(--red)' },
+    { num: STATE.totalXP,     label: 'Total XP earned ⚡',  color: 'var(--yellow)' },
+  ];
+
+  document.getElementById('statsGrid').innerHTML = stats.map(s => `
+    <div class="stat-card">
+      <div class="stat-num" style="color:${s.color}">${s.num}</div>
+      <div class="stat-label">${s.label}</div>
+    </div>`).join('');
+
+  const achievements = [
+    { e:'🌱', name:'First Fruit',      desc:'Log your very first fruit',        unlock: allFruits.length >= 1 },
+    { e:'🔥', name:'3-Day Streak',     desc:'Eat fruit 3 days in a row',         unlock: STATE.streak >= 3 },
+    { e:'🌈', name:'Rainbow Eater',    desc:'Try 5 different fruits',            unlock: uniqueFruits.size >= 5 },
+    { e:'🏆', name:'10-Day Streak',    desc:'Eat fruit 10 days in a row',        unlock: STATE.streak >= 10 },
+    { e:'🌿', name:'Variety Star',     desc:'Try 10 different fruit varieties',  unlock: uniqueFruits.size >= 10 },
+    { e:'🎯', name:'Century',          desc:'Log 100 fruits total',              unlock: allFruits.length >= 100 },
+    { e:'🧬', name:'Vitamin Hunter',   desc:'Log fruits covering 6+ vitamins',   unlock: (() => {
+        const vset = new Set(); allFruits.forEach(fn => { const f = FRUITS.find(x=>x.n===fn); if(f) f.v.forEach(v=>vset.add(v)); }); return vset.size >= 6;
+      })() },
+    { e:'🌟', name:'Fruit Sage',       desc:'Reach max level',                   unlock: STATE.totalXP >= 1500 },
+  ];
+
+  document.getElementById('achievementsArea').innerHTML =
+    `<div class="section-title" style="margin-bottom:12px">🏅 Achievements</div>` +
+    achievements.map(a => `
+      <div class="achievement ${a.unlock ? 'unlocked' : ''}">
+        <span class="ach-emoji">${a.e}</span>
+        <div class="ach-info">
+          <div class="ach-name">${a.name}</div>
+          <div class="ach-desc">${a.desc}</div>
+        </div>
+        <span class="ach-lock">${a.unlock ? '✅' : '🔒'}</span>
+      </div>`).join('');
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page'+id).classList.add('active');
+  btn.classList.add('active');
+
+  if (id === 'Nutr') renderNutrition();
+  if (id === 'Hist') renderHistory();
+  if (id === 'Achi') renderAchievements();
+}
+
+// ============================================================
+// UTILS
+// ============================================================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function confetti() {
+  const colors = ['#ff7043','#ffb300','#43a047','#e91e8c','#1e88e5','#8e24aa'];
+  for (let i = 0; i < 18; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'confetti-dot';
+    dot.style.left = (20 + Math.random() * 60) + '%';
+    dot.style.top = '30%';
+    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+    dot.style.width = dot.style.height = (6 + Math.random() * 8) + 'px';
+    dot.style.animationDuration = (1 + Math.random() * 0.8) + 's';
+    dot.style.animationDelay = (Math.random() * 0.3) + 's';
+    document.body.appendChild(dot);
+    setTimeout(() => dot.remove(), 2200);
+  }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderHeader();
+renderToday();
+
+// Register service worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+
+// Show install prompt on Android
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  setTimeout(() => { if (deferredPrompt) showInstallBanner(); }, 3000);
+});
+
+function showInstallBanner() {
+  const banner = document.createElement('div');
+  banner.id = 'installBanner';
+  banner.style.cssText = `position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#fff;border:2px solid #f0e6d6;border-radius:18px;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,0.15);z-index:150;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;max-width:340px;width:90%;`;
+  banner.innerHTML = `<span style="font-size:28px">📲</span><div style="flex:1"><div style="color:#3d2c1e">Add Fruity to your home screen!</div><div style="font-size:11px;color:#a08878;font-weight:700;margin-top:2px">Works like a real app, offline too!</div></div><button onclick="installApp()" style="background:#ff7043;border:none;border-radius:12px;color:white;padding:8px 14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;cursor:pointer;">Install</button><button onclick="this.parentElement.remove()" style="background:none;border:none;font-size:18px;cursor:pointer;color:#a08878;">✕</button>`;
+  document.body.appendChild(banner);
+}
+
+async function installApp() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById('installBanner')?.remove();
+}
+</script>
+</body>
+</html>
