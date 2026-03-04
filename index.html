@@ -3646,7 +3646,7 @@ function renderMePage() {
     let rewardHtml = '';
     if (isUnlockedLevel && lvl.reward) {
       rewardHtml = '<div class="ladder-reward">' + lvl.reward.split('!')[0] + '</div>';
-    } else {
+    } else if (!isUnlockedLevel) {
       rewardHtml = '<div class="ladder-reward" style="background:var(--border);border-color:var(--border);color:var(--muted);font-size:16px;padding:4px 12px">🔒</div>';
     }
 
