@@ -1408,14 +1408,12 @@ const FRUITS = [
 // VITAMINS
 // ============================================================
 const VITAMINS = [
-  { key:'C',         label:'Vit C',    color:'#ff7043', icon:'🍊' },
-  { key:'A',         label:'Vit A',    color:'#ffb300', icon:'🥕' },
-  { key:'K',         label:'Vit K',    color:'#43a047', icon:'🥦' },
-  { key:'E',         label:'Vit E',    color:'#e91e8c', icon:'🌻' },
-  { key:'B6',        label:'Vit B6',   color:'#1e88e5', icon:'🌾' },
-  { key:'folate',    label:'Folate',   color:'#8e24aa', icon:'🫘' },
-  { key:'potassium', label:'Potassium',color:'#00897b', icon:'🍌' },
-  { key:'manganese', label:'Manganese',color:'#6d4c41', icon:'🪨' },
+  { key:'C',      label:'Vit C',  color:'#ff7043', icon:'🍊' },
+  { key:'A',      label:'Vit A',  color:'#ffb300', icon:'🥕' },
+  { key:'K',      label:'Vit K',  color:'#43a047', icon:'🥦' },
+  { key:'E',      label:'Vit E',  color:'#e91e8c', icon:'🌻' },
+  { key:'B6',     label:'Vit B6', color:'#1e88e5', icon:'🌾' },
+  { key:'folate', label:'Folate', color:'#8e24aa', icon:'🫘' },
 ];
 
 // ============================================================
@@ -1814,13 +1812,20 @@ function renderTodayPage() {
 
   const missingVits = VITAMINS.filter(v => vitCount[v.key] === 0).map(v => v.key);
 
+  const allCovered = missingVits.length === 0;
   let tipText = fruits.length === 0
     ? 'Log some fruit to get personalised nutrition insights!'
-    : 'Great mix today! Try adding more variety 🌈';
+    : allCovered
+      ? 'Amazing! You\'ve covered all 6 vitamins today 🌈🏆'
+      : 'Keep going — try to cover all 6 vitamins today!';
 
   if (fruits.length > 0 && missingVits.length > 0) {
     const wv = VITAMINS.find(v => missingVits.includes(v.key));
-    const sugg = FRUITS.find(f => f.v.includes(wv.key) && getSeasonStatus(f) === 'in-season');
+    const sugg = FRUITS.find(f =>
+      f.v.includes(wv.key) &&
+      ['in-season','imported'].includes(getSeasonStatus(f)) &&
+      !fruits.includes(f.n)
+    );
     tipText = sugg
       ? `No ${wv.label} yet today. Try ${sugg.e} ${sugg.n} — ${sugg.note}!`
       : `No ${wv.label} yet today. Look for fruits rich in ${wv.label}!`;
@@ -1863,7 +1868,7 @@ function renderTodayPage() {
     <div class="section-title">🧬 Nutrition</div>
     <div class="nutrition-card">
       ${VITAMINS.map(v => {
-        const pct = Math.min(100, (vitCount[v.key] / Math.max(fruits.length * 0.4, 1)) * 100);
+        const pct = Math.min(100, (vitCount[v.key] / 3) * 100);
         return `<div class="vit-row">
           <span class="vit-icon">${v.icon}</span>
           <span class="vit-name">${v.label}</span>
@@ -2026,12 +2031,12 @@ function renderChallengePage() {
       ? (opt.fruits.filter(fn => fruitsLogged.has(fn)).length / opt.fruits.length) * 100
       : 0;
 
-    return `<div class="challenge-card ${cardCls}" onclick="${cs.completed || cs.picked !== null ? '' : `pickChallenge(${i})`}">
+    return `<div class="challenge-card ${cardCls}" onclick="${cs.madeIt ? '' : `pickChallenge(${i})`}">
       <span class="challenge-xp">${xpLabel}</span>
       <div class="challenge-badge ${badgeCls}">${opt.label === 'Difficult' ? '🔥' : opt.label === 'Classic' ? '⭐' : '🌿'} ${opt.label}</div>
       <div class="challenge-fruits">${fruitsHtml}</div>
       <div class="challenge-dish">🍽️ Idea: ${opt.dish} — ${opt.tip}</div>
-      ${isPicked && !cs.completed ? `
+      ${isPicked && !cs.madeIt ? `
         <div class="ch-progress-wrap">
           <div class="ch-progress-label">Fruits logged: ${opt.fruits.filter(fn => fruitsLogged.has(fn)).length} / ${opt.fruits.length}</div>
           <div class="ch-progress-track"><div class="ch-progress-fill" style="width:${progressPct}%"></div></div>
@@ -2048,7 +2053,7 @@ function renderChallengePage() {
     <div class="card" style="margin-bottom:16px">
       <div class="section-title" style="font-size:17px;margin-bottom:4px">${ch.title}</div>
       <div style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:${cs.picked === null ? '14px' : '0'}">
-        ${cs.picked === null ? 'Pick a combination to cook with this month 👇' : cs.completed ? 'Challenge completed! 🎉' : 'You picked your combo — now go cook! 🍳'}
+        ${cs.madeIt ? 'Challenge completed! 🎉' : cs.picked === null ? 'Pick a combination to cook with this month 👇' : 'You picked a combo — you can still change your mind until you claim! 🍳'}
       </div>
     </div>
 
