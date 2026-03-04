@@ -3,7 +3,7 @@
   "short_name": "Fruity",
   "description": "Your daily fruit tracker",
   "scope": "/fruity-app/",
-  "start_url": "/fruity-app/index.html",
+  "start_url": "/fruity-app/",
   "display": "standalone",
   "background_color": "#FFF9F0",
   "theme_color": "#FF9500",
