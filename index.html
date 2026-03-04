@@ -3613,10 +3613,13 @@ function renderMePage() {
       '🎡', 'Flavour Wheel', 'Strawberry Taster'
     );
 
-  const worldMapSection = '<div class="section-title">🌍 World Map</div>' +
-    lockedOrContent(7,
-      '<div id="worldMapContainer"></div>',
-      '🌍', 'World Map', 'Passionfruity Traveller'
+  const pixelArtSection = '<div class="section-title">🎨 Your Fruit Icons</div>' +
+    lockedOrContent(12,
+      '<div class="card" style="padding:14px;margin-bottom:14px">' +
+        '<div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Draw your own icons for any fruit — they replace the default emoji on your Today tab. XP is just a bonus 🎨</div>' +
+        '<div id="pixelArtistContainer"></div>' +
+      '</div>',
+      '🎨', 'Your Fruit Icons', 'Fruit Bowl Sketcher'
     );
 
   const yearlySection = '<div class="section-title">📊 Yearly Stats</div>' +
