@@ -1330,6 +1330,215 @@ body {
 .keeper-row-label { font-size: 10px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
 .keeper-row-text { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.5; }
 
+
+/* ============================================================
+   TRIVIA QUIZ
+   ============================================================ */
+.quiz-card { background: linear-gradient(135deg,#e8f5e9,#c8e6c9); border-radius:var(--radius); padding:20px; margin-bottom:14px; }
+.quiz-question { font-family:'Fredoka One',cursive; font-size:17px; color:#1b5e20; margin-bottom:14px; line-height:1.4; }
+.quiz-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+.quiz-btn { background:white; border:2px solid #a5d6a7; border-radius:14px; padding:14px 10px; font-family:'Nunito',sans-serif; font-size:13px; font-weight:800; color:#2e7d32; cursor:pointer; transition:all 0.15s; text-align:center; }
+.quiz-btn:active { transform:scale(0.97); }
+.quiz-btn.correct { background:#e8f5e9; border-color:#4caf50; color:#1b5e20; }
+.quiz-btn.wrong { background:#ffebee; border-color:#ef9a9a; color:#c62828; }
+.quiz-btn.disabled { pointer-events:none; opacity:0.6; }
+.quiz-fact { background:white; border-radius:12px; padding:12px 14px; font-size:12px; font-weight:700; color:#2e7d32; line-height:1.6; margin-top:8px; }
+.quiz-done { text-align:center; padding:16px; }
+.quiz-refresh { font-size:11px; color:var(--muted); font-weight:700; margin-top:6px; }
+
+/* ============================================================
+   ORIGINS QUIZ
+   ============================================================ */
+.origins-card { background:linear-gradient(135deg,#e3f2fd,#bbdefb); border-radius:var(--radius); padding:20px; margin-bottom:14px; }
+.origins-spotlight { display:flex; align-items:center; gap:12px; margin-bottom:12px; padding-bottom:12px; border-bottom:2px solid #90caf9; }
+.origins-intro { font-size:12px; font-weight:700; color:#1565c0; line-height:1.6; margin-bottom:14px; }
+.origins-q-num { font-size:10px; font-weight:800; color:#1565c0; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; }
+.origins-question { font-family:'Fredoka One',cursive; font-size:16px; color:#0d47a1; margin-bottom:10px; line-height:1.4; }
+.origins-options { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+.origins-btn { background:white; border:2px solid #90caf9; border-radius:12px; padding:12px 8px; font-family:'Nunito',sans-serif; font-size:12px; font-weight:800; color:#1565c0; cursor:pointer; transition:all 0.15s; text-align:center; }
+.origins-btn.correct { background:#e3f2fd; border-color:#2196f3; color:#0d47a1; }
+.origins-btn.wrong { background:#ffebee; border-color:#ef9a9a; color:#c62828; }
+.origins-btn.disabled { pointer-events:none; opacity:0.6; }
+.origins-fact { background:white; border-radius:10px; padding:10px 12px; font-size:11px; font-weight:700; color:#1565c0; line-height:1.6; margin-bottom:8px; }
+
+/* ============================================================
+   PAIRING OF THE WEEK
+   ============================================================ */
+.pairing-card { background:linear-gradient(135deg,#fce4ec,#f8bbd0); border-radius:var(--radius); padding:20px; margin-bottom:14px; }
+.pairing-combo { display:flex; align-items:center; justify-content:center; gap:12px; font-size:40px; margin:12px 0; }
+.pairing-plus { font-size:24px; color:#c2185b; font-family:'Fredoka One',cursive; }
+.pairing-names { text-align:center; font-family:'Fredoka One',cursive; font-size:18px; color:#880e4f; margin-bottom:8px; }
+.pairing-why { font-size:12px; font-weight:700; color:#ad1457; line-height:1.6; background:rgba(255,255,255,0.6); border-radius:12px; padding:10px 12px; margin-bottom:14px; }
+.pairing-reactions { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.pairing-btn { background:white; border:2px solid #f48fb1; border-radius:14px; padding:14px 8px; font-size:24px; cursor:pointer; text-align:center; transition:all 0.15s; }
+.pairing-btn:active { transform:scale(0.95); }
+.pairing-btn.selected { border-color:#e91e63; background:#fce4ec; }
+.pairing-label { font-size:10px; font-weight:800; color:#c2185b; display:block; margin-top:4px; }
+.pairing-done { text-align:center; padding:8px; font-family:'Fredoka One',cursive; font-size:15px; color:#880e4f; }
+
+/* ============================================================
+   BUCKET LIST
+   ============================================================ */
+.bucket-card { background:white; border:2px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:10px; }
+.bucket-card.done { border-color:#a5d6a7; background:#f1f8e9; }
+.bucket-row { display:flex; align-items:flex-start; gap:12px; padding:14px 16px; }
+.bucket-emoji { font-size:28px; flex-shrink:0; }
+.bucket-content { flex:1; }
+.bucket-title { font-family:'Fredoka One',cursive; font-size:15px; margin-bottom:4px; }
+.bucket-desc { font-size:11px; font-weight:700; color:var(--muted); line-height:1.6; }
+.bucket-xp { font-size:11px; font-weight:800; color:var(--orange); margin-top:4px; }
+.bucket-claim { background:var(--orange); color:white; border:none; border-radius:99px; padding:8px 16px; font-family:'Fredoka One',cursive; font-size:13px; cursor:pointer; margin:0 16px 14px; width:calc(100% - 32px); transition:transform 0.15s; }
+.bucket-claim:active { transform:scale(0.97); }
+.bucket-done-badge { background:#e8f5e9; color:#2e7d32; font-size:11px; font-weight:800; padding:4px 10px; border-radius:99px; margin:0 16px 14px; display:inline-block; }
+.bucket-progress { background:linear-gradient(135deg,#37474f,#263238); border-radius:var(--radius); padding:16px; color:white; margin-bottom:14px; }
+
+/* ============================================================
+   PIXEL ART CANVAS
+   ============================================================ */
+.pixel-canvas-wrap { background:#1a1a2e; border-radius:var(--radius); padding:16px; margin-bottom:14px; }
+.pixel-grid { display:grid; grid-template-columns:repeat(16,1fr); gap:1px; background:#333; border:2px solid #444; border-radius:8px; overflow:hidden; margin:12px 0; touch-action:none; }
+.pixel-cell { aspect-ratio:1; background:#fff; cursor:pointer; transition:background 0.05s; }
+.pixel-palette { display:grid; grid-template-columns:repeat(8,1fr); gap:4px; margin-bottom:12px; }
+.pixel-color { width:100%; aspect-ratio:1; border-radius:6px; cursor:pointer; border:3px solid transparent; transition:all 0.1s; }
+.pixel-color.active { border-color:white; transform:scale(1.15); }
+.pixel-tools { display:flex; gap:8px; margin-bottom:10px; }
+.pixel-tool-btn { flex:1; background:rgba(255,255,255,0.1); border:2px solid rgba(255,255,255,0.2); border-radius:10px; padding:8px; font-family:'Nunito',sans-serif; font-size:12px; font-weight:800; color:white; cursor:pointer; text-align:center; }
+.pixel-tool-btn.active { background:rgba(255,255,255,0.25); border-color:white; }
+.pixel-save-btn { width:100%; background:var(--orange); color:white; border:none; border-radius:99px; padding:14px; font-family:'Fredoka One',cursive; font-size:16px; cursor:pointer; }
+
+
+/* ============================================================
+   FRUIT LAB
+   ============================================================ */
+.fruit-lab-card {
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 14px;
+  color: white;
+}
+.fruit-lab-tea { background: linear-gradient(135deg, #4a148c, #7b1fa2); }
+.fruit-lab-ferment { background: linear-gradient(135deg, #1b5e20, #388e3c); }
+.fruit-lab-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  border-radius: 99px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.fruit-lab-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.fruit-lab-partner {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+.fruit-lab-formula {
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.fruit-lab-formula-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+.fruit-lab-why {
+  font-size: 11px;
+  opacity: 0.85;
+  line-height: 1.6;
+  font-style: italic;
+}
+.fruit-lab-refresh {
+  font-size: 10px;
+  opacity: 0.7;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   FRUIT LAB
+   ============================================================ */
+.fruit-lab-card {
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 14px;
+}
+.fruit-lab-card.tea {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+.fruit-lab-card.ferment {
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+}
+.fruit-lab-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(0,0,0,0.08);
+}
+.fruit-lab-type {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  margin-bottom: 4px;
+}
+.tea .fruit-lab-type { background: #a5d6a7; color: #1b5e20; }
+.ferment .fruit-lab-type { background: #ffcc80; color: #e65100; }
+.fruit-lab-title { font-family: 'Fredoka One', cursive; font-size: 18px; }
+.tea .fruit-lab-title { color: #1b5e20; }
+.ferment .fruit-lab-title { color: #e65100; }
+.fruit-lab-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.fruit-lab-row-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+.fruit-lab-row-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+.tea .fruit-lab-row-label { color: #388e3c; }
+.ferment .fruit-lab-row-label { color: #f57c00; }
+.fruit-lab-row-text { font-size: 13px; font-weight: 700; line-height: 1.5; }
+.fruit-lab-formula {
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.6;
+}
+.fruit-lab-footer {
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
 </style>
 </head>
 <body>
@@ -1474,412 +1683,22 @@ window.onerror = function(msg, src, line, col, err) {
 // LEVELS
 // ============================================================
 const LEVELS = [
-  { name:'🌱 Seedling',              xp:0,     reward:null,                                                          hint:null },
-  { name:'🌿 Kiwi Sprout',           xp:60,    reward:'🗺️ Fruit Passport + 🏅 Achievements unlocked!',             hint:'Discover a way to track all the fruits you have ever tried...' },
-  { name:'🍓 Strawberry Taster',     xp:150,   reward:'🎡 Flavour Wheel unlocked in Me tab!',                       hint:'A visual taste profile of your eating habits is coming...' },
-  { name:'🍒 Cherry Picker',         xp:280,   reward:'🧊 Fruit Keeper unlocked in Knowledge tab!',                        hint:'A handy guide to storing every fruit is coming...' },
-  { name:'🫐 Blueberry Scout',       xp:450,   reward:'📖 Fruit Trivia unlocked in Knowledge tab!',                 hint:'Something educational and surprising unlocks next...' },
-  { name:'🍑 Peachy Apprentice',     xp:700,   reward:'🍓 What to make with... unlocked in Knowledge tab!',         hint:'A creative kitchen feature is just around the corner...' },
-  { name:'🌺 Passionfruity Traveller',xp:1000, reward:'🌍 World Map unlocked in Me tab!',                           hint:'The world is about to open up on your screen...' },
-  { name:'🌿 Figgy Wild Card',       xp:1350,  reward:'🎰 Fruit Roulette unlocked in Challenge tab!',               hint:'Feeling lucky? Something unpredictable is coming...' },
-  { name:'🧺 Elderberry Forager',    xp:1750,  reward:'🔔 Try something new nudge unlocked!',                       hint:'A weekly discovery feature is almost yours...' },
-  { name:'🍋 Lemony Head Chef',      xp:2200,  reward:'🍳 Trio cooking challenge unlocked in Challenge tab!',        hint:'A serious cooking upgrade is on its way...' },
-  { name:'🍒 Plummy Vintner',        xp:3100,  reward:'🧪 Juice Lab unlocked in Passport tab!',                     hint:'Something to do with combining fruits is brewing...' },
-  { name:'🌴 Coconutty Tropicalist', xp:4200,  reward:'🎨 Custom accent colour unlocked in Me tab!',                hint:'A way to make the app truly yours is coming...' },
-  { name:'🍍 Pineapply Explorer',    xp:5500,  reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!',           hint:'A geography challenge is waiting for you...' },
-  { name:'🌟 Zesty Sage',            xp:7200,  reward:'📊 Yearly stats unlocked in Me tab!',                        hint:'A deep dive into your full year of fruit awaits...' },
-  { name:'👑 The Fruit Obsessive',   xp:10000, reward:'🪪 Your Fruit Identity Card is ready in Me tab!',            hint:null },
+  { name:'🌱 Seedling',              xp:0,     reward:null,                                                                    hint:null },
+  { name:'🫐 Bilberry Beginner',     xp:60,    reward:'📖 Fruit Trivia unlocked in Knowledge tab!',                           hint:'A weekly fruit quiz with XP rewards is coming...' },
+  { name:'🥥 Coconutty Collector',   xp:150,   reward:'🗺️ Fruit Passport + 🏅 Achievements unlocked!',                      hint:'A way to collect every fruit you have ever tried is coming...' },
+  { name:'🍊 Guanabana Gambler',     xp:280,   reward:'🎰 Fruit Roulette unlocked in Challenge tab!',                        hint:'Feeling lucky? Something unpredictable is coming...' },
+  { name:'🍎 Russet Ripener',        xp:450,   reward:'🧊 Fruit Keeper unlocked in Knowledge tab!',                          hint:'A handy storage guide for every fruit is coming...' },
+  { name:'🍍 Pineapply Pioneer',     xp:700,   reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!',                    hint:'A weekly geography challenge with XP rewards is coming...' },
+  { name:'🍑 Peachy Pursuer',        xp:1000,  reward:'🍓 What to make with... unlocked in Knowledge tab!',                  hint:'Monthly fruit cooking inspiration is coming...' },
+  { name:'🍋 Loquat Legend',         xp:1350,  reward:'🍳 Trio cooking challenge unlocked in Challenge tab!',                 hint:'A serious cooking upgrade is on its way...' },
+  { name:'🍊 Tangerine Taster',      xp:1750,  reward:'🎡 Flavour Wheel unlocked in Me tab!',                                hint:'A visual taste profile of your eating habits is coming...' },
+  { name:'🌺 Passionfruity Pairer',  xp:2200,  reward:'🍽️ Pairing of the Week unlocked in Challenge tab!',                  hint:'A weekly real-life fruit pairing challenge is coming...' },
+  { name:'🌿 Figgy Forager',         xp:3100,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                                hint:'Tea concepts and fermentation ideas are brewing...' },
+  { name:'🎨 Fruit Bowl Sketcher',   xp:4200,  reward:'🎨 Pixel Fruit Artist unlocked in Challenge tab!',                    hint:'Something creative and completely unique is coming...' },
+  { name:'🍈 Jambu Juicer',          xp:5500,  reward:'🧪 Juice Lab unlocked in Challenge tab!',                             hint:'Something to do with combining fruits is brewing...' },
+  { name:'🍊 Kumquat Kolorist',      xp:7200,  reward:'🏆 Fruit Bucket List unlocked in Me tab!',                            hint:'A legendary fruit challenge awaits the truly dedicated...' },
+  { name:'👑 King Durian',           xp:10000, reward:'🎨 Custom Accent + 🪪 Fruit Identity Card unlocked!',                 hint:null },
 ];
-
-// ============================================================
-// FRUITS
-// ============================================================
-const FRUITS = [
-  // EVERYDAY STAPLES
-  { e:'🍎', n:'Apple',           months:[8,9,10,11,12,1,2],            v:['C','K','B6'],              xp:10, note:"Germany's favourite — great fibre, vitamin C & K",          cat:'Everyday' },
-  { e:'🍌', n:'Banana',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['B6','potassium','C'],       xp:10, note:'Potassium king — great for energy & B6',                    cat:'Everyday', imported:true },
-  { e:'🍊', n:'Orange',          months:[11,12,1,2,3,4],               v:['C','A','folate'],           xp:11, note:'Winter staple — immune-boosting vitamin C',                cat:'Everyday' },
-  { e:'🍋', n:'Lemon',           months:[11,12,1,2,3,4],               v:['C','B6','folate'],          xp:11, note:'Zesty vitamin C & folate hit',                             cat:'Everyday' },
-  { e:'🍇', n:'Grape',           months:[8,9,10,11],                   v:['C','K','B6'],               xp:12, note:'Antioxidant-rich, vitamin K & B6',                         cat:'Everyday' },
-  { e:'🍓', n:'Strawberry',      months:[5,6,7],                       v:['C','folate','manganese'],   xp:14, note:'High in vitamin C & folate — peak summer',                 cat:'Berries' },
-  { e:'🍑', n:'Peach',           months:[7,8,9],                       v:['C','A','E'],                xp:14, note:'Rich in vitamins A, C & E',                                cat:'Stone Fruits' },
-  { e:'🍑✨', n:'Nectarine',     months:[7,8,9],                       v:['C','A','E','B3'],           xp:14, note:'Like peach but extra vitamin B3 & E',                      cat:'Stone Fruits' },
-  { e:'🍒', n:'Cherry',          months:[6,7,8],                       v:['C','A','potassium'],        xp:14, note:'Great source of vitamin A & potassium',                    cat:'Stone Fruits' },
-  { e:'🍐', n:'Pear',            months:[8,9,10,11],                   v:['C','K','copper'],           xp:12, note:'Good source of vitamin K & copper',                        cat:'Everyday' },
-  { e:'🥝', n:'Kiwi',            months:[11,12,1,2,3],                 v:['C','K','E'],                xp:16, note:'Exceptional vitamin C — almost double an orange',          cat:'Everyday' },
-  { e:'🍉', n:'Watermelon',      months:[7,8,9],                       v:['C','A','B1'],               xp:13, note:'Hydrating — lycopene, vitamins A & C',                     cat:'Everyday' },
-  { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6','E'],           xp:15, note:'Tropical vitamin A & C powerhouse',                        cat:'Tropical', imported:true },
-  { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B1','manganese'],       xp:14, note:'Bromelain enzyme + vitamin C + manganese',                 cat:'Tropical', imported:true },
-  { e:'🍈', n:'Melon',           months:[7,8,9],                       v:['C','A','B6'],               xp:13, note:'Hydrating, rich in vitamins A & C',                        cat:'Everyday' },
-  { e:'🍈💚', n:'Honeydew',      months:[7,8,9],                       v:['C','B6','potassium'],       xp:13, note:'Potassium & B6 in every juicy bite',                       cat:'Everyday' },
-  { e:'🍊🍬', n:'Mandarin',      months:[10,11,12,1,2,3],              v:['C','A','folate'],           xp:12, note:'Easy-peel winter vitamin C boost',                         cat:'Citrus' },
-  { e:'🍊😬', n:'Grapefruit',    months:[11,12,1,2,3],                 v:['C','A','folate','B1'],      xp:14, note:'Bitter citrus powerhouse, lots of C',                      cat:'Citrus' },
-  { e:'🍋💚', n:'Lime',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6','folate'],          xp:12, note:'Zingy citrus hit of vitamin C & folate',                   cat:'Citrus', imported:true },
-  { e:'🥥', n:'Coconut',         months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['B5','iron','copper'],       xp:14, note:'Unique iron & copper source',                              cat:'Tropical', imported:true },
-  { e:'🍌🌴', n:'Plantain',      months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['A','C','B6','potassium'],   xp:14, note:'Starchier than banana, great vitamin A & B6',              cat:'Tropical', imported:true },
-  // GERMAN SEASONAL
-  { e:'🍑🌸', n:'Apricot',       months:[6,7,8],                       v:['A','C','E','potassium'],    xp:16, note:'Brilliant vitamin A source in summer',                     cat:'Stone Fruits' },
-  { e:'🍑🌕', n:'Mirabelle',     months:[7,8],                         v:['A','C','potassium'],        xp:20, note:'Tiny German gem — vitamin A & potassium',                  cat:'Stone Fruits' },
-  { e:'🍑🌑', n:'Damson',        months:[8,9,10],                      v:['C','K','A'],                xp:18, note:'Dark wild plum (Haferpflaume) — vitamin K & antioxidants', cat:'Stone Fruits' },
-  { e:'🫒', n:'Plum',            months:[7,8,9,10],                    v:['C','K','A'],                xp:13, note:'Good fibre & vitamin K source',                            cat:'Stone Fruits' },
-  { e:'🍏✨', n:'Greengage',      months:[7,8,9],                       v:['C','A','B6'],               xp:18, note:'Sweet green plum (Reneklode) — underrated summer treat',   cat:'Stone Fruits' },
-  { e:'🍇🌿', n:'Riesling Grape',months:[9,10],                        v:['C','K','B6'],               xp:19, note:'German vineyard classic — antioxidant-rich',               cat:'Everyday' },
-  { e:'🌿', n:'Fig',             months:[8,9,10],                      v:['B6','potassium','copper','B5'],   xp:17, note:'Dried or fresh — great source of potassium & copper',        cat:'Everyday' },
-  { e:'🍐🍯', n:'Quince',        months:[10,11],                       v:['C','copper','iron'],        xp:21, note:'Golden autumn fruit (Quitte) — copper & iron gem',         cat:'Everyday' },
-  // BERRIES
-  { e:'🫐', n:'Blueberry',       months:[7,8,9],                       v:['C','K','manganese'],        xp:16, note:'Antioxidant superstar — vitamin K & manganese',            cat:'Berries', germanSeason:[7,8,9] },
-  { e:'🍓🌿', n:'Raspberry',     months:[7,8,9],                       v:['C','K','E','folate'],       xp:16, note:'High in folate & vitamin E',                              cat:'Berries' },
-  { e:'🫐🌑', n:'Blackberry',    months:[8,9,10],                      v:['C','K','E','manganese'],    xp:16, note:'Rich in vitamin K, E & manganese',                        cat:'Berries' },
-  { e:'🔴🫐', n:'Redcurrant',    months:[6,7,8],                       v:['C','K','B5'],               xp:19, note:'Tiny but mighty — vitamin C & K bomb',                    cat:'Berries' },
-  { e:'⚫🫐', n:'Blackcurrant',  months:[7,8],                         v:['C','K','E','B5'],           xp:21, note:'Highest vitamin C of any common berry',                   cat:'Berries' },
-  { e:'🟢🫐', n:'Gooseberry',    months:[6,7,8],                       v:['C','B5','copper'],          xp:19, note:'Underrated — huge vitamin C punch',                       cat:'Berries' },
-  { e:'🫐🌲', n:'Bilberry (Waldheidelbeere)', months:[7,8,9],          v:['C','K','E','manganese'],    xp:21, note:'Wild forest bilberry — richer & darker than blueberry',    cat:'Berries' },
-  { e:'🫐🖤', n:'Aronia',        months:[8,9],                         v:['C','K','manganese'],        xp:23, note:'Chokeberry — antioxidant champion, sold at dm & Alnatura', cat:'Berries' },
-  { e:'🔵🫐', n:'Sea Buckthorn', months:[9,10],                        v:['C','A','E','B1'],           xp:25, note:'Sanddorn — wild German berry, insane vitamin C levels',     cat:'Berries' },
-  { e:'🌸🫐', n:'Elderberry',    months:[8,9],                         v:['C','A','B6'],               xp:23, note:'Holunderbeere — immune powerhouse, very high C & A',       cat:'Berries' },
-  { e:'🔴🌿', n:'Cranberry',     months:[10,11,12],                    v:['C','E','K'],                xp:17, note:'Autumn classic — vitamins C, E & K',                       cat:'Berries' },
-  { e:'🟠🌟', n:'Physalis',      months:[9,10,11],                     v:['C','A','B1','B3'],          xp:21, note:'Cape gooseberry — vitamins A & B, in most supermarkets',   cat:'Berries' },
-  // TROPICAL / EXOTIC
-  { e:'🥝💛', n:'Golden Kiwi',   months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','K','E','B6'],           xp:20, note:'Even more vitamin C than green kiwi',                      cat:'Tropical', imported:true },
-  { e:'🍈🌴', n:'Papaya',        months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','folate','B5'],       xp:17, note:'Tropical folate & vitamin C powerhouse',                   cat:'Tropical', imported:true },
-  { e:'❤️🍎', n:'Pomegranate',   months:[10,11,12,1,2],                v:['C','K','folate','B5'],       xp:20, note:'Antioxidant powerhouse — folate & vitamin K',              cat:'Tropical' },
-  { e:'💜🌺', n:'Passion Fruit', months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B2','iron'],         xp:20, note:'Exotic — iron, vitamins A, C & B2',                        cat:'Tropical', imported:true },
-  { e:'🌵🍓', n:'Dragon Fruit',  months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','iron','B1'],             xp:22, note:'Trendy superfruit — iron & vitamin C',                      cat:'Tropical', imported:true },
-  { e:'⭐🍋', n:'Star Fruit',    months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B5','copper'],           xp:22, note:'Exotic star shape — vitamin C & copper',                   cat:'Tropical', imported:true },
-  { e:'🍦🍏', n:'Cherimoya',     months:[11,12,1,2,3],                 v:['C','B6','B1','potassium'],   xp:23, note:'Creamy custard apple — B vitamins & potassium',             cat:'Tropical', imported:true },
-  { e:'🍊🌕', n:'Pomelo',        months:[11,12,1,2,3],                 v:['C','A','B1','potassium'],    xp:18, note:'Giant citrus — loads of vitamin C & potassium',            cat:'Citrus' },
-  { e:'🍊🍂', n:'Persimmon',     months:[10,11,12,1],                  v:['A','C','B6','manganese'],    xp:20, note:'Autumn orange beauty (Kakifrucht) — rich in vitamin A',    cat:'Tropical' },
-  { e:'🫐🌿', n:'Açaí',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['A','E','iron','B1'],         xp:24, note:'Amazon superfood — iron & vitamin E',                       cat:'Tropical', imported:true },
-  { e:'🍋🌿', n:'Guava',         months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','folate','B5'],       xp:21, note:'Tropical powerhouse — more vitamin C than an orange',      cat:'Tropical', imported:true },
-  { e:'🍈🌞', n:'Cantaloupe',    months:[7,8,9],                       v:['C','A','B6','potassium'],    xp:14, note:'Sweet melon — great vitamin A & potassium',                cat:'Everyday' },
-  { e:'🍒🌺', n:'Lychee',        months:[5,6,7,8],                     v:['C','B6','copper'],           xp:20, note:'Delicate tropical fruit — high vitamin C',                 cat:'Tropical', imported:true },
-  { e:'🍊🎄', n:'Clementine',    months:[11,12,1,2],                   v:['C','A','folate'],            xp:12, note:'Seedless winter citrus — easy vitamin C hit',              cat:'Citrus' },
-  { e:'🍊❤️', n:'Blood Orange',  months:[1,2,3,4],                     v:['C','A','folate'],            xp:17, note:'Winter citrus with unique anthocyanins & vitamin C',       cat:'Citrus' },
-  { e:'🌿🍋', n:'Yuzu',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6','folate'],           xp:25, note:'Japanese citrus — imported, increasingly in Asian shops',  cat:'Citrus', imported:true },
-];
-
-// ============================================================
-// VITAMINS
-// ============================================================
-const VITAMINS = [
-  { key:'C',      label:'Vit C',  color:'#ff7043', icon:'🍊' },
-  { key:'A',      label:'Vit A',  color:'#ffb300', icon:'🥕' },
-  { key:'K',      label:'Vit K',  color:'#43a047', icon:'🥦' },
-  { key:'E',      label:'Vit E',  color:'#e91e8c', icon:'🌻' },
-  { key:'B6',     label:'Vit B6', color:'#1e88e5', icon:'🌾' },
-  { key:'folate', label:'Folate', color:'#8e24aa', icon:'🫘' },
-];
-
-// ============================================================
-// MONTHLY CHALLENGES
-// ============================================================
-const CHALLENGES = {
-  1:  { title:'January Citrus Haul', options:[
-    { label:'Easy',    fruits:['Blood Orange','Kiwi'],        dish:'Citrus Yogurt Bowl', tip:'Slice over thick yogurt with honey' },
-    { label:'Classic', fruits:['Grapefruit','Clementine'],    dish:'Winter Citrus Salad', tip:'Segment both, toss with mint & chili flakes' },
-    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing', tip:'Squeeze both over a green salad — unusual & amazing' },
-  ]},
-  2:  { title:'February Tropical Escape', options:[
-    { label:'Easy',    fruits:['Banana','Mango'],             dish:'Tropical Smoothie Bowl', tip:'Blend & top with coconut flakes' },
-    { label:'Classic', fruits:['Pineapple','Papaya'],         dish:'Tropical Fruit Salad', tip:'Dice both, add lime juice & fresh mint' },
-    { label:'Difficult',fruits:['Cherimoya','Passion Fruit'], dish:'Custard Fruit Tart', tip:'Spoon cherimoya flesh into tart shells, top with passion fruit pulp' },
-  ]},
-  3:  { title:'March Citrus Bloom', options:[
-    { label:'Easy',    fruits:['Blood Orange','Kiwi'],        dish:'Citrus Breakfast Bowl', tip:'Slice over oats with honey & mint' },
-    { label:'Classic', fruits:['Grapefruit','Mandarin'],      dish:'Winter Citrus Salad', tip:'Segment both, toss with fresh mint & chili flakes' },
-    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing', tip:'Squeeze both over a green salad — the contrast is stunning' },
-  ]},
-  4:  { title:'April Spring Awakening', options:[
-    { label:'Easy',    fruits:['Orange','Lemon'],             dish:'Citrus Cake', tip:'Classic sponge with orange & lemon zest glaze' },
-    { label:'Classic', fruits:['Kiwi','Pineapple'],           dish:'Tropical Jam', tip:'Cook down both fruits with sugar into a zingy jam' },
-    { label:'Difficult',fruits:['Blood Orange','Yuzu'],       dish:'Yuzu Blood Orange Curd', tip:'Make a curd — butter, eggs, juice, sugar. Spread on everything' },
-  ]},
-  5:  { title:'May First Berries', options:[
-    { label:'Easy',    fruits:['Strawberry','Banana'],        dish:'Strawberry Banana Smoothie', tip:'Blend with oat milk & a spoon of peanut butter' },
-    { label:'Classic', fruits:['Strawberry','Lemon'],         dish:'Strawberry Lemonade Jam', tip:'Classic jam with a lemon twist — great on sourdough' },
-    { label:'Difficult',fruits:['Strawberry','Lychee'],       dish:'Strawberry Lychee Sorbet', tip:'Blend, freeze, stir twice — fragrant & unexpected' },
-  ]},
-  6:  { title:'June Berry Season Begins', options:[
-    { label:'Easy',    fruits:['Cherry','Strawberry'],        dish:'Berry Clafoutis', tip:'Classic French batter bake — 30 minutes, very forgiving' },
-    { label:'Classic', fruits:['Redcurrant','Gooseberry'],    dish:'Summer Berry Compote', tip:'Simmer with sugar, serve over pancakes or porridge' },
-    { label:'Difficult',fruits:['Gooseberry','Elderberry'],   dish:'Eldergooseberry Chutney', tip:'Tangy chutney with onion, vinegar & spices — pairs with cheese' },
-  ]},
-  7:  { title:'July Peak Summer', options:[
-    { label:'Easy',    fruits:['Peach','Raspberry'],          dish:'Peach Melba', tip:'Peach halves, vanilla ice cream, fresh raspberries. Done.' },
-    { label:'Classic', fruits:['Blueberry','Cherry'],         dish:'Summer Berry Cake', tip:'Simple sponge studded with both fruits, dusted with icing sugar' },
-    { label:'Difficult',fruits:['Mirabelle','Bilberry (Waldheidelbeere)'], dish:'Mirabelle Bilberry Galette', tip:'Rustic open tart — the colour contrast is spectacular' },
-  ]},
-  8:  { title:'August Stone Fruit Fest', options:[
-    { label:'Easy',    fruits:['Nectarine','Plum'],           dish:'Stone Fruit Salad', tip:'Slice thin, add basil, balsamic glaze & mozzarella' },
-    { label:'Classic', fruits:['Peach','Blackcurrant'],       dish:'Peach & Blackcurrant Crumble', tip:'Oat crumble topping, tart-sweet filling — serve warm' },
-    { label:'Difficult',fruits:['Damson','Aronia'],           dish:'Damson Aronia Jam', tip:'Both are tart & dark — the result is a deep, complex jam' },
-  ]},
-  9:  { title:'September Harvest Time', options:[
-    { label:'Easy',    fruits:['Grape','Apple'],              dish:'Grape & Apple Juice', tip:'Press or blend both — autumn in a glass' },
-    { label:'Classic', fruits:['Blackberry','Pear'],          dish:'Blackberry Pear Tarte Tatin', tip:'Caramelise pears, add blackberries before the pastry goes on' },
-    { label:'Difficult',fruits:['Sea Buckthorn','Physalis'],  dish:'Sea Buckthorn Physalis Sauce', tip:'Tart orange sauce — incredible over duck or pork' },
-  ]},
-  10: { title:'October Autumn Gems', options:[
-    { label:'Easy',    fruits:['Pear','Pomegranate'],         dish:'Autumn Salad', tip:'Rocket, pear slices, pomegranate seeds, walnuts & blue cheese' },
-    { label:'Classic', fruits:['Apple','Cranberry'],          dish:'Apple Cranberry Chutney', tip:'Spiced with cinnamon & cloves — Christmas in a jar' },
-    { label:'Difficult',fruits:['Quince','Persimmon'],        dish:'Quince Persimmon Paste', tip:'Slow-cooked into a firm paste (like membrillo) — incredible with cheese' },
-  ]},
-  11: { title:'November Late Season', options:[
-    { label:'Easy',    fruits:['Mandarin','Orange'],          dish:'Citrus Marmalade', tip:'Peel, boil with sugar, jar it — better than shop-bought' },
-    { label:'Classic', fruits:['Pomegranate','Cranberry'],    dish:'Winter Berry Sauce', tip:'Simmer both — classic sauce for roast meats or on porridge' },
-    { label:'Difficult',fruits:['Physalis','Pomelo'],         dish:'Physalis Pomelo Chutney', tip:'Unusual but the bitterness of pomelo balances physalis sweetness perfectly' },
-  ]},
-  12: { title:'December Winter Feast', options:[
-    { label:'Easy',    fruits:['Clementine','Apple'],         dish:'Mulled Fruit Punch', tip:'Simmer with cinnamon, star anise & cloves — alcohol optional' },
-    { label:'Classic', fruits:['Blood Orange','Pomegranate'], dish:'Winter Citrus Pavlova', tip:'Top meringue with whipped cream, blood orange segments & pomegranate seeds' },
-    { label:'Difficult',fruits:['Yuzu','Persimmon'],          dish:'Yuzu Persimmon Cake', tip:'Japanese-inspired — yuzu zest in sponge, persimmon puree filling' },
-  ]},
-};
-
-
-const TRIVIA = [
-  { e:'🍋', fact:'Lemons were so prized in 15th century Europe they were given as royal gifts. One lemon covers around 50% of your daily vitamin C needs.' },
-  { e:'🍓', fact:'Strawberries are the only fruit with seeds on the outside — the average strawberry has around 200 of them.' },
-  { e:'🍌', fact:'Bananas are technically berries in botanical terms. Strawberries, however, are not.' },
-  { e:'🍎', fact:'There are over 7,500 known varieties of apple worldwide. Germany alone has over 1,500 traditional varieties.' },
-  { e:'🥝', fact:'Kiwis were originally called "Chinese Gooseberries" until New Zealand exporters rebranded them in the 1950s.' },
-  { e:'🍇', fact:'Grapes explode when you put them in a microwave — scientists at the University of Waterloo actually published a paper on this.' },
-  { e:'🍍', fact:'A pineapple takes up to 3 years to grow. Each plant produces just one pineapple at a time.' },
-  { e:'🫐', fact:'Blueberries are one of the only naturally blue foods in existence. The pigment that makes them blue also acts as a powerful antioxidant.' },
-  { e:'🍒', fact:'Japan has developed square watermelons — grown in cube-shaped glass moulds purely for easier storage in fridges.' },
-  { e:'🥭', fact:'Mangoes are related to cashews and pistachios. They all belong to the same plant family: Anacardiaceae.' },
-  { e:'🍑', fact:'Germany is one of Europe\'s top producers of plums and damsons. The Rhineland and Baden regions harvest millions of kilos each autumn.' },
-  { e:'🍐', fact:'Pears ripen from the inside out. By the time the outside feels soft, the inside is often already overripe.' },
-  { e:'🍊', fact:'It takes about 50 oranges to make one litre of orange juice. Most of the vitamin C is lost within 30 minutes of juicing.' },
-  { e:'🌿', fact:'Figs are not actually a fruit in the traditional sense — they are an inverted flower. What you eat is a structure called a syconium.' },
-  { e:'🫐', fact:'Sea buckthorn (Sanddorn) contains up to 15 times more vitamin C than an orange. It\'s been growing wild on German coasts for centuries.' },
-  { e:'🍒', fact:'The Mirabelle plum is so associated with the Lorraine region of France that it has protected geographical status — like champagne.' },
-  { e:'🥥', fact:'Coconut water was used as an emergency intravenous fluid during World War II in the Pacific when medical supplies ran out.' },
-  { e:'🍋', fact:'Limes contain more sugar than lemons despite tasting more sour. The sourness comes from a different balance of acids.' },
-  { e:'🍇', fact:'The colour of a grape has no effect on its sweetness. Red, green and black grapes all contain similar sugar levels.' },
-  { e:'🍓', fact:'Strawberries belong to the rose family, along with apples, pears, cherries, peaches and almonds.' },
-  { e:'🥝', fact:'A single kiwi contains more vitamin C than an orange of the same size. Golden kiwis contain even more than green ones.' },
-  { e:'🍌', fact:'Bananas are naturally slightly radioactive due to their potassium content. You would need to eat around 10 million to receive a harmful dose.' },
-  { e:'🍎', fact:'Apple seeds contain a compound called amygdalin, which releases cyanide when digested. You\'d need to chew hundreds of seeds to feel any effect.' },
-  { e:'🫐', fact:'Elderberries (Holunderbeeren) have been used in German folk medicine for over 400 years to treat colds and fevers.' },
-  { e:'🍑', fact:'Peaches and nectarines are genetically almost identical. The only real difference is one gene that controls whether the skin is fuzzy or smooth.' },
-  { e:'🍍', fact:'Pineapple contains bromelain, an enzyme that literally digests proteins — including the proteins in your mouth. That tingle you feel is real.' },
-  { e:'🌺', fact:'Passion fruit gets its name not from romance but from Christian missionaries, who saw the flower as a symbol of the Passion of Christ.' },
-  { e:'🍊', fact:'Blood oranges get their red colour from anthocyanins — the same pigment found in blueberries and red cabbage. It only develops in cold nights.' },
-  { e:'🫐', fact:'Aronia berries (chokeberries) have one of the highest antioxidant ratings of any fruit ever measured — higher than blueberries and pomegranates.' },
-  { e:'🍐', fact:'Quince (Quitte) was the original "golden apple" of Greek mythology — the fruit of discord that started the Trojan War, not an apple at all.' },
-];
-
-function getWeeklyTrivia() {
-  const weekNum = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
-  return TRIVIA[weekNum % TRIVIA.length];
-}
-
-
-// Flavour profiles for wheel
-const FLAVOUR_PROFILES = {
-  'Sweet':   { color:'#FF9500', fruits:['Apple','Banana','Grape','Mango','Pineapple','Melon','Honeydew','Mandarin','Lychee','Clementine','Peach','Nectarine','Cherry','Mirabelle','Greengage','Fig','Cantaloupe','Persimmon','Papaya','Golden Kiwi'] },
-  'Sour':    { color:'#e53935', fruits:['Lemon','Lime','Grapefruit','Kiwi','Redcurrant','Gooseberry','Cranberry','Sea Buckthorn','Passion Fruit','Blood Orange','Pomelo','Yuzu','Morello Cherry'] },
-  'Bitter':  { color:'#5d4037', fruits:['Grapefruit','Pomelo','Yuzu','Aronia','Sloe','Elderberry','Quince'] },
-  'Tropical':{ color:'#00897b', fruits:['Mango','Pineapple','Papaya','Coconut','Plantain','Dragon Fruit','Guava','Açaí','Passion Fruit','Cherimoya','Lychee','Star Fruit'] },
-  'Earthy':  { color:'#6d4c41', fruits:['Fig','Quince','Damson','Plum','Blackcurrant','Aronia','Bilberry (Waldheidelbeere)','Elderberry','Sea Buckthorn','Sloe'] },
-  'Floral':  { color:'#e91e8c', fruits:['Elderberry','Physalis','Passion Fruit','Lychee','Blood Orange','Raspberry','Strawberry','Apricot','Peach','Nectarine'] },
-};
-
-function getFlavourCounts(fruitNames) {
-  const counts = {};
-  Object.keys(FLAVOUR_PROFILES).forEach(k => counts[k] = 0);
-  fruitNames.forEach(name => {
-    Object.entries(FLAVOUR_PROFILES).forEach(([flavour, data]) => {
-      if (data.fruits.includes(name)) counts[flavour]++;
-    });
-  });
-  return counts;
-}
-
-
-// ============================================================
-// WHAT TO MAKE WITH DATA (Lvl 6)
-// ============================================================
-const WHAT_TO_MAKE = {
-  1:  { fruit:'Blood Orange', e:'🍊❤️', ideas:['Marmalade','Curd','Cake','Salad dressing','Sorbet','Juice','Syrup','Compote'] },
-  2:  { fruit:'Banana',       e:'🍌',   ideas:['Banana bread','Smoothie','Ice cream','Pancakes','Chips','Jam','Curry','Muffins'] },
-  3:  { fruit:'Kiwi',         e:'🥝',   ideas:['Jam','Sorbet','Smoothie','Salsa','Marinade','Pavlova topping','Juice','Chutney'] },
-  4:  { fruit:'Strawberry',   e:'🍓',   ideas:['Jam','Compote','Sorbet','Cake','Smoothie','Sauce','Vinegar','Dried snack'] },
-  5:  { fruit:'Elderberry',   e:'🌸🫐', ideas:['Syrup','Juice','Jam','Wine','Chutney','Cordial','Gummies','Tea'] },
-  6:  { fruit:'Apricot',      e:'🍑🌸', ideas:['Jam','Tart','Chutney','Dried snack','Compote','Cake','Sauce','Sorbet'] },
-  7:  { fruit:'Raspberry',    e:'🍓🌿', ideas:['Jam','Vinegar','Coulis','Sorbet','Smoothie','Cake','Cordial','Compote'] },
-  8:  { fruit:'Peach',        e:'🍑',   ideas:['Jam','Bellini','Sorbet','Tarte Tatin','Chutney','Grilled','Cobbler','Dried'] },
-  9:  { fruit:'Plum',         e:'🫒',   ideas:['Jam','Sauce','Chutney','Wine','Cake','Sorbet','Dried (prunes)','Compote'] },
-  10: { fruit:'Apple',        e:'🍎',   ideas:['Cider','Juice','Chutney','Cake','Chips','Sauce','Jam','Butter'] },
-  11: { fruit:'Quince',       e:'🍐🍯', ideas:['Membrillo (paste)','Jam','Jelly','Chutney','Syrup','Tart','Cheese pairing','Cordial'] },
-  12: { fruit:'Pomegranate',  e:'❤️🍎', ideas:['Molasses','Juice','Salad dressing','Sauce','Sorbet','Tea','Jam','Cocktail mixer'] },
-};
-
-function getWeeklyMakeWith() {
-  const weekNum = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
-  const monthNum = new Date().getMonth() + 1;
-  return WHAT_TO_MAKE[monthNum] || WHAT_TO_MAKE[1];
-}
-
-// ============================================================
-// WORLD MAP DATA (Lvl 7)
-// ============================================================
-const FRUIT_ORIGINS = {
-  'DE': { name:'Germany', flag:'🇩🇪', fruits:['Apple','Pear','Cherry','Plum','Damson','Mirabelle','Greengage','Riesling Grape','Quince','Strawberry','Raspberry','Blackberry','Redcurrant','Blackcurrant','Gooseberry','Bilberry (Waldheidelbeere)','Aronia','Sea Buckthorn','Elderberry','Fig'] },
-  'ES': { name:'Spain',   flag:'🇪🇸', fruits:['Orange','Lemon','Mandarin','Clementine','Blood Orange','Grapefruit','Pomelo','Grape','Melon','Watermelon','Strawberry','Peach','Nectarine','Apricot'] },
-  'IT': { name:'Italy',   flag:'🇮🇹', fruits:['Lemon','Orange','Blood Orange','Grape','Kiwi','Peach','Nectarine','Apricot','Cherry','Fig','Mandarin','Clementine'] },
-  'TR': { name:'Turkey',  flag:'🇹🇷', fruits:['Cherry','Apricot','Fig','Grape','Pomegranate','Melon','Watermelon','Peach','Nectarine','Hazelnut'] },
-  'MA': { name:'Morocco', flag:'🇲🇦', fruits:['Orange','Clementine','Mandarin','Strawberry','Watermelon','Melon'] },
-  'ZA': { name:'South Africa', flag:'🇿🇦', fruits:['Grape','Mandarin','Clementine','Orange','Lemon','Plum','Nectarine','Peach','Apricot'] },
-  'BR': { name:'Brazil',  flag:'🇧🇷', fruits:['Mango','Papaya','Banana','Pineapple','Passion Fruit','Guava','Açaí','Lychee','Coconut'] },
-  'MX': { name:'Mexico',  flag:'🇲🇽', fruits:['Mango','Avocado','Lime','Papaya','Guava','Plantain','Coconut','Passion Fruit'] },
-  'TH': { name:'Thailand',flag:'🇹🇭', fruits:['Mango','Pineapple','Papaya','Dragon Fruit','Lychee','Coconut','Guava','Star Fruit','Plantain'] },
-  'VN': { name:'Vietnam', flag:'🇻🇳', fruits:['Dragon Fruit','Mango','Lychee','Passion Fruit','Star Fruit','Coconut','Guava','Banana'] },
-  'CN': { name:'China',   flag:'🇨🇳', fruits:['Kiwi','Mandarin','Pear','Peach','Plum','Lychee','Persimmon','Pomelo','Yuzu'] },
-  'JP': { name:'Japan',   flag:'🇯🇵', fruits:['Yuzu','Persimmon','Mandarin','Kiwi','Strawberry','Peach','Cherry','Plum','Grape'] },
-  'IN': { name:'India',   flag:'🇮🇳', fruits:['Mango','Banana','Guava','Papaya','Coconut','Lemon','Lime','Pomegranate','Lychee'] },
-  'PE': { name:'Peru',    flag:'🇵🇪', fruits:['Cherimoya','Passion Fruit','Mango','Banana','Coconut','Guava','Physalis'] },
-  'BO': { name:'Bolivia', flag:'🇧🇴', fruits:['Açaí','Passion Fruit','Banana','Guava','Coconut','Cherimoya'] },
-  'CL': { name:'Chile',   flag:'🇨🇱', fruits:['Grape','Blueberry','Cranberry','Plum','Nectarine','Peach','Apple','Kiwi'] },
-  'US': { name:'USA',     flag:'🇺🇸', fruits:['Blueberry','Cranberry','Grape','Apple','Orange','Grapefruit','Lemon','Watermelon','Strawberry'] },
-  'GR': { name:'Greece',  flag:'🇬🇷', fruits:['Olive','Fig','Grape','Orange','Lemon','Mandarin','Watermelon','Melon','Pomegranate','Cherry'] },
-  'EG': { name:'Egypt',   flag:'🇪🇬', fruits:['Orange','Mango','Grape','Pomegranate','Fig','Guava','Lemon','Watermelon'] },
-  'ID': { name:'Indonesia',flag:'🇮🇩', fruits:['Banana','Coconut','Mango','Pineapple','Dragon fruit','Papaya','Guava','Star Fruit'] },
-};
-
-function getVisitedCountries(loggedFruits) {
-  const visited = {};
-  const fruitSet = new Set(loggedFruits);
-  Object.entries(FRUIT_ORIGINS).forEach(([code, country]) => {
-    const matches = country.fruits.filter(f => fruitSet.has(f));
-    if (matches.length > 0) visited[code] = { ...country, matched: matches };
-  });
-  return visited;
-}
-
-
-// ============================================================
-// FRUIT KEEPER DATA (Lvl 4)
-// ============================================================
-const FRUIT_KEEPER = {
-  'Apple':        { temp:'Room temp for weeks, or fridge to extend life', life:'1–3 weeks room temp, up to 2 months in fridge', bad:'Soft mushy spots, wrinkled skin, or brown flesh inside' },
-  'Banana':       { temp:'Room temp only — fridge turns the skin black', ripen:'Leave on counter until yellow with small brown speckles', life:'2–5 days once ripe', bad:'Fully black skin or fermented smell (flesh may still be fine for baking)' },
-  'Orange':       { temp:'Room temp up to a week, fridge for longer', life:'1 week room temp, 3–4 weeks in fridge', bad:'Soft or mouldy spots, dried-out skin, sour smell' },
-  'Lemon':        { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3–4 weeks in fridge', bad:'Soft spots, shrivelled skin, or white mould' },
-  'Grape':        { temp:'Always fridge, unwashed', life:'1–2 weeks', bad:'Wrinkled skin, sticky texture, or mould — remove affected ones immediately' },
-  'Strawberry':   { temp:'Fridge, unwashed, in a single layer if possible', life:'3–5 days', bad:'Mushy spots or white/grey mould — remove immediately' },
-  'Peach':        { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp stem-side down until slightly soft and fragrant', life:'2–3 days room temp, up to 5 days in fridge once ripe', bad:'Very mushy spots, brown flesh, or fermented smell' },
-  'Nectarine':    { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until fragrant and slightly soft near the stem', life:'2–3 days room temp, 5 days in fridge once ripe', bad:'Mushy dark spots or wrinkled skin' },
-  'Cherry':       { temp:'Fridge, unwashed', life:'5–7 days', bad:'Sticky, discoloured, or mouldy — they go fast once bad' },
-  'Pear':         { temp:'Room temp to ripen, then fridge', ripen:'Ripe when the neck gives slightly to gentle pressure — check daily', life:'2–4 days once ripe', bad:'Grainy mushy flesh or brown spots — overripe very quickly' },
-  'Kiwi':         { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until slightly soft to touch', life:'1 week room temp, 2–3 weeks in fridge once ripe', bad:'Very soft or shrivelled skin, off smell' },
-  'Watermelon':   { temp:'Room temp whole, fridge once cut', life:'1–2 weeks whole at room temp, 3–5 days cut in fridge', bad:'Dry or grainy flesh, sour smell, mushy texture' },
-  'Mango':        { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until fragrant and slightly soft — can take 2–5 days', life:'Up to 5 days in fridge once ripe', bad:'Black patches, very mushy spots, or sour smell' },
-  'Pineapple':    { temp:'Room temp to ripen, fridge once cut', ripen:'A day or two upside-down at room temp helps distribute sugars', life:'2–3 days room temp, 3–5 days cut in fridge', bad:'Soft brown patches, fermented smell, or mould at base' },
-  'Melon':        { temp:'Room temp whole, fridge once cut', life:'Up to 1 week whole, 3–5 days cut', bad:'Sunken spots, sour smell, or slimy flesh' },
-  'Honeydew':     { temp:'Room temp whole, fridge once cut', life:'Up to 1 week whole, 3–5 days cut', bad:'Very soft spots or fermented smell' },
-  'Mandarin':     { temp:'Room temp for a few days, fridge for longer', life:'1 week room temp, 2–3 weeks in fridge', bad:'Mould, dry or shrivelled peel, sour smell' },
-  'Grapefruit':   { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3 weeks in fridge', bad:'Soft mouldy spots or very dry skin' },
-  'Lime':         { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3–4 weeks in fridge', bad:'Brown or black spots, dried-out skin' },
-  'Coconut':      { temp:'Whole: room temp. Opened: fridge in water', life:'Weeks whole at room temp, 3–4 days opened in fridge', bad:'Pinkish or slimy flesh, sour smell — discard immediately' },
-  'Plantain':     { temp:'Room temp — never fridge until fully black', ripen:'Green → yellow → black; each stage has a different flavour. Cook green for savoury, black for sweet.', life:'Days to weeks depending on ripeness stage', bad:'Slimy flesh or mould on skin' },
-  'Apricot':      { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until fragrant and slightly soft', life:'2–3 days room temp, 5 days in fridge once ripe', bad:'Very mushy, brown flesh, or fermented smell' },
-  'Mirabelle':    { temp:'Fridge once ripe', life:'3–5 days in fridge', bad:'Sticky skin, mould, or fermented smell' },
-  'Damson':       { temp:'Fridge', life:'3–5 days', bad:'Shrivelled skin or mould' },
-  'Plum':         { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until slightly soft', life:'3–5 days in fridge once ripe', bad:'Very mushy spots or fermented smell' },
-  'Greengage':    { temp:'Room temp to ripen, then fridge', life:'3–5 days in fridge once ripe', bad:'Soft mushy spots or mould' },
-  'Riesling Grape':{ temp:'Fridge, unwashed', life:'1–2 weeks', bad:'Wrinkled, sticky, or mouldy grapes — remove affected ones' },
-  'Fig':          { temp:'Fridge — they are very fragile', life:'2–3 days max', bad:'Sour smell, very mushy, or mould — figs go bad faster than almost any fruit' },
-  'Quince':       { temp:'Cool room temp or fridge', life:'2–3 months in a cool place — one of the longest-lasting fruits', bad:'Soft brown spots or mould' },
-  'Blueberry':    { temp:'Fridge, unwashed', life:'1–2 weeks', bad:'Mouldy, mushy, or shrivelled berries — mould spreads fast, remove immediately' },
-  'Raspberry':    { temp:'Fridge, unwashed, single layer', life:'2–3 days — very delicate', bad:'Any mould at all — discard the whole punnet if mould appears, it spreads within hours' },
-  'Blackberry':   { temp:'Fridge, unwashed', life:'3–5 days', bad:'Mould or mushy texture — check daily' },
-  'Redcurrant':   { temp:'Fridge, unwashed, on the stem', life:'1 week', bad:'Soft, shrivelled, or mouldy berries' },
-  'Blackcurrant': { temp:'Fridge, unwashed', life:'1 week', bad:'Mouldy or fermented smell' },
-  'Gooseberry':   { temp:'Fridge', life:'1–2 weeks', bad:'Shrivelled skin or mould' },
-  'Bilberry (Waldheidelbeere)': { temp:'Fridge, unwashed', life:'3–5 days', bad:'Mould or very soft mushy texture' },
-  'Aronia':       { temp:'Fridge', life:'1–2 weeks', bad:'Mould or fermented smell' },
-  'Sea Buckthorn':{ temp:'Fridge or freeze — very short shelf life fresh', life:'A few days in fridge, months frozen', bad:'Mushy or fermented — freeze if not using immediately' },
-  'Elderberry':   { temp:'Fridge — never eat raw, must be cooked', life:'2–3 days fresh, months frozen', bad:'Any fermented smell or mould' },
-  'Cranberry':    { temp:'Fridge', life:'3–4 weeks', bad:'Soft, shrivelled, or sticky berries' },
-  'Physalis':     { temp:'Room temp in husk, fridge once husked', life:'Weeks in husk at room temp, a few days husked', bad:'Mouldy or shrivelled husk — the husk protects the fruit inside' },
-  'Golden Kiwi':  { temp:'Room temp to ripen, then fridge', ripen:'Slightly softer than green kiwi when ripe', life:'1 week room temp, 2–3 weeks in fridge once ripe', bad:'Very soft or fermented smell' },
-  'Papaya':       { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until mostly yellow and slightly soft', life:'2–3 days room temp, 5 days fridge once ripe', bad:'Black sunken spots or sour smell' },
-  'Pomegranate':  { temp:'Room temp for a week, fridge for longer', life:'1–2 weeks room temp, 1–2 months in fridge', bad:'Mouldy crown, sour smell, or dried-out seeds' },
-  'Passion Fruit':{ temp:'Room temp until wrinkled, then eat', ripen:'Smooth skin means unripe — wait until wrinkled, that\'s when it\'s sweetest', life:'1–2 weeks at room temp', bad:'Mouldy or very sunken and dry' },
-  'Dragon Fruit': { temp:'Room temp for a few days, fridge once cut', life:'2–3 days room temp, 1–2 days cut in fridge', bad:'Brown mushy patches or mould on skin' },
-  'Star Fruit':   { temp:'Room temp to ripen, fridge once ripe', life:'1 week room temp, up to 2 weeks in fridge', bad:'Brown edges, mushy spots, or sour smell' },
-  'Cherimoya':    { temp:'Room temp to ripen — very sensitive to cold', ripen:'Leave at room temp until flesh gives like a ripe avocado — never refrigerate before ripe', life:'2–3 days once ripe', bad:'Black skin, very mushy, or fermented smell' },
-  'Pomelo':       { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3 weeks fridge', bad:'Soft spots or dried-out skin' },
-  'Persimmon':    { temp:'Room temp to ripen, then fridge', ripen:'Hachiya must be completely soft (jelly-like) before eating or it\'s very astringent. Fuyu can be eaten firm.', life:'A few days once ripe', bad:'Mouldy or very mushy patches' },
-  'Açaí':         { temp:'Frozen — almost always sold frozen or as pulp', life:'Months frozen, 1–2 days thawed', bad:'Off smell or separation once thawed' },
-  'Guava':        { temp:'Room temp to ripen, fridge once ripe', ripen:'Leave at room temp until fragrant and slightly soft', life:'2–3 days room temp, 3–4 days fridge', bad:'Very soft patches, off smell, or mould' },
-  'Cantaloupe':   { temp:'Room temp whole, fridge once cut', life:'5 days whole, 3 days cut', bad:'Soft sunken spots or sour smell' },
-  'Lychee':       { temp:'Fridge in original packaging', life:'1–2 weeks in fridge', bad:'Brown or black skin, fermented smell — skin darkens naturally but smell is the key sign' },
-  'Clementine':   { temp:'Room temp for a few days, fridge for longer', life:'1 week room temp, 2–3 weeks fridge', bad:'Mould, soft spots, or dry shrivelled peel' },
-  'Blood Orange': { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3–4 weeks fridge', bad:'Mould, soft spots, sour smell' },
-  'Yuzu':         { temp:'Fridge', life:'Several weeks in fridge — thick skin helps', bad:'Mould or very soft spots' },
-};
-
-// ============================================================
-// STATE
-// ============================================================
-function todayKey() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-
-function defaultState() {
-  return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null, roulette: null };
-}
-
-function saveState() { localStorage.setItem('fruity_v2', JSON.stringify(STATE)); }
-
-function loadState() {
-  try {
-    const saved = JSON.parse(localStorage.getItem('fruity_v2') || 'null');
-    if (!saved) return defaultState();
-    return {
-      history:    (saved.history    && typeof saved.history    === 'object') ? saved.history    : {},
-      totalXP:    typeof saved.totalXP    === 'number' ? saved.totalXP    : 0,
-      streak:     typeof saved.streak     === 'number' ? saved.streak     : 0,
-      challenges: (saved.challenges && typeof saved.challenges === 'object') ? saved.challenges : {},
-      lastSeen:   saved.lastSeen || null,
-      roulette:   saved.roulette || null,
-    };
-  } catch(e) { return defaultState(); }
-}
-
-let STATE = loadState();
-const TODAY = todayKey();
-if (!STATE.history[TODAY]) STATE.history[TODAY] = [];
-
-// ============================================================
-// HELPERS
-// ============================================================
-function currentMonth() { return new Date().getMonth() + 1; }
-function currentYear()  { return new Date().getFullYear(); }
-
-function getSeasonStatus(fruit) {
-  const m = currentMonth();
-  if (fruit.imported) return 'imported';
-  if (fruit.months.includes(m)) return 'in-season';
-  const next1 = (m % 12) + 1;
-  const next2 = (next1 % 12) + 1;
-  const check = fruit.germanSeason || fruit.months;
-  if (check.includes(next1)) return 'coming-1';
-  if (check.includes(next2)) return 'coming-2';
-  return 'off-season';
-}
-
-function getSeasonName() {
-  const m = currentMonth();
-  if ([12,1,2].includes(m)) return '❄️ Winter';
-  if ([3,4,5].includes(m))  return '🌸 Spring';
-  if ([6,7,8].includes(m))  return '☀️ Summer';
-  return '🍂 Autumn';
-}
 
 function getLevelIndex(xp) {
   let idx = 0;
@@ -2223,6 +2042,419 @@ function keeperSelect(name) {
   document.querySelectorAll('.keeper-fruit-btn').forEach(b => b.classList.remove('selected'));
   const btn = document.querySelector('[data-keeper="' + name + '"]');
   if (btn) { btn.classList.add('selected'); btn.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+}
+
+
+// ============================================================
+// TRIVIA QUIZ RENDERER (Lvl 2)
+// ============================================================
+function renderTriviaQuiz(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const quiz = getWeeklyTriviaQuiz();
+  const saved = STATE.triviaQuiz[quiz.weekKey] || {};
+
+  if (saved.answered) {
+    const wasCorrect = saved.answer === quiz.correct;
+    el.innerHTML =
+      '<div class="quiz-card">' +
+        '<div class="quiz-question">' + quiz.q + '</div>' +
+        '<div class="quiz-options">' +
+          '<div class="quiz-btn ' + (quiz.correct==='a'?'correct':'wrong disabled') + '">' + quiz.a + '</div>' +
+          '<div class="quiz-btn ' + (quiz.correct==='b'?'correct':'wrong disabled') + '">' + quiz.b + '</div>' +
+        '</div>' +
+        '<div class="quiz-fact">💡 ' + quiz.fact + '</div>' +
+        '<div class="quiz-done">' + (wasCorrect ? '✅ You got it right! +50 XP earned' : '❌ Wrong this week — comes back next Wednesday!') + '</div>' +
+        '<div class="quiz-refresh">🔄 New question every Wednesday</div>' +
+      '</div>';
+    return;
+  }
+
+  el.innerHTML =
+    '<div class="quiz-card">' +
+      '<div style="font-size:11px;font-weight:800;color:#2e7d32;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">🌿 Weekly Fruit Trivia • +50 XP</div>' +
+      '<div class="quiz-question">' + quiz.q + '</div>' +
+      '<div class="quiz-options">' +
+        '<button class="quiz-btn" onclick="answerTrivia(\'a\')">' + quiz.a + '</button>' +
+        '<button class="quiz-btn" onclick="answerTrivia(\'b\')">' + quiz.b + '</button>' +
+      '</div>' +
+      '<div class="quiz-refresh">🔄 New question every Wednesday</div>' +
+    '</div>';
+}
+
+function answerTrivia(answer) {
+  const quiz = getWeeklyTriviaQuiz();
+  const correct = answer === quiz.correct;
+  STATE.triviaQuiz[quiz.weekKey] = { answered: true, answer };
+  if (correct) {
+    STATE.totalXP += 50;
+    setTimeout(() => showToast('🧠 Correct! +50 XP'), 400);
+  }
+  saveState();
+  renderHeader();
+  renderKnowledgePage();
+}
+
+// ============================================================
+// ORIGINS QUIZ RENDERER (Lvl 6)
+// ============================================================
+function renderOriginsQuiz(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const quiz = getWeeklyOriginsQuiz();
+  const saved = STATE.originsQuiz[quiz.weekKey] || { answers: {}, xpEarned: 0 };
+
+  let html =
+    '<div class="origins-card">' +
+      '<div class="origins-spotlight">' +
+        '<span style="font-size:44px">' + quiz.e + '</span>' +
+        '<div>' +
+          '<div style="font-family:Fredoka One,cursive;font-size:18px;color:#0d47a1">🌍 ' + quiz.fruit + ' Origins</div>' +
+          '<div style="font-size:11px;font-weight:700;color:#1565c0">3 questions • up to +60 XP • resets Friday</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="origins-intro">' + quiz.intro + '</div>';
+
+  quiz.questions.forEach(function(q, i) {
+    const qKey = 'q' + i;
+    const ans = saved.answers[qKey];
+    const answered = !!ans;
+    html +=
+      '<div style="margin-bottom:14px">' +
+        '<div class="origins-q-num">Question ' + (i+1) + ' of 3</div>' +
+        '<div class="origins-question">' + q.q + '</div>' +
+        '<div class="origins-options">' +
+          '<button class="origins-btn ' + (answered ? (q.correct==='a' ? 'correct' : (ans==='a' ? 'wrong' : '')) + ' disabled' : '') + '" ' +
+            (answered ? '' : 'onclick="answerOrigins(\'' + i + '\',\'a\')"') + '>' + q.a + '</button>' +
+          '<button class="origins-btn ' + (answered ? (q.correct==='b' ? 'correct' : (ans==='b' ? 'wrong' : '')) + ' disabled' : '') + '" ' +
+            (answered ? '' : 'onclick="answerOrigins(\'' + i + '\',\'b\')"') + '>' + q.b + '</button>' +
+        '</div>' +
+        (answered ? '<div class="origins-fact">💡 ' + q.fact + '</div>' : '') +
+      '</div>';
+  });
+
+  const totalAnswered = Object.keys(saved.answers).length;
+  if (totalAnswered === 3) {
+    html += '<div style="text-align:center;font-family:Fredoka One,cursive;font-size:15px;color:#0d47a1;padding:8px 0">✅ All done! You earned ' + saved.xpEarned + ' XP this week</div>';
+  }
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function answerOrigins(qIdx, answer) {
+  const quiz = getWeeklyOriginsQuiz();
+  const q = quiz.questions[qIdx];
+  if (!STATE.originsQuiz[quiz.weekKey]) STATE.originsQuiz[quiz.weekKey] = { answers: {}, xpEarned: 0 };
+  const saved = STATE.originsQuiz[quiz.weekKey];
+  if (saved.answers['q'+qIdx]) return;
+  saved.answers['q'+qIdx] = answer;
+  const correct = answer === q.correct;
+  if (correct) {
+    STATE.totalXP += 20;
+    saved.xpEarned = (saved.xpEarned || 0) + 20;
+    setTimeout(() => showToast('🌍 Correct! +20 XP'), 400);
+  }
+  saveState();
+  renderHeader();
+  renderKnowledgePage();
+}
+
+// ============================================================
+// PAIRING OF THE WEEK (Lvl 10)
+// ============================================================
+function renderPairingOfWeek(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const pairing = getWeeklyPairing();
+  const saved = STATE.pairing[pairing.weekKey];
+
+  if (saved) {
+    const reactions = { loved:'😍 Loved it!', interesting:'🤔 Interesting...', nope:'😬 Not for me' };
+    el.innerHTML =
+      '<div class="pairing-card">' +
+        '<div style="font-size:11px;font-weight:800;color:#880e4f;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">🍽️ This Week\'s Pairing</div>' +
+        '<div class="pairing-combo"><span>' + pairing.e + '</span><span class="pairing-plus">+</span><span>🍽️</span></div>' +
+        '<div class="pairing-names">' + pairing.fruit + ' + ' + pairing.partner + '</div>' +
+        '<div class="pairing-why">' + pairing.why + '</div>' +
+        '<div class="pairing-done">You rated it: ' + (reactions[saved.reaction] || saved.reaction) + '</div>' +
+        '<div style="text-align:center;font-size:11px;color:#ad1457;font-weight:700;margin-top:4px">+250 XP earned ✅ • New pairing every Monday</div>' +
+      '</div>';
+    return;
+  }
+
+  el.innerHTML =
+    '<div class="pairing-card">' +
+      '<div style="font-size:11px;font-weight:800;color:#880e4f;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">🍽️ This Week\'s Pairing • +250 XP</div>' +
+      '<div class="pairing-combo"><span>' + pairing.e + '</span><span class="pairing-plus">+</span><span>🍽️</span></div>' +
+      '<div class="pairing-names">' + pairing.fruit + ' + ' + pairing.partner + '</div>' +
+      '<div class="pairing-why">' + pairing.why + '</div>' +
+      '<div style="font-family:Fredoka One,cursive;font-size:14px;color:#880e4f;margin-bottom:10px;text-align:center">Try it this week, then rate it!</div>' +
+      '<div class="pairing-reactions">' +
+        '<button class="pairing-btn" onclick="ratePairing(\'loved\')"><span>😍</span><span class="pairing-label">Loved it!</span></button>' +
+        '<button class="pairing-btn" onclick="ratePairing(\'interesting\')"><span>🤔</span><span class="pairing-label">Interesting</span></button>' +
+        '<button class="pairing-btn" onclick="ratePairing(\'nope\')"><span>😬</span><span class="pairing-label">Not for me</span></button>' +
+      '</div>' +
+      '<div style="text-align:center;font-size:11px;color:#ad1457;font-weight:700;margin-top:8px">🔄 New pairing every Monday</div>' +
+    '</div>';
+}
+
+function ratePairing(reaction) {
+  const pairing = getWeeklyPairing();
+  STATE.pairing[pairing.weekKey] = { reaction };
+  STATE.totalXP += 250;
+  saveState();
+  renderHeader();
+  renderChallengePage();
+  showToast('🍽️ Nice! +250 XP');
+}
+
+// ============================================================
+// BUCKET LIST (Lvl 14)
+// ============================================================
+function renderBucketList(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const completed = Object.keys(STATE.bucketList).filter(k => STATE.bucketList[k]).length;
+  const totalXP = completed * 250;
+
+  let html =
+    '<div class="bucket-progress">' +
+      '<div style="font-family:Fredoka One,cursive;font-size:18px;margin-bottom:4px">🏆 Fruit Bucket List</div>' +
+      '<div style="font-size:12px;opacity:0.85;margin-bottom:10px">' + completed + ' / 8 completed • ' + totalXP + ' XP earned</div>' +
+      '<div style="height:8px;background:rgba(255,255,255,0.2);border-radius:99px;overflow:hidden">' +
+        '<div style="height:100%;background:var(--orange);border-radius:99px;width:' + Math.round((completed/8)*100) + '%;transition:width 1s ease"></div>' +
+      '</div>' +
+    '</div>';
+
+  BUCKET_LIST.forEach(function(item) {
+    const done = !!STATE.bucketList[item.id];
+    html +=
+      '<div class="bucket-card ' + (done ? 'done' : '') + '">' +
+        '<div class="bucket-row">' +
+          '<span class="bucket-emoji">' + item.e + '</span>' +
+          '<div class="bucket-content">' +
+            '<div class="bucket-title">' + (done ? '✅ ' : '') + item.title + '</div>' +
+            '<div class="bucket-desc">' + item.desc + '</div>' +
+            '<div class="bucket-xp">+' + item.xp + ' XP</div>' +
+          '</div>' +
+        '</div>' +
+        (done
+          ? '<div class="bucket-done-badge">✅ Completed! +250 XP earned</div>'
+          : '<button class="bucket-claim" onclick="claimBucket(\'' + item.id + '\')">✅ I did it!</button>'
+        ) +
+      '</div>';
+  });
+
+  el.innerHTML = html;
+}
+
+function claimBucket(id) {
+  if (STATE.bucketList[id]) return;
+  STATE.bucketList[id] = true;
+  STATE.totalXP += 250;
+  saveState();
+  renderHeader();
+  renderMePage();
+  showToast('🏆 Bucket List challenge complete! +250 XP');
+}
+
+// ============================================================
+// PIXEL ART CANVAS (Lvl 12)
+// ============================================================
+const PIXEL_PALETTE = [
+  '#ffffff','#000000','#ff0000','#ff6b00','#ffcc00','#00cc44',
+  '#0066ff','#9933ff','#ff66aa','#8B4513','#228B22','#87CEEB',
+  '#FFA07A','#708090','#FFD700','transparent'
+];
+
+let pixelState = {
+  grid: Array(256).fill('#ffffff'),
+  selectedColor: '#ff6b00',
+  isDrawing: false,
+  eraser: false,
+  currentFruit: null
+};
+
+function getWeeklyPixelFruits() {
+  const now = new Date();
+  const day = now.getDay();
+  const daysSinceMon = (day + 6) % 7;
+  const mon = new Date(now);
+  mon.setDate(now.getDate() - daysSinceMon);
+  mon.setHours(0,0,0,0);
+  const weekKey = mon.toISOString().slice(0,10);
+  const drawn = Object.keys(STATE.pixelArt || {});
+  const available = FRUITS.filter(f => !drawn.includes(f.n));
+  if (available.length === 0) return { fruits: [], weekKey };
+  const seed = mon.getTime();
+  const shuffled = available.slice().sort((a,b) => {
+    const ha = Math.sin(seed + a.n.length) * 10000;
+    const hb = Math.sin(seed + b.n.length) * 10000;
+    return (ha - Math.floor(ha)) - (hb - Math.floor(hb));
+  });
+  return { fruits: shuffled.slice(0,3), weekKey };
+}
+
+function renderPixelArtist(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const { fruits, weekKey } = getWeeklyPixelFruits();
+
+  if (fruits.length === 0) {
+    el.innerHTML = '<div class="card" style="text-align:center;padding:24px"><div style="font-size:36px">🎨</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-top:8px">You\'ve drawn every fruit!</div></div>';
+    return;
+  }
+
+  if (!pixelState.currentFruit) pixelState.currentFruit = fruits[0].n;
+
+  const paletteHtml = PIXEL_PALETTE.map(function(c) {
+    const style = c === 'transparent'
+      ? 'background:repeating-conic-gradient(#ccc 0% 25%,white 0% 50%) 0 0/8px 8px'
+      : 'background:' + c;
+    return '<div class="pixel-color ' + (pixelState.selectedColor===c?'active':'') + '" style="' + style + ';border:3px solid ' + (pixelState.selectedColor===c?'white':'transparent') + '" onclick="selectPixelColor(\'' + c + '\')"></div>';
+  }).join('');
+
+  const fruitPickHtml = fruits.map(function(f) {
+    const isSelected = pixelState.currentFruit === f.n;
+    return '<button onclick="selectPixelFruit(\'' + f.n + '\')" style="background:' + (isSelected?'rgba(255,255,255,0.25)':'rgba(255,255,255,0.1)') + ';border:2px solid ' + (isSelected?'white':'rgba(255,255,255,0.2)') + ';border-radius:12px;padding:10px 14px;font-family:Nunito,sans-serif;font-size:13px;font-weight:800;color:white;cursor:pointer">' + f.e + ' ' + f.n + '</button>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="pixel-canvas-wrap">' +
+      '<div style="font-family:Fredoka One,cursive;font-size:17px;color:white;margin-bottom:4px">🎨 Pixel Fruit Artist</div>' +
+      '<div style="font-size:11px;color:rgba(255,255,255,0.7);margin-bottom:12px">Draw this week\'s fruit • +150 XP per saved drawing</div>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">' + fruitPickHtml + '</div>' +
+      '<div class="pixel-palette">' + paletteHtml + '</div>' +
+      '<div class="pixel-tools">' +
+        '<button class="pixel-tool-btn ' + (!pixelState.eraser?'active':'') + '" onclick="setPixelTool(false)">✏️ Draw</button>' +
+        '<button class="pixel-tool-btn ' + (pixelState.eraser?'active':'') + '" onclick="setPixelTool(true)">🧹 Erase</button>' +
+        '<button class="pixel-tool-btn" onclick="clearPixelCanvas()">🗑️ Clear</button>' +
+      '</div>' +
+      '<div class="pixel-grid" id="pixelGrid"></div>' +
+      '<button class="pixel-save-btn" onclick="savePixelArt()">💾 Save Drawing (+150 XP)</button>' +
+    '</div>';
+
+  renderPixelGrid();
+  setupPixelEvents();
+}
+
+function renderPixelGrid() {
+  const grid = document.getElementById('pixelGrid');
+  if (!grid) return;
+  grid.innerHTML = pixelState.grid.map(function(c, i) {
+    const style = c === 'transparent'
+      ? 'background:repeating-conic-gradient(#ccc 0% 25%,white 0% 50%) 0 0/8px 8px'
+      : 'background:' + c;
+    return '<div class="pixel-cell" data-idx="' + i + '" style="' + style + '"></div>';
+  }).join('');
+}
+
+function setupPixelEvents() {
+  const grid = document.getElementById('pixelGrid');
+  if (!grid) return;
+  function paint(e) {
+    e.preventDefault();
+    let target;
+    if (e.touches) {
+      const t = e.touches[0];
+      target = document.elementFromPoint(t.clientX, t.clientY);
+    } else {
+      target = e.target;
+    }
+    if (!target || !target.dataset.idx) return;
+    const idx = parseInt(target.dataset.idx);
+    const color = pixelState.eraser ? '#ffffff' : pixelState.selectedColor;
+    pixelState.grid[idx] = color;
+    target.style.background = color === 'transparent'
+      ? 'repeating-conic-gradient(#ccc 0% 25%,white 0% 50%) 0 0/8px 8px'
+      : color;
+  }
+  grid.addEventListener('mousedown', function(e) { pixelState.isDrawing = true; paint(e); });
+  grid.addEventListener('mousemove', function(e) { if (pixelState.isDrawing) paint(e); });
+  grid.addEventListener('mouseup', function() { pixelState.isDrawing = false; });
+  grid.addEventListener('touchstart', paint, { passive:false });
+  grid.addEventListener('touchmove', paint, { passive:false });
+}
+
+function selectPixelColor(c) { pixelState.selectedColor = c; pixelState.eraser = false; renderPixelArtist('pixelArtistContainer'); }
+function setPixelTool(eraser) { pixelState.eraser = eraser; renderPixelArtist('pixelArtistContainer'); }
+function clearPixelCanvas() { pixelState.grid = Array(256).fill('#ffffff'); renderPixelArtist('pixelArtistContainer'); }
+function selectPixelFruit(name) { pixelState.currentFruit = name; pixelState.grid = Array(256).fill('#ffffff'); renderPixelArtist('pixelArtistContainer'); }
+
+function savePixelArt() {
+  if (!pixelState.currentFruit) return;
+  if (!STATE.pixelArt) STATE.pixelArt = {};
+  STATE.pixelArt[pixelState.currentFruit] = pixelState.grid.slice();
+  STATE.totalXP += 150;
+  saveState();
+  renderHeader();
+  showToast('🎨 ' + pixelState.currentFruit + ' drawing saved! +150 XP');
+  pixelState.currentFruit = null;
+  pixelState.grid = Array(256).fill('#ffffff');
+  renderChallengePage();
+}
+
+
+
+// ============================================================
+// FRUIT LAB RENDERER (Lvl 11)
+// ============================================================
+function renderFruitLab(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const entry = getFruitLabEntry();
+  const isTea = entry.type === 'tea';
+  const typeLabel = isTea ? '🍵 Fruit Tea' : '🧫 Fruit Ferment';
+  const cardClass = isTea ? 'fruit-lab-tea' : 'fruit-lab-ferment';
+
+  el.innerHTML =
+    '<div class="fruit-lab-card ' + cardClass + '">' +
+      '<div class="fruit-lab-badge">' + typeLabel + '</div>' +
+      '<div class="fruit-lab-title">' + entry.e + ' ' + entry.fruit + ' × ' + entry.partner + '</div>' +
+      '<div class="fruit-lab-partner">' + entry.why + '</div>' +
+      '<div class="fruit-lab-formula">' +
+        '<div class="fruit-lab-formula-label">Formula</div>' +
+        entry.formula +
+      '</div>' +
+      '<div class="fruit-lab-refresh">🔄 New idea in ' + entry.daysLeft + ' day' + (entry.daysLeft !== 1 ? 's' : '') + ' • alternates tea ↔ ferment</div>' +
+    '</div>';
+}
+
+
+// ============================================================
+// FRUIT LAB RENDERER (Lvl 11)
+// ============================================================
+function renderFruitLab(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const entry = getFruitLabEntry();
+  const isTea = entry.type === 'tea';
+
+  el.innerHTML =
+    '<div class="fruit-lab-card ' + entry.type + '">' +
+      '<div class="fruit-lab-header">' +
+        '<span style="font-size:44px">' + entry.e + '</span>' +
+        '<div>' +
+          '<div class="fruit-lab-type">' + (isTea ? '🍵 Fruit Tea' : '🫙 Fermentation') + '</div>' +
+          '<div class="fruit-lab-title">' + entry.fruit + (isTea ? ' + ' + entry.partner : ' — ' + entry.method) + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="fruit-lab-row">' +
+        '<span class="fruit-lab-row-icon">📋</span>' +
+        '<div style="flex:1">' +
+          '<div class="fruit-lab-row-label">Formula</div>' +
+          '<div class="fruit-lab-formula">' + entry.formula + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="fruit-lab-row">' +
+        '<span class="fruit-lab-row-icon">💡</span>' +
+        '<div style="flex:1">' +
+          '<div class="fruit-lab-row-label">Why it works</div>' +
+          '<div class="fruit-lab-row-text">' + entry.why + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="fruit-lab-footer">🔄 New idea in ' + entry.daysLeft + ' day' + (entry.daysLeft !== 1 ? 's' : '') + ' • alternates tea & ferment</div>' +
+    '</div>';
 }
 
 // ============================================================
@@ -2618,34 +2850,37 @@ function renderChallengePage() {
       ) +
     '</div>';
   })()}
+  <div class="section-title" style="margin-top:6px">🍽️ Pairing of the Week</div>
+  ${isUnlocked(10) ?
+    `<div id="pairingContainer"></div>` :
+    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍽️</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Pairing of the Week</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Passionfruity Pairer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Pairing of the Week</div><div class="lock-sub">Unlocks at Passionfruity Pairer</div></div></div>`
+  }
+
   <div class="section-title" style="margin-top:6px">🧪 Juice Lab</div>
-  ${isUnlocked(11) ?
+  ${isUnlocked(13) ?
     `<div class="card" style="text-align:center;padding:32px 20px"><div style="font-size:40px;margin-bottom:10px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Juice Lab</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — pick fruits from your log and get a creative juice or smoothie recipe!</div></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Juice Lab</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Plummy Vintner</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Juice Lab</div><div class="lock-sub">Unlocks at Plummy Vintner</div></div></div>`
+    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Juice Lab</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Jambu Juicer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Juice Lab</div><div class="lock-sub">Unlocks at Jambu Juicer</div></div></div>`
+  }
+  <div class="section-title" style="margin-top:6px">🏆 Fruit Bucket List</div>
+  ${isUnlocked(14) ?
+    `<div id="bucketListContainer"></div>` :
+    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🏆</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Bucket List</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Kumquat Kolorist</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Bucket List</div><div class="lock-sub">Unlocks at Kumquat Kolorist</div></div></div>`
   }
   `;
+  if (isUnlocked(10)) renderPairingOfWeek('pairingContainer');
+  if (isUnlocked(14)) renderBucketList('bucketListContainer');
 }
-
 // ============================================================
 // KNOWLEDGE PAGE
 // ============================================================
 function renderKnowledgePage() {
-  const trivia = getWeeklyTrivia();
-
-  const triviaContent = '<div style="display:flex;gap:14px;align-items:flex-start">' +
-    '<span style="font-size:44px;line-height:1;flex-shrink:0">' + trivia.e + '</span>' +
-    '<div style="font-size:13px;font-weight:700;line-height:1.7;color:var(--text)">' + trivia.fact + '</div>' +
-    '</div>';
+  const triviaContent = '<div id="triviaQuizContainer"></div>';
 
   const keeperContent = '<div id="fruitKeeperContainer"></div>';
 
-  const originsContent = '<div style="text-align:center;padding:16px 0">' +
-    '<div style="font-size:36px;margin-bottom:8px">🌍</div>' +
-    '<div style="font-family:Fredoka One,cursive;font-size:15px;margin-bottom:4px">Fruit Origins Quiz</div>' +
-    '<div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — test your knowledge of where fruits come from!</div>' +
-    '</div>';
+  const originsContent = '<div id="originsQuizContainer"></div>';
 
-  const makeItem = getWeeklyMakeWith();
+  const makeItem = getMonthlyMakeWith();
   const makeWithContent =
     '<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">' +
       '<span style="font-size:48px">' + makeItem.e + '</span>' +
@@ -2667,15 +2902,16 @@ function renderKnowledgePage() {
 
   document.getElementById('pageKnowledge').innerHTML =
     '<div class="section-title" style="margin-top:4px">🧠 Fruit Knowledge</div>' +
-    renderKnowledgeSection(4, '🧊', 'Fruit Keeper', 'How to store & ripen any fruit', keeperContent) +
-    renderKnowledgeSection(5, '📖', 'Fruit Trivia', 'A new fact every week', triviaContent) +
-    renderKnowledgeSection(6, '🍓', 'What to make with...', 'Weekly featured fruit — ideas & inspiration', makeWithContent) +
-    renderKnowledgeSection(13, '🌍', 'Fruit Origins Quiz', 'Test your fruit geography — new question weekly', originsContent);
+    renderKnowledgeSection(2, '📖', 'Fruit Trivia', 'Weekly quiz — +50 XP every Wednesday', triviaContent) +
+    renderKnowledgeSection(5, '🧊', 'Fruit Keeper', 'How to store & ripen any fruit', keeperContent) +
+    renderKnowledgeSection(6, '🌍', 'Fruit Origins Quiz', 'Weekly spotlight fruit — +60 XP every Friday', originsContent) +
+    renderKnowledgeSection(7, '🍓', 'What to make with...', 'This month\'s featured fruit — ideas & inspiration', makeWithContent) +
+    renderKnowledgeSection(11, '🧪', 'Fruit Lab', 'Tea & ferment ideas — new concept every 3 days', '<div id="fruitLabContainer"></div>');
 
-  // Render Fruit Keeper after DOM update
-  if (isUnlocked(4)) {
-    renderFruitKeeper('fruitKeeperContainer');
-  }
+  if (isUnlocked(2)) renderTriviaQuiz('triviaQuizContainer');
+  if (isUnlocked(5)) renderFruitKeeper('fruitKeeperContainer');
+  if (isUnlocked(6)) renderOriginsQuiz('originsQuizContainer');
+  if (isUnlocked(11)) renderFruitLab('fruitLabContainer');
 }
 
 
@@ -2886,7 +3122,7 @@ function renderMePage() {
   }
 
   const flavourSection = '<div class="section-title">🎡 Flavour Wheel</div>' +
-    lockedOrContent(3,
+    lockedOrContent(9,
       '<div class="card" style="padding:16px;margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Based on all your logged fruits — how varied is your taste profile?</div><div id="flavourWheelContainer"></div></div>',
       '🎡', 'Flavour Wheel', 'Strawberry Taster'
     );
@@ -2900,13 +3136,13 @@ function renderMePage() {
   const yearlySection = '<div class="section-title">📊 Yearly Stats</div>' +
     lockedOrContent(14,
       '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px"><div style="font-size:40px;margin-bottom:10px">📊</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Yearly Stats</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — your full year of fruit eating visualised!</div></div>',
-      '📊', 'Yearly Stats', 'Zesty Sage'
+      '📊', 'Yearly Stats', 'Kumquat Kolorist'
     );
 
   const identitySection = '<div class="section-title">🪪 Fruit Identity Card</div>' +
     lockedOrContent(15,
       '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px"><div style="font-size:40px;margin-bottom:10px">🪪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Fruit Identity Card</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — your personalised fruit journey!</div></div>',
-      '🪪', 'Fruit Identity Card', 'The Fruit Obsessive'
+      '🪪', 'Fruit Identity Card', 'King Durian'
     );
 
   document.getElementById('pageMe').innerHTML = `
@@ -2918,25 +3154,22 @@ function renderMePage() {
     <div class="ladder-wrap">${ladderHtml}</div>
 
     ${flavourSection}
-    ${worldMapSection}
+    ${pixelArtSection}
 
     <div class="section-title">📅 History</div>
     ${historyHtml}
 
-    ${yearlySection}
     ${identitySection}
   `;
 
   // Render flavour wheel after DOM update
-  if (isUnlocked(3)) {
+  if (isUnlocked(9)) {
     const allF = Object.values(STATE.history || {}).flat();
     renderFlavourWheel('flavourWheelContainer', allF);
   }
-  // Render world map
-  if (isUnlocked(7)) {
-    const allF = Object.values(STATE.history || {}).flat();
-    renderWorldMap('worldMapContainer', allF);
-  }
+  // Render pixel artist
+  if (isUnlocked(12)) renderPixelArtist('pixelArtistContainer');
+
 }
 
 // ============================================================
