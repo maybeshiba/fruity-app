@@ -3187,7 +3187,7 @@ function renderTodayPage() {
   const el = document.getElementById('pageToday');
   el.innerHTML = `
     <div class="date-label">${dateStr}</div>
-    <div class="season-chip">${getSeasonName()} in Germany</div>
+    <div class="season-chip">${currentSeason()} in Germany</div>
 
     <div class="section-title">🍽️ Today's fruits</div>
     <div class="logged-area">
