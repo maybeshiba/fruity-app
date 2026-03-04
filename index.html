@@ -1043,6 +1043,7 @@ body {
     </div>
     <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
   </div>
+  <div id="nextHint" style="display:none;margin-top:10px;background:rgba(255,255,255,0.15);border-radius:12px;padding:9px 14px;font-size:11px;font-weight:700;color:white;line-height:1.6;position:relative;z-index:1;"></div>
 </div>
 
 <!-- PAGES -->
@@ -1091,21 +1092,21 @@ body {
 // LEVELS
 // ============================================================
 const LEVELS = [
-  { name:'🌱 Seedling',       xp:0,     reward: null },
-  { name:'🌿 Sprout',         xp:150,   reward:'🗺️ Fruit Passport + 🏅 Achievements unlocked!' },
-  { name:'🍀 Grower',         xp:400,   reward:'🎨 Custom accent colour unlocked!' },
-  { name:'🌸 Bloomer',        xp:800,   reward:'📅 Full history unlocked!' },
-  { name:'🍓 Berry Picker',   xp:1400,  reward:'📖 Fruit Trivia unlocked in Knowledge tab!' },
-  { name:'🌳 Orcharder',      xp:2200,  reward:'🎡 Flavour Wheel unlocked in Me tab!' },
-  { name:'🧺 Forager',        xp:3200,  reward:'🍳 Trio cooking challenge unlocked!' },
-  { name:'🍑 Stone Fruit Fan',xp:4500,  reward:'🔔 Weekly "Try something new" nudge unlocked!' },
-  { name:'🌍 Fruit Traveller',xp:6000,  reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!' },
-  { name:'🔬 Vitamin Hunter', xp:8000,  reward:'🎉 Confetti themes unlocked in Me tab!' },
-  { name:'🍇 Vintner',        xp:10500, reward:'🍓 "What to make with..." unlocked in Knowledge tab!' },
-  { name:'🌴 Tropicalist',    xp:13500, reward:'📊 Yearly stats unlocked in Me tab!' },
-  { name:'🏡 Garden Master',  xp:17000, reward:'🎰 Fruit Roulette unlocked in Challenge tab!' },
-  { name:'🌟 Fruit Sage',     xp:21000, reward:'🧪 Juice Lab unlocked in Passport tab!' },
-  { name:'👑 The Fruit Obsessive', xp:26000, reward:'🪪 Your Fruit Identity Card is ready in Me tab!' },
+  { name:'🌱 Seedling',              xp:0,     reward:null,                                                          hint:null },
+  { name:'🌿 Kiwi Sprout',           xp:60,    reward:'🗺️ Fruit Passport + 🏅 Achievements unlocked!',             hint:'Discover a way to track all the fruits you have ever tried...' },
+  { name:'🍓 Strawberry Taster',     xp:150,   reward:'🎡 Flavour Wheel unlocked in Me tab!',                       hint:'A visual taste profile of your eating habits is coming...' },
+  { name:'🍒 Cherry Picker',         xp:280,   reward:'📅 Full history unlocked in Me tab!',                        hint:'Your complete fruit history is almost within reach...' },
+  { name:'🫐 Blueberry Scout',       xp:450,   reward:'📖 Fruit Trivia unlocked in Knowledge tab!',                 hint:'Something educational and surprising unlocks next...' },
+  { name:'🍑 Peachy Apprentice',     xp:700,   reward:'🍓 What to make with... unlocked in Knowledge tab!',         hint:'A creative kitchen feature is just around the corner...' },
+  { name:'🌺 Passionfruity Traveller',xp:1000, reward:'🌍 World Map unlocked in Me tab!',                           hint:'The world is about to open up on your screen...' },
+  { name:'🌿 Figgy Wild Card',       xp:1350,  reward:'🎰 Fruit Roulette unlocked in Challenge tab!',               hint:'Feeling lucky? Something unpredictable is coming...' },
+  { name:'🧺 Elderberry Forager',    xp:1750,  reward:'🔔 Try something new nudge unlocked!',                       hint:'A weekly discovery feature is almost yours...' },
+  { name:'🍋 Lemony Head Chef',      xp:2200,  reward:'🍳 Trio cooking challenge unlocked in Challenge tab!',        hint:'A serious cooking upgrade is on its way...' },
+  { name:'🍒 Plummy Vintner',        xp:3100,  reward:'🧪 Juice Lab unlocked in Passport tab!',                     hint:'Something to do with combining fruits is brewing...' },
+  { name:'🌴 Coconutty Tropicalist', xp:4200,  reward:'🎨 Custom accent colour unlocked in Me tab!',                hint:'A way to make the app truly yours is coming...' },
+  { name:'🍍 Pineapply Explorer',    xp:5500,  reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!',           hint:'A geography challenge is waiting for you...' },
+  { name:'🌟 Zesty Sage',            xp:7200,  reward:'📊 Yearly stats unlocked in Me tab!',                        hint:'A deep dive into your full year of fruit awaits...' },
+  { name:'👑 The Fruit Obsessive',   xp:10000, reward:'🪪 Your Fruit Identity Card is ready in Me tab!',            hint:null },
 ];
 
 // ============================================================
@@ -1141,6 +1142,7 @@ const FRUITS = [
   { e:'🫒', n:'Plum',            months:[7,8,9,10],                    v:['C','K','A'],                xp:13, note:'Good fibre & vitamin K source',                            cat:'Stone Fruits' },
   { e:'🍏✨', n:'Greengage',      months:[7,8,9],                       v:['C','A','B6'],               xp:18, note:'Sweet green plum (Reneklode) — underrated summer treat',   cat:'Stone Fruits' },
   { e:'🍇🌿', n:'Riesling Grape',months:[9,10],                        v:['C','K','B6'],               xp:19, note:'German vineyard classic — antioxidant-rich',               cat:'Everyday' },
+  { e:'🌿', n:'Fig',             months:[8,9,10],                      v:['B6','potassium','copper','B5'],   xp:17, note:'Dried or fresh — great source of potassium & copper',        cat:'Everyday' },
   { e:'🍐🍯', n:'Quince',        months:[10,11],                       v:['C','copper','iron'],        xp:21, note:'Golden autumn fruit (Quitte) — copper & iron gem',         cat:'Everyday' },
   // BERRIES
   { e:'🫐', n:'Blueberry',       months:[7,8,9],                       v:['C','K','manganese'],        xp:16, note:'Antioxidant superstar — vitamin K & manganese',            cat:'Berries', germanSeason:[7,8,9] },
@@ -1356,6 +1358,17 @@ function renderHeader() {
   } else {
     document.getElementById('xpText').textContent = `${xp} XP — MAX LEVEL 👑`;
     document.getElementById('xpFill').style.width = '100%';
+  }
+
+  // Next unlock hint
+  const hintEl = document.getElementById('nextHint');
+  if (hintEl) {
+    if (next && next.hint) {
+      hintEl.style.display = 'block';
+      hintEl.innerHTML = `<span style="opacity:0.8">Next unlock at <strong>${next.name}</strong> (${next.xp.toLocaleString()} XP):</span><br>🔮 <em>${next.hint}</em>`;
+    } else {
+      hintEl.style.display = 'none';
+    }
   }
 }
 
@@ -1688,11 +1701,11 @@ function renderKnowledgePage() {
       </div>
     `)}
 
-    ${renderKnowledgeSection(9, '🌍', 'Fruit Origins Quiz', 'Test your fruit geography — new question weekly', `
+    ${renderKnowledgeSection(13, '🌍', 'Fruit Origins Quiz', 'Test your fruit geography — new question weekly', `
       <div style="font-size:13px;font-weight:700;color:var(--muted)">Quiz unlocked at Level 9 🌍</div>
     `)}
 
-    ${renderKnowledgeSection(11, '🍓', 'What to make with...', 'Weekly featured fruit — a checklist of ideas', `
+    ${renderKnowledgeSection(6, '🍓', 'What to make with...', 'Weekly featured fruit — a checklist of ideas', `
       <div style="font-size:13px;font-weight:700;color:var(--muted)">Unlocks at Level 11 🍇</div>
     `)}
   `;
@@ -1840,19 +1853,31 @@ function renderMePage() {
   const ladderHtml = LEVELS.map((lvl, i) => {
     const isCurrentLevel = i === lvlIdx;
     const isUnlockedLevel = i <= lvlIdx;
-    const nextLvl = LEVELS[i+1];
-    const xpNeeded = nextLvl ? `${lvl.xp.toLocaleString()} XP` : 'MAX';
+    const isNextLevel = i === lvlIdx + 1;
+    const xpNeeded = i > 0 ? lvl.xp.toLocaleString() + ' XP' : 'Start!';
 
-    return `<div class="ladder-row ${isCurrentLevel ? 'current-level' : ''} ${isUnlockedLevel ? 'unlocked' : ''}">
-      <span class="ladder-num">${i+1}</span>
-      <span class="ladder-icon">${lvl.name.split(' ')[0]}</span>
-      <div class="ladder-info">
-        <div class="ladder-name">${lvl.name.split(' ').slice(1).join(' ')}</div>
-        <div class="ladder-xp-needed">${xpNeeded}</div>
-      </div>
-      ${lvl.reward ? `<div class="ladder-reward">${lvl.reward.split('!')[0]}</div>` : ''}
-      <span class="ladder-checkmark">${isUnlockedLevel ? '✅' : ''}</span>
-    </div>`;
+    let rewardHtml = '';
+    if (isUnlockedLevel && lvl.reward) {
+      rewardHtml = '<div class="ladder-reward">' + lvl.reward.split('!')[0] + '</div>';
+    } else if (isNextLevel && lvl.hint) {
+      rewardHtml = '<div class="ladder-reward" style="background:#f3e5f5;border-color:#ce93d8;color:#8e24aa;font-style:italic">🔮 ' + lvl.hint.split('...')[0] + '...</div>';
+    } else if (!isUnlockedLevel) {
+      rewardHtml = '<div class="ladder-reward" style="background:var(--border);border-color:var(--border);color:var(--muted)">🔒 Surprise</div>';
+    }
+
+    const cls = (isCurrentLevel ? 'current-level ' : '') + (isUnlockedLevel ? 'unlocked' : '');
+    const icon = lvl.name.split(' ')[0];
+    const namePart = lvl.name.split(' ').slice(1).join(' ');
+    return '<div class="ladder-row ' + cls + '">' +
+      '<span class="ladder-num">' + (i+1) + '</span>' +
+      '<span class="ladder-icon">' + icon + '</span>' +
+      '<div class="ladder-info">' +
+        '<div class="ladder-name">' + namePart + '</div>' +
+        '<div class="ladder-xp-needed">' + xpNeeded + '</div>' +
+      '</div>' +
+      rewardHtml +
+      '<span class="ladder-checkmark">' + (isUnlockedLevel ? '✅' : '') + '</span>' +
+    '</div>';
   }).join('');
 
   // History (last 14 days or all if unlocked)
