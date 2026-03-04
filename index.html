@@ -1304,6 +1304,18 @@ body {
 <script>
 'use strict';
 
+window.onerror = function(msg, src, line, col, err) {
+  var el = document.getElementById('pageToday');
+  if (el) {
+    el.style.display = 'block';
+    el.innerHTML = '<div style="padding:20px;margin:16px;background:#fff3e0;border-radius:16px;font-family:sans-serif">' +
+      '<b style="color:#e65100">⚠️ Error — screenshot this:</b><br><br>' +
+      '<span style="font-size:11px;word-break:break-all">' + msg + '<br>Line: ' + line + '<br>' + (err ? err.stack || '' : '') + '</span>' +
+      '</div>';
+  }
+  return false;
+};
+
 // ============================================================
 // LEVELS
 // ============================================================
