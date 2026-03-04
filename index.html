@@ -1557,6 +1557,8 @@ function defaultState() {
   return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null };
 }
 
+function saveState() { localStorage.setItem('fruity_v2', JSON.stringify(STATE)); }
+
 function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem('fruity_v2') || 'null');
