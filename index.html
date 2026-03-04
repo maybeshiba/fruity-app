@@ -2429,8 +2429,17 @@ async function installApp() {
 // ============================================================
 // INIT
 // ============================================================
-renderHeader();
-renderTodayPage();
+try {
+  renderHeader();
+  renderTodayPage();
+} catch(e) {
+  document.getElementById('pageToday').innerHTML =
+    '<div style="padding:20px;background:#fff3e0;border-radius:16px;margin:16px;font-family:Nunito,sans-serif">' +
+    '<div style="font-weight:800;color:#e65100;margin-bottom:8px">⚠️ Load error — please screenshot this:</div>' +
+    '<div style="font-size:11px;color:#333;word-break:break-all">' + e.toString() + '<br><br>' + (e.stack||'').split('\n').slice(0,4).join('<br>') + '</div>' +
+    '</div>';
+  console.error(e);
+}
 </script>
 </body>
 </html>
