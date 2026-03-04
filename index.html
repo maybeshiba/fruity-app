@@ -1264,22 +1264,23 @@ function todayKey() {
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-function loadState() {
-  try { return JSON.parse(localStorage.getItem('fruity_v2') || 'null') || defaultState(); }
-  catch(e) { return defaultState(); }
-}
-
 function defaultState() {
-  return {
-    history: {},
-    totalXP: 0,
-    streak: 0,
-    challenges: {},   // { "2025-3": { picked: 1, completed: false, madeIt: false } }
-    lastSeen: null,
-  };
+  return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null };
 }
 
-function saveState() { localStorage.setItem('fruity_v2', JSON.stringify(STATE)); }
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('fruity_v2') || 'null');
+    if (!saved) return defaultState();
+    return {
+      history:    (saved.history    && typeof saved.history    === 'object') ? saved.history    : {},
+      totalXP:    typeof saved.totalXP    === 'number' ? saved.totalXP    : 0,
+      streak:     typeof saved.streak     === 'number' ? saved.streak     : 0,
+      challenges: (saved.challenges && typeof saved.challenges === 'object') ? saved.challenges : {},
+      lastSeen:   saved.lastSeen || null,
+    };
+  } catch(e) { return defaultState(); }
+}
 
 let STATE = loadState();
 const TODAY = todayKey();
@@ -1557,7 +1558,7 @@ function filterFruits() {
 function challengeKey() { return `${currentYear()}-${currentMonth()}`; }
 
 function getChallengeState() {
-  return STATE.challenges[challengeKey()] || { picked: null, completed: false, madeIt: false };
+  return (STATE.challenges && STATE.challenges[challengeKey()]) || { picked: null, completed: false, madeIt: false };
 }
 
 function pickChallenge(optionIdx) {
@@ -1740,7 +1741,7 @@ function renderKnowledgeSection(requiredLevel, emoji, title, sub, content) {
 // PASSPORT PAGE
 // ============================================================
 function renderPassportPage() {
-  const allFruits = Object.values(STATE.history).flat();
+  const allFruits = Object.values(STATE.history || {}).flat();
   const discovered = new Set(allFruits);
   const total = FRUITS.length;
   const found = discovered.size;
@@ -1831,7 +1832,7 @@ function renderPassportPage() {
 // ME PAGE
 // ============================================================
 function renderMePage() {
-  const allFruits = Object.values(STATE.history).flat();
+  const allFruits = Object.values(STATE.history || {}).flat();
   const discovered = new Set(allFruits);
   const xp = STATE.totalXP;
   const lvlIdx = getLevelIndex(xp);
