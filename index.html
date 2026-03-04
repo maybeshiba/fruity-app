@@ -1700,6 +1700,492 @@ const LEVELS = [
   { name:'👑 King Durian',           xp:10000, reward:'🎨 Custom Accent + 🪪 Fruit Identity Card unlocked!',                 hint:null },
 ];
 
+
+// ============================================================
+// FRUIT DATABASE
+// ============================================================
+const FRUITS = [
+  // EVERYDAY STAPLES
+  { e:'🍎', n:'Apple',           months:[8,9,10,11,12,1,2],   v:['C','K','B6'],        xp:10, note:"Germany\'s favourite — great fibre, vitamin C & K",          cat:'Everyday' },
+  { e:'🍌', n:'Banana',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['B6','C','Folate'],   xp:10, note:'Year-round energy boost — rich in B6 & potassium',           cat:'Everyday', imported:true },
+  { e:'🍊', n:'Orange',          months:[11,12,1,2,3,4],       v:['C','Folate','A'],    xp:10, note:'Classic vitamin C powerhouse — great for immunity',            cat:'Citrus', imported:true },
+  { e:'🍋', n:'Lemon',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6'],           xp:10, note:'Zesty & alkalising — brilliant in cooking & drinks',          cat:'Citrus', imported:true },
+  { e:'🍇', n:'Grape',           months:[8,9,10],              v:['C','K','B6'],        xp:12, note:'Antioxidant-rich — local German varieties peak in autumn',      cat:'Everyday' },
+  { e:'🍓', n:'Strawberry',      months:[5,6,7],               v:['C','Folate','K'],    xp:12, note:'German summer classic — top vitamin C source',                 cat:'Berries' },
+  { e:'🍑', n:'Peach',           months:[7,8,9],               v:['C','A','K'],         xp:13, note:'Juicy summer stone fruit — rich in beta-carotene',             cat:'Stone Fruits' },
+  { e:'🍑', n:'Nectarine',       months:[7,8,9],               v:['C','A','K'],         xp:13, note:'Smooth-skinned cousin of the peach — similar nutrients',        cat:'Stone Fruits' },
+  { e:'🍒', n:'Cherry',          months:[6,7,8],               v:['C','K','A'],         xp:14, note:'Rich in antioxidants — German Kirschen at their best in summer', cat:'Stone Fruits' },
+  { e:'🍐', n:'Pear',            months:[8,9,10,11],           v:['C','K','B6'],        xp:10, note:'Gentle on digestion — good fibre & vitamin C',                 cat:'Everyday' },
+  { e:'🥝', n:'Kiwi',            months:[11,12,1,2,3],         v:['C','K','E','Folate'],xp:14, note:'Vitamin C king — more C per gram than oranges',               cat:'Everyday', imported:true },
+  { e:'🍉', n:'Watermelon',      months:[6,7,8,9],             v:['C','A'],             xp:12, note:'Hydrating summer fruit — 92% water, rich in lycopene',         cat:'Everyday', imported:true },
+  { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6','Folate'],xp:15, note:'Tropical vitamin bomb — one mango = 100% daily vitamin C', cat:'Tropical', imported:true },
+  { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6'],           xp:14, note:'Contains bromelain enzyme — aids digestion & reduces inflammation', cat:'Tropical', imported:true },
+  { e:'🍈', n:'Melon',           months:[7,8,9],               v:['C','A','Folate'],    xp:12, note:'Summer hydrator — good source of vitamins A & C',              cat:'Everyday', imported:true },
+  { e:'🍈', n:'Honeydew',        months:[7,8,9],               v:['C','B6','K'],        xp:12, note:'Mellow sweetness — good source of vitamin C & B6',             cat:'Everyday', imported:true },
+  { e:'🍊', n:'Mandarin',        months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Easy-peel winter favourite — great vitamin C & folate',        cat:'Citrus', imported:true },
+  { e:'🍊', n:'Grapefruit',      months:[11,12,1,2,3],         v:['C','A','Folate'],    xp:12, note:'Bitter & bright — powerful antioxidant and metabolism booster', cat:'Citrus', imported:true },
+  { e:'🍋', n:'Lime',            months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6','Folate'],  xp:11, note:'Sharper than lemon — essential in Mexican & Asian cooking',  cat:'Citrus', imported:true },
+  { e:'🥥', n:'Coconut',         months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['B6'],               xp:15, note:'Versatile tropical — milk, water, flesh all nutritious',      cat:'Tropical', imported:true },
+  { e:'🍌', n:'Plantain',        months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6'],       xp:14, note:'Starchy cooking banana — staple in African & Caribbean cuisine', cat:'Tropical', imported:true },
+  { e:'🍑', n:'Apricot',         months:[6,7],                 v:['C','A','K'],         xp:13, note:'Delicate stone fruit — excellent beta-carotene source',        cat:'Stone Fruits' },
+  { e:'🌿', n:'Mirabelle',       months:[7,8],                 v:['C','K','A'],         xp:16, note:'Tiny golden plum — German delicacy, intensely sweet',          cat:'Stone Fruits' },
+  { e:'🫒', n:'Damson',          months:[8,9],                 v:['C','K'],             xp:16, note:'Tart wild plum — perfect for jam and gin',                     cat:'Stone Fruits' },
+  { e:'🫒', n:'Plum',            months:[7,8,9,10],            v:['C','K','B6'],        xp:13, note:'Prune precursor — good for digestion & rich in antioxidants', cat:'Stone Fruits' },
+  { e:'🍏', n:'Greengage',       months:[7,8,9],               v:['C','K'],             xp:16, note:'Sweet green plum — underrated German summer gem',              cat:'Stone Fruits' },
+  { e:'🍇', n:'Riesling Grape',  months:[9,10],                v:['C','K'],             xp:18, note:'Famous wine grape — packed with antioxidants',                 cat:'Everyday' },
+  { e:'🌿', n:'Fig',             months:[8,9,10],              v:['B6','K','Folate'],   xp:17, note:'Dried or fresh — great source of potassium & copper',          cat:'Everyday' },
+  { e:'🍐', n:'Quince',          months:[9,10,11],             v:['C','B6'],            xp:18, note:'Ancient German fruit — too astringent raw but incredible cooked', cat:'Everyday' },
+  { e:'🫐', n:'Blueberry',       months:[6,7,8],               v:['C','K','E'],         xp:13, note:'Antioxidant powerhouse — one of the most nutritious berries',  cat:'Berries' },
+  { e:'🍓', n:'Raspberry',       months:[6,7,8,9],             v:['C','K','Folate'],    xp:13, note:'Delicate summer berry — excellent vitamin C & folate',         cat:'Berries' },
+  { e:'🫐', n:'Blackberry',      months:[7,8,9],               v:['C','K','Folate','E'],xp:14, note:'Wild hedgerow berry — rich in vitamins C, K & E',              cat:'Berries' },
+  { e:'🍒', n:'Redcurrant',      months:[6,7,8],               v:['C','K'],             xp:15, note:'Tart red gem — exceptional vitamin C & K content',             cat:'Berries' },
+  { e:'🫐', n:'Blackcurrant',    months:[6,7,8],               v:['C','K','E'],         xp:15, note:'Vitamin C superhero — more C than almost any other fruit',      cat:'Berries' },
+  { e:'🍏', n:'Gooseberry',      months:[6,7,8],               v:['C','K','B6'],        xp:15, note:'Sharp & tangy — underrated German garden fruit',               cat:'Berries' },
+  { e:'🫐', n:'Bilberry (Waldheidelbeere)', months:[7,8,9],    v:['C','K','E'],         xp:18, note:'Wild forest bilberry — more intense than cultivated blueberry', cat:'Berries' },
+  { e:'🫐', n:'Aronia',          months:[8,9],                 v:['C','K','E'],         xp:19, note:'Chokeberry — one of the highest antioxidant fruits known',     cat:'Berries' },
+  { e:'🌿', n:'Sea Buckthorn',   months:[8,9,10],              v:['C','E','A','K'],     xp:22, note:'German superfruit — extraordinary vitamin C, almost medicinal', cat:'Berries' },
+  { e:'🌿', n:'Elderberry',      months:[8,9],                 v:['C','A','B6'],        xp:19, note:'Never eat raw — cooked elderberry is a powerful immune booster', cat:'Berries' },
+  { e:'🍒', n:'Cranberry',       months:[10,11],               v:['C','K','E'],         xp:16, note:'Urinary tract superhero — tart and medicinal',                 cat:'Berries' },
+  { e:'🍊', n:'Physalis',        months:[9,10,11],             v:['C','A','K'],         xp:18, note:'Cape gooseberry in a husk — exotic but increasingly in German shops', cat:'Everyday' },
+  { e:'🥝', n:'Golden Kiwi',     months:[11,12,1,2,3],         v:['C','K','E','Folate'],xp:15, note:'Sweeter & less tart than green kiwi — same vitamin powerhouse', cat:'Everyday', imported:true },
+  { e:'🧡', n:'Papaya',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','Folate'],   xp:15, note:'Tropical enzyme source — papain aids protein digestion',       cat:'Tropical', imported:true },
+  { e:'❤️', n:'Pomegranate',     months:[9,10,11,12],          v:['C','K','Folate','E'],xp:16, note:'Ancient fruit — rich in punicalagins, powerful antioxidants',   cat:'Everyday', imported:true },
+  { e:'🍋', n:'Passion Fruit',   months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6'],       xp:17, note:'Intense tropical flavour — great vitamin A & C',               cat:'Tropical', imported:true },
+  { e:'🐉', n:'Dragon Fruit',    months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','E'],            xp:18, note:'Striking pink flesh — mild flavour but rich in antioxidants', cat:'Tropical', imported:true },
+  { e:'⭐', n:'Star Fruit',      months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6','Folate'],  xp:19, note:'Waxy tropical fruit — beautiful star cross-section, tangy taste', cat:'Tropical', imported:true },
+  { e:'🍏', n:'Cherimoya',       months:[11,12,1,2,3,4],       v:['C','B6','Folate'],   xp:22, note:'Custard apple — called the most delicious fruit by Mark Twain', cat:'Tropical', imported:true },
+  { e:'🍊', n:'Pomelo',          months:[11,12,1,2,3],         v:['C','B6','Folate'],   xp:17, note:'Grandfather of grapefruit — milder, sweeter, less bitter',      cat:'Citrus', imported:true },
+  { e:'🧡', n:'Persimmon',       months:[10,11,12],            v:['C','A','K'],         xp:18, note:'Japanese kaki — wait until fully soft or it\'s incredibly astringent', cat:'Everyday', imported:true },
+  { e:'🫐', n:'Açaí',            months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','E'],        xp:20, note:'Amazonian superfruit — usually sold frozen, extremely rich in antioxidants', cat:'Tropical', imported:true },
+  { e:'🍏', n:'Guava',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','K','Folate'],xp:17, note:'Tropical vitamin bomb — four times more vitamin C than oranges', cat:'Tropical', imported:true },
+  { e:'🍊', n:'Cantaloupe',      months:[7,8,9],               v:['C','A','Folate'],    xp:13, note:'Orange-fleshed melon — exceptional beta-carotene content',      cat:'Everyday', imported:true },
+  { e:'🍒', n:'Lychee',          months:[5,6,7],               v:['C','B6'],            xp:17, note:'Floral tropical gem — very high vitamin C content',             cat:'Tropical', imported:true },
+  { e:'🍊', n:'Clementine',      months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Seedless easy-peel citrus — a German Christmas staple',         cat:'Citrus', imported:true },
+  { e:'🍊', n:'Blood Orange',    months:[12,1,2,3],            v:['C','A','Folate'],    xp:14, note:'Ruby-red flesh from anthocyanins — spectacular in tarts & salads', cat:'Citrus', imported:true },
+  { e:'🍋', n:'Yuzu',            months:[11,12,1,2],           v:['C','B6'],            xp:25, note:'Japanese citrus — imported, increasingly in Asian shops',       cat:'Citrus', imported:true },
+];
+
+// ============================================================
+// FLAVOUR PROFILES
+// ============================================================
+const FLAVOUR_PROFILES = {
+  'Apple':['Sweet','Earthy'],'Banana':['Sweet','Tropical'],'Orange':['Sour','Sweet'],
+  'Lemon':['Sour'],'Grape':['Sweet','Earthy'],'Strawberry':['Sweet','Floral'],
+  'Peach':['Sweet','Floral'],'Nectarine':['Sweet','Floral'],'Cherry':['Sweet','Sour'],
+  'Pear':['Sweet','Floral'],'Kiwi':['Sour','Sweet'],'Watermelon':['Sweet'],
+  'Mango':['Sweet','Tropical'],'Pineapple':['Sour','Tropical'],'Melon':['Sweet','Floral'],
+  'Honeydew':['Sweet','Floral'],'Mandarin':['Sweet','Sour'],'Grapefruit':['Bitter','Sour'],
+  'Lime':['Sour'],'Coconut':['Sweet','Tropical'],'Plantain':['Sweet','Earthy'],
+  'Apricot':['Sweet','Sour'],'Mirabelle':['Sweet'],'Damson':['Sour','Earthy'],
+  'Plum':['Sweet','Sour'],'Greengage':['Sweet','Sour'],'Riesling Grape':['Sweet','Floral'],
+  'Fig':['Sweet','Earthy'],'Quince':['Sour','Bitter'],'Blueberry':['Sweet','Sour'],
+  'Raspberry':['Sour','Sweet'],'Blackberry':['Sweet','Earthy'],'Redcurrant':['Sour'],
+  'Blackcurrant':['Sour','Earthy'],'Gooseberry':['Sour','Bitter'],'Bilberry (Waldheidelbeere)':['Earthy','Sweet'],
+  'Aronia':['Bitter','Earthy'],'Sea Buckthorn':['Sour'],'Elderberry':['Bitter','Earthy'],
+  'Cranberry':['Sour','Bitter'],'Physalis':['Sour','Sweet'],'Golden Kiwi':['Sweet','Sour'],
+  'Papaya':['Sweet','Tropical'],'Pomegranate':['Sour','Sweet'],'Passion Fruit':['Sour','Tropical','Floral'],
+  'Dragon Fruit':['Sweet','Floral'],'Star Fruit':['Sour','Sweet'],'Cherimoya':['Sweet','Tropical'],
+  'Pomelo':['Bitter','Sour'],'Persimmon':['Sweet','Earthy'],'Açaí':['Earthy','Bitter'],
+  'Guava':['Sweet','Tropical','Floral'],'Cantaloupe':['Sweet','Floral'],'Lychee':['Sweet','Floral'],
+  'Clementine':['Sweet','Sour'],'Blood Orange':['Sweet','Sour'],'Yuzu':['Sour','Floral'],
+};
+
+// ============================================================
+// TRIVIA (rotating facts for old trivia display)
+// ============================================================
+const TRIVIA = [
+  { e:'🍋', fact:'Lemons were once so rare and valuable that King Louis XIV of France had lemon trees grown in ornate pots at Versailles.' },
+  { e:'🍓', fact:'Strawberries are the only fruit with seeds on the outside. What look like seeds are actually the true fruits — each one containing a tiny seed inside.' },
+  { e:'🍌', fact:'Bananas are very slightly radioactive due to their potassium content. You would need to eat about 10 million to receive a harmful dose.' },
+  { e:'🌿', fact:'Figs are not actually a fruit in the traditional sense — they are an inverted flower. What you eat is hundreds of tiny flowers turned inside out.' },
+  { e:'🌿', fact:'Sea Buckthorn berries have more vitamin C than oranges — up to 15 times more per 100g. They are one of the most nutrient-dense plants in Germany.' },
+  { e:'🥥', fact:'Coconut water was used as an emergency intravenous fluid during World War II in the Pacific when medical supplies ran out — it is isotonic to blood plasma.' },
+  { e:'🍇', fact:'Wine grapes and table grapes are completely different varieties. Most wine grapes like Riesling or Pinot Noir are too sour and small to eat raw.' },
+  { e:'🍊', fact:'A single navel orange is technically a genetic clone. Every navel orange in the world descends from a single mutant tree discovered in Brazil around 1820.' },
+  { e:'🫐', fact:'Blueberries are one of the only naturally blue foods in existence. The blue colour comes from anthocyanins, which are powerful antioxidants.' },
+  { e:'🍑', fact:'Peaches, plums, cherries, apricots and almonds are all in the same botanical family — Prunus. An almond is essentially a dry peach stone.' },
+  { e:'🍐', fact:'Pears ripen from the inside out. By the time a pear feels soft on the outside, it may already be overripe inside — check near the stem instead.' },
+  { e:'🍍', fact:'Pineapple plants produce only one fruit per growing cycle — and that cycle takes about 18 months. Each pineapple you eat represents nearly two years of growth.' },
+  { e:'🌿', fact:'Elderberries must always be cooked before eating. Raw elderberries contain sambunigrin, a compound that breaks down into cyanide — harmless once heated.' },
+  { e:'🍒', fact:'Cherries are one of the few fruits that contain melatonin, the hormone that regulates sleep. A handful of tart cherries before bed may genuinely help you sleep better.' },
+  { e:'❤️', fact:'The pomegranate has between 200 and 1,400 seeds — always an even number, according to Jewish tradition, which associates it with righteousness and the 613 commandments.' },
+];
+
+function getWeeklyTrivia() {
+  const weekNum = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
+  return TRIVIA[weekNum % TRIVIA.length];
+}
+
+// ============================================================
+// WHAT TO MAKE WITH (Lvl 7)
+// ============================================================
+const WHAT_TO_MAKE = {
+  1:  { fruit:'Blood Orange', e:'🍊❤️', ideas:['Marmalade','Curd','Cake','Salad dressing','Sorbet','Juice','Syrup','Compote'] },
+  2:  { fruit:'Banana',       e:'🍌',   ideas:['Banana bread','Smoothie','Ice cream','Pancakes','Chips','Jam','Curry','Muffins'] },
+  3:  { fruit:'Kiwi',         e:'🥝',   ideas:['Jam','Sorbet','Smoothie','Salsa','Marinade','Pavlova topping','Juice','Chutney'] },
+  4:  { fruit:'Mango',        e:'🥭',   ideas:['Sorbet','Smoothie','Salsa','Chutney','Jam','Cake','Lassi','Dried snack'] },
+  5:  { fruit:'Pineapple',    e:'🍍',   ideas:['Juice','Smoothie','Jam','Sorbet','Salsa','Cake','Dried snack','Chutney'] },
+  6:  { fruit:'Apricot',      e:'🍑🌸', ideas:['Jam','Tart','Chutney','Dried snack','Compote','Cake','Sauce','Sorbet'] },
+  7:  { fruit:'Raspberry',    e:'🍓🌿', ideas:['Jam','Vinegar','Coulis','Sorbet','Smoothie','Cake','Cordial','Compote'] },
+  8:  { fruit:'Peach',        e:'🍑',   ideas:['Jam','Bellini','Sorbet','Tarte Tatin','Chutney','Grilled','Cobbler','Dried'] },
+  9:  { fruit:'Plum',         e:'🫒',   ideas:['Jam','Sauce','Chutney','Wine','Cake','Sorbet','Dried (prunes)','Compote'] },
+  10: { fruit:'Apple',        e:'🍎',   ideas:['Cider','Juice','Chutney','Cake','Chips','Sauce','Jam','Butter'] },
+  11: { fruit:'Quince',       e:'🍐🍯', ideas:['Membrillo (paste)','Jam','Jelly','Chutney','Syrup','Tart','Cheese pairing','Cordial'] },
+  12: { fruit:'Pomegranate',  e:'❤️🍎', ideas:['Molasses','Juice','Salad dressing','Sauce','Sorbet','Tea','Jam','Cocktail mixer'] },
+};
+
+function getMonthlyMakeWith() {
+  const monthNum = new Date().getMonth() + 1;
+  return WHAT_TO_MAKE[monthNum] || WHAT_TO_MAKE[1];
+}
+
+// ============================================================
+// FRUIT KEEPER DATA (Lvl 5)
+// ============================================================
+const FRUIT_KEEPER = {
+  'Apple':        { temp:'🌡️ Fridge', life:'4–6 weeks in fridge, 1–2 weeks room temp', bad:'Soft spots, wrinkled skin, mealy texture', ripen:null },
+  'Banana':       { temp:'🌡️ Room temp', life:'3–7 days at room temp', bad:'Fully black skin, mushy inside — though still fine for baking', ripen:'Let ripen at room temp. Never fridge unripe bananas.' },
+  'Orange':       { temp:'🌡️ Fridge or room temp', life:'1 week room temp, 3–4 weeks fridge', bad:'Mould spots, dry shrivelled skin', ripen:null },
+  'Lemon':        { temp:'🌡️ Fridge', life:'3–4 weeks in fridge', bad:'Soft spots, mould, dry hardened skin', ripen:null },
+  'Grape':        { temp:'🌡️ Fridge, unwashed', life:'1–2 weeks in fridge', bad:'Wrinkled skin, sticky texture, mould — remove affected grapes immediately', ripen:null },
+  'Strawberry':   { temp:'🌡️ Fridge, unwashed', life:'3–5 days in fridge', bad:'Mushy texture, mould, dull colour', ripen:null },
+  'Peach':        { temp:'🌡️ Room temp to ripen, then fridge', life:'1–3 days room temp once ripe, 3–5 days fridge', bad:'Very soft, fermented smell', ripen:'Ripen stem-side down at room temp. Move to fridge once ripe.' },
+  'Nectarine':    { temp:'🌡️ Room temp to ripen, then fridge', life:'1–3 days room temp once ripe, up to 5 days fridge', bad:'Mushy flesh, sour smell', ripen:'Same as peach — ripen at room temp first.' },
+  'Cherry':       { temp:'🌡️ Fridge, unwashed', life:'5–7 days in fridge', bad:'Mushy, leaking juice, mould on stems', ripen:null },
+  'Pear':         { temp:'🌡️ Room temp to ripen, then fridge', life:'2–3 days room temp once ripe, 3–5 days fridge', bad:'Gritty or mushy texture near core — pears ripen inside out', ripen:'Ripen at room temp. Check near the stem, not the skin.' },
+  'Kiwi':         { temp:'🌡️ Room temp to ripen, then fridge', life:'1–2 weeks room temp unripe, 1–2 weeks fridge once ripe', bad:'Wrinkled skin, very soft, sour smell', ripen:'Ripen at room temp. Speeds up near bananas or apples.' },
+  'Watermelon':   { temp:'🌡️ Room temp whole, fridge once cut', life:'2–3 weeks whole, 3–5 days cut in fridge', bad:'Hollow sound when tapped, yellow soft spots', ripen:null },
+  'Mango':        { temp:'🌡️ Room temp to ripen, then fridge', life:'2–5 days room temp, 5 days fridge once ripe', bad:'Black fibrous flesh inside, sour fermented smell', ripen:'Ripen at room temp. Store in paper bag to speed up.' },
+  'Pineapple':    { temp:'🌡️ Room temp 1–2 days, fridge after cutting', life:'2 days room temp, 5–7 days cut in fridge', bad:'Brown mushy base, fermented smell, mould on crown', ripen:'Briefly ripen upside down at room temp to distribute sugars.' },
+  'Melon':        { temp:'🌡️ Room temp whole, fridge once cut', life:'1 week whole, 3–4 days cut in fridge', bad:'Very soft spots, hollow sound, sour smell', ripen:'Ripen at room temp. Smell the stem end — should be fragrant when ready.' },
+  'Honeydew':     { temp:'🌡️ Room temp whole, fridge once cut', life:'1 week whole, 3–4 days cut', bad:'Slimy texture, off smell when cut', ripen:null },
+  'Mandarin':     { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 2–3 weeks fridge', bad:'Mould on skin, dry shrivelled segments', ripen:null },
+  'Grapefruit':   { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Very soft spots, mould, extremely dry skin', ripen:null },
+  'Lime':         { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3–4 weeks fridge', bad:'Hard dry skin, brown patches', ripen:null },
+  'Coconut':      { temp:'🌡️ Room temp whole, fridge once opened', life:'2–3 months whole, 4–5 days opened in fridge', bad:'Pink or grey flesh, sour smell, mouldy', ripen:null },
+  'Plantain':     { temp:'🌡️ Room temp', life:'3–5 days at room temp depending on ripeness', bad:'Fully black and mushy beyond use for cooking', ripen:'Ripen at room temp — cooking plantain is used at all stages from green to black.' },
+  'Apricot':      { temp:'🌡️ Room temp to ripen, then fridge', life:'2–3 days room temp, 4–5 days fridge', bad:'Very soft with brown patches, fermented smell', ripen:'Ripen at room temp stem-side down.' },
+  'Mirabelle':    { temp:'🌡️ Fridge', life:'3–5 days in fridge', bad:'Wrinkled skin, fermented smell, very soft', ripen:null },
+  'Damson':       { temp:'🌡️ Fridge', life:'3–5 days in fridge', bad:'Mould, extremely soft flesh', ripen:null },
+  'Plum':         { temp:'🌡️ Room temp to ripen, then fridge', life:'2–3 days room temp, 3–5 days fridge', bad:'Sour fermented smell, mushy flesh', ripen:'Ripen at room temp. Move to fridge once slightly soft.' },
+  'Greengage':    { temp:'🌡️ Fridge', life:'4–6 days in fridge', bad:'Wrinkled skin, mushy, off smell', ripen:null },
+  'Riesling Grape':{ temp:'🌡️ Fridge, unwashed', life:'1–2 weeks in fridge', bad:'Shrivelled, sticky, or mouldy grapes', ripen:null },
+  'Fig':          { temp:'🌡️ Fridge', life:'2–3 days in fridge', bad:'Sour smell, split skin with oozing, mould', ripen:null },
+  'Quince':       { temp:'🌡️ Cool room temp or fridge', life:'2–3 months in cool storage', bad:'Brown soft patches, mould', ripen:null },
+  'Blueberry':    { temp:'🌡️ Fridge, unwashed', life:'1–2 weeks in fridge', bad:'Mushy, mouldy, or sour-smelling', ripen:null },
+  'Raspberry':    { temp:'🌡️ Fridge, unwashed', life:'2–3 days in fridge', bad:'Mushy, leaking, mould — check daily', ripen:null },
+  'Blackberry':   { temp:'🌡️ Fridge, unwashed', life:'3–5 days in fridge', bad:'Mushy, dull colour, mould spreading fast', ripen:null },
+  'Redcurrant':   { temp:'🌡️ Fridge, on stem', life:'5–7 days in fridge', bad:'Translucent mushy berries, mould on stems', ripen:null },
+  'Blackcurrant': { temp:'🌡️ Fridge, unwashed', life:'5–7 days in fridge', bad:'Very soft and mushy berries, strong fermented smell', ripen:null },
+  'Gooseberry':   { temp:'🌡️ Fridge', life:'1–2 weeks in fridge', bad:'Burst skin, mushy, mould', ripen:null },
+  'Bilberry (Waldheidelbeere)': { temp:'🌡️ Fridge, unwashed', life:'2–3 days in fridge — very delicate', bad:'Mushy, staining everything, mould', ripen:null },
+  'Aronia':       { temp:'🌡️ Fridge or freeze', life:'1 week fridge, months frozen', bad:'Mushy, fermented smell', ripen:null },
+  'Sea Buckthorn':{ temp:'🌡️ Freeze immediately', life:'Months frozen, only 1–2 days fresh', bad:'Burst berries, juice leaking, sour smell', ripen:null },
+  'Elderberry':   { temp:'🌡️ Fridge — must be cooked', life:'2–3 days fresh, months frozen', bad:'Mushy, fermented — never eat raw', ripen:null },
+  'Cranberry':    { temp:'🌡️ Fridge or freeze', life:'3–4 weeks fridge, months frozen', bad:'Soft, shrivelled, or mouldy', ripen:null },
+  'Physalis':     { temp:'🌡️ Room temp in husk', life:'2–3 weeks in husk at room temp', bad:'Papery husk turning dark, sticky fruit inside', ripen:null },
+  'Golden Kiwi':  { temp:'🌡️ Room temp to ripen, then fridge', life:'Same as regular kiwi', bad:'Wrinkled, very soft, sour smell', ripen:'Ripen at room temp, speeds up near bananas.' },
+  'Papaya':       { temp:'🌡️ Room temp to ripen, then fridge', life:'2–3 days room temp, 4–5 days fridge', bad:'Very soft dark patches, fermented smell', ripen:'Ripen at room temp. The skin should be mostly yellow-orange.' },
+  'Pomegranate':  { temp:'🌡️ Room temp or fridge', life:'1 month room temp, 2 months fridge', bad:'Dry shrivelled skin, brown mushy arils inside', ripen:null },
+  'Passion Fruit':{ temp:'🌡️ Room temp, wrinkled is fine', life:'1–2 weeks at room temp', bad:'Mould on skin, hollow when shaken, no smell', ripen:'Wrinkled skin = perfectly ripe. Do not throw away wrinkled ones!' },
+  'Dragon Fruit': { temp:'🌡️ Fridge', life:'5 days in fridge', bad:'Brown soft patches on skin, slimy flesh', ripen:null },
+  'Star Fruit':   { temp:'🌡️ Room temp to ripen, then fridge', life:'3–4 days room temp, up to 2 weeks fridge', bad:'Brown edges on ridges, mushy flesh', ripen:'Ripen at room temp until yellow all over.' },
+  'Cherimoya':    { temp:'🌡️ Room temp to ripen, fridge once ripe', life:'2–4 days room temp, 2–3 days fridge', bad:'Brown blackened skin, fermented smell', ripen:'Ripen at room temp until it gives to gentle pressure.' },
+  'Pomelo':       { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Dry hardened skin, mould, very spongy feel', ripen:null },
+  'Persimmon':    { temp:'🌡️ Room temp to ripen', life:'Days at room temp once soft', bad:'Hard astringent texture means NOT ripe. Must be jelly-soft.', ripen:'Must ripen fully at room temp. Rock hard = inedible and astringent.' },
+  'Açaí':         { temp:'🌡️ Freezer only', life:'Months in freezer', bad:'Any thawing and refreezing degrades quality', ripen:null },
+  'Guava':        { temp:'🌡️ Room temp to ripen, then fridge', life:'2–3 days room temp, 3–4 days fridge', bad:'Very soft dark spots, strong fermented smell', ripen:'Ripen at room temp until fragrant and slightly soft.' },
+  'Cantaloupe':   { temp:'🌡️ Room temp whole, fridge cut', life:'5 days whole, 3 days cut', bad:'Soft rind, sour smell, slimy cut surface', ripen:'Ripen at room temp. Sweet smell at stem end = ready.' },
+  'Lychee':       { temp:'🌡️ Fridge, in bunch', life:'1 week fridge in bunch', bad:'Brown leathery skin, fermented smell — but skin browning is normal', ripen:null },
+  'Clementine':   { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Mould, dry shrivelled skin', ripen:null },
+  'Blood Orange': { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Mould, dry skin, hollow feel', ripen:null },
+  'Yuzu':         { temp:'🌡️ Fridge', life:'2–3 weeks in fridge', bad:'Very soft spots, mould, dried out skin', ripen:null },
+};
+
+// ============================================================
+// TRIVIA QUIZ (Lvl 2) - refreshes every Wednesday
+// ============================================================
+const TRIVIA_QUIZ = [
+  { q:'Which fruit has more Vitamin C per 100g?', a:'Kiwi', b:'Orange', correct:'a', fact:'Kiwi contains almost double the Vitamin C of an orange — about 93mg vs 53mg per 100g.' },
+  { q:'Which fruit continues to ripen after picking?', a:'Strawberry', b:'Mango', correct:'b', fact:'Mangoes ripen after picking. Strawberries stop ripening the moment they are harvested.' },
+  { q:'Which is botanically a berry?', a:'Strawberry', b:'Banana', correct:'b', fact:'Bananas are true berries botanically. Strawberries are not — they are accessory fruits.' },
+  { q:'Which fruit is native to Germany?', a:'Apple', b:'Cherry', correct:'b', fact:'Wild cherries are native to Germany. Apples were introduced from Central Asia thousands of years ago.' },
+  { q:'Which has a higher sugar content?', a:'Lemon', b:'Lime', correct:'b', fact:'Limes contain slightly more sugar than lemons, despite tasting more sour due to different acid composition.' },
+  { q:'Which fruit is known as the "King of Fruits" in Southeast Asia?', a:'Mango', b:'Durian', correct:'b', fact:'Durian is called the King of Fruits across Southeast Asia, prized for its rich custard-like flesh despite its notorious smell.' },
+  { q:'Which fruit has seeds on the outside?', a:'Strawberry', b:'Fig', correct:'a', fact:'Strawberries are unique — what we call seeds are actually the true fruits of the plant, each containing a tiny seed.' },
+  { q:'Which fruit is most commonly grown in Germany?', a:'Plum', b:'Apple', correct:'b', fact:'Germany is one of Europe\'s largest apple producers, with over 1 million tonnes harvested annually.' },
+  { q:'Which fruit contains bromelain, an enzyme that digests protein?', a:'Pineapple', b:'Papaya', correct:'a', fact:'Pineapple contains bromelain which literally digests proteins — that tingle in your mouth when eating it is real.' },
+  { q:'Which fruit was likely the "forbidden fruit" in the Garden of Eden?', a:'Apple', b:'Pomegranate', correct:'b', fact:'Most scholars now believe the forbidden fruit was a pomegranate or quince — apples don\'t grow naturally in the Middle East.' },
+  { q:'Which fruit has the most fibre per 100g?', a:'Raspberry', b:'Banana', correct:'a', fact:'Raspberries have about 7g fibre per 100g, compared to just 2.6g in bananas.' },
+  { q:'Which fruit is used to make Grenadine syrup?', a:'Cherry', b:'Pomegranate', correct:'b', fact:'Grenadine comes from the French word for pomegranate. Traditional grenadine is made from pomegranate juice and sugar.' },
+];
+
+function getWeeklyTriviaQuiz() {
+  const now = new Date();
+  const day = now.getDay();
+  const daysSinceWed = (day + 4) % 7;
+  const wed = new Date(now);
+  wed.setDate(now.getDate() - daysSinceWed);
+  wed.setHours(0,0,0,0);
+  const weekKey = wed.toISOString().slice(0,10);
+  const idx = Math.floor(wed.getTime() / (7*24*60*60*1000)) % TRIVIA_QUIZ.length;
+  return { ...TRIVIA_QUIZ[idx], weekKey };
+}
+
+// ============================================================
+// ORIGINS QUIZ (Lvl 6) - refreshes every Friday
+// ============================================================
+const ORIGINS_SPOTLIGHT = [
+  { fruit:'Mango', e:'🥭', intro:'The mango has been cultivated for over 4,000 years and is the national fruit of three countries.',
+    questions:[
+      { q:'Where did mangoes originally come from?', a:'India & Myanmar', b:'Brazil', correct:'a', fact:'Mangoes originated between India and Myanmar. They spread via Portuguese traders to Africa and the Americas.' },
+      { q:'Which country produces the most mangoes today?', a:'Mexico', b:'India', correct:'b', fact:'India produces about 45% of the world\'s mangoes — over 20 million tonnes per year.' },
+      { q:'What does the word "mango" come from?', a:'Tamil word mankay', b:'Portuguese word manga', correct:'a', fact:'Mango comes from the Tamil word "mankay". Portuguese traders adopted it as "manga" in the 15th century.' },
+    ]},
+  { fruit:'Strawberry', e:'🍓', intro:'The modern strawberry is a surprisingly recent hybrid, and its origins are not where most people think.',
+    questions:[
+      { q:'Where was the modern garden strawberry developed?', a:'England', b:'France', correct:'b', fact:'The modern Fragaria × ananassa was created in a French garden in the 1750s when two American species cross-pollinated.' },
+      { q:'Which two continents\' strawberries were crossed to make today\'s variety?', a:'North & South America', b:'Europe & Asia', correct:'a', fact:'A Virginia strawberry crossed with a Chilean strawberry to create the large sweet variety we eat today.' },
+      { q:'What country leads global strawberry production?', a:'USA', b:'China', correct:'b', fact:'China produces around 40% of the world\'s strawberries. Germany harvests over 150,000 tonnes annually.' },
+    ]},
+  { fruit:'Banana', e:'🍌', intro:'The banana you eat today is not the same one your grandparents grew up with.',
+    questions:[
+      { q:'Where do bananas originally come from?', a:'Papua New Guinea & Southeast Asia', b:'Central America', correct:'a', fact:'Bananas were first domesticated in Papua New Guinea around 8,000 BCE.' },
+      { q:'What happened to the original Gros Michel banana?', a:'It became too expensive', b:'It was wiped out by disease', correct:'b', fact:'The Gros Michel was wiped out by Panama disease (Fusarium wilt) in the 1950s, replaced by today\'s Cavendish.' },
+      { q:'Which country exports the most bananas?', a:'Ecuador', b:'Brazil', correct:'a', fact:'Ecuador accounts for about 30% of global banana exports. Brazil produces more but consumes most domestically.' },
+    ]},
+  { fruit:'Kiwi', e:'🥝', intro:'The kiwi fruit has a surprising history — its name, origin, and rise are all unexpected.',
+    questions:[
+      { q:'Where does the kiwi fruit originally come from?', a:'New Zealand', b:'China', correct:'b', fact:'Kiwis are native to China, called "Yang Tao". Seeds were brought to New Zealand in 1904 by a teacher.' },
+      { q:'Why was it renamed "Kiwi"?', a:'It resembles the Kiwi bird', b:'New Zealanders are called Kiwis', correct:'a', fact:'New Zealand exporters renamed it in the 1950s — partly because it resembles the fuzzy round kiwi bird.' },
+      { q:'Which country is the largest kiwi producer today?', a:'New Zealand', b:'China', correct:'b', fact:'China produces over 50% of the world\'s kiwis. Italy and New Zealand are the top exporters.' },
+    ]},
+  { fruit:'Lemon', e:'🍋', intro:'Lemons have shaped world history more than almost any other fruit.',
+    questions:[
+      { q:'Where did lemons originally come from?', a:'Mediterranean', b:'Northeast India & China', correct:'b', fact:'Lemons originated in Northeast India. They reached the Mediterranean via Arab traders around 700 AD.' },
+      { q:'Why were lemons historically so valuable?', a:'They cured scurvy', b:'They were used as currency', correct:'a', fact:'British sailors required to eat lemons daily to prevent scurvy earned the nickname "Limeys".' },
+      { q:'Which country produces the most lemons today?', a:'Italy', b:'India', correct:'b', fact:'India is the world\'s largest lemon producer, followed by Mexico and China.' },
+    ]},
+  { fruit:'Pineapple', e:'🍍', intro:'The pineapple was once so valuable it was rented out by the evening in Europe.',
+    questions:[
+      { q:'Where do pineapples originate?', a:'Hawaii', b:'South America', correct:'b', fact:'Pineapples originated in southern Brazil and Paraguay, spreading through the Americas before European contact.' },
+      { q:'Why were pineapples so valuable in 17th century Europe?', a:'They only grew in royal gardens', b:'They were nearly impossible to import', correct:'b', fact:'A single pineapple cost the equivalent of £5,000 today. Wealthy hosts rented them as dinner party centrepieces.' },
+      { q:'Which country produces the most pineapples?', a:'Costa Rica', b:'Philippines', correct:'a', fact:'Costa Rica is the world\'s largest pineapple exporter. The Del Monte Gold variety accounts for most of Europe\'s supermarket pineapples.' },
+    ]},
+];
+
+function getWeeklyOriginsQuiz() {
+  const now = new Date();
+  const day = now.getDay();
+  const daysSinceFri = (day + 2) % 7;
+  const fri = new Date(now);
+  fri.setDate(now.getDate() - daysSinceFri);
+  fri.setHours(0,0,0,0);
+  const weekKey = fri.toISOString().slice(0,10);
+  const idx = Math.floor(fri.getTime() / (7*24*60*60*1000)) % ORIGINS_SPOTLIGHT.length;
+  return { ...ORIGINS_SPOTLIGHT[idx], weekKey };
+}
+
+// ============================================================
+// PAIRING OF THE WEEK (Lvl 10) - refreshes every Monday
+// ============================================================
+const PAIRINGS = [
+  { fruit:'Watermelon', partner:'Feta cheese', e:'🍉', why:'The saltiness of feta cuts through watermelon\'s sweetness — a classic Greek summer combination.' },
+  { fruit:'Peach', partner:'Prosciutto', e:'🍑', why:'Sweet juicy peach with salty cured ham — the contrast is stunning. Try it on a board with some rocket.' },
+  { fruit:'Strawberry', partner:'Balsamic vinegar', e:'🍓', why:'A drizzle of aged balsamic intensifies strawberries\' flavour dramatically. Standard in Italian kitchens.' },
+  { fruit:'Mango', partner:'Chili & lime', e:'🥭', why:'The Mexican combination of sweet mango with chili heat and lime acidity is incredibly addictive.' },
+  { fruit:'Pear', partner:'Gorgonzola', e:'🍐', why:'The soft sweetness of ripe pear with pungent blue cheese is a Northern Italian classic.' },
+  { fruit:'Orange', partner:'Dark chocolate', e:'🍊', why:'Citrus oils and dark chocolate share aromatic compounds — they were made for each other.' },
+  { fruit:'Apple', partner:'Sharp cheddar', e:'🍎', why:'A British classic — the acidity of apple cuts through the richness of aged cheddar perfectly.' },
+  { fruit:'Fig', partner:'Prosciutto & goat cheese', e:'🌿', why:'Fresh fig with salty ham and tangy cheese is one of the most elegant appetisers imaginable.' },
+  { fruit:'Raspberry', partner:'Fresh basil', e:'🫐', why:'The anise notes in basil amplify raspberry\'s floral quality. Try in a salad or dessert.' },
+  { fruit:'Lemon', partner:'Tahini', e:'🍋', why:'Lemon and tahini are inseparable in Middle Eastern cooking — the acid brightens the nutty richness.' },
+  { fruit:'Plum', partner:'Star anise', e:'🫒', why:'Star anise and plum share the same aromatic compound. Together they taste deeply complex and wine-like.' },
+  { fruit:'Banana', partner:'Miso', e:'🍌', why:'Sounds wrong, tastes incredible. Miso\'s umami deepens banana\'s sweetness — try in a caramel sauce.' },
+];
+
+function getWeeklyPairing() {
+  const now = new Date();
+  const day = now.getDay();
+  const daysSinceMon = (day + 6) % 7;
+  const mon = new Date(now);
+  mon.setDate(now.getDate() - daysSinceMon);
+  mon.setHours(0,0,0,0);
+  const weekKey = mon.toISOString().slice(0,10);
+  const idx = Math.floor(mon.getTime() / (7*24*60*60*1000)) % PAIRINGS.length;
+  return { ...PAIRINGS[idx], weekKey };
+}
+
+// ============================================================
+// FRUIT BUCKET LIST (Lvl 14)
+// ============================================================
+const BUCKET_LIST = [
+  { id:'durian',       e:'🟡', title:'Eat a fresh Durian',                                        desc:'Track down a fresh durian and eat it. The smell is notorious but the taste is unlike anything else.',                                                              xp:250 },
+  { id:'elderberry',   e:'🍷', title:'Make elderberry wine from scratch',                          desc:'Forage or buy elderberries and ferment your own wine. Takes weeks of patience but deeply rewarding.',                                                              xp:250 },
+  { id:'kiwano',       e:'🌵', title:'Track down and eat a Kiwano (Horned Melon)',                 desc:'Find this alien-looking fruit with its spiky orange shell and green jelly interior.',                                                                              xp:250 },
+  { id:'pepino',       e:'🌿', title:'Track down and try a Pepino Melon',                          desc:'This cucumber-melon hybrid from South America is almost impossible to find in Germany.',                                                                           xp:250 },
+  { id:'forage',       e:'🫐', title:'Forage wild Bilberries & Elderberries and make jam',         desc:'Go into a German forest, forage both wild bilberries and elderberries, then make a jar of jam.',                                                                   xp:250 },
+  { id:'fingerlime',   e:'🍊', title:'Find and eat a Finger Lime',                                 desc:'Track down this Australian citrus with its caviar-like pearls of juice. Occasionally found in high-end delis.',                                                   xp:250 },
+  { id:'seabuckthorn', e:'🌿', title:'Pick and eat fresh Sea Buckthorn from the coast',            desc:'Travel to the German North Sea or Baltic coast and pick fresh Sanddorn berries straight from the bush.',                                                           xp:250 },
+  { id:'lemonade',     e:'🍋', title:'Juice 2kg of lemons by hand and make homemade lemonade',     desc:'No electric juicers. Juice 2 full kilograms of lemons by hand and make fresh lemonade from scratch.',                                                             xp:250 },
+];
+
+// ============================================================
+// FRUIT LAB (Lvl 11) - alternates tea/ferment every 3 days
+// ============================================================
+const FRUIT_LAB = [
+  { type:'tea',     fruit:'Strawberry',  e:'🍓', partner:'White tea',      formula:'Dried strawberry slices + white tea leaves + hot water (75°C) + 3 min steep',                             why:'White tea\'s delicate floral notes lift the sweetness of strawberry without overpowering it.' },
+  { type:'ferment', fruit:'Lemon',       e:'🍋', method:'Lacto-fermented lemon',  formula:'Lemons + coarse salt (10% of fruit weight) + jar + 3–4 weeks at room temp',                       why:'Fermentation mellows the bitterness and creates an umami depth that raw lemon never has.' },
+  { type:'tea',     fruit:'Lemon',       e:'🍋', partner:'Green tea',       formula:'Fresh lemon peel (not juice) + green tea + hot water (80°C) + 2 min steep',                              why:'Lemon peel releases oils that complement green tea\'s grassy notes. Juice makes it too acidic.' },
+  { type:'ferment', fruit:'Mango',       e:'🥭', method:'Mango kefir smoothie',  formula:'Mango pulp + milk kefir + blend + refrigerate overnight',                                           why:'Kefir\'s probiotic tang cuts through mango\'s sweetness and adds yoghurt-like creaminess.' },
+  { type:'tea',     fruit:'Peach',       e:'🍑', partner:'Oolong tea',      formula:'Dried peach slices + oolong + hot water (85°C) + 4 min steep + optional honey',                         why:'Oolong\'s roasted sweetness pairs perfectly with peach\'s stone fruit warmth.' },
+  { type:'ferment', fruit:'Apple',       e:'🍎', method:'Apple kombucha',         formula:'Brewed kombucha (plain) + fresh apple juice (20%) + sealed bottle + 2–3 days second ferment',     why:'Apple juice in secondary fermentation creates natural carbonation and a crisp cidery flavour.' },
+  { type:'tea',     fruit:'Raspberry',   e:'🫐', partner:'Hibiscus tea',    formula:'Fresh or frozen raspberries (crushed) + dried hibiscus + hot water (95°C) + 5 min steep',               why:'Both are intensely tart and red — together they make a stunning deep ruby brew.' },
+  { type:'ferment', fruit:'Raspberry',   e:'🫐', method:'Raspberry shrub',        formula:'Raspberries + apple cider vinegar + sugar (equal parts) + jar + 3–5 days + strain',               why:'Shrubs preserve summer fruit in a concentrated syrup — mix with sparkling water for a sophisticated soft drink.' },
+  { type:'tea',     fruit:'Apple',       e:'🍎', partner:'Rooibos',         formula:'Dried apple slices + rooibos + cinnamon stick + hot water (95°C) + 5 min steep',                        why:'Rooibos is naturally sweet and caffeine-free — apple and cinnamon make it taste like autumn.' },
+  { type:'ferment', fruit:'Plum',        e:'🫒', method:'Lacto-fermented plum',   formula:'Chopped plums + salt (2%) + fresh ginger + jar + 5–7 days at room temp',                          why:'Lacto-fermentation develops a complex sour-sweet flavour that no vinegar chutney can replicate.' },
+  { type:'tea',     fruit:'Pomegranate', e:'❤️', partner:'Black tea',       formula:'Pomegranate seeds (pressed) + black tea + hot water (95°C) + 3 min steep + squeeze of lemon',           why:'Pomegranate\'s tartness cuts through black tea\'s bitterness — no sugar needed.' },
+  { type:'ferment', fruit:'Strawberry',  e:'🍓', method:'Strawberry water kefir', formula:'Water kefir grains + sugar water + fresh strawberries + 48h first ferment + 24h second ferment', why:'The result is like a probiotic strawberry lemonade — naturally fizzy and alive.' },
+  { type:'tea',     fruit:'Elderberry',  e:'🌿', partner:'Echinacea',       formula:'Dried elderberries + dried echinacea flowers + hot water (95°C) + 10 min steep + honey',                why:'A classic German immune-boosting brew — elderberry is the star of every Erkältungstee.' },
+  { type:'ferment', fruit:'Elderberry',  e:'🌿', method:'Elderberry kefir',       formula:'Milk kefir grains + whole milk + 24h ferment + stir in elderberry syrup',                         why:'Elderberry\'s antioxidants combined with kefir\'s probiotics makes this a genuine wellness drink.' },
+  { type:'tea',     fruit:'Quince',      e:'🍐', partner:'Chamomile',       formula:'Quince jam (1 tsp) or thin slices + chamomile + hot water (90°C) + 5 min steep',                        why:'Quince\'s floral astringency and chamomile\'s honeyed calm are a perfect evening pairing.' },
+  { type:'ferment', fruit:'Blueberry',   e:'🫐', method:'Blueberry kombucha',     formula:'Plain kombucha + fresh blueberries (crushed) + sealed bottle + 2 days second ferment',            why:'Blueberries create a stunning deep purple kombucha with a gentle berry tartness.' },
+];
+
+function getFruitLabEntry() {
+  const now = new Date();
+  const periodNum = Math.floor(now.getTime() / (3 * 24 * 60 * 60 * 1000));
+  const isTeaPeriod = periodNum % 2 === 0;
+  const type = isTeaPeriod ? 'tea' : 'ferment';
+  const entries = FRUIT_LAB.filter(e => e.type === type);
+  const idx = Math.floor(periodNum / 2) % entries.length;
+  const nextPeriod = new Date((periodNum + 1) * 3 * 24 * 60 * 60 * 1000);
+  const daysLeft = Math.ceil((nextPeriod - now) / (24 * 60 * 60 * 1000));
+  return { ...entries[idx], daysLeft, type };
+}
+
+
+// ============================================================
+// STATE
+// ============================================================
+function todayKey() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+function defaultState() {
+  return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null, roulette: null, triviaQuiz: {}, originsQuiz: {}, pairing: {}, bucketList: {}, pixelArt: {} };
+}
+
+function saveState() { localStorage.setItem('fruity_v2', JSON.stringify(STATE)); }
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('fruity_v2') || 'null');
+    if (!saved) return defaultState();
+    return {
+      history:    saved.history    && typeof saved.history    === 'object' ? saved.history    : {},
+      totalXP:    typeof saved.totalXP    === 'number' ? saved.totalXP    : 0,
+      streak:     typeof saved.streak     === 'number' ? saved.streak     : 0,
+      challenges: saved.challenges && typeof saved.challenges === 'object' ? saved.challenges : {},
+      lastSeen:   saved.lastSeen || null,
+      roulette:   saved.roulette || null,
+      triviaQuiz: saved.triviaQuiz || {},
+      originsQuiz:saved.originsQuiz || {},
+      pairing:    saved.pairing || {},
+      bucketList: saved.bucketList || {},
+      pixelArt:   saved.pixelArt || {},
+    };
+  } catch(e) { return defaultState(); }
+}
+
+let STATE = loadState();
+const TODAY = todayKey();
+if (!STATE.history[TODAY]) STATE.history[TODAY] = [];
+
+// ============================================================
+// HELPERS
+// ============================================================
+function currentMonth() { return new Date().getMonth() + 1; }
+
+function currentSeason() {
+  const m = currentMonth();
+  if ([12,1,2].includes(m)) return '❄️ Winter';
+  if ([3,4,5].includes(m))  return '🌸 Spring';
+  if ([6,7,8].includes(m))  return '☀️ Summer';
+  return '🍂 Autumn';
+}
+
+function getSeasonStatus(fruit) {
+  if (fruit.imported) return 'imported';
+  const m = currentMonth();
+  if (fruit.months.includes(m)) return 'in-season';
+  return 'out-of-season';
+}
+
+function addFruit(name) {
+  const prevLevel = getLevelIndex(STATE.totalXP);
+  STATE.history[TODAY].push(name);
+  const f = FRUITS.find(x => x.n === name);
+  const isSeasonal = f && getSeasonStatus(f) === 'in-season';
+  const baseXP = f ? f.xp : 10;
+  const earnedXP = isSeasonal ? baseXP * 2 : baseXP;
+  STATE.totalXP += earnedXP;
+
+  // Check roulette completion
+  if (STATE.roulette && STATE.roulette.fruit === name && !STATE.roulette.completed) {
+    const weekKey = getWeekKey();
+    if (STATE.roulette.weekKey === weekKey) {
+      STATE.roulette.completed = true;
+      STATE.totalXP += 50;
+      setTimeout(() => showToast('🎰 Roulette dare complete! +50 XP bonus!'), 800);
+    }
+  }
+
+  const newLevel = getLevelIndex(STATE.totalXP);
+  saveState();
+  renderHeader();
+  renderTodayPage();
+  confetti();
+  const seasonTag = isSeasonal ? ' 🌿 2x seasonal!' : '';
+  showToast((f ? f.e : '🍎') + ' ' + name + ' +' + earnedXP + ' XP' + seasonTag);
+  if (newLevel > prevLevel) {
+    setTimeout(() => showLevelUp(newLevel), 600);
+  }
+}
+
+function removeLoggedFruit(name) {
+  const f = FRUITS.find(x => x.n === name);
+  const isSeasonal = f && getSeasonStatus(f) === 'in-season';
+  const baseXP = f ? f.xp : 10;
+  const earnedXP = isSeasonal ? baseXP * 2 : baseXP;
+  STATE.history[TODAY] = STATE.history[TODAY].filter(x => x !== name);
+  STATE.totalXP = Math.max(0, STATE.totalXP - earnedXP);
+  saveState();
+  renderHeader();
+  renderTodayPage();
+}
+
+function updateStreak() {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yKey = yesterday.getFullYear() + '-' + String(yesterday.getMonth()+1).padStart(2,'0') + '-' + String(yesterday.getDate()).padStart(2,'0');
+  const lastSeen = STATE.lastSeen;
+  if (!lastSeen) {
+    STATE.streak = 1;
+  } else if (lastSeen === yKey) {
+    STATE.streak = (STATE.streak || 0) + 1;
+  } else if (lastSeen !== TODAY) {
+    STATE.streak = 1;
+  }
+  STATE.lastSeen = TODAY;
+  saveState();
+}
+
+updateStreak();
+
+
+
 function getLevelIndex(xp) {
   let idx = 0;
   for (let i = LEVELS.length - 1; i >= 0; i--) {
