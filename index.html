@@ -2065,6 +2065,92 @@ function getFruitLabEntry() {
 }
 
 
+const CHALLENGES = {
+  1:  { title:'January Citrus Haul', options:[
+    { label:'Easy',    fruits:['Blood Orange','Kiwi'],        dish:'Citrus Yogurt Bowl', tip:'Slice over thick yogurt with honey' },
+    { label:'Classic', fruits:['Grapefruit','Clementine'],    dish:'Winter Citrus Salad', tip:'Segment both, toss with mint & chili flakes' },
+    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing', tip:'Squeeze both over a green salad — unusual & amazing' },
+  ]},
+  2:  { title:'February Tropical Escape', options:[
+    { label:'Easy',    fruits:['Banana','Mango'],             dish:'Tropical Smoothie Bowl', tip:'Blend & top with coconut flakes' },
+    { label:'Classic', fruits:['Pineapple','Papaya'],         dish:'Tropical Fruit Salad', tip:'Dice both, add lime juice & fresh mint' },
+    { label:'Difficult',fruits:['Cherimoya','Passion Fruit'], dish:'Custard Fruit Tart', tip:'Spoon cherimoya flesh into tart shells, top with passion fruit pulp' },
+  ]},
+  3:  { title:'March Citrus Bloom', options:[
+    { label:'Easy',    fruits:['Blood Orange','Kiwi'],        dish:'Citrus Breakfast Bowl', tip:'Slice over oats with honey & mint' },
+    { label:'Classic', fruits:['Grapefruit','Mandarin'],      dish:'Winter Citrus Salad', tip:'Segment both, toss with fresh mint & chili flakes' },
+    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing', tip:'Squeeze both over a green salad — the contrast is stunning' },
+  ]},
+  4:  { title:'April Spring Awakening', options:[
+    { label:'Easy',    fruits:['Orange','Lemon'],             dish:'Citrus Cake', tip:'Classic sponge with orange & lemon zest glaze' },
+    { label:'Classic', fruits:['Kiwi','Pineapple'],           dish:'Tropical Jam', tip:'Cook down both fruits with sugar into a zingy jam' },
+    { label:'Difficult',fruits:['Blood Orange','Yuzu'],       dish:'Yuzu Blood Orange Curd', tip:'Make a curd — butter, eggs, juice, sugar. Spread on everything' },
+  ]},
+  5:  { title:'May First Berries', options:[
+    { label:'Easy',    fruits:['Strawberry','Banana'],        dish:'Strawberry Banana Smoothie', tip:'Blend with oat milk & a spoon of peanut butter' },
+    { label:'Classic', fruits:['Strawberry','Lemon'],         dish:'Strawberry Lemonade Jam', tip:'Classic jam with a lemon twist — great on sourdough' },
+    { label:'Difficult',fruits:['Strawberry','Lychee'],       dish:'Strawberry Lychee Sorbet', tip:'Blend, freeze, stir twice — fragrant & unexpected' },
+  ]},
+  6:  { title:'June Berry Season Begins', options:[
+    { label:'Easy',    fruits:['Cherry','Strawberry'],        dish:'Berry Clafoutis', tip:'Classic French batter bake — 30 minutes, very forgiving' },
+    { label:'Classic', fruits:['Redcurrant','Gooseberry'],    dish:'Summer Berry Compote', tip:'Simmer with sugar, serve over pancakes or porridge' },
+    { label:'Difficult',fruits:['Gooseberry','Elderberry'],   dish:'Eldergooseberry Chutney', tip:'Tangy chutney with onion, vinegar & spices — pairs with cheese' },
+  ]},
+  7:  { title:'July Peak Summer', options:[
+    { label:'Easy',    fruits:['Peach','Raspberry'],          dish:'Peach Melba', tip:'Peach halves, vanilla ice cream, fresh raspberries. Done.' },
+    { label:'Classic', fruits:['Blueberry','Cherry'],         dish:'Summer Berry Cake', tip:'Simple sponge studded with both fruits, dusted with icing sugar' },
+    { label:'Difficult',fruits:['Mirabelle','Bilberry (Waldheidelbeere)'], dish:'Mirabelle Bilberry Galette', tip:'Rustic open tart — the colour contrast is spectacular' },
+  ]},
+  8:  { title:'August Stone Fruit Fest', options:[
+    { label:'Easy',    fruits:['Nectarine','Plum'],           dish:'Stone Fruit Salad', tip:'Slice thin, add basil, balsamic glaze & mozzarella' },
+    { label:'Classic', fruits:['Peach','Blackcurrant'],       dish:'Peach & Blackcurrant Crumble', tip:'Oat crumble topping, tart-sweet filling — serve warm' },
+    { label:'Difficult',fruits:['Damson','Aronia'],           dish:'Damson Aronia Jam', tip:'Both are tart & dark — the result is a deep, complex jam' },
+  ]},
+  9:  { title:'September Harvest Time', options:[
+    { label:'Easy',    fruits:['Grape','Apple'],              dish:'Grape & Apple Juice', tip:'Press or blend both — autumn in a glass' },
+    { label:'Classic', fruits:['Blackberry','Pear'],          dish:'Blackberry Pear Tarte Tatin', tip:'Caramelise pears, add blackberries before the pastry goes on' },
+    { label:'Difficult',fruits:['Sea Buckthorn','Physalis'],  dish:'Sea Buckthorn Physalis Sauce', tip:'Tart orange sauce — incredible over duck or pork' },
+  ]},
+  10: { title:'October Autumn Gems', options:[
+    { label:'Easy',    fruits:['Pear','Pomegranate'],         dish:'Autumn Salad', tip:'Rocket, pear slices, pomegranate seeds, walnuts & blue cheese' },
+    { label:'Classic', fruits:['Apple','Cranberry'],          dish:'Apple Cranberry Chutney', tip:'Spiced with cinnamon & cloves — Christmas in a jar' },
+    { label:'Difficult',fruits:['Quince','Persimmon'],        dish:'Quince Persimmon Paste', tip:'Slow-cooked into a firm paste (like membrillo) — incredible with cheese' },
+  ]},
+  11: { title:'November Late Season', options:[
+    { label:'Easy',    fruits:['Mandarin','Orange'],          dish:'Citrus Marmalade', tip:'Peel, boil with sugar, jar it — better than shop-bought' },
+    { label:'Classic', fruits:['Pomegranate','Cranberry'],    dish:'Winter Berry Sauce', tip:'Simmer both — classic sauce for roast meats or on porridge' },
+    { label:'Difficult',fruits:['Physalis','Pomelo'],         dish:'Physalis Pomelo Chutney', tip:'Unusual but the bitterness of pomelo balances physalis sweetness perfectly' },
+  ]},
+  12: { title:'December Winter Feast', options:[
+    { label:'Easy',    fruits:['Clementine','Apple'],         dish:'Mulled Fruit Punch', tip:'Simmer with cinnamon, star anise & cloves — alcohol optional' },
+    { label:'Classic', fruits:['Blood Orange','Pomegranate'], dish:'Winter Citrus Pavlova', tip:'Top meringue with whipped cream, blood orange segments & pomegranate seeds' },
+    { label:'Difficult',fruits:['Yuzu','Persimmon'],          dish:'Yuzu Persimmon Cake', tip:'Japanese-inspired — yuzu zest in sponge, persimmon puree filling' },
+  ]},
+};
+
+
+const FRUIT_ORIGINS = {
+  'DE': { name:'Germany',      flag:'🇩🇪', fruits:['Apple','Pear','Cherry','Plum','Strawberry','Raspberry','Blueberry','Blackcurrant','Redcurrant','Gooseberry','Elderberry','Bilberry (Waldheidelbeere)','Mirabelle','Damson','Greengage','Quince','Riesling Grape'] },
+  'ES': { name:'Spain',        flag:'🇪🇸', fruits:['Orange','Lemon','Mandarin','Clementine','Blood Orange','Grape','Peach','Nectarine','Watermelon','Melon','Strawberry'] },
+  'IT': { name:'Italy',        flag:'🇮🇹', fruits:['Orange','Lemon','Grape','Peach','Nectarine','Cherry','Pear','Kiwi','Blood Orange','Fig','Pomelo'] },
+  'TR': { name:'Turkey',       flag:'🇹🇷', fruits:['Nectarine','Peach','Cherry','Fig','Apricot','Plum','Grape','Pomegranate','Mandarin','Orange'] },
+  'MA': { name:'Morocco',      flag:'🇲🇦', fruits:['Orange','Mandarin','Clementine','Lemon','Strawberry'] },
+  'ZA': { name:'South Africa', flag:'🇿🇦', fruits:['Orange','Nectarine','Grape','Lemon','Mandarin','Clementine'] },
+  'BR': { name:'Brazil',       flag:'🇧🇷', fruits:['Mango','Papaya','Passion Fruit','Guava','Açaí','Banana','Pineapple','Coconut'] },
+  'MX': { name:'Mexico',       flag:'🇲🇽', fruits:['Mango','Avocado','Lime','Papaya','Coconut','Banana','Pineapple'] },
+  'TH': { name:'Thailand',     flag:'🇹🇭', fruits:['Mango','Pineapple','Coconut','Papaya','Lychee','Dragon Fruit','Passion Fruit'] },
+  'VN': { name:'Vietnam',      flag:'🇻🇳', fruits:['Dragon Fruit','Mango','Coconut','Lychee','Star Fruit','Banana'] },
+  'CN': { name:'China',        flag:'🇨🇳', fruits:['Kiwi','Golden Kiwi','Mandarin','Persimmon','Lychee','Pear','Apple'] },
+  'JP': { name:'Japan',        flag:'🇯🇵', fruits:['Yuzu','Persimmon','Mandarin','Kiwi','Lychee'] },
+  'IN': { name:'India',        flag:'🇮🇳', fruits:['Mango','Banana','Coconut','Papaya','Guava','Passion Fruit','Lemon'] },
+  'PE': { name:'Peru',         flag:'🇵🇪', fruits:['Passion Fruit','Cherimoya','Guava','Mango','Banana','Coconut'] },
+  'EC': { name:'Ecuador',      flag:'🇪🇨', fruits:['Banana','Mango','Pineapple','Coconut','Passion Fruit','Guava'] },
+  'AU': { name:'Australia',    flag:'🇦🇺', fruits:['Kiwi','Macadamia','Banana','Mango','Passion Fruit'] },
+  'GR': { name:'Greece',       flag:'🇬🇷', fruits:['Orange','Lemon','Grape','Watermelon','Melon','Cherry','Fig','Pomegranate'] },
+  'PT': { name:'Portugal',     flag:'🇵🇹', fruits:['Orange','Lemon','Grape','Mandarin','Strawberry','Clementine'] },
+  'FR': { name:'France',       flag:'🇫🇷', fruits:['Apple','Pear','Grape','Strawberry','Cherry','Peach','Apricot','Mirabelle','Greengage'] },
+};
+
 // ============================================================
 // STATE
 // ============================================================
@@ -2107,6 +2193,16 @@ if (!STATE.history[TODAY]) STATE.history[TODAY] = [];
 // HELPERS
 // ============================================================
 function currentMonth() { return new Date().getMonth() + 1; }
+function currentYear() { return new Date().getFullYear(); }
+
+const VITAMINS = [
+  { key:'C',      label:'Vitamin C',  color:'#FF6B6B', tip:'Immunity & skin' },
+  { key:'A',      label:'Vitamin A',  color:'#FFA500', tip:'Eyes & immunity' },
+  { key:'K',      label:'Vitamin K',  color:'#4CAF50', tip:'Blood & bones' },
+  { key:'B6',     label:'Vitamin B6', color:'#9C27B0', tip:'Brain & energy' },
+  { key:'E',      label:'Vitamin E',  color:'#FF9800', tip:'Antioxidant' },
+  { key:'Folate', label:'Folate',     color:'#2196F3', tip:'Cell growth' },
+];
 
 function currentSeason() {
   const m = currentMonth();
@@ -3642,11 +3738,11 @@ function renderMePage() {
     <div class="section-title">⚡ XP Ladder</div>
     <div class="ladder-wrap">${ladderHtml}</div>
 
-    ${flavourSection}
-    ${pixelArtSection}
-
     <div class="section-title">📅 History</div>
     ${historyHtml}
+
+    ${flavourSection}
+    ${pixelArtSection}
 
     ${identitySection}
   `;
