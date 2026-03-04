@@ -1176,6 +1176,77 @@ body {
   margin-bottom: 4px;
 }
 
+
+/* ============================================================
+   ROULETTE
+   ============================================================ */
+.roulette-card {
+  background: linear-gradient(135deg, #1a237e, #311b92);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  color: white;
+  margin-bottom: 14px;
+}
+
+.roulette-slot-wrap {
+  background: rgba(255,255,255,0.12);
+  border: 3px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 16px;
+  margin: 16px auto;
+  width: 120px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rouletteSlot {
+  font-size: 52px;
+  line-height: 1;
+  display: block;
+}
+
+@keyframes slotSpin {
+  0%   { transform: scale(0.8); opacity: 0.5; }
+  50%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.roulette-spin-btn {
+  background: white;
+  color: #311b92;
+  border: none;
+  border-radius: 99px;
+  padding: 12px 28px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.15s;
+}
+
+.roulette-spin-btn:active { transform: scale(0.95); }
+
+#rouletteResult {
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  text-align: left;
+  display: none;
+}
+
+.roulette-completed {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
 </style>
 </head>
 <body>
@@ -1613,7 +1684,7 @@ function todayKey() {
 }
 
 function defaultState() {
-  return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null };
+  return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null, roulette: null };
 }
 
 function saveState() { localStorage.setItem('fruity_v2', JSON.stringify(STATE)); }
@@ -1628,6 +1699,7 @@ function loadState() {
       streak:     typeof saved.streak     === 'number' ? saved.streak     : 0,
       challenges: (saved.challenges && typeof saved.challenges === 'object') ? saved.challenges : {},
       lastSeen:   saved.lastSeen || null,
+      roulette:   saved.roulette || null,
     };
   } catch(e) { return defaultState(); }
 }
@@ -1814,6 +1886,81 @@ function renderWorldMap(containerId, allFruits) {
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">' + countriesHtml + '</div>';
 }
 
+
+// ============================================================
+// ROULETTE (Lvl 8)
+// ============================================================
+function getWeekKey() {
+  const d = new Date();
+  const day = d.getDay();
+  const monday = new Date(d);
+  monday.setDate(d.getDate() - (day === 0 ? 6 : day - 1));
+  return monday.toISOString().slice(0, 10);
+}
+
+function getRouletteState() {
+  const weekKey = getWeekKey();
+  if (!STATE.roulette || STATE.roulette.weekKey !== weekKey) {
+    // New week — pick a new fruit
+    const allLogged = new Set(Object.values(STATE.history || {}).flat());
+    const undiscovered = FRUITS.filter(f => !allLogged.has(f.n));
+    if (undiscovered.length === 0) return null;
+    const pick = undiscovered[Math.floor(Math.random() * undiscovered.length)];
+    STATE.roulette = { fruit: pick.n, weekKey, completed: false, spun: false };
+    saveState();
+  }
+  return STATE.roulette;
+}
+
+function spinRoulette() {
+  const weekKey = getWeekKey();
+  const allLogged = new Set(Object.values(STATE.history || {}).flat());
+  const undiscovered = FRUITS.filter(f => !allLogged.has(f.n));
+  if (undiscovered.length === 0) return;
+
+  const pick = undiscovered[Math.floor(Math.random() * undiscovered.length)];
+  STATE.roulette = { fruit: pick.n, weekKey, completed: false, spun: true };
+  saveState();
+
+  // Animate spin
+  const slotEl = document.getElementById('rouletteSlot');
+  const resultEl = document.getElementById('rouletteResult');
+  if (!slotEl) return;
+
+  slotEl.style.animation = 'none';
+  slotEl.offsetHeight; // reflow
+  slotEl.style.animation = 'slotSpin 1.8s cubic-bezier(0.17,0.67,0.35,1) forwards';
+
+  const fruits = undiscovered.slice(0, 8).map(f => f.e + ' ' + f.n);
+  let i = 0;
+  const interval = setInterval(() => {
+    slotEl.textContent = undiscovered[i % undiscovered.length].e;
+    i++;
+  }, 80);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    const f = FRUITS.find(x => x.n === pick.n);
+    slotEl.textContent = f ? f.e : '🎰';
+    if (resultEl) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML =
+        '<div style="font-family:Fredoka One,cursive;font-size:18px;margin-bottom:4px">Your dare: ' + (f ? f.e : '') + ' ' + pick.n + '!</div>' +
+        '<div style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:10px">Log this fruit before Monday for +100 bonus XP</div>' +
+        (f ? '<div style="font-size:11px;font-weight:700;color:var(--orange)">' + f.note + '</div>' : '');
+    }
+    renderChallengePage();
+  }, 1800);
+}
+
+function showSeasonalBonus(emoji, xp) {
+  const el = document.createElement('div');
+  el.style.cssText = 'position:fixed;top:120px;left:50%;transform:translateX(-50%);background:#e8f5e9;border:2px solid #a5d6a7;border-radius:20px;padding:8px 18px;font-family:Fredoka One,cursive;font-size:14px;color:#2e7d32;z-index:9999;animation:slideUp 0.3s ease,fadeOut 0.5s 1.8s forwards;pointer-events:none;white-space:nowrap';
+  el.textContent = '🌿 In season! ' + emoji + ' Double XP!';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2400);
+}
+
 // ============================================================
 // HEADER
 // ============================================================
@@ -1856,13 +2003,28 @@ function addFruit(name) {
   const prevLevel = getLevelIndex(STATE.totalXP);
   STATE.history[TODAY].push(name);
   const f = FRUITS.find(x => x.n === name);
-  STATE.totalXP += f ? f.xp : 10;
+  const isSeasonal = f && getSeasonStatus(f) === 'in-season';
+  const baseXP = f ? f.xp : 10;
+  const earnedXP = isSeasonal ? baseXP * 2 : baseXP;
+  STATE.totalXP += earnedXP;
+
+  // Check roulette completion
+  if (STATE.roulette && STATE.roulette.fruit === name && !STATE.roulette.completed) {
+    const weekKey = getWeekKey();
+    if (STATE.roulette.weekKey === weekKey) {
+      STATE.roulette.completed = true;
+      STATE.totalXP += 100;
+      setTimeout(() => showToast('🎰 Roulette dare complete! +100 XP bonus!'), 800);
+    }
+  }
+
   const newLevel = getLevelIndex(STATE.totalXP);
   saveState();
   renderHeader();
   renderTodayPage();
   confetti();
-  showToast(`${f ? f.e : '🍎'} ${name} +${f ? f.xp : 10} XP`);
+  const seasonTag = isSeasonal ? ' 🌿 2x seasonal!' : '';
+  showToast((f ? f.e : '🍎') + ' ' + name + ' +' + earnedXP + ' XP' + seasonTag);
   if (newLevel > prevLevel) {
     setTimeout(() => showLevelUp(newLevel), 600);
   }
@@ -2169,10 +2331,29 @@ function renderChallengePage() {
       </button>
     ` : ''}
   <div class="section-title" style="margin-top:6px">🎰 Fruit Roulette</div>
-  ${isUnlocked(8) ?
-    `<div class="card" style="text-align:center;padding:32px 20px"><div style="font-size:40px;margin-bottom:10px">🎰</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Fruit Roulette</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — spin the wheel and get dared to try a fruit you've never logged!</div></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🎰</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Roulette</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Figgy Wild Card</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Roulette</div><div class="lock-sub">Unlocks at Figgy Wild Card</div></div></div>`
-  }
+  ${(() => {
+    if (!isUnlocked(8)) return '<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🎰</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Roulette</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Figgy Wild Card</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Roulette</div><div class="lock-sub">Unlocks at Figgy Wild Card</div></div></div>';
+    const rs = getRouletteState();
+    if (!rs) return '<div class="card" style="text-align:center;padding:24px"><div style="font-size:13px;font-weight:700;color:var(--muted)">🎉 Amazing — you\'ve tried every fruit! No more dares!</div></div>';
+    const rf = FRUITS.find(f => f.n === rs.fruit);
+    const isCompleted = rs.completed;
+    return '<div class="roulette-card ' + (isCompleted ? 'roulette-completed' : '') + '">' +
+      '<div style="font-family:Fredoka One,cursive;font-size:18px;margin-bottom:4px">🎰 Weekly Dare</div>' +
+      '<div style="font-size:11px;opacity:0.8;margin-bottom:4px">Resets every Monday • +100 XP bonus if you log it!</div>' +
+      '<div class="roulette-slot-wrap"><span id="rouletteSlot">' + (rs.spun && rf ? rf.e : '🎰') + '</span></div>' +
+      (rs.spun
+        ? '<div id="rouletteResult" style="display:' + (isCompleted ? 'block' : 'block') + ';background:rgba(255,255,255,0.12);border-radius:14px;padding:12px 14px;margin-top:8px;text-align:left">' +
+            '<div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:3px">' + (isCompleted ? '✅ Dare complete!' : 'Your dare: ' + (rf ? rf.e + ' ' + rf.n : '')) + '</div>' +
+            (isCompleted
+              ? '<div style="font-size:12px;opacity:0.9">You logged ' + rs.fruit + ' this week! +100 XP earned 🎉</div>'
+              : '<div style="font-size:11px;opacity:0.85;margin-bottom:6px">Log ' + rs.fruit + ' before Monday for +100 bonus XP</div>' + (rf ? '<div style="font-size:11px;opacity:0.75">' + rf.note + '</div>' : '')
+            ) +
+          '</div>' +
+          (!isCompleted ? '<button class="roulette-spin-btn" onclick="spinRoulette()" style="margin-top:12px">🔄 Respin</button>' : '')
+        : '<button class="roulette-spin-btn" onclick="spinRoulette()">🎰 Spin!</button>'
+      ) +
+    '</div>';
+  })()}
   <div class="section-title" style="margin-top:6px">🧪 Juice Lab</div>
   ${isUnlocked(11) ?
     `<div class="card" style="text-align:center;padding:32px 20px"><div style="font-size:40px;margin-bottom:10px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Juice Lab</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — pick fruits from your log and get a creative juice or smoothie recipe!</div></div>` :
