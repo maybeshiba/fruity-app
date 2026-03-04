@@ -1017,6 +1017,165 @@ body {
   .fruit-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
   .fb-emoji { font-size: 22px; }
 }
+
+/* ============================================================
+   FLAVOUR WHEEL
+   ============================================================ */
+.flavour-wheel-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0 16px;
+}
+
+.wheel-canvas-wrap {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 16px;
+}
+
+#flavourCanvas {
+  width: 240px;
+  height: 240px;
+}
+
+.wheel-center-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.wheel-center-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px;
+  color: var(--text);
+  display: block;
+  line-height: 1;
+}
+
+.wheel-center-sub {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.flavour-legend {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.flavour-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 7px 10px;
+  border: 1.5px solid var(--border);
+}
+
+.legend-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-info { flex: 1; }
+.legend-name { font-size: 11px; font-weight: 800; color: var(--text); }
+.legend-count { font-size: 10px; color: var(--muted); font-weight: 700; }
+
+.wheel-empty {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   HELP MODAL
+   ============================================================ */
+.help-modal {
+  background: white;
+  border-radius: 28px;
+  padding: 28px 20px 24px;
+  max-width: 340px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  animation: modalPop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.help-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  color: var(--orange);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.help-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.help-tab-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.help-tab-row:last-of-type { border-bottom: none; }
+
+.help-tab-icon { font-size: 28px; flex-shrink: 0; width: 36px; text-align: center; }
+
+.help-tab-info { flex: 1; }
+
+.help-tab-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.help-tab-desc {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.help-progression {
+  background: var(--orange-light);
+  border: 2px solid #ffd0be;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.help-progression-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 14px;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+
 </style>
 </head>
 <body>
@@ -1031,6 +1190,7 @@ body {
         <div class="app-subtitle">Daily fruit tracker 🍊</div>
       </div>
     </div>
+    <button onclick="showHelp()" style="background:rgba(255,255,255,0.22);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.35);border-radius:50%;width:36px;height:36px;color:white;font-family:'Fredoka One',cursive;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:2px;flex-shrink:0">?</button>
     <div class="streak-badge">
       <span class="streak-num" id="streakNum">0</span>
       <span class="streak-label">🔥 streak</span>
@@ -1071,6 +1231,62 @@ body {
     <span class="nav-icon">👤</span>Me
   </button>
 </nav>
+
+
+<!-- HELP MODAL -->
+<div class="modal-overlay" id="helpModal" style="display:none" onclick="closeHelp()">
+  <div class="help-modal" onclick="event.stopPropagation()">
+    <div class="help-title">🍊 Welcome to Fruity!</div>
+    <div class="help-subtitle">Your daily habit tracker for eating more fruit.<br>Log what you eat, discover new varieties, and level up!</div>
+
+    <div class="help-tab-row">
+      <span class="help-tab-icon">🍎</span>
+      <div class="help-tab-info">
+        <div class="help-tab-name">Today</div>
+        <div class="help-tab-desc">Log every fruit you eat each day. See your vitamin coverage, get smart suggestions based on what you're missing, and build your daily streak.</div>
+      </div>
+    </div>
+
+    <div class="help-tab-row">
+      <span class="help-tab-icon">🍳</span>
+      <div class="help-tab-info">
+        <div class="help-tab-name">Challenge</div>
+        <div class="help-tab-desc">Each month has a cooking challenge — pick a fruit pairing and cook something with them. Complete it to earn XP. Harder combos earn more!</div>
+      </div>
+    </div>
+
+    <div class="help-tab-row">
+      <span class="help-tab-icon">🧠</span>
+      <div class="help-tab-info">
+        <div class="help-tab-name">Knowledge</div>
+        <div class="help-tab-desc">Unlock fruit trivia, origin quizzes and creative recipe ideas as you level up. New content every week.</div>
+      </div>
+    </div>
+
+    <div class="help-tab-row">
+      <span class="help-tab-icon">🗺️</span>
+      <div class="help-tab-info">
+        <div class="help-tab-name">Passport</div>
+        <div class="help-tab-desc">Every new fruit you log gets stamped in your Passport. Try to discover all 57 varieties! Achievements unlock as you hit milestones.</div>
+      </div>
+    </div>
+
+    <div class="help-tab-row">
+      <span class="help-tab-icon">👤</span>
+      <div class="help-tab-info">
+        <div class="help-tab-name">Me</div>
+        <div class="help-tab-desc">Your personal stats, XP progress, full history and unlockable features. See the full level ladder and what's coming next.</div>
+      </div>
+    </div>
+
+    <div class="help-progression">
+      <div class="help-progression-title">⚡ How progression works</div>
+      Every fruit you log earns XP — rarer fruits earn more. Complete monthly challenges for bonus XP. As you level up from 🌱 Seedling to 👑 The Fruit Obsessive, new features unlock one by one. The app literally grows with you!
+    </div>
+
+    <button class="btn-modal" style="margin-top:16px" onclick="closeHelp()">Got it! Let's eat fruit 🍎</button>
+  </div>
+</div>
 
 <!-- LEVEL UP MODAL -->
 <div class="modal-overlay" id="levelModal" style="display:none" onclick="closeLevelModal()">
@@ -1256,6 +1472,67 @@ const CHALLENGES = {
   ]},
 };
 
+
+const TRIVIA = [
+  { e:'🍋', fact:'Lemons were so prized in 15th century Europe they were given as royal gifts. One lemon covers around 50% of your daily vitamin C needs.' },
+  { e:'🍓', fact:'Strawberries are the only fruit with seeds on the outside — the average strawberry has around 200 of them.' },
+  { e:'🍌', fact:'Bananas are technically berries in botanical terms. Strawberries, however, are not.' },
+  { e:'🍎', fact:'There are over 7,500 known varieties of apple worldwide. Germany alone has over 1,500 traditional varieties.' },
+  { e:'🥝', fact:'Kiwis were originally called "Chinese Gooseberries" until New Zealand exporters rebranded them in the 1950s.' },
+  { e:'🍇', fact:'Grapes explode when you put them in a microwave — scientists at the University of Waterloo actually published a paper on this.' },
+  { e:'🍍', fact:'A pineapple takes up to 3 years to grow. Each plant produces just one pineapple at a time.' },
+  { e:'🫐', fact:'Blueberries are one of the only naturally blue foods in existence. The pigment that makes them blue also acts as a powerful antioxidant.' },
+  { e:'🍒', fact:'Japan has developed square watermelons — grown in cube-shaped glass moulds purely for easier storage in fridges.' },
+  { e:'🥭', fact:'Mangoes are related to cashews and pistachios. They all belong to the same plant family: Anacardiaceae.' },
+  { e:'🍑', fact:'Germany is one of Europe's top producers of plums and damsons. The Rhineland and Baden regions harvest millions of kilos each autumn.' },
+  { e:'🍐', fact:'Pears ripen from the inside out. By the time the outside feels soft, the inside is often already overripe.' },
+  { e:'🍊', fact:'It takes about 50 oranges to make one litre of orange juice. Most of the vitamin C is lost within 30 minutes of juicing.' },
+  { e:'🌿', fact:'Figs are not actually a fruit in the traditional sense — they are an inverted flower. What you eat is a structure called a syconium.' },
+  { e:'🫐', fact:'Sea buckthorn (Sanddorn) contains up to 15 times more vitamin C than an orange. It's been growing wild on German coasts for centuries.' },
+  { e:'🍒', fact:'The Mirabelle plum is so associated with the Lorraine region of France that it has protected geographical status — like champagne.' },
+  { e:'🥥', fact:'Coconut water was used as an emergency intravenous fluid during World War II in the Pacific when medical supplies ran out.' },
+  { e:'🍋', fact:'Limes contain more sugar than lemons despite tasting more sour. The sourness comes from a different balance of acids.' },
+  { e:'🍇', fact:'The colour of a grape has no effect on its sweetness. Red, green and black grapes all contain similar sugar levels.' },
+  { e:'🍓', fact:'Strawberries belong to the rose family, along with apples, pears, cherries, peaches and almonds.' },
+  { e:'🥝', fact:'A single kiwi contains more vitamin C than an orange of the same size. Golden kiwis contain even more than green ones.' },
+  { e:'🍌', fact:'Bananas are naturally slightly radioactive due to their potassium content. You would need to eat around 10 million to receive a harmful dose.' },
+  { e:'🍎', fact:'Apple seeds contain a compound called amygdalin, which releases cyanide when digested. You'd need to chew hundreds of seeds to feel any effect.' },
+  { e:'🫐', fact:'Elderberries (Holunderbeeren) have been used in German folk medicine for over 400 years to treat colds and fevers.' },
+  { e:'🍑', fact:'Peaches and nectarines are genetically almost identical. The only real difference is one gene that controls whether the skin is fuzzy or smooth.' },
+  { e:'🍍', fact:'Pineapple contains bromelain, an enzyme that literally digests proteins — including the proteins in your mouth. That tingle you feel is real.' },
+  { e:'🌺', fact:'Passion fruit gets its name not from romance but from Christian missionaries, who saw the flower as a symbol of the Passion of Christ.' },
+  { e:'🍊', fact:'Blood oranges get their red colour from anthocyanins — the same pigment found in blueberries and red cabbage. It only develops in cold nights.' },
+  { e:'🫐', fact:'Aronia berries (chokeberries) have one of the highest antioxidant ratings of any fruit ever measured — higher than blueberries and pomegranates.' },
+  { e:'🍐', fact:'Quince (Quitte) was the original "golden apple" of Greek mythology — the fruit of discord that started the Trojan War, not an apple at all.' },
+];
+
+function getWeeklyTrivia() {
+  const weekNum = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
+  return TRIVIA[weekNum % TRIVIA.length];
+}
+
+
+// Flavour profiles for wheel
+const FLAVOUR_PROFILES = {
+  'Sweet':   { color:'#FF9500', fruits:['Apple','Banana','Grape','Mango','Pineapple','Melon','Honeydew','Mandarin','Lychee','Clementine','Peach','Nectarine','Cherry','Mirabelle','Greengage','Fig','Cantaloupe','Persimmon','Papaya','Golden Kiwi'] },
+  'Sour':    { color:'#e53935', fruits:['Lemon','Lime','Grapefruit','Kiwi','Redcurrant','Gooseberry','Cranberry','Sea Buckthorn','Passion Fruit','Blood Orange','Pomelo','Yuzu','Morello Cherry'] },
+  'Bitter':  { color:'#5d4037', fruits:['Grapefruit','Pomelo','Yuzu','Aronia','Sloe','Elderberry','Quince'] },
+  'Tropical':{ color:'#00897b', fruits:['Mango','Pineapple','Papaya','Coconut','Plantain','Dragon Fruit','Guava','Açaí','Passion Fruit','Cherimoya','Lychee','Star Fruit'] },
+  'Earthy':  { color:'#6d4c41', fruits:['Fig','Quince','Damson','Plum','Blackcurrant','Aronia','Bilberry (Waldheidelbeere)','Elderberry','Sea Buckthorn','Sloe'] },
+  'Floral':  { color:'#e91e8c', fruits:['Elderberry','Physalis','Passion Fruit','Lychee','Blood Orange','Raspberry','Strawberry','Apricot','Peach','Nectarine'] },
+};
+
+function getFlavourCounts(fruitNames) {
+  const counts = {};
+  Object.keys(FLAVOUR_PROFILES).forEach(k => counts[k] = 0);
+  fruitNames.forEach(name => {
+    Object.entries(FLAVOUR_PROFILES).forEach(([flavour, data]) => {
+      if (data.fruits.includes(name)) counts[flavour]++;
+    });
+  });
+  return counts;
+}
+
 // ============================================================
 // STATE
 // ============================================================
@@ -1336,6 +1613,93 @@ function updateStreak() {
     }
   }
   STATE.streak = streak;
+}
+
+
+// ============================================================
+// HELP MODAL
+// ============================================================
+function showHelp() { document.getElementById('helpModal').style.display = 'flex'; }
+function closeHelp() { document.getElementById('helpModal').style.display = 'none'; }
+
+// ============================================================
+// FLAVOUR WHEEL
+// ============================================================
+function renderFlavourWheel(containerId, fruitNames) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  if (fruitNames.length === 0) {
+    el.innerHTML = '<div class="wheel-empty">🫙 Log some fruits to see your flavour wheel!</div>';
+    return;
+  }
+
+  const counts = getFlavourCounts(fruitNames);
+  const total = Object.values(counts).reduce((a,b) => a+b, 0);
+  const flavours = Object.entries(FLAVOUR_PROFILES);
+
+  el.innerHTML = '<div class="flavour-wheel-wrap"><div class="wheel-canvas-wrap"><canvas id="flavourCanvas" width="240" height="240"></canvas><div class="wheel-center-label"><span class="wheel-center-num">' + fruitNames.length + '</span><span class="wheel-center-sub">fruits logged</span></div></div><div class="flavour-legend" id="flavourLegend"></div></div>';
+
+  const canvas = document.getElementById('flavourCanvas');
+  const ctx = canvas.getContext('2d');
+  const cx = 120, cy = 120, r = 110, innerR = 55;
+
+  if (total === 0) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fillStyle = '#f0e6d6';
+    ctx.fill();
+  } else {
+    let startAngle = -Math.PI / 2;
+    flavours.forEach(([name, data]) => {
+      const count = counts[name] || 0;
+      if (count === 0) return;
+      const slice = (count / total) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, startAngle, startAngle + slice);
+      ctx.closePath();
+      ctx.fillStyle = data.color;
+      ctx.fill();
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Label on slice if big enough
+      if (slice > 0.35) {
+        const midAngle = startAngle + slice / 2;
+        const lx = cx + (r * 0.72) * Math.cos(midAngle);
+        const ly = cy + (r * 0.72) * Math.sin(midAngle);
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 10px Nunito, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(name, lx, ly);
+      }
+      startAngle += slice;
+    });
+  }
+
+  // Donut hole
+  ctx.beginPath();
+  ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+
+  // Legend
+  const legendEl = document.getElementById('flavourLegend');
+  if (legendEl) {
+    legendEl.innerHTML = flavours.map(([name, data]) => {
+      const count = counts[name] || 0;
+      return '<div class="flavour-legend-item">' +
+        '<div class="legend-dot" style="background:' + data.color + '"></div>' +
+        '<div class="legend-info">' +
+          '<div class="legend-name">' + name + '</div>' +
+          '<div class="legend-count">' + count + ' fruit' + (count !== 1 ? 's' : '') + '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
 }
 
 // ============================================================
@@ -1685,32 +2049,47 @@ function renderChallengePage() {
         Log both fruits first to claim 🍽️
       </button>
     ` : ''}
-  `;
+  \${isUnlocked(8) ? \`
+    <div class="section-title" style="margin-top:6px">🎰 Fruit Roulette</div>
+    <div class="card" style="text-align:center;padding:32px 20px">
+      <div style="font-size:40px;margin-bottom:10px">🎰</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:17px;margin-bottom:6px">Fruit Roulette</div>
+      <div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — spin the wheel and get dared to try a fruit you've never logged!</div>
+    </div>
+  \` : ''}
+  \`;
 }
 
 // ============================================================
 // KNOWLEDGE PAGE
 // ============================================================
 function renderKnowledgePage() {
-  document.getElementById('pageKnowledge').innerHTML = `
-    <div class="section-title" style="margin-top:4px">🧠 Fruit Knowledge</div>
+  const trivia = getWeeklyTrivia();
 
-    ${renderKnowledgeSection(5, '📖', 'Fruit Trivia', 'A new "Did you know..." every week', `
-      <div style="font-size:22px;margin:8px 0">🍋</div>
-      <div style="font-size:13px;font-weight:700;line-height:1.7">
-        Did you know? Lemons were so prized in 15th century Europe that they were given as royal gifts. They contain more vitamin C than most people realise — one lemon covers about 50% of your daily needs!
-      </div>
-    `)}
+  const triviaContent = '<div style="display:flex;gap:14px;align-items:flex-start">' +
+    '<span style="font-size:44px;line-height:1;flex-shrink:0">' + trivia.e + '</span>' +
+    '<div style="font-size:13px;font-weight:700;line-height:1.7;color:var(--text)">' + trivia.fact + '</div>' +
+    '</div>';
 
-    ${renderKnowledgeSection(13, '🌍', 'Fruit Origins Quiz', 'Test your fruit geography — new question weekly', `
-      <div style="font-size:13px;font-weight:700;color:var(--muted)">Quiz unlocked at Level 9 🌍</div>
-    `)}
+  const originsContent = '<div style="text-align:center;padding:16px 0">' +
+    '<div style="font-size:36px;margin-bottom:8px">🌍</div>' +
+    '<div style="font-family:Fredoka One,cursive;font-size:15px;margin-bottom:4px">Fruit Origins Quiz</div>' +
+    '<div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — test your knowledge of where fruits come from!</div>' +
+    '</div>';
 
-    ${renderKnowledgeSection(6, '🍓', 'What to make with...', 'Weekly featured fruit — a checklist of ideas', `
-      <div style="font-size:13px;font-weight:700;color:var(--muted)">Unlocks at Level 11 🍇</div>
-    `)}
-  `;
+  const makeWithContent = '<div style="text-align:center;padding:16px 0">' +
+    '<div style="font-size:36px;margin-bottom:8px">🍓</div>' +
+    '<div style="font-family:Fredoka One,cursive;font-size:15px;margin-bottom:4px">What to make with...</div>' +
+    '<div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — weekly featured fruit with a checklist of things to make!</div>' +
+    '</div>';
+
+  document.getElementById('pageKnowledge').innerHTML =
+    '<div class="section-title" style="margin-top:4px">🧠 Fruit Knowledge</div>' +
+    renderKnowledgeSection(5, '📖', 'Fruit Trivia', 'A new fact every week', triviaContent) +
+    renderKnowledgeSection(6, '🍓', 'What to make with...', 'Weekly featured fruit — ideas & inspiration', makeWithContent) +
+    renderKnowledgeSection(13, '🌍', 'Fruit Origins Quiz', 'Test your fruit geography — new question weekly', originsContent);
 }
+
 
 function renderKnowledgeSection(requiredLevel, emoji, title, sub, content) {
   const unlocked = isUnlocked(requiredLevel);
@@ -1812,7 +2191,18 @@ function renderPassportPage() {
     </div>
   `).join('');
 
-  document.getElementById('pagePassport').innerHTML = `
+  const juiceLabSection = isUnlocked(11) ?
+    '<div class="section-title">🧪 Juice Lab</div>' +
+    '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px">' +
+      '<div style="font-size:40px;margin-bottom:10px">🧪</div>' +
+      '<div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Juice Lab</div>' +
+      '<div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — combine your logged fruits into creative juice & smoothie recipes!</div>' +
+    '</div>' : '';
+
+  const rouletteSection = isUnlocked(8) ?
+    '' : ''; // Roulette is in Challenge tab
+
+  document.getElementById('pagePassport').innerHTML = \`
     <div class="passport-header">
       <div class="passport-title">🗺️ Fruit Passport</div>
       <div class="passport-count">${found} of ${total} fruits discovered (${pct}%)</div>
@@ -1904,17 +2294,64 @@ function renderMePage() {
         </div>`;
       }).join('');
 
-  document.getElementById('pageMe').innerHTML = `
+  const flavourSection = isUnlocked(3) ? `
+    <div class="section-title">🎡 Flavour Wheel</div>
+    <div class="card" style="padding:16px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Based on all your logged fruits — how varied is your taste profile?</div>
+      <div id="flavourWheelContainer"></div>
+    </div>
+  ` : '';
+
+  const worldMapSection = isUnlocked(7) ? `
+    <div class="section-title">🌍 World Map</div>
+    <div class="card" style="text-align:center;padding:32px 20px">
+      <div style="font-size:40px;margin-bottom:10px">🌍</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:17px;margin-bottom:6px">World Map</div>
+      <div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — countries will light up as you eat fruits from around the world!</div>
+    </div>
+  ` : '';
+
+  const yearlySection = isUnlocked(14) ? `
+    <div class="section-title">📊 Yearly Stats</div>
+    <div class="card" style="text-align:center;padding:32px 20px">
+      <div style="font-size:40px;margin-bottom:10px">📊</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:17px;margin-bottom:6px">Yearly Stats</div>
+      <div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — your full year of fruit eating visualised!</div>
+    </div>
+  ` : '';
+
+  const identitySection = isUnlocked(15) ? `
+    <div class="section-title">🪪 Fruit Identity Card</div>
+    <div class="card" style="text-align:center;padding:32px 20px">
+      <div style="font-size:40px;margin-bottom:10px">🪪</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:17px;margin-bottom:6px">Fruit Identity Card</div>
+      <div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — your personalised fruit journey story!</div>
+    </div>
+  ` : '';
+
+  document.getElementById('pageMe').innerHTML = \`
     <div class="section-title" style="margin-top:4px">👤 My Journey</div>
 
-    <div class="stats-grid">${statsHtml}</div>
+    <div class="stats-grid">\${statsHtml}</div>
 
     <div class="section-title">⚡ XP Ladder</div>
-    <div class="ladder-wrap">${ladderHtml}</div>
+    <div class="ladder-wrap">\${ladderHtml}</div>
 
-    <div class="section-title">📅 History ${!isUnlocked(4) ? '<span style="font-size:12px;color:var(--muted);font-weight:700">(last 14 days)</span>' : ''}</div>
-    ${historyHtml}
-  `;
+    \${flavourSection}
+    \${worldMapSection}
+
+    <div class="section-title">📅 History \${!isUnlocked(4) ? '<span style="font-size:12px;color:var(--muted);font-weight:700">(last 14 days)</span>' : ''}</div>
+    \${historyHtml}
+
+    \${yearlySection}
+    \${identitySection}
+  \`;
+
+  // Render flavour wheel after DOM update
+  if (isUnlocked(3)) {
+    const allF = Object.values(STATE.history || {}).flat();
+    renderFlavourWheel('flavourWheelContainer', allF);
+  }
 }
 
 // ============================================================
