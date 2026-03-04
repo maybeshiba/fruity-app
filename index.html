@@ -1247,6 +1247,89 @@ body {
   to   { opacity: 0; }
 }
 
+
+/* ============================================================
+   FRUIT KEEPER
+   ============================================================ */
+.keeper-search {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  background: var(--bg);
+  color: var(--text);
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.keeper-search:focus { border-color: var(--orange); }
+
+.keeper-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-bottom: 14px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.keeper-fruit-btn {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 4px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text);
+  transition: all 0.15s;
+}
+.keeper-fruit-btn:active,
+.keeper-fruit-btn.selected {
+  background: var(--orange-light);
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.keeper-fruit-btn .kfb-emoji { font-size: 20px; display: block; margin-bottom: 3px; }
+
+.keeper-result {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.keeper-result-header {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid #bbdefb;
+}
+
+.keeper-result-emoji { font-size: 36px; }
+.keeper-result-name { font-family: 'Fredoka One', cursive; font-size: 20px; color: #1565c0; }
+
+.keeper-row {
+  padding: 12px 16px;
+  border-bottom: 1.5px solid var(--border);
+  display: flex;
+  gap: 10px;
+}
+.keeper-row:last-child { border-bottom: none; }
+
+.keeper-row-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.keeper-row-content { flex: 1; }
+.keeper-row-label { font-size: 10px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+.keeper-row-text { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.5; }
+
 </style>
 </head>
 <body>
@@ -1394,7 +1477,7 @@ const LEVELS = [
   { name:'🌱 Seedling',              xp:0,     reward:null,                                                          hint:null },
   { name:'🌿 Kiwi Sprout',           xp:60,    reward:'🗺️ Fruit Passport + 🏅 Achievements unlocked!',             hint:'Discover a way to track all the fruits you have ever tried...' },
   { name:'🍓 Strawberry Taster',     xp:150,   reward:'🎡 Flavour Wheel unlocked in Me tab!',                       hint:'A visual taste profile of your eating habits is coming...' },
-  { name:'🍒 Cherry Picker',         xp:280,   reward:'📅 Full history unlocked in Me tab!',                        hint:'Your complete fruit history is almost within reach...' },
+  { name:'🍒 Cherry Picker',         xp:280,   reward:'🧊 Fruit Keeper unlocked in Knowledge tab!',                        hint:'A handy guide to storing every fruit is coming...' },
   { name:'🫐 Blueberry Scout',       xp:450,   reward:'📖 Fruit Trivia unlocked in Knowledge tab!',                 hint:'Something educational and surprising unlocks next...' },
   { name:'🍑 Peachy Apprentice',     xp:700,   reward:'🍓 What to make with... unlocked in Knowledge tab!',         hint:'A creative kitchen feature is just around the corner...' },
   { name:'🌺 Passionfruity Traveller',xp:1000, reward:'🌍 World Map unlocked in Me tab!',                           hint:'The world is about to open up on your screen...' },
@@ -1674,6 +1757,70 @@ function getVisitedCountries(loggedFruits) {
   });
   return visited;
 }
+
+
+// ============================================================
+// FRUIT KEEPER DATA (Lvl 4)
+// ============================================================
+const FRUIT_KEEPER = {
+  'Apple':        { temp:'Room temp for weeks, or fridge to extend life', life:'1–3 weeks room temp, up to 2 months in fridge', bad:'Soft mushy spots, wrinkled skin, or brown flesh inside' },
+  'Banana':       { temp:'Room temp only — fridge turns the skin black', ripen:'Leave on counter until yellow with small brown speckles', life:'2–5 days once ripe', bad:'Fully black skin or fermented smell (flesh may still be fine for baking)' },
+  'Orange':       { temp:'Room temp up to a week, fridge for longer', life:'1 week room temp, 3–4 weeks in fridge', bad:'Soft or mouldy spots, dried-out skin, sour smell' },
+  'Lemon':        { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3–4 weeks in fridge', bad:'Soft spots, shrivelled skin, or white mould' },
+  'Grape':        { temp:'Always fridge, unwashed', life:'1–2 weeks', bad:'Wrinkled skin, sticky texture, or mould — remove affected ones immediately' },
+  'Strawberry':   { temp:'Fridge, unwashed, in a single layer if possible', life:'3–5 days', bad:'Mushy spots or white/grey mould — remove immediately' },
+  'Peach':        { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp stem-side down until slightly soft and fragrant', life:'2–3 days room temp, up to 5 days in fridge once ripe', bad:'Very mushy spots, brown flesh, or fermented smell' },
+  'Nectarine':    { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until fragrant and slightly soft near the stem', life:'2–3 days room temp, 5 days in fridge once ripe', bad:'Mushy dark spots or wrinkled skin' },
+  'Cherry':       { temp:'Fridge, unwashed', life:'5–7 days', bad:'Sticky, discoloured, or mouldy — they go fast once bad' },
+  'Pear':         { temp:'Room temp to ripen, then fridge', ripen:'Ripe when the neck gives slightly to gentle pressure — check daily', life:'2–4 days once ripe', bad:'Grainy mushy flesh or brown spots — overripe very quickly' },
+  'Kiwi':         { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until slightly soft to touch', life:'1 week room temp, 2–3 weeks in fridge once ripe', bad:'Very soft or shrivelled skin, off smell' },
+  'Watermelon':   { temp:'Room temp whole, fridge once cut', life:'1–2 weeks whole at room temp, 3–5 days cut in fridge', bad:'Dry or grainy flesh, sour smell, mushy texture' },
+  'Mango':        { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until fragrant and slightly soft — can take 2–5 days', life:'Up to 5 days in fridge once ripe', bad:'Black patches, very mushy spots, or sour smell' },
+  'Pineapple':    { temp:'Room temp to ripen, fridge once cut', ripen:'A day or two upside-down at room temp helps distribute sugars', life:'2–3 days room temp, 3–5 days cut in fridge', bad:'Soft brown patches, fermented smell, or mould at base' },
+  'Melon':        { temp:'Room temp whole, fridge once cut', life:'Up to 1 week whole, 3–5 days cut', bad:'Sunken spots, sour smell, or slimy flesh' },
+  'Honeydew':     { temp:'Room temp whole, fridge once cut', life:'Up to 1 week whole, 3–5 days cut', bad:'Very soft spots or fermented smell' },
+  'Mandarin':     { temp:'Room temp for a few days, fridge for longer', life:'1 week room temp, 2–3 weeks in fridge', bad:'Mould, dry or shrivelled peel, sour smell' },
+  'Grapefruit':   { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3 weeks in fridge', bad:'Soft mouldy spots or very dry skin' },
+  'Lime':         { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3–4 weeks in fridge', bad:'Brown or black spots, dried-out skin' },
+  'Coconut':      { temp:'Whole: room temp. Opened: fridge in water', life:'Weeks whole at room temp, 3–4 days opened in fridge', bad:'Pinkish or slimy flesh, sour smell — discard immediately' },
+  'Plantain':     { temp:'Room temp — never fridge until fully black', ripen:'Green → yellow → black; each stage has a different flavour. Cook green for savoury, black for sweet.', life:'Days to weeks depending on ripeness stage', bad:'Slimy flesh or mould on skin' },
+  'Apricot':      { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until fragrant and slightly soft', life:'2–3 days room temp, 5 days in fridge once ripe', bad:'Very mushy, brown flesh, or fermented smell' },
+  'Mirabelle':    { temp:'Fridge once ripe', life:'3–5 days in fridge', bad:'Sticky skin, mould, or fermented smell' },
+  'Damson':       { temp:'Fridge', life:'3–5 days', bad:'Shrivelled skin or mould' },
+  'Plum':         { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until slightly soft', life:'3–5 days in fridge once ripe', bad:'Very mushy spots or fermented smell' },
+  'Greengage':    { temp:'Room temp to ripen, then fridge', life:'3–5 days in fridge once ripe', bad:'Soft mushy spots or mould' },
+  'Riesling Grape':{ temp:'Fridge, unwashed', life:'1–2 weeks', bad:'Wrinkled, sticky, or mouldy grapes — remove affected ones' },
+  'Fig':          { temp:'Fridge — they are very fragile', life:'2–3 days max', bad:'Sour smell, very mushy, or mould — figs go bad faster than almost any fruit' },
+  'Quince':       { temp:'Cool room temp or fridge', life:'2–3 months in a cool place — one of the longest-lasting fruits', bad:'Soft brown spots or mould' },
+  'Blueberry':    { temp:'Fridge, unwashed', life:'1–2 weeks', bad:'Mouldy, mushy, or shrivelled berries — mould spreads fast, remove immediately' },
+  'Raspberry':    { temp:'Fridge, unwashed, single layer', life:'2–3 days — very delicate', bad:'Any mould at all — discard the whole punnet if mould appears, it spreads within hours' },
+  'Blackberry':   { temp:'Fridge, unwashed', life:'3–5 days', bad:'Mould or mushy texture — check daily' },
+  'Redcurrant':   { temp:'Fridge, unwashed, on the stem', life:'1 week', bad:'Soft, shrivelled, or mouldy berries' },
+  'Blackcurrant': { temp:'Fridge, unwashed', life:'1 week', bad:'Mouldy or fermented smell' },
+  'Gooseberry':   { temp:'Fridge', life:'1–2 weeks', bad:'Shrivelled skin or mould' },
+  'Bilberry (Waldheidelbeere)': { temp:'Fridge, unwashed', life:'3–5 days', bad:'Mould or very soft mushy texture' },
+  'Aronia':       { temp:'Fridge', life:'1–2 weeks', bad:'Mould or fermented smell' },
+  'Sea Buckthorn':{ temp:'Fridge or freeze — very short shelf life fresh', life:'A few days in fridge, months frozen', bad:'Mushy or fermented — freeze if not using immediately' },
+  'Elderberry':   { temp:'Fridge — never eat raw, must be cooked', life:'2–3 days fresh, months frozen', bad:'Any fermented smell or mould' },
+  'Cranberry':    { temp:'Fridge', life:'3–4 weeks', bad:'Soft, shrivelled, or sticky berries' },
+  'Physalis':     { temp:'Room temp in husk, fridge once husked', life:'Weeks in husk at room temp, a few days husked', bad:'Mouldy or shrivelled husk — the husk protects the fruit inside' },
+  'Golden Kiwi':  { temp:'Room temp to ripen, then fridge', ripen:'Slightly softer than green kiwi when ripe', life:'1 week room temp, 2–3 weeks in fridge once ripe', bad:'Very soft or fermented smell' },
+  'Papaya':       { temp:'Room temp to ripen, then fridge', ripen:'Leave at room temp until mostly yellow and slightly soft', life:'2–3 days room temp, 5 days fridge once ripe', bad:'Black sunken spots or sour smell' },
+  'Pomegranate':  { temp:'Room temp for a week, fridge for longer', life:'1–2 weeks room temp, 1–2 months in fridge', bad:'Mouldy crown, sour smell, or dried-out seeds' },
+  'Passion Fruit':{ temp:'Room temp until wrinkled, then eat', ripen:'Smooth skin means unripe — wait until wrinkled, that\'s when it\'s sweetest', life:'1–2 weeks at room temp', bad:'Mouldy or very sunken and dry' },
+  'Dragon Fruit': { temp:'Room temp for a few days, fridge once cut', life:'2–3 days room temp, 1–2 days cut in fridge', bad:'Brown mushy patches or mould on skin' },
+  'Star Fruit':   { temp:'Room temp to ripen, fridge once ripe', life:'1 week room temp, up to 2 weeks in fridge', bad:'Brown edges, mushy spots, or sour smell' },
+  'Cherimoya':    { temp:'Room temp to ripen — very sensitive to cold', ripen:'Leave at room temp until flesh gives like a ripe avocado — never refrigerate before ripe', life:'2–3 days once ripe', bad:'Black skin, very mushy, or fermented smell' },
+  'Pomelo':       { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3 weeks fridge', bad:'Soft spots or dried-out skin' },
+  'Persimmon':    { temp:'Room temp to ripen, then fridge', ripen:'Hachiya must be completely soft (jelly-like) before eating or it\'s very astringent. Fuyu can be eaten firm.', life:'A few days once ripe', bad:'Mouldy or very mushy patches' },
+  'Açaí':         { temp:'Frozen — almost always sold frozen or as pulp', life:'Months frozen, 1–2 days thawed', bad:'Off smell or separation once thawed' },
+  'Guava':        { temp:'Room temp to ripen, fridge once ripe', ripen:'Leave at room temp until fragrant and slightly soft', life:'2–3 days room temp, 3–4 days fridge', bad:'Very soft patches, off smell, or mould' },
+  'Cantaloupe':   { temp:'Room temp whole, fridge once cut', life:'5 days whole, 3 days cut', bad:'Soft sunken spots or sour smell' },
+  'Lychee':       { temp:'Fridge in original packaging', life:'1–2 weeks in fridge', bad:'Brown or black skin, fermented smell — skin darkens naturally but smell is the key sign' },
+  'Clementine':   { temp:'Room temp for a few days, fridge for longer', life:'1 week room temp, 2–3 weeks fridge', bad:'Mould, soft spots, or dry shrivelled peel' },
+  'Blood Orange': { temp:'Room temp for a week, fridge for longer', life:'1 week room temp, 3–4 weeks fridge', bad:'Mould, soft spots, sour smell' },
+  'Yuzu':         { temp:'Fridge', life:'Several weeks in fridge — thick skin helps', bad:'Mould or very soft spots' },
+};
 
 // ============================================================
 // STATE
@@ -1961,6 +2108,123 @@ function showSeasonalBonus(emoji, xp) {
   setTimeout(() => el.remove(), 2400);
 }
 
+
+// ============================================================
+// FRUIT KEEPER (Lvl 4)
+// ============================================================
+function renderFruitKeeper(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  const fruitsWithData = FRUITS.filter(f => FRUIT_KEEPER[f.n]);
+
+  function showKeeper(fruit) {
+    const data = FRUIT_KEEPER[fruit.n];
+    if (!data) return;
+    document.getElementById('keeperResult').innerHTML =
+      '<div class="keeper-result">' +
+        '<div class="keeper-result-header">' +
+          '<span class="keeper-result-emoji">' + fruit.e + '</span>' +
+          '<span class="keeper-result-name">' + fruit.n + '</span>' +
+        '</div>' +
+        '<div class="keeper-row">' +
+          '<span class="keeper-row-icon">🌡️</span>' +
+          '<div class="keeper-row-content">' +
+            '<div class="keeper-row-label">Room temp or fridge?</div>' +
+            '<div class="keeper-row-text">' + data.temp + '</div>' +
+          '</div>' +
+        '</div>' +
+        (data.ripen ? '<div class="keeper-row"><span class="keeper-row-icon">🍃</span><div class="keeper-row-content"><div class="keeper-row-label">Ripening</div><div class="keeper-row-text">' + data.ripen + '</div></div></div>' : '') +
+        '<div class="keeper-row">' +
+          '<span class="keeper-row-icon">⏱️</span>' +
+          '<div class="keeper-row-content">' +
+            '<div class="keeper-row-label">How long?</div>' +
+            '<div class="keeper-row-text">' + data.life + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="keeper-row">' +
+          '<span class="keeper-row-icon">⚠️</span>' +
+          '<div class="keeper-row-content">' +
+            '<div class="keeper-row-label">Going bad?</div>' +
+            '<div class="keeper-row-text">' + data.bad + '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    // Highlight selected button
+    document.querySelectorAll('.keeper-fruit-btn').forEach(b => b.classList.remove('selected'));
+    const btn = document.querySelector('[data-keeper="' + fruit.n + '"]');
+    if (btn) { btn.classList.add('selected'); btn.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+  }
+
+  function filterFruits(query) {
+    const q = query.toLowerCase();
+    return fruitsWithData.filter(f => f.n.toLowerCase().includes(q));
+  }
+
+  el.innerHTML =
+    '<input class="keeper-search" placeholder="🔍 Type a fruit name..." id="keeperSearch" type="text" autocomplete="off">' +
+    '<div id="keeperSuggestions" style="display:none;background:white;border:2px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden"></div>' +
+    '<div id="keeperResult"><div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;font-weight:700">Type a fruit name above 🍎</div></div>';
+
+  document.getElementById('keeperSearch').addEventListener('input', function() {
+    const q = this.value.trim();
+    const sugEl = document.getElementById('keeperSuggestions');
+    if (q.length < 1) { sugEl.style.display = 'none'; return; }
+    const results = filterFruits(q).slice(0, 5);
+    if (results.length === 0) { sugEl.style.display = 'none'; return; }
+    sugEl.style.display = 'block';
+    sugEl.innerHTML = results.map(f =>
+      '<div onclick="keeperSelect(\'' + f.n + '\');document.getElementById(\'keeperSearch\').value=\'' + f.n + '\';document.getElementById(\'keeperSuggestions\').style.display=\'none\'" ' +
+      'style="padding:10px 14px;cursor:pointer;font-size:13px;font-weight:700;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px">' +
+      '<span style="font-size:20px">' + f.e + '</span>' + f.n + '</div>'
+    ).join('');
+    if (results.length === 1) {
+      keeperSelect(results[0].n);
+      sugEl.style.display = 'none';
+      this.value = results[0].n;
+    }
+  });
+}
+
+function keeperSelect(name) {
+  const fruit = FRUITS.find(f => f.n === name);
+  if (!fruit) return;
+  const data = FRUIT_KEEPER[fruit.n];
+  if (!data) return;
+  document.getElementById('keeperResult').innerHTML =
+    '<div class="keeper-result">' +
+      '<div class="keeper-result-header">' +
+        '<span class="keeper-result-emoji">' + fruit.e + '</span>' +
+        '<span class="keeper-result-name">' + fruit.n + '</span>' +
+      '</div>' +
+      '<div class="keeper-row">' +
+        '<span class="keeper-row-icon">🌡️</span>' +
+        '<div class="keeper-row-content">' +
+          '<div class="keeper-row-label">Room temp or fridge?</div>' +
+          '<div class="keeper-row-text">' + data.temp + '</div>' +
+        '</div>' +
+      '</div>' +
+      (data.ripen ? '<div class="keeper-row"><span class="keeper-row-icon">🍃</span><div class="keeper-row-content"><div class="keeper-row-label">Ripening</div><div class="keeper-row-text">' + data.ripen + '</div></div></div>' : '') +
+      '<div class="keeper-row">' +
+        '<span class="keeper-row-icon">⏱️</span>' +
+        '<div class="keeper-row-content">' +
+          '<div class="keeper-row-label">How long?</div>' +
+          '<div class="keeper-row-text">' + data.life + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="keeper-row">' +
+        '<span class="keeper-row-icon">⚠️</span>' +
+        '<div class="keeper-row-content">' +
+          '<div class="keeper-row-label">Going bad?</div>' +
+          '<div class="keeper-row-text">' + data.bad + '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  document.querySelectorAll('.keeper-fruit-btn').forEach(b => b.classList.remove('selected'));
+  const btn = document.querySelector('[data-keeper="' + name + '"]');
+  if (btn) { btn.classList.add('selected'); btn.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+}
+
 // ============================================================
 // HEADER
 // ============================================================
@@ -1989,7 +2253,7 @@ function renderHeader() {
   if (hintEl) {
     if (next && next.hint) {
       hintEl.style.display = 'block';
-      hintEl.innerHTML = `<span style="opacity:0.8">Next unlock at <strong>${next.name}</strong> (${next.xp.toLocaleString()} XP):</span><br>🔮 <em>${next.hint}</em>`;
+      hintEl.innerHTML = '<span style="opacity:0.8">Next unlock at <strong>' + next.name + '</strong> (' + next.xp.toLocaleString() + ' XP):</span><br>🔮 <em>' + next.hint + '</em><br><span style="font-size:10px;opacity:0.75;margin-top:4px;display:block">🌿 Tip: eating in-season fruits earns double XP!</span>';
     } else {
       hintEl.style.display = 'none';
     }
@@ -2401,9 +2665,15 @@ function renderKnowledgePage() {
 
   document.getElementById('pageKnowledge').innerHTML =
     '<div class="section-title" style="margin-top:4px">🧠 Fruit Knowledge</div>' +
+    renderKnowledgeSection(4, '🧊', 'Fruit Keeper', 'How to store & ripen any fruit', keeperContent) +
     renderKnowledgeSection(5, '📖', 'Fruit Trivia', 'A new fact every week', triviaContent) +
     renderKnowledgeSection(6, '🍓', 'What to make with...', 'Weekly featured fruit — ideas & inspiration', makeWithContent) +
     renderKnowledgeSection(13, '🌍', 'Fruit Origins Quiz', 'Test your fruit geography — new question weekly', originsContent);
+
+  // Render Fruit Keeper after DOM update
+  if (isUnlocked(4)) {
+    renderFruitKeeper('fruitKeeperContainer');
+  }
 }
 
 
@@ -2648,7 +2918,7 @@ function renderMePage() {
     ${flavourSection}
     ${worldMapSection}
 
-    <div class="section-title">📅 History ${!isUnlocked(4) ? '<span style="font-size:12px;color:var(--muted);font-weight:700">(last 14 days)</span>' : ''}</div>
+    <div class="section-title">📅 History</div>
     ${historyHtml}
 
     ${yearlySection}
