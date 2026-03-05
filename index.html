@@ -1703,7 +1703,7 @@ const LEVELS = [
   { name:'🍋 Loquat Legend',         xp:2200,  reward:'🍳 Trio Challenge unlocked as 4th difficulty in Monthly Challenge!',      hint:'A serious 3-fruit cooking challenge is almost yours...' },
   { name:'🍊 Tangerine Taster',      xp:3100,  reward:'🎡 Flavour Wheel unlocked in Me tab!',                                   hint:'A visual taste profile of your eating habits is coming...' },
   { name:'🌺 Passionfruity Pairer',  xp:4200,  reward:'🍽️ Pairing of the Week unlocked in Challenge tab!',                     hint:'A weekly real-life fruit pairing challenge is coming...' },
-  { name:'🍈 Jambu Juicer',          xp:5500,  reward:'🧪 Juice Lab unlocked in Challenge tab!',                                hint:'Something to do with combining fruits is brewing...' },
+  { name:'🍹 Bignay Bartender',       xp:5500,  reward:'🍹 Friday Sips unlocked in Challenge tab!',                              hint:'A weekly cocktail trivia feature is being mixed...' },
   { name:'🍊 Kumquat Kolorist',      xp:7200,  reward:'🏆 Fruit Bucket List unlocked in Challenge tab!',                        hint:'A legendary fruit challenge awaits the truly dedicated...' },
   { name:'👑 King Durian',           xp:10000, reward:'🎨 Custom Accent + 🪪 Fruit Identity Card unlocked!',                    hint:null },
 ];
@@ -2201,6 +2201,49 @@ function getWeeklyTrio() {
   return { ...TRIO_CHALLENGES[idx], weekKey, daysLeft };
 }
 
+
+// ============================================================
+// FRIDAY SIPS — weekly cocktail trivia (Lvl 13)
+// ============================================================
+const FRIDAY_SIPS = [
+  { e:'🍍🥥', name:'Piña Colada',        fruits:['Pineapple','Coconut'],          fact:'Invented in 1954 at the Caribe Hilton in Puerto Rico. The name means "strained pineapple" in Spanish.',                                          origin:'Puerto Rico 🇵🇷' },
+  { e:'🍋🌿', name:'Mojito',             fruits:['Lime','Mint'],                  fact:'Originally a medicinal drink — 16th century sailors used lime and mint to fight scurvy and indigestion on long voyages.',                            origin:'Cuba 🇨🇺' },
+  { e:'🍊🍾', name:'Aperol Spritz',      fruits:['Orange'],                       fact:'Aperol was invented in 1919 in Padua. The orange peel garnish is non-negotiable in Italy — ask for it without and risk a raised eyebrow.',           origin:'Italy 🇮🇹' },
+  { e:'🍑🍾', name:'Bellini',            fruits:['Peach'],                        fact:'Created in 1948 at Harry\'s Bar in Venice. Cipriani named it after Giovanni Bellini\'s paintings — the pink glow matched the cocktail perfectly.',   origin:'Italy 🇮🇹' },
+  { e:'🍓🍾', name:'Strawberry Daiquiri',fruits:['Strawberry','Lime'],            fact:'The original daiquiri (just lime + rum) was named after a Cuban mining town. The frozen strawberry version became iconic in 1930s New Orleans.',     origin:'Cuba/USA 🇺🇸' },
+  { e:'🍋🫙', name:'Limoncello Spritz',  fruits:['Lemon'],                        fact:'Limoncello is made by steeping lemon zest in pure alcohol — not the juice. Only the outer peel, never the bitter white pith, goes in.',             origin:'Italy 🇮🇹' },
+  { e:'🍎🥃', name:'Apple Sour',         fruits:['Apple','Lemon'],                fact:'The whisky sour template — spirit, citrus, sugar — is one of the oldest cocktail formulas, documented as far back as 1862.',                        origin:'USA 🇺🇸' },
+  { e:'🍇🍾', name:'Kir Royale',         fruits:['Blackcurrant'],                 fact:'Kir was named after Félix Kir, mayor of Dijon, who served it at official receptions. The Royale swaps still wine for champagne.',                   origin:'France 🇫🇷' },
+  { e:'🥭🌶️', name:'Mango Chili Margarita', fruits:['Mango','Lime'],             fact:'The margarita is one of the most ordered cocktails in the world. Chili and mango became a popular pairing in Mexico long before bartenders caught on.', origin:'Mexico 🇲🇽' },
+  { e:'🍓🌿', name:'Strawberry Basil Smash', fruits:['Strawberry','Lemon'],       fact:'The "smash" is a 19th century American style — spirit, muddled fruit or herb, citrus and ice. One of the most flexible cocktail formulas ever.',    origin:'USA 🇺🇸' },
+  { e:'🍊🥃', name:'Old Fashioned Citrus',fruits:['Orange'],                      fact:'The Old Fashioned is considered the original cocktail — the word "cocktail" once literally meant spirit + sugar + bitters + water.',                  origin:'USA 🇺🇸' },
+  { e:'🍋🥂', name:'French 75',          fruits:['Lemon'],                        fact:'Named after the French 75mm field gun — American soldiers in WWI said the mix of gin and champagne packed the same punch.',                            origin:'France 🇫🇷' },
+  { e:'🍍🌶️', name:'Tepache',            fruits:['Pineapple'],                    fact:'A fermented pineapple drink from pre-colonial Mexico — not technically a cocktail but increasingly mixed with beer or mezcal in modern bars.',         origin:'Mexico 🇲🇽' },
+  { e:'🫐🍋', name:'Blueberry Lemon Drop',fruits:['Blueberry','Lemon'],           fact:'The Lemon Drop was invented at a San Francisco bar called Henry Africa\'s in the 1970s — originally considered a "women\'s drink", now universally loved.', origin:'USA 🇺🇸' },
+  { e:'🍉🌿', name:'Watermelon Mint Cooler', fruits:['Watermelon','Lime'],        fact:'Watermelon juice has incredibly high water content — 92% — which makes it a natural mixer. Its natural sweetness means less simple syrup needed.',    origin:'Modern classic 🌍' },
+  { e:'🍒🥃', name:'Cherry Manhattan',   fruits:['Cherry'],                       fact:'The Manhattan is one of five cocktails listed in the first known cocktail guide of 1862. The maraschino cherry garnish became standard in the 1900s.',  origin:'USA 🇺🇸' },
+  { e:'🍋🏝️', name:'Painkiller',         fruits:['Orange','Pineapple'],           fact:'Invented at the Soggy Dollar Bar in the British Virgin Islands — only accessible by boat, guests would swim ashore and pay with wet dollar bills.',   origin:'BVI 🇻🇬' },
+  { e:'🍊🌺', name:'Jungle Bird',        fruits:['Pineapple','Orange'],           fact:'Created in 1978 at the Kuala Lumpur Hilton. It disappeared for decades until a bartender rediscovered it in a 1989 cocktail guide in 2009.',          origin:'Malaysia 🇲🇾' },
+  { e:'🍋🫚', name:'Gimlet',             fruits:['Lime'],                         fact:'Sailors in the British Royal Navy used lime juice to prevent scurvy. The Gimlet was born when they mixed it with gin to make the medicine more bearable.', origin:'UK 🇬🇧' },
+  { e:'🍑🌸', name:'Peach Melba Fizz',   fruits:['Peach','Raspberry'],            fact:'Peach Melba was invented in 1892 by Auguste Escoffier for opera singer Nellie Melba. The cocktail version honours the same flavour combination.',    origin:'France 🇫🇷' },
+];
+
+function getFridaySip() {
+  // Rotate weekly, refreshes every Friday
+  const now = new Date();
+  const day = now.getDay(); // 0=Sun, 5=Fri
+  const daysSinceFri = (day + 2) % 7;
+  const lastFri = new Date(now);
+  lastFri.setDate(now.getDate() - daysSinceFri);
+  lastFri.setHours(0,0,0,0);
+  const weekKey = lastFri.toISOString().slice(0,10);
+  const weekNum = Math.floor(lastFri.getTime() / (7 * 24 * 60 * 60 * 1000));
+  const idx = weekNum % FRIDAY_SIPS.length;
+  // Days until next Friday
+  const daysLeft = 7 - daysSinceFri;
+  return { ...FRIDAY_SIPS[idx], weekKey, daysLeft, isFriday: day === 5 };
+}
+
 // ============================================================
 // STATE
 // ============================================================
@@ -2211,6 +2254,7 @@ function todayKey() {
 
 function defaultState() {
   return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null, roulette: null, triviaQuiz: {}, originsQuiz: {}, pairing: {}, bucketList: {}, pixelArt: {},
+      fridaySips: {},
       trioChallenge: {} };
 }
 
@@ -2232,6 +2276,7 @@ function loadState() {
       pairing:    saved.pairing || {},
       bucketList: saved.bucketList || {},
       pixelArt:   saved.pixelArt || {},
+      fridaySips: saved.fridaySips || {},
       trioChallenge: saved.trioChallenge || {},
     };
   } catch(e) { return defaultState(); }
@@ -2266,18 +2311,15 @@ function currentSeason() {
 
 function getSeasonStatus(fruit) {
   const m = currentMonth();
-  // Local fruits: check season first, imported is just a label
-  if (!fruit.imported) {
-    if (fruit.months.includes(m)) return 'in-season';
-    const next1 = (m % 12) + 1;
-    const next2 = (next1 % 12) + 1;
-    if (fruit.months.includes(next1)) return 'coming-1';
-    if (fruit.months.includes(next2)) return 'coming-2';
-    return 'off-season';
-  }
-  // Imported fruits: always available, but check if "peak import season"
+  // Imported fruits: always show as imported, never in-season
+  if (fruit.imported) return 'imported';
+  // Local German fruits: check seasonal window
   if (fruit.months.includes(m)) return 'in-season';
-  return 'imported';
+  const next1 = (m % 12) + 1;
+  const next2 = (next1 % 12) + 1;
+  if (fruit.months.includes(next1)) return 'coming-1';
+  if (fruit.months.includes(next2)) return 'coming-2';
+  return 'off-season';
 }
 
 function addFruit(name) {
@@ -3185,7 +3227,7 @@ function renderJuiceLab(containerId) {
   keys.forEach(k => STATE.history[k].forEach(fn => { if (!seen.has(fn)) { seen.add(fn); recentFruits.push(fn); }}));
 
   if (recentFruits.length < 2) {
-    el.innerHTML = '<div class="card" style="text-align:center;padding:32px 20px"><div style="font-size:40px;margin-bottom:10px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Juice Lab</div><div style="font-size:12px;color:var(--muted);font-weight:700">Log at least 2 different fruits over the past week to unlock your personalised juice recipe!</div></div>';
+    el.innerHTML = '<div class="card" style="text-align:center;padding:32px 20px"><div style="font-size:40px;margin-bottom:10px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Friday Sips</div><div style="font-size:12px;color:var(--muted);font-weight:700">Log at least 2 different fruits over the past week to unlock your personalised juice recipe!</div></div>';
     return;
   }
 
@@ -3213,7 +3255,7 @@ function renderJuiceLab(containerId) {
 
     el.innerHTML =
       '<div style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:var(--radius);padding:18px;margin-bottom:14px">' +
-        '<div style="font-family:Fredoka One,cursive;font-size:18px;color:#1b5e20;margin-bottom:4px">🧪 Juice Lab</div>' +
+        '<div style="font-family:Fredoka One,cursive;font-size:18px;color:#1b5e20;margin-bottom:4px">🍹 Friday Sips</div>' +
         '<div style="font-size:12px;font-weight:700;color:#388e3c;margin-bottom:14px">Pick 2–3 fruits from your recent logs:</div>' +
         '<div style="display:flex;flex-wrap:wrap;gap:2px;margin-bottom:12px">' + fruitButtons + '</div>' +
         '<button onclick="juiceLabBlend()" id="juiceBlendBtn" ' +
@@ -3254,7 +3296,11 @@ function renderJuiceLab(containerId) {
       try {
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-access': 'true',
+          },
           body: JSON.stringify({
             model: 'claude-sonnet-4-20250514',
             max_tokens: 300,
@@ -3263,12 +3309,13 @@ function renderJuiceLab(containerId) {
           })
         });
         const data = await resp.json();
+        if (data.error) throw new Error(data.error.message);
         const text = data.content.map(i => i.text || '').join('');
         const clean = text.replace(/```json|```/g,'').trim();
         window._juiceResult = JSON.parse(clean);
         buildUI(window._juiceResult, false);
       } catch(e) {
-        window._juiceResult = { name: 'Mystery Blend', colour: 'vibrant mix', notes: 'Could not generate — check your connection and try again.', tip: '' };
+        window._juiceResult = { name: 'Error', colour: '', notes: 'Failed: ' + e.message, tip: '' };
         buildUI(window._juiceResult, false);
       }
     };
@@ -3279,6 +3326,80 @@ function renderJuiceLab(containerId) {
     window._juiceSelected.forEach(fn => selected.add(fn));
   }
   buildUI(window._juiceResult || null, false);
+}
+
+
+// ============================================================
+// FRIDAY SIPS RENDERER (Lvl 13)
+// ============================================================
+function renderFridaySips(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const sip = getFridaySip();
+  const sipState = STATE.fridaySips[sip.weekKey] || { claimed: false };
+
+  const fruitsHtml = sip.fruits.map(fn => {
+    const f = FRUITS.find(x => x.n === fn);
+    return '<span style="background:rgba(255,255,255,0.5);border-radius:99px;padding:4px 10px;font-size:12px;font-weight:800;margin-right:6px">' + (f ? f.e : '🍹') + ' ' + fn + '</span>';
+  }).join('');
+
+  el.innerHTML =
+    '<div style="background:linear-gradient(135deg,#1a0533,#2d1b69);border-radius:var(--radius);padding:20px;margin-bottom:14px;color:#fff">' +
+      // Header
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">' +
+        '<div style="display:flex;align-items:center;gap:10px">' +
+          '<span style="font-size:36px">' + sip.e + '</span>' +
+          '<div>' +
+            '<div style="font-family:Fredoka One,cursive;font-size:20px;color:#f9d923">' + sip.name + '</div>' +
+            '<div style="font-size:11px;font-weight:700;color:#c084fc">' + sip.origin + '</div>' +
+          '</div>' +
+        '</div>' +
+        (sip.isFriday
+          ? '<div style="background:#f9d923;color:#1a0533;font-family:Fredoka One,cursive;font-size:12px;padding:4px 10px;border-radius:99px">🎉 Happy Friday!</div>'
+          : '<div style="font-size:11px;font-weight:700;color:#c084fc;text-align:right">🍹 New sip<br>in ' + sip.daysLeft + ' days</div>'
+        ) +
+      '</div>' +
+      // Fruits
+      '<div style="margin-bottom:14px">' +
+        '<div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:#c084fc;margin-bottom:6px">Key Fruits</div>' +
+        fruitsHtml +
+      '</div>' +
+      // Trivia fact
+      '<div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:14px;margin-bottom:16px">' +
+        '<div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:#f9d923;margin-bottom:6px">🍹 Cocktail Trivia</div>' +
+        '<div style="font-size:13px;font-weight:700;line-height:1.6;color:#fff">' + sip.fact + '</div>' +
+      '</div>' +
+      // Claim checkbox
+      (sipState.claimed
+        ? '<div style="background:rgba(249,217,35,0.15);border:2px solid #f9d923;border-radius:12px;padding:12px;text-align:center;color:#f9d923;font-weight:800">🍹 Cheers! +25 XP earned this week</div>'
+        : '<label style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px;cursor:pointer">' +
+            '<input type="checkbox" onchange="claimFridaySipCurrent(this.checked)" style="width:20px;height:20px;cursor:pointer;accent-color:#f9d923;flex-shrink:0">' + +
+            '<div>' +
+              '<div style="font-size:13px;font-weight:800;color:#fff">I ordered or made this cocktail 🍹</div>' +
+              '<div style="font-size:11px;color:#c084fc;font-weight:700">+25 XP reward</div>' +
+            '</div>' +
+          '</label>'
+      ) +
+    '</div>';
+}
+
+
+function claimFridaySipCurrent(checked) {
+  const sip = getFridaySip();
+  claimFridaySip(sip.weekKey, checked);
+}
+function claimFridaySip(weekKey, checked) {
+  if (!checked) return;
+  if ((STATE.fridaySips[weekKey] || {}).claimed) return;
+  STATE.fridaySips[weekKey] = { claimed: true };
+  const prevLevel = getLevelIndex(STATE.totalXP);
+  STATE.totalXP += 25;
+  saveState();
+  renderHeader();
+  renderFridaySips('fridaySipsContainer');
+  showToast('🍹 Cheers! +25 XP');
+  const newLevel = getLevelIndex(STATE.totalXP);
+  if (newLevel > prevLevel) setTimeout(() => showLevelUp(newLevel), 600);
 }
 
 // ============================================================
@@ -3693,10 +3814,10 @@ function renderChallengePage() {
   }
 
 
-  <div class="section-title" style="margin-top:6px">🧪 Juice Lab</div>
+  <div class="section-title" style="margin-top:6px">🍹 Friday Sips</div>
   ${isUnlocked(13) ?
-    `<div id="juiceLabContainer"></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Juice Lab</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Jambu Juicer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Juice Lab</div><div class="lock-sub">Unlocks at Jambu Juicer</div></div></div>`
+    `<div id="fridaySipsContainer"></div>` :
+    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍹</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Friday Sips</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Cocktail Curator</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Friday Sips</div><div class="lock-sub">Unlocks at Cocktail Curator</div></div></div>`
   }
   <div class="section-title" style="margin-top:6px">🏆 Fruit Bucket List</div>
   ${isUnlocked(14) ?
@@ -3705,7 +3826,7 @@ function renderChallengePage() {
   }
   `;
   if (isUnlocked(12)) renderPairingOfWeek('pairingContainer');
-  if (isUnlocked(13)) renderJuiceLab('juiceLabContainer');
+  if (isUnlocked(13)) renderFridaySips('fridaySipsContainer');
   if (isUnlocked(14)) renderBucketList('bucketListContainer');
 }
 // ============================================================
