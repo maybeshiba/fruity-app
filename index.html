@@ -1715,9 +1715,9 @@ const LEVELS = [
 const FRUITS = [
   // EVERYDAY STAPLES
   { e:'🍎', n:'Apple',           months:[8,9,10,11,12,1,2],   v:['C','K','B6'],        xp:10, note:"Germany\'s favourite — great fibre, vitamin C & K",          cat:'Everyday' },
-  { e:'🍌', n:'Banana',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['B6','C','Folate'],   xp:10, note:'Year-round energy boost — rich in B6 & potassium',           cat:'Everyday', imported:true },
+  { e:'🍌', n:'Banana',          months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['B6','C','Folate'],   xp:10, note:'Year-round energy boost — rich in B6 & potassium',           cat:'Everyday', imported:true },
   { e:'🍊', n:'Orange',          months:[11,12,1,2,3,4],       v:['C','Folate','A'],    xp:10, note:'Classic vitamin C powerhouse — great for immunity',            cat:'Citrus', imported:true },
-  { e:'🍋', n:'Lemon',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6'],           xp:10, note:'Zesty & alkalising — brilliant in cooking & drinks',          cat:'Citrus', imported:true },
+  { e:'🍋', n:'Lemon',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6'],           xp:10, note:'Zesty & alkalising — brilliant in cooking & drinks',          cat:'Citrus', imported:true },
   { e:'🍇', n:'Grape',           months:[8,9,10],              v:['C','K','B6'],        xp:12, note:'Antioxidant-rich — local German varieties peak in autumn',      cat:'Everyday' },
   { e:'🍓', n:'Strawberry',      months:[5,6,7],               v:['C','Folate','K'],    xp:12, note:'German summer classic — top vitamin C source',                 cat:'Berries' },
   { e:'🍑', n:'Peach',           months:[7,8,9],               v:['C','A','K'],         xp:13, note:'Juicy summer stone fruit — rich in beta-carotene',             cat:'Stone Fruits' },
@@ -1726,15 +1726,15 @@ const FRUITS = [
   { e:'🍐', n:'Pear',            months:[8,9,10,11],           v:['C','K','B6'],        xp:10, note:'Gentle on digestion — good fibre & vitamin C',                 cat:'Everyday' },
   { e:'🥝', n:'Kiwi',            months:[11,12,1,2,3],         v:['C','K','E','Folate'],xp:14, note:'Vitamin C king — more C per gram than oranges',               cat:'Everyday', imported:true },
   { e:'🍉', n:'Watermelon',      months:[6,7,8,9],             v:['C','A'],             xp:12, note:'Hydrating summer fruit — 92% water, rich in lycopene',         cat:'Everyday', imported:true },
-  { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6','Folate'],xp:15, note:'Tropical vitamin bomb — one mango = 100% daily vitamin C', cat:'Tropical', imported:true },
-  { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6'],           xp:14, note:'Contains bromelain enzyme — aids digestion & reduces inflammation', cat:'Tropical', imported:true },
+  { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6','Folate'],xp:15, note:'Tropical vitamin bomb — one mango = 100% daily vitamin C', cat:'Tropical', imported:true },
+  { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6'],           xp:14, note:'Contains bromelain enzyme — aids digestion & reduces inflammation', cat:'Tropical', imported:true },
   { e:'🍈', n:'Melon',           months:[7,8,9],               v:['C','A','Folate'],    xp:12, note:'Summer hydrator — good source of vitamins A & C',              cat:'Everyday', imported:true },
   { e:'🍈', n:'Honeydew',        months:[7,8,9],               v:['C','B6','K'],        xp:12, note:'Mellow sweetness — good source of vitamin C & B6',             cat:'Everyday', imported:true },
   { e:'🍊', n:'Mandarin',        months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Easy-peel winter favourite — great vitamin C & folate',        cat:'Citrus', imported:true },
   { e:'🍊', n:'Grapefruit',      months:[11,12,1,2,3],         v:['C','A','Folate'],    xp:12, note:'Bitter & bright — powerful antioxidant and metabolism booster', cat:'Citrus', imported:true },
-  { e:'🍋', n:'Lime',            months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6','Folate'],  xp:11, note:'Sharper than lemon — essential in Mexican & Asian cooking',  cat:'Citrus', imported:true },
-  { e:'🥥', n:'Coconut',         months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['B6'],               xp:15, note:'Versatile tropical — milk, water, flesh all nutritious',      cat:'Tropical', imported:true },
-  { e:'🍌', n:'Plantain',        months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6'],       xp:14, note:'Starchy cooking banana — staple in African & Caribbean cuisine', cat:'Tropical', imported:true },
+  { e:'🍋', n:'Lime',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6','Folate'],  xp:11, note:'Sharper than lemon — essential in Mexican & Asian cooking',  cat:'Citrus', imported:true },
+  { e:'🥥', n:'Coconut',         months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['B6'],               xp:15, note:'Versatile tropical — milk, water, flesh all nutritious',      cat:'Tropical', imported:true },
+  { e:'🍌', n:'Plantain',        months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],       xp:14, note:'Starchy cooking banana — staple in African & Caribbean cuisine', cat:'Tropical', imported:true },
   { e:'🍑', n:'Apricot',         months:[6,7],                 v:['C','A','K'],         xp:13, note:'Delicate stone fruit — excellent beta-carotene source',        cat:'Stone Fruits' },
   { e:'🌿', n:'Mirabelle',       months:[7,8],                 v:['C','K','A'],         xp:16, note:'Tiny golden plum — German delicacy, intensely sweet',          cat:'Stone Fruits' },
   { e:'🫒', n:'Damson',          months:[8,9],                 v:['C','K'],             xp:16, note:'Tart wild plum — perfect for jam and gin',                     cat:'Stone Fruits' },
@@ -1756,16 +1756,16 @@ const FRUITS = [
   { e:'🍒', n:'Cranberry',       months:[10,11],               v:['C','K','E'],         xp:16, note:'Urinary tract superhero — tart and medicinal',                 cat:'Berries' },
   { e:'🍊', n:'Physalis',        months:[9,10,11],             v:['C','A','K'],         xp:18, note:'Cape gooseberry in a husk — exotic but increasingly in German shops', cat:'Everyday' },
   { e:'🥝', n:'Golden Kiwi',     months:[11,12,1,2,3],         v:['C','K','E','Folate'],xp:15, note:'Sweeter & less tart than green kiwi — same vitamin powerhouse', cat:'Everyday', imported:true },
-  { e:'🧡', n:'Papaya',          months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','Folate'],   xp:15, note:'Tropical enzyme source — papain aids protein digestion',       cat:'Tropical', imported:true },
+  { e:'🧡', n:'Papaya',          months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','Folate'],   xp:15, note:'Tropical enzyme source — papain aids protein digestion',       cat:'Tropical', imported:true },
   { e:'❤️', n:'Pomegranate',     months:[9,10,11,12],          v:['C','K','Folate','E'],xp:16, note:'Ancient fruit — rich in punicalagins, powerful antioxidants',   cat:'Everyday', imported:true },
-  { e:'🍋', n:'Passion Fruit',   months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','B6'],       xp:17, note:'Intense tropical flavour — great vitamin A & C',               cat:'Tropical', imported:true },
-  { e:'🐉', n:'Dragon Fruit',    months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','E'],            xp:18, note:'Striking pink flesh — mild flavour but rich in antioxidants', cat:'Tropical', imported:true },
-  { e:'⭐', n:'Star Fruit',      months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6','Folate'],  xp:19, note:'Waxy tropical fruit — beautiful star cross-section, tangy taste', cat:'Tropical', imported:true },
+  { e:'🍋', n:'Passion Fruit',   months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],       xp:17, note:'Intense tropical flavour — great vitamin A & C',               cat:'Tropical', imported:true },
+  { e:'🐉', n:'Dragon Fruit',    months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','E'],            xp:18, note:'Striking pink flesh — mild flavour but rich in antioxidants', cat:'Tropical', imported:true },
+  { e:'⭐', n:'Star Fruit',      months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6','Folate'],  xp:19, note:'Waxy tropical fruit — beautiful star cross-section, tangy taste', cat:'Tropical', imported:true },
   { e:'🍏', n:'Cherimoya',       months:[11,12,1,2,3,4],       v:['C','B6','Folate'],   xp:22, note:'Custard apple — called the most delicious fruit by Mark Twain', cat:'Tropical', imported:true },
   { e:'🍊', n:'Pomelo',          months:[11,12,1,2,3],         v:['C','B6','Folate'],   xp:17, note:'Grandfather of grapefruit — milder, sweeter, less bitter',      cat:'Citrus', imported:true },
   { e:'🧡', n:'Persimmon',       months:[10,11,12],            v:['C','A','K'],         xp:18, note:'Japanese kaki — wait until fully soft or it\'s incredibly astringent', cat:'Everyday', imported:true },
-  { e:'🫐', n:'Açaí',            months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','E'],        xp:20, note:'Amazonian superfruit — usually sold frozen, extremely rich in antioxidants', cat:'Tropical', imported:true },
-  { e:'🍏', n:'Guava',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','A','K','Folate'],xp:17, note:'Tropical vitamin bomb — four times more vitamin C than oranges', cat:'Tropical', imported:true },
+  { e:'🫐', n:'Açaí',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','E'],        xp:20, note:'Amazonian superfruit — usually sold frozen, extremely rich in antioxidants', cat:'Tropical', imported:true },
+  { e:'🍏', n:'Guava',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','K','Folate'],xp:17, note:'Tropical vitamin bomb — four times more vitamin C than oranges', cat:'Tropical', imported:true },
   { e:'🍊', n:'Cantaloupe',      months:[7,8,9],               v:['C','A','Folate'],    xp:13, note:'Orange-fleshed melon — exceptional beta-carotene content',      cat:'Everyday', imported:true },
   { e:'🍒', n:'Lychee',          months:[5,6,7],               v:['C','B6'],            xp:17, note:'Floral tropical gem — very high vitamin C content',             cat:'Tropical', imported:true },
   { e:'🍊', n:'Clementine',      months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Seedless easy-peel citrus — a German Christmas staple',         cat:'Citrus', imported:true },
@@ -3534,6 +3534,25 @@ function renderTodayPage() {
       : `No ${wv.label} yet today. Look for fruits rich in ${wv.label}!`;
   }
 
+  // Try Something New nudge
+  const everLogged = new Set(Object.values(STATE.history || {}).flat());
+  const nudgeFruit = FRUITS.filter(f =>
+    !f.imported &&
+    getSeasonStatus(f) === 'in-season' &&
+    !everLogged.has(f.n)
+  ).sort((a,b) => a.xp - b.xp)[0];
+
+  const nudgeHtml = nudgeFruit
+    ? '<div style="border:2px dashed #f59e0b;border-radius:14px;padding:14px 16px;margin-bottom:12px;background:#fffbeb;display:flex;align-items:center;gap:12px;cursor:pointer" onclick="document.getElementById(\'fruitSearch\').value=\''+nudgeFruit.n+'\';document.getElementById(\'fruitSearch\').dispatchEvent(new Event(\'input\'))">' +
+        '<span style="font-size:32px">' + nudgeFruit.e + '</span>' +
+        '<div style="flex:1">' +
+          '<div style="font-size:11px;font-weight:800;color:#d97706;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">🌟 Try something new!</div>' +
+          '<div style="font-size:14px;font-weight:800;color:#92400e">' + nudgeFruit.n + ' is in season — you haven\'t tried it yet!</div>' +
+        '</div>' +
+        '<span style="background:#f59e0b;color:#fff;border-radius:99px;padding:4px 10px;font-size:11px;font-weight:800">+' + (nudgeFruit.xp * 2) + ' XP 🌿</span>' +
+      '</div>'
+    : '';
+
   // Suggestions
   const loggedNames = new Set(fruits);
   const suggestions = FRUITS.filter(f => !loggedNames.has(f.n)).map(f => {
@@ -3593,18 +3612,7 @@ function renderTodayPage() {
       <div class="fruit-grid" id="fruitGrid"></div>
     </div>
 
-    ${suggestions.length > 0 ? `
-    <div class="section-title">✨ Suggestions</div>
-    ${suggestions.map(s => `
-      <div class="suggest-card">
-        <span class="suggest-emoji">${s.f.e}</span>
-        <div class="suggest-info">
-          <div class="suggest-name">${s.f.n}</div>
-          <div class="suggest-why">${s.f.note}</div>
-        </div>
-        <span class="suggest-tag ${s.tag}">${s.tagLabel}</span>
-      </div>`).join('')}
-    ` : ''}
+    
   `;
 
   renderFruitGrid(FRUITS);
