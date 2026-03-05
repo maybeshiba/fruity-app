@@ -478,6 +478,11 @@ body {
   box-shadow: 0 0 0 3px rgba(142,36,170,0.15);
   background: #fdf5ff;
 }
+.selected-trio {
+  border-color: #7b1fa2;
+  box-shadow: 0 0 0 3px rgba(123,31,162,0.2);
+  background: linear-gradient(135deg, #f3e5f5, #fce4ec);
+}
 
 .challenge-card.completed-card {
   border-color: var(--green);
@@ -3738,8 +3743,8 @@ function renderKnowledgePage() {
     renderKnowledgeSection(2, '📖', 'Fruit Trivia', 'Weekly quiz — +50 XP every Wednesday', triviaContent) +
     renderKnowledgeSection(5, '🧊', 'Fruit Keeper', 'How to store & ripen any fruit', keeperContent) +
     renderKnowledgeSection(6, '🌍', 'Fruit Origins Quiz', 'Weekly spotlight fruit — +60 XP every Friday', originsContent) +
-    renderKnowledgeSection(7, '🍓', 'What to make with...', 'This month\'s featured fruit — ideas & inspiration', makeWithContent) +
-    renderKnowledgeSection(11, '🧪', 'Fruit Lab', 'Tea & ferment ideas — new concept every 3 days', '<div id="fruitLabContainer"></div>');
+    renderKnowledgeSection(9, '🍓', 'What to make with...', 'This month\'s featured fruit — ideas & inspiration', makeWithContent) +
+    renderKnowledgeSection(7, '🧪', 'Fruit Lab', 'Tea & ferment ideas — new concept every 3 days', '<div id="fruitLabContainer"></div>');
 
   if (isUnlocked(2)) renderTriviaQuiz('triviaQuizContainer');
   if (isUnlocked(5)) renderFruitKeeper('fruitKeeperContainer');
