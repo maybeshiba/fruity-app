@@ -1726,7 +1726,7 @@ const FRUITS = [
   { e:'🍑', n:'Nectarine',       months:[7,8,9],               v:['C','A','K'],         xp:13, note:'Smooth-skinned cousin of the peach — similar nutrients',        cat:'Stone Fruits' },
   { e:'🍒', n:'Cherry',          months:[6,7,8],               v:['C','K','A'],         xp:14, note:'Rich in antioxidants — German Kirschen at their best in summer', cat:'Stone Fruits' },
   { e:'🍐', n:'Pear',            months:[8,9,10,11],           v:['C','K','B6'],        xp:10, note:'Gentle on digestion — good fibre & vitamin C',                 cat:'Everyday' },
-  { e:'🥝', n:'Kiwi',            months:[11,12,1,2,3],         v:['C','K','E','Folate'],xp:14, note:'Vitamin C king — more C per gram than oranges',               cat:'Everyday' },
+  { e:'🥝', n:'Kiwi',            months:[11,12,1,2,3],         v:['C','K','E','Folate'],xp:14, note:'Vitamin C king — more C per gram than oranges',               cat:'Berries' },
   { e:'🍉', n:'Watermelon',      months:[6,7,8,9],             v:['C','A'],             xp:12, note:'Hydrating summer fruit — 92% water, rich in lycopene',         cat:'Everyday' },
   { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6','Folate'],xp:15, note:'Tropical vitamin bomb — one mango = 100% daily vitamin C', cat:'Asian', imported:true },
   { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6'],           xp:14, note:'Contains bromelain enzyme — aids digestion & reduces inflammation', cat:'LatAm', imported:true },
@@ -1742,7 +1742,7 @@ const FRUITS = [
   { e:'🫒', n:'Plum',            months:[7,8,9,10],            v:['C','K','B6'],        xp:13, note:'Prune precursor — good for digestion & rich in antioxidants', cat:'Stone Fruits' },
   { e:'🍏', n:'Greengage',       months:[7,8,9],               v:['C','K'],             xp:16, note:'Sweet green plum — underrated German summer gem',              cat:'Stone Fruits' },
   { e:'🌿', n:'Fig',             months:[8,9,10], imported:true,              v:['B6','K','Folate'],   xp:17, note:'Dried or fresh — great source of potassium & copper',          cat:'Everyday' },
-  { e:'🍐', n:'Quince',          months:[9,10,11],             v:['C','B6'],            xp:18, note:'Ancient German fruit — too astringent raw but incredible cooked', cat:'Everyday' },
+  { e:'🍐', n:'Quince',          months:[9,10,11],             v:['C','B6'],            xp:18, note:'Ancient German fruit — too astringent raw but incredible cooked', cat:'Stone Fruits' },
   { e:'🫐', n:'Blueberry',       months:[6,7,8],               v:['C','K','E'],         xp:13, note:'Antioxidant powerhouse — one of the most nutritious berries',  cat:'Berries' },
   { e:'🍓', n:'Raspberry',       months:[6,7,8,9],             v:['C','K','Folate'],    xp:13, note:'Delicate summer berry — excellent vitamin C & folate',         cat:'Berries' },
   { e:'🫐', n:'Blackberry',      months:[7,8,9],               v:['C','K','Folate','E'],xp:14, note:'Wild hedgerow berry — rich in vitamins C, K & E',              cat:'Berries' },
@@ -1755,7 +1755,7 @@ const FRUITS = [
   { e:'🌿', n:'Elderberry',      months:[8,9],                 v:['C','A','B6'],        xp:19, note:'Never eat raw — cooked elderberry is a powerful immune booster', cat:'Berries' },
   { e:'🍒', n:'Cranberry',       months:[10,11],               v:['C','K','E'],         xp:16, note:'Urinary tract superhero — tart and medicinal',                 cat:'Berries' },
   { e:'🍊', n:'Physalis',        months:[9,10,11],             v:['C','A','K'],         xp:18, note:'Cape gooseberry in a husk — exotic but increasingly in German shops', cat:'Berries' },
-  { e:'🥝', n:'Golden Kiwi',     months:[11,12,1,2,3], imported:true,         v:['C','K','E','Folate'],xp:15, note:'Sweeter & less tart than green kiwi — same vitamin powerhouse', cat:'Everyday', imported:true },
+  { e:'🥝', n:'Golden Kiwi',     months:[11,12,1,2,3], imported:true,         v:['C','K','E','Folate'],xp:15, note:'Sweeter & less tart than green kiwi — same vitamin powerhouse', cat:'Berries', imported:true },
   { e:'🧡', n:'Papaya',          months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','Folate'],   xp:15, note:'Tropical enzyme source — papain aids protein digestion',       cat:'Asian', imported:true },
   { e:'❤️', n:'Pomegranate',     months:[9,10,11,12],          v:['C','K','Folate','E'],xp:16, note:'Ancient fruit — rich in punicalagins, powerful antioxidants',   cat:'Everyday' },
   { e:'🍋', n:'Passion Fruit',   months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],       xp:17, note:'Intense tropical flavour — great vitamin A & C',               cat:'LatAm', imported:true },
@@ -4500,21 +4500,10 @@ function renderTodayPage() {
 
   `;
 
-  // Build list based on Settings toggles — Everyday always shown
-  const gridCats = new Set(['Everyday']);
-  const ASIAN_GRID = new Set(['Mango','Coconut','Papaya','Dragon Fruit','Star Fruit','Golden Kiwi','Lychee','Date','Durian','Longan','Mangosteen','Rambutan','Kumquat','Tangerine']);
-  const LATAM_GRID = new Set(['Pineapple','Banana','Plantain','Açaí','Passion Fruit','Guava','Cherimoya','Star Fruit','Sapodilla','Guanabana','Custard Apple','Papaya']);
-  ['Stone Fruits','Berries','Citrus','Asian','LatAm'].forEach(function(cat) {
-    const key = 'gridCat_' + cat.replace(' ','_');
-    if (STATE.settings && STATE.settings[key]) gridCats.add(cat);
-  });
-  const gridFruits = FRUITS.filter(function(f) {
-    if (gridCats.has(f.cat)) return true;
-    if (gridCats.has('Asian') && ASIAN_GRID.has(f.n)) return true;
-    if (gridCats.has('LatAm') && LATAM_GRID.has(f.n)) return true;
-    return false;
-  });
-  renderFruitGrid(gridFruits);
+  // Today grid: Everyday tag by default, or all fruits if gridShowAll is on
+  const EVERYDAY_GRID = new Set(['Apple','Pear','Banana','Orange','Mandarin','Clementine','Grape','Strawberry','Raspberry','Blueberry','Kiwi','Golden Kiwi','Watermelon','Peach','Plum','Cherry','Lemon','Mango','Pineapple','Honeydew Melon','Cantaloupe Melon','Persimmon','Fig','Pomegranate','Nectarine','Apricot']);
+  const showAll = STATE.settings && STATE.settings['gridShowAll'];
+  renderFruitGrid(showAll ? FRUITS : FRUITS.filter(f => EVERYDAY_GRID.has(f.n)));
 }
 
 function renderFruitGrid(list) {
@@ -4543,7 +4532,10 @@ function renderFruitGrid(list) {
 
 function filterFruits() {
   const q = document.getElementById('searchBox')?.value.toLowerCase() || '';
-  renderFruitGrid(q ? FRUITS.filter(f => f.n.toLowerCase().includes(q)) : FRUITS);
+  const EVERYDAY_GRID = new Set(['Apple','Pear','Banana','Orange','Mandarin','Clementine','Grape','Strawberry','Raspberry','Blueberry','Kiwi','Golden Kiwi','Watermelon','Peach','Plum','Cherry','Lemon','Mango','Pineapple','Honeydew Melon','Cantaloupe Melon','Persimmon','Fig','Pomegranate','Nectarine','Apricot']);
+  const showAll = STATE.settings && STATE.settings['gridShowAll'];
+  const baseList = showAll ? FRUITS : FRUITS.filter(f => EVERYDAY_GRID.has(f.n));
+  renderFruitGrid(q ? FRUITS.filter(f => f.n.toLowerCase().includes(q)) : baseList);
 }
 
 // ============================================================
@@ -4836,23 +4828,33 @@ function renderPassportPage() {
   }
 
   const PASSPORT_CATS = [
-    { key:'Everyday',    label:'Everyday',         emoji:'🛒', xp:200,  fruits: f => f.cat === 'Everyday' },
-    { key:'Berries',     label:'Berries',           emoji:'🫐', xp:500,  fruits: f => f.cat === 'Berries' },
-    { key:'Stone_Fruits',label:'Stone Fruits',      emoji:'🍑', xp:400,  fruits: f => f.cat === 'Stone Fruits' },
-    { key:'Citrus',      label:'Citrus',            emoji:'🍊', xp:300,  fruits: f => f.cat === 'Citrus' },
-    { key:'Asian',       label:'🌏 Asian Fruits',   emoji:'🌏', xp:400,  fruits: f => ['Asian','LatAm'].includes(f.cat) ? f.cat === 'Asian' || ['Mango','Coconut','Papaya','Dragon Fruit','Star Fruit','Golden Kiwi','Lychee','Date'].includes(f.n) : false },
-    { key:'LatAm',       label:'🌎 Latin American', emoji:'🌎', xp:400,  fruits: f => f.cat === 'LatAm' || ['Star Fruit','Papaya','Passion Fruit','Guava','Cherimoya','Pineapple','Banana','Plantain','Açaí'].includes(f.n) },
+    { key:'Everyday',     label:'Everyday',          emoji:'🛒', xp:200 },
+    { key:'Berries',      label:'Berries',            emoji:'🫐', xp:500 },
+    { key:'Pome_Stone',   label:'Pome & Stone Fruits',emoji:'🍑', xp:400 },
+    { key:'Citrus',       label:'Citrus',             emoji:'🍊', xp:300 },
+    { key:'Asian',        label:'🌏 Asian Fruits',    emoji:'🌏', xp:400 },
+    { key:'LatAm',        label:'🌎 Latin American',  emoji:'🌎', xp:400 },
   ];
 
-  // Multi-cat: a fruit can appear in multiple passport sections
-  const ASIAN_FRUITS = new Set(['Mango','Coconut','Papaya','Dragon Fruit','Star Fruit','Golden Kiwi','Lychee','Date','Durian','Longan','Mangosteen','Rambutan','Kumquat','Tangerine']);
-  const LATAM_FRUITS = new Set(['Pineapple','Banana','Plantain','Açaí','Passion Fruit','Guava','Cherimoya','Star Fruit','Sapodilla','Guanabana','Custard Apple','Papaya']);
+  // Multi-cat sets — fruits that appear in multiple Passport sections
+  const ASIAN_FRUITS   = new Set(['Mango','Coconut','Papaya','Dragon Fruit','Star Fruit','Golden Kiwi','Lychee','Date','Durian','Longan','Mangosteen','Rambutan','Kumquat','Tangerine']);
+  const LATAM_FRUITS   = new Set(['Pineapple','Banana','Plantain','Açaí','Passion Fruit','Guava','Cherimoya','Star Fruit','Sapodilla','Guanabana','Custard Apple','Papaya']);
+  const POME_STONE     = new Set(['Apple','Pear','Quince','Peach','Nectarine','Cherry','Apricot','Plum','Mirabelle','Damson','Greengage']);
+  // Everyday Passport: common German supermarket fruits across categories (no Quince, no rare exotics)
+  const EVERYDAY_PASSPORT = new Set(['Apple','Pear','Banana','Orange','Mandarin','Clementine','Grape','Strawberry','Raspberry','Blueberry','Kiwi','Golden Kiwi','Watermelon','Peach','Plum','Cherry','Lemon','Mango','Pineapple','Honeydew Melon','Cantaloupe Melon','Persimmon','Fig','Pomegranate','Nectarine','Apricot']);
 
   const getCatFruits = (catKey) => {
-    if (catKey === 'Asian') return FRUITS.filter(f => ASIAN_FRUITS.has(f.n) || f.cat === 'Asian');
-    if (catKey === 'LatAm') return FRUITS.filter(f => LATAM_FRUITS.has(f.n) || f.cat === 'LatAm');
-    return FRUITS.filter(f => f.cat === catKey.replace('_',' '));
+    if (catKey === 'Everyday')   return FRUITS.filter(f => EVERYDAY_PASSPORT.has(f.n));
+    if (catKey === 'Berries')    return FRUITS.filter(f => f.cat === 'Berries');
+    if (catKey === 'Pome_Stone') return FRUITS.filter(f => POME_STONE.has(f.n));
+    if (catKey === 'Citrus')     return FRUITS.filter(f => f.cat === 'Citrus');
+    if (catKey === 'Asian')      return FRUITS.filter(f => ASIAN_FRUITS.has(f.n) || f.cat === 'Asian');
+    if (catKey === 'LatAm')      return FRUITS.filter(f => LATAM_FRUITS.has(f.n) || f.cat === 'LatAm');
+    return [];
   };
+
+  // Everyday-tagged fruits — used for Today grid default filter
+  const EVERYDAY_TAG = new Set(['Apple','Pear','Banana','Orange','Mandarin','Clementine','Grape','Strawberry','Raspberry','Blueberry','Kiwi','Golden Kiwi','Watermelon','Peach','Plum','Cherry','Lemon','Mango','Pineapple','Honeydew Melon','Cantaloupe Melon','Persimmon','Fig','Pomegranate','Nectarine','Apricot']);
 
   const categoriesHtml = PASSPORT_CATS.map(catDef => {
     const cat = catDef.key;
@@ -4860,11 +4862,20 @@ function renderPassportPage() {
     const foundInCat = catFruits.filter(f => discovered.has(f.n)).length;
     const stampsHtml = catFruits.map(f => {
       const isDisc = discovered.has(f.n);
-      return `<div class="passport-stamp ${isDisc ? 'discovered' : 'undiscovered'}">
-        <span class="stamp-emoji">${f.e}</span>
-        <span class="stamp-name">${f.n.length > 10 ? f.n.slice(0,9)+'…' : f.n}</span>
-        ${isDisc ? '<span class="stamp-check">✅</span>' : ''}
-      </div>`;
+      // Build tags for this fruit
+      const ftags = [];
+      if (EVERYDAY_TAG.has(f.n)) ftags.push('<span style="font-size:9px;font-weight:800;background:#fff3e0;color:#e65100;border-radius:99px;padding:1px 5px;white-space:nowrap">🛒</span>');
+      if (POME_STONE.has(f.n)) ftags.push('<span style="font-size:9px;font-weight:800;background:#fce4ec;color:#c62828;border-radius:99px;padding:1px 5px;white-space:nowrap">🍑</span>');
+      if (f.cat === 'Berries') ftags.push('<span style="font-size:9px;font-weight:800;background:#ede7f6;color:#4527a0;border-radius:99px;padding:1px 5px;white-space:nowrap">🫐</span>');
+      if (f.cat === 'Citrus') ftags.push('<span style="font-size:9px;font-weight:800;background:#fff8e1;color:#f57f17;border-radius:99px;padding:1px 5px;white-space:nowrap">🍊</span>');
+      if (ASIAN_FRUITS.has(f.n) || f.cat === 'Asian') ftags.push('<span style="font-size:9px;font-weight:800;background:#e8f5e9;color:#1b5e20;border-radius:99px;padding:1px 5px;white-space:nowrap">🌏</span>');
+      if (LATAM_FRUITS.has(f.n) || f.cat === 'LatAm') ftags.push('<span style="font-size:9px;font-weight:800;background:#e3f2fd;color:#0d47a1;border-radius:99px;padding:1px 5px;white-space:nowrap">🌎</span>');
+      return '<div class="passport-stamp ' + (isDisc ? 'discovered' : 'undiscovered') + '">' +
+        '<span class="stamp-emoji">' + f.e + '</span>' +
+        '<span class="stamp-name">' + (f.n.length > 10 ? f.n.slice(0,9)+'…' : f.n) + '</span>' +
+        (ftags.length > 1 ? '<div style="display:flex;flex-wrap:wrap;gap:2px;justify-content:center;margin-top:2px">' + ftags.join('') + '</div>' : '') +
+        (isDisc ? '<span class="stamp-check">✅</span>' : '') +
+      '</div>';
     }).join('');
 
     const catComplete = foundInCat === catFruits.length;
@@ -4945,10 +4956,9 @@ function renderPassportPage() {
 // ME PAGE
 // ============================================================
 
-function toggleGridCat(cat, on) {
+function setGridMode(showAll) {
   if (!STATE.settings) STATE.settings = {};
-  const key = 'gridCat_' + cat.replace(' ','_');
-  STATE.settings[key] = on;
+  STATE.settings['gridShowAll'] = showAll;
   saveState();
   renderMePage();
   renderTodayPage();
@@ -5070,17 +5080,15 @@ function renderMePage() {
         '</div>' +
       '</div>' +
       '<div style="margin-top:12px;padding-top:12px;border-top:2px solid var(--border)">' +
-        '<div style="font-size:12px;font-weight:800;margin-bottom:4px">🍎 Today Fruit Grid</div>' +
-        '<div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:12px">Everyday fruits always shown. Toggle categories to add more to your quick-tap grid.</div>' +
-        ['Stone Fruits','Berries','Citrus','Asian','LatAm'].map(function(cat) {
-          const labels = { 'Stone Fruits':'🍑 Stone Fruits', 'Berries':'🫐 Berries', 'Citrus':'🍊 Citrus', 'Asian':'🌏 Asian Fruits', 'LatAm':'🌎 Latin American' };
-          const key = 'gridCat_' + cat.replace(' ','_');
-          const on = !!(STATE.settings && STATE.settings[key]);
-          return '<label style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)">' +
-            '<span style="font-size:13px;font-weight:700">' + labels[cat] + '</span>' +
-            '<input type="checkbox" ' + (on ? 'checked' : '') + ' onchange="toggleGridCat(\'' + cat + '\',this.checked)" style="width:18px;height:18px;accent-color:var(--orange);cursor:pointer">' +
-          '</label>';
-        }).join('') +
+        '<div style="font-size:12px;font-weight:800;margin-bottom:6px">🍎 Today Fruit Grid</div>' +
+        (function() {
+          const showAll = !!(STATE.settings && STATE.settings['gridShowAll']);
+          return '<div style="display:flex;background:var(--bg);border:2px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:6px">' +
+            '<button onclick="setGridMode(false)" style="flex:1;padding:10px 8px;font-size:12px;font-weight:800;border:none;cursor:pointer;background:' + (!showAll ? 'var(--orange)' : 'transparent') + ';color:' + (!showAll ? '#fff' : 'var(--muted)') + '">🛒 Only Everyday</button>' +
+            '<button onclick="setGridMode(true)" style="flex:1;padding:10px 8px;font-size:12px;font-weight:800;border:none;cursor:pointer;background:' + (showAll ? 'var(--orange)' : 'transparent') + ';color:' + (showAll ? '#fff' : 'var(--muted)') + '">🌍 Show All</button>' +
+          '</div>' +
+          '<div style="font-size:10px;color:var(--muted);font-weight:700">' + (!showAll ? 'Showing Everyday fruits only — search still finds everything' : 'All ' + FRUITS.length + ' fruits shown in the grid') + '</div>';
+        })() +
       '</div>' +
       (isUnlocked(14) ?
         '<div style="margin-top:12px;padding-top:12px;border-top:2px solid var(--border)">' +
