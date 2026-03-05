@@ -1686,21 +1686,21 @@ window.onerror = function(msg, src, line, col, err) {
 // LEVELS
 // ============================================================
 const LEVELS = [
-  { name:'🌱 Seedling',              xp:0,     reward:null,                                                                    hint:null },
-  { name:'🫐 Bilberry Beginner',     xp:60,    reward:'📖 Fruit Trivia unlocked in Knowledge tab!',                           hint:'A weekly fruit quiz with XP rewards is coming...' },
-  { name:'🥥 Coconutty Collector',   xp:150,   reward:'🗺️ Fruit Passport + 🏅 Achievements unlocked!',                      hint:'A way to collect every fruit you have ever tried is coming...' },
-  { name:'🍊 Guanabana Gambler',     xp:280,   reward:'🎰 Fruit Roulette unlocked in Challenge tab!',                        hint:'Feeling lucky? Something unpredictable is coming...' },
-  { name:'🍎 Russet Ripener',        xp:450,   reward:'🧊 Fruit Keeper unlocked in Knowledge tab!',                          hint:'A handy storage guide for every fruit is coming...' },
-  { name:'🍍 Pineapply Pioneer',     xp:700,   reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!',                    hint:'A weekly geography challenge with XP rewards is coming...' },
-  { name:'🍵 Bael Brewer',           xp:1000,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                             hint:'A creative brewing and fermenting lab is almost ready...' },
-  { name:'🍋 Loquat Legend',         xp:1350,  reward:'🍳 Trio cooking challenge unlocked in Challenge tab!',                 hint:'A serious cooking upgrade is on its way...' },
-  { name:'🍑 Peachy Pursuer',        xp:1750,  reward:'🍓 What to make with... unlocked in Knowledge tab!',                  hint:'Monthly fruit cooking inspiration is coming...' },
-  { name:'🌺 Passionfruity Pairer',  xp:2200,  reward:'🍽️ Pairing of the Week unlocked in Challenge tab!',                  hint:'A weekly real-life fruit pairing challenge is coming...' },
-  { name:'🌿 Figgy Forager',         xp:3100,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                                hint:'Tea concepts and fermentation ideas are brewing...' },
-  { name:'🎨 Fruit Bowl Sketcher',   xp:4200,  reward:'🎨 Pixel Fruit Artist unlocked in Challenge tab!',                    hint:'Something creative and completely unique is coming...' },
-  { name:'🍈 Jambu Juicer',          xp:5500,  reward:'🧪 Juice Lab unlocked in Challenge tab!',                             hint:'Something to do with combining fruits is brewing...' },
-  { name:'🍊 Kumquat Kolorist',      xp:7200,  reward:'🏆 Fruit Bucket List unlocked in Me tab!',                            hint:'A legendary fruit challenge awaits the truly dedicated...' },
-  { name:'👑 King Durian',           xp:10000, reward:'🎨 Custom Accent + 🪪 Fruit Identity Card unlocked!',                 hint:null },
+  { name:'🌱 Seedling',              xp:0,     reward:null,                                                                       hint:null },
+  { name:'🫐 Bilberry Beginner',     xp:60,    reward:'📖 Fruit Trivia unlocked in Knowledge tab!',                              hint:'A weekly fruit quiz with XP rewards is coming...' },
+  { name:'🥥 Coconutty Collector',   xp:150,   reward:'🗺️ Fruit Passport + 🏅 Achievements unlocked!',                         hint:'A way to collect every fruit you have ever tried is coming...' },
+  { name:'🍊 Guanabana Gambler',     xp:280,   reward:'🎰 Fruit Roulette unlocked in Challenge tab!',                           hint:'Feeling lucky? Something unpredictable is coming...' },
+  { name:'🍎 Russet Ripener',        xp:450,   reward:'🧊 Fruit Keeper unlocked in Knowledge tab!',                             hint:'A handy storage guide for every fruit is coming...' },
+  { name:'🍍 Pineapply Pioneer',     xp:700,   reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!',                       hint:'A weekly geography challenge with XP rewards is coming...' },
+  { name:'🍵 Bael Brewer',           xp:1000,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                                hint:'A creative brewing and fermenting lab is almost ready...' },
+  { name:'🎨 Fruit Bowl Sketcher',   xp:1350,  reward:'🎨 Pixel Fruit Artist unlocked in Me tab!',                              hint:'Something creative and completely unique is coming...' },
+  { name:'🍑 Peachy Pursuer',        xp:1750,  reward:'🍓 What to make with... unlocked in Knowledge tab!',                     hint:'Monthly fruit cooking inspiration is coming...' },
+  { name:'🍋 Loquat Legend',         xp:2200,  reward:'🍳 Trio Challenge unlocked as 4th difficulty in Monthly Challenge!',      hint:'A serious 3-fruit cooking challenge is almost yours...' },
+  { name:'🍊 Tangerine Taster',      xp:3100,  reward:'🎡 Flavour Wheel unlocked in Me tab!',                                   hint:'A visual taste profile of your eating habits is coming...' },
+  { name:'🌺 Passionfruity Pairer',  xp:4200,  reward:'🍽️ Pairing of the Week unlocked in Challenge tab!',                     hint:'A weekly real-life fruit pairing challenge is coming...' },
+  { name:'🍈 Jambu Juicer',          xp:5500,  reward:'🧪 Juice Lab unlocked in Challenge tab!',                                hint:'Something to do with combining fruits is brewing...' },
+  { name:'🍊 Kumquat Kolorist',      xp:7200,  reward:'🏆 Fruit Bucket List unlocked in Challenge tab!',                        hint:'A legendary fruit challenge awaits the truly dedicated...' },
+  { name:'👑 King Durian',           xp:10000, reward:'🎨 Custom Accent + 🪪 Fruit Identity Card unlocked!',                    hint:null },
 ];
 
 
@@ -2070,64 +2070,76 @@ function getFruitLabEntry() {
 
 const CHALLENGES = {
   1:  { title:'January Citrus Haul', options:[
-    { label:'Easy',    fruits:['Blood Orange'],               dish:'Blood Orange Yogurt',       tip:'Slice over thick Greek yogurt with honey & mint' },
-    { label:'Classic', fruits:['Grapefruit','Clementine'],    dish:'Winter Citrus Salad',       tip:'Segment both, toss with mint & chili flakes' },
-    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing',      tip:'Squeeze both over a green salad — unusual & amazing' },
+    { label:'Easy',    fruits:['Blood Orange'],                              dish:'Blood Orange Yogurt',          tip:'Slice over thick Greek yogurt with honey & mint' },
+    { label:'Classic', fruits:['Grapefruit','Clementine'],                   dish:'Winter Citrus Salad',          tip:'Segment both, toss with mint & chili flakes' },
+    { label:'Difficult',fruits:['Pomelo','Yuzu'],                            dish:'Pomelo Yuzu Dressing',         tip:'Squeeze both over a green salad — unusual & amazing' },
+    { label:'Trio',    fruits:['Blood Orange','Pomelo','Yuzu'],              dish:'Triple Citrus Marmalade',      tip:'Combine all three citrus in one marmalade — complex, bitter, floral and unforgettable' },
   ]},
   2:  { title:'February Tropical Escape', options:[
-    { label:'Easy',    fruits:['Banana'],                     dish:'Banana Honey Toast',        tip:'Slice on sourdough with almond butter & honey' },
-    { label:'Classic', fruits:['Mango','Pineapple'],          dish:'Tropical Smoothie Bowl',    tip:'Blend frozen mango, top with pineapple chunks' },
-    { label:'Difficult',fruits:['Papaya','Passion Fruit'],    dish:'Papaya Passion Boat',       tip:'Halve papaya, fill with passion fruit pulp & lime' },
+    { label:'Easy',    fruits:['Banana'],                                    dish:'Banana Honey Toast',           tip:'Slice on sourdough with almond butter & honey' },
+    { label:'Classic', fruits:['Mango','Pineapple'],                         dish:'Tropical Smoothie Bowl',       tip:'Blend frozen mango, top with pineapple chunks' },
+    { label:'Difficult',fruits:['Papaya','Passion Fruit'],                   dish:'Papaya Passion Boat',          tip:'Halve papaya, fill with passion fruit pulp & lime' },
+    { label:'Trio',    fruits:['Mango','Pineapple','Passion Fruit'],         dish:'Tropical Tarte Tatin',         tip:'Caramelise all three in brown sugar and butter, top with puff pastry and bake 25 min' },
   ]},
   3:  { title:'March Green & Sharp', options:[
-    { label:'Easy',    fruits:['Kiwi'],                       dish:'Kiwi Chia Pudding',         tip:'Slice kiwi over overnight chia pudding with coconut milk' },
-    { label:'Classic', fruits:['Lime','Golden Kiwi'],         dish:'Lime Kiwi Sorbet',          tip:'Blend frozen kiwi with lime juice & a pinch of zest' },
-    { label:'Difficult',fruits:['Pomelo','Lime'],             dish:'Thai-Style Citrus Salad',   tip:'Pomelo segments with lime dressing, chili, peanuts & fresh herbs' },
+    { label:'Easy',    fruits:['Kiwi'],                                      dish:'Kiwi Chia Pudding',            tip:'Slice kiwi over overnight chia pudding with coconut milk' },
+    { label:'Classic', fruits:['Lime','Golden Kiwi'],                        dish:'Lime Kiwi Sorbet',             tip:'Blend frozen kiwi with lime juice & a pinch of zest' },
+    { label:'Difficult',fruits:['Pomelo','Lime'],                            dish:'Thai-Style Citrus Salad',      tip:'Pomelo segments with lime dressing, chili, peanuts & fresh herbs' },
+    { label:'Trio',    fruits:['Kiwi','Lime','Pomelo'],                      dish:'Three-Citrus Ceviche Dressing',tip:'Use all three to make a layered citrus dressing — dress fish, scallops or a green salad' },
   ]},
   4:  { title:'April Berry Awakening', options:[
-    { label:'Easy',    fruits:['Strawberry'],                 dish:'Strawberries & Cream',      tip:'Hull and halve, serve with whipped cream and a pinch of black pepper' },
-    { label:'Classic', fruits:['Strawberry','Raspberry'],     dish:'Berry Compote',             tip:'Simmer with a splash of orange juice & honey — incredible on pancakes' },
-    { label:'Difficult',fruits:['Gooseberry','Redcurrant'],   dish:'Gooseberry Fool',           tip:'Stew gooseberries with sugar, fold into whipped cream. Add redcurrant on top' },
+    { label:'Easy',    fruits:['Strawberry'],                                dish:'Strawberries & Cream',         tip:'Hull and halve, serve with whipped cream and a pinch of black pepper' },
+    { label:'Classic', fruits:['Strawberry','Raspberry'],                    dish:'Berry Compote',                tip:'Simmer with a splash of orange juice & honey — incredible on pancakes' },
+    { label:'Difficult',fruits:['Gooseberry','Redcurrant'],                  dish:'Gooseberry Fool',              tip:'Stew gooseberries with sugar, fold into whipped cream. Add redcurrant on top' },
+    { label:'Trio',    fruits:['Strawberry','Raspberry','Gooseberry'],       dish:'Spring Berry Galette',         tip:'Free-form pastry tart, fill with all three berries, dust with sugar and bake until bubbling' },
   ]},
   5:  { title:'May Stone Fruit Start', options:[
-    { label:'Easy',    fruits:['Apricot'],                    dish:'Apricot on Toast',          tip:'Halve, grill 2 min, serve on ricotta toast with thyme & honey' },
-    { label:'Classic', fruits:['Cherry','Apricot'],           dish:'Stone Fruit Clafoutis',     tip:'A simple French baked batter pudding — mix eggs, milk, flour, fruit, bake' },
-    { label:'Difficult',fruits:['Greengage','Cherry'],        dish:'Greengage Cherry Tart',     tip:'Blind bake pastry, fill with frangipane, press in greengages & cherries' },
+    { label:'Easy',    fruits:['Apricot'],                                   dish:'Apricot on Toast',             tip:'Halve, grill 2 min, serve on ricotta toast with thyme & honey' },
+    { label:'Classic', fruits:['Cherry','Apricot'],                          dish:'Stone Fruit Clafoutis',        tip:'A simple French baked batter pudding — mix eggs, milk, flour, fruit, bake' },
+    { label:'Difficult',fruits:['Greengage','Cherry'],                       dish:'Greengage Cherry Tart',        tip:'Blind bake pastry, fill with frangipane, press in greengages & cherries' },
+    { label:'Trio',    fruits:['Apricot','Cherry','Greengage'],              dish:'Stone Fruit Schnapps Jam',     tip:'Equal weight fruit and sugar, add a splash of kirsch or apricot brandy, simmer 25 min and jar hot' },
   ]},
   6:  { title:'June Berry Bonanza', options:[
-    { label:'Easy',    fruits:['Blueberry'],                  dish:'Blueberry Pancakes',        tip:'Fold fresh blueberries into batter and serve with maple syrup' },
-    { label:'Classic', fruits:['Strawberry','Blueberry'],     dish:'Summer Berry Pavlova',      tip:'Top meringue with whipped cream and mixed berries' },
-    { label:'Difficult',fruits:['Redcurrant','Blackcurrant'], dish:'Cassis Coulis',             tip:'Simmer both currants with sugar — incredible with cheese or ice cream' },
+    { label:'Easy',    fruits:['Blueberry'],                                 dish:'Blueberry Pancakes',           tip:'Fold fresh blueberries into batter and serve with maple syrup' },
+    { label:'Classic', fruits:['Strawberry','Blueberry'],                    dish:'Summer Berry Pavlova',         tip:'Top meringue with whipped cream and mixed berries' },
+    { label:'Difficult',fruits:['Redcurrant','Blackcurrant'],                dish:'Cassis Coulis',                tip:'Simmer both currants with sugar — incredible with cheese or ice cream' },
+    { label:'Trio',    fruits:['Strawberry','Blueberry','Blackcurrant'],     dish:'Triple Berry Layer Cake',      tip:'Three sponge layers, each soaked with a different berry syrup, with mascarpone between' },
   ]},
   7:  { title:'July Peak Summer', options:[
-    { label:'Easy',    fruits:['Peach'],                      dish:'Grilled Peach',             tip:'Halve and grill 3 min each side, serve with vanilla ice cream' },
-    { label:'Classic', fruits:['Watermelon','Peach'],         dish:'Stone Fruit Salad',         tip:'Cube watermelon, slice peaches, add mint, lime & feta' },
-    { label:'Difficult',fruits:['Bilberry (Waldheidelbeere)','Blackberry'], dish:'Wild Berry Jam', tip:'Equal weight fruit & sugar, simmer 20 min, bottle hot' },
+    { label:'Easy',    fruits:['Peach'],                                     dish:'Grilled Peach',                tip:'Halve and grill 3 min each side, serve with vanilla ice cream' },
+    { label:'Classic', fruits:['Watermelon','Peach'],                        dish:'Stone Fruit Salad',            tip:'Cube watermelon, slice peaches, add mint, lime & feta' },
+    { label:'Difficult',fruits:['Bilberry (Waldheidelbeere)','Blackberry'],  dish:'Wild Berry Jam',               tip:'Equal weight fruit & sugar, simmer 20 min, bottle hot' },
+    { label:'Trio',    fruits:['Peach','Watermelon','Bilberry (Waldheidelbeere)'], dish:'Summer Fruit Consommé', tip:'Make a clear fruit broth from all three — chill and serve as a stunning dessert soup with fresh fruit and mint' },
   ]},
   8:  { title:'August Harvest', options:[
-    { label:'Easy',    fruits:['Raspberry'],                  dish:'Raspberry Fool',            tip:'Crush raspberries with a fork, swirl into whipped cream — done in 3 minutes' },
-    { label:'Classic', fruits:['Plum','Mirabelle'],           dish:'German Pflaumenkuchen',     tip:'Classic German flat cake — plums laid on yeasted dough, baked with sugar & cinnamon' },
-    { label:'Difficult',fruits:['Elderberry','Sea Buckthorn'],dish:'Immune Cordial',         tip:'Simmer elderberries separately from sea buckthorn, combine with sugar & lemon' },
+    { label:'Easy',    fruits:['Raspberry'],                                 dish:'Raspberry Fool',               tip:'Crush raspberries with a fork, swirl into whipped cream' },
+    { label:'Classic', fruits:['Plum','Mirabelle'],                          dish:'German Pflaumenkuchen',        tip:'Classic German flat cake — plums on yeasted dough with sugar & cinnamon' },
+    { label:'Difficult',fruits:['Elderberry','Sea Buckthorn'],               dish:'Immune Cordial',               tip:'Simmer elderberries separately from sea buckthorn, combine with sugar & lemon' },
+    { label:'Trio',    fruits:['Plum','Mirabelle','Elderberry'],             dish:'Forest Fruit Leather',         tip:'Blend all three, spread thinly on baking paper and dry in oven at 70°C for 6 hours — chewy, intense fruit leather' },
   ]},
   9:  { title:'September Orchard Month', options:[
-    { label:'Easy',    fruits:['Apple'],                      dish:'Baked Apple',               tip:'Core apple, stuff with oats, cinnamon & honey, bake 25 min at 180°C' },
-    { label:'Classic', fruits:['Apple','Pear'],               dish:'Apple Pear Crumble',        tip:'Slice both, toss with cinnamon & brown sugar, top with oat crumble, bake 35 min' },
-    { label:'Difficult',fruits:['Quince','Damson'],           dish:'Quince & Damson Jelly',     tip:'Simmer both separately, strain through muslin overnight, combine juice with sugar & boil to set' },
+    { label:'Easy',    fruits:['Apple'],                                     dish:'Baked Apple',                  tip:'Core apple, stuff with oats, cinnamon & honey, bake 25 min at 180°C' },
+    { label:'Classic', fruits:['Apple','Pear'],                              dish:'Apple Pear Crumble',           tip:'Slice both, toss with cinnamon & brown sugar, top with oat crumble, bake 35 min' },
+    { label:'Difficult',fruits:['Quince','Damson'],                          dish:'Quince & Damson Jelly',        tip:'Simmer both, strain overnight, combine juice with sugar & boil to set' },
+    { label:'Trio',    fruits:['Apple','Pear','Quince'],                     dish:'Orchard Trilogy Tarte Tatin',  tip:'All three fruits caramelised together in one tarte tatin — each brings different texture and sweetness' },
   ]},
   10: { title:'October Wild & Foraged', options:[
-    { label:'Easy',    fruits:['Grape'],                      dish:'Grape & Brie Board',        tip:'Halve grapes, serve with brie, crackers & walnuts' },
-    { label:'Classic', fruits:['Fig','Grape'],                dish:'Fig Grape Flatbread',       tip:'Top flatbread with fig, grape, goat cheese & honey. Bake 12 min at 200°C' },
-    { label:'Difficult',fruits:['Riesling Grape','Aronia'],   dish:'Fruit Shrub',               tip:'Equal parts juice, apple cider vinegar, sugar — let sit 3 days, strain. Mix with sparkling water' },
+    { label:'Easy',    fruits:['Grape'],                                     dish:'Grape & Brie Board',           tip:'Halve grapes, serve with brie, crackers & walnuts' },
+    { label:'Classic', fruits:['Fig','Grape'],                               dish:'Fig Grape Flatbread',          tip:'Top flatbread with fig, grape, goat cheese & honey. Bake 12 min at 200°C' },
+    { label:'Difficult',fruits:['Riesling Grape','Aronia'],                  dish:'Fruit Shrub',                  tip:'Equal parts juice, apple cider vinegar, sugar — 3 days, strain' },
+    { label:'Trio',    fruits:['Fig','Grape','Aronia'],                      dish:'Wild Harvest Chutney',         tip:'Combine all three with red wine vinegar, brown sugar, star anise and cinnamon — a complex autumn chutney that improves over weeks' },
   ]},
   11: { title:'November Exotic Arrivals', options:[
-    { label:'Easy',    fruits:['Persimmon'],                  dish:'Persimmon Slices',          tip:'Slice ripe persimmon thinly, serve with yogurt & a drizzle of honey' },
-    { label:'Classic', fruits:['Pomegranate','Persimmon'],    dish:'Winter Salad',              tip:'Rocket, pomegranate seeds, persimmon slices, walnuts & balsamic glaze' },
-    { label:'Difficult',fruits:['Cranberry','Physalis'],      dish:'Cranberry Physalis Sauce',  tip:'Simmer cranberries with orange juice & sugar until thick, garnish with physalis' },
+    { label:'Easy',    fruits:['Persimmon'],                                 dish:'Persimmon Slices',             tip:'Slice ripe persimmon thinly, serve with yogurt & a drizzle of honey' },
+    { label:'Classic', fruits:['Pomegranate','Persimmon'],                   dish:'Winter Salad',                 tip:'Rocket, pomegranate seeds, persimmon slices, walnuts & balsamic glaze' },
+    { label:'Difficult',fruits:['Cranberry','Physalis'],                     dish:'Cranberry Physalis Sauce',     tip:'Simmer cranberries with orange juice & sugar until thick, garnish with physalis' },
+    { label:'Trio',    fruits:['Persimmon','Pomegranate','Cranberry'],       dish:'Persian Winter Torte',         tip:'Almond sponge soaked in pomegranate syrup, persimmon cream filling, cranberry glaze on top' },
   ]},
   12: { title:'December Festive Fruits', options:[
-    { label:'Easy',    fruits:['Clementine'],                 dish:'Clementine Curd',           tip:'Whisk juice with eggs, sugar & butter over low heat until thick. Incredible on toast' },
-    { label:'Classic', fruits:['Blood Orange','Pomegranate'], dish:'Festive Pavlova',           tip:'Top meringue with blood orange segments, pomegranate seeds & cream' },
-    { label:'Difficult',fruits:['Quince','Yuzu'],             dish:'Yuzu Quince Cake',          tip:'Yuzu zest in sponge, persimmon puree filling' },
+    { label:'Easy',    fruits:['Clementine'],                                dish:'Clementine Curd',              tip:'Whisk juice with eggs, sugar & butter over low heat until thick' },
+    { label:'Classic', fruits:['Blood Orange','Pomegranate'],                dish:'Festive Pavlova',              tip:'Top meringue with blood orange segments, pomegranate seeds & cream' },
+    { label:'Difficult',fruits:['Quince','Yuzu'],                            dish:'Yuzu Quince Cake',             tip:'Yuzu zest in sponge, quince puree filling' },
+    { label:'Trio',    fruits:['Clementine','Blood Orange','Pomegranate'],   dish:'Three Kings Citrus Wreath',    tip:'Layered choux pastry ring filled with citrus curd, clementine segments, blood orange slices and pomegranate seeds' },
   ]},
 };
 
@@ -3490,7 +3502,7 @@ function confirmMadeIt() {
   STATE.challenges[key].completed = true;
   const ch = CHALLENGES[currentMonth()];
   const opt = ch.options[STATE.challenges[key].picked];
-  const isHard = opt.label === 'Difficult';
+  const isHard = opt.label === 'Difficult' || opt.label === 'Trio';
   const xpGain = isHard ? 250 : 150;
   const prevLevel = getLevelIndex(STATE.totalXP);
   STATE.totalXP += xpGain;
@@ -3541,13 +3553,14 @@ function renderChallengePage() {
   }).join('');
 
   // Challenge options
-  const optionsHtml = ch.options.map((opt, i) => {
+  const optionsHtml = ch.options.filter(opt => opt.label !== 'Trio' || isUnlocked(10)).map((opt, i) => {
     const isPicked = cs.picked === i;
     const isCompleted = cs.completed && isPicked;
-    const isHard = opt.label === 'Difficult';
-    const badgeCls = opt.label === 'Easy' ? 'badge-easy' : opt.label === 'Classic' ? 'badge-classic' : 'badge-hard';
-    const cardCls = isCompleted ? 'completed-card' : isPicked ? (isHard ? 'selected-hard' : 'selected') : '';
-    const xpLabel = opt.label === 'Difficult' ? '+250 XP ⭐' : opt.label === 'Classic' ? '+150 XP' : '+50 XP';
+    const isHard = opt.label === 'Difficult' || opt.label === 'Trio';
+    const badgeCls = opt.label === 'Trio' ? 'badge-trio' : opt.label === 'Easy' ? 'badge-easy' : opt.label === 'Classic' ? 'badge-classic' : 'badge-hard';
+    const isTrio = opt.label === 'Trio';
+    const cardCls = isCompleted ? 'completed-card' : isPicked ? (isTrio ? 'selected-trio' : isHard ? 'selected-hard' : 'selected') : '';
+    const xpLabel = opt.label === 'Trio' ? '+500 XP 👑' : opt.label === 'Difficult' ? '+250 XP ⭐' : opt.label === 'Classic' ? '+150 XP' : '+50 XP';
 
     const fruitsHtml = opt.fruits.map(fn => {
       const f = FRUITS.find(x => x.n === fn);
@@ -3590,6 +3603,17 @@ function renderChallengePage() {
 
     ${optionsHtml}
 
+    ${!isUnlocked(10) ? `
+      <div style="border:2px dashed #ce93d8;border-radius:14px;padding:14px 16px;margin-bottom:14px;background:#fce4ec22;display:flex;align-items:center;gap:12px">
+        <span style="font-size:28px">👑</span>
+        <div>
+          <div style="font-family:Fredoka One,cursive;font-size:14px;color:#7b1fa2">Trio Challenge — Lvl 10</div>
+          <div style="font-size:11px;font-weight:700;color:#9c27b0">Cook with 3 fruits at once for +500 XP. Unlocks at Loquat Legend.</div>
+        </div>
+        <span style="margin-left:auto;font-size:20px">🔒</span>
+      </div>
+    ` : ''}
+
     ${bothLogged ? `
       <button class="btn-confirm" onclick="confirmMadeIt()">
         ✅ I made the dish! Claim my XP 🎉
@@ -3629,11 +3653,7 @@ function renderChallengePage() {
     `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍽️</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Pairing of the Week</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Passionfruity Pairer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Pairing of the Week</div><div class="lock-sub">Unlocks at Passionfruity Pairer</div></div></div>`
   }
 
-  <div class="section-title" style="margin-top:6px">🍳 Trio Challenge</div>
-  ${isUnlocked(8) ?
-    `<div id="trioChallengeContainer"></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍳</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Trio Challenge</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Loquat Legend</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Trio Challenge</div><div class="lock-sub">Unlocks at Loquat Legend</div></div></div>`
-  }
+
   <div class="section-title" style="margin-top:6px">🧪 Juice Lab</div>
   ${isUnlocked(13) ?
     `<div id="juiceLabContainer"></div>` :
@@ -3645,8 +3665,7 @@ function renderChallengePage() {
     `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🏆</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Bucket List</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Kumquat Kolorist</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Bucket List</div><div class="lock-sub">Unlocks at Kumquat Kolorist</div></div></div>`
   }
   `;
-  if (isUnlocked(10)) renderPairingOfWeek('pairingContainer');
-  if (isUnlocked(8)) renderTrioChallenge('trioChallengeContainer');
+  if (isUnlocked(12)) renderPairingOfWeek('pairingContainer');
   if (isUnlocked(13)) renderJuiceLab('juiceLabContainer');
   if (isUnlocked(14)) renderBucketList('bucketListContainer');
 }
@@ -3908,7 +3927,7 @@ function renderMePage() {
     );
 
   const pixelArtSection = '<div class="section-title">🎨 Your Fruit Icons</div>' +
-    lockedOrContent(12,
+    lockedOrContent(8,
       '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px">' +
         '<div style="font-size:40px;margin-bottom:10px">🎨</div>' +
         '<div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Pixel Fruit Artist</div>' +
