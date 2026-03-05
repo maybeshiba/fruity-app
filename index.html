@@ -1616,7 +1616,7 @@ body {
       <span class="help-tab-icon">🍎</span>
       <div class="help-tab-info">
         <div class="help-tab-name">Today</div>
-        <div class="help-tab-desc">Log every fruit you eat each day. See your vitamin coverage, get smart suggestions based on what you\'re missing, and build your daily streak. Fruits in season earn double XP!</div>
+        <div class="help-tab-desc">Log every fruit you eat each day. See your vitamin coverage, get smart suggestions based on what you're missing, and build your daily streak. Fruits in season earn double XP!</div>
       </div>
     </div>
 
@@ -1632,7 +1632,7 @@ body {
       <span class="help-tab-icon">🧠</span>
       <div class="help-tab-info">
         <div class="help-tab-name">Knowledge</div>
-        <div class="help-tab-desc">Fruit Trivia, Origins Quiz, Fruit Lab (tea & ferment ideas), Fruit Keeper (storage tips) and more — all unlock as you level up. Content rotates regularly so there\'s always something new.</div>
+        <div class="help-tab-desc">Fruit Trivia, Origins Quiz, Fruit Lab (tea & ferment ideas), Fruit Keeper (storage tips) and more — all unlock as you level up. Content rotates regularly so there's always something new.</div>
       </div>
     </div>
 
@@ -1657,7 +1657,7 @@ body {
       Every fruit you log earns XP — rarer and seasonal fruits earn more. Complete monthly challenges for bonus XP. As you level up from 🌱 Seedling to 👑 King Durian, new features unlock one by one across all tabs. There are 15 levels to reach!
     </div>
 
-    <button class="btn-modal" style="margin-top:16px" onclick="closeHelp()">Got it! Let\'s eat fruit 🍎</button>
+    <button class="btn-modal" style="margin-top:16px" onclick="closeHelp()">Got it! Let's eat fruit 🍎</button>
   </div>
 </div>
 
@@ -1699,14 +1699,14 @@ const LEVELS = [
   { name:'🍊 Guanabana Gambler',     xp:280,   reward:'🎰 Fruit Roulette unlocked in Challenge tab!',                           hint:'Feeling lucky? Something unpredictable is coming...' },
   { name:'🍎 Russet Ripener',        xp:450,   reward:'🧊 Fruit Keeper unlocked in Knowledge tab!',                             hint:'A handy storage guide for every fruit is coming...' },
   { name:'🍍 Pineapply Pioneer',     xp:700,   reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!',                       hint:'A weekly geography challenge with XP rewards is coming...' },
-  { name:'🍵 Bael Brewer',           xp:1000,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                                hint:'A creative brewing and fermenting lab is almost ready...' },
-  { name:'🎨 Fruit Bowl Sketcher',   xp:1350,  reward:'🎨 Pixel Fruit Artist unlocked in Me tab!',                              hint:'Something creative and completely unique is coming...' },
-  { name:'🍑 Peachy Pursuer',        xp:1750,  reward:'🍓 What to make with... unlocked in Knowledge tab!',                     hint:'Monthly fruit cooking inspiration is coming...' },
+  { name:'🍋 Bergamot Brewer',           xp:1000,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                                hint:'A creative brewing and fermenting lab is almost ready...' },
+  { name:'🍏 Cherimoya Challenger',   xp:1350,  reward:'🎨 Pixel Fruit Artist unlocked in Me tab!',                              hint:'Something creative and completely unique is coming...' },
+  { name:'🌿 Juniper Jammer',        xp:1750,  reward:'🍓 What to make with... unlocked in Knowledge tab!',                     hint:'Monthly fruit cooking inspiration is coming...' },
   { name:'🍋 Loquat Legend',         xp:2200,  reward:'🍳 Trio Challenge unlocked as 4th difficulty in Monthly Challenge!',      hint:'A serious 3-fruit cooking challenge is almost yours...' },
   { name:'🍊 Tangerine Taster',      xp:3100,  reward:'🎡 Flavour Wheel unlocked in Me tab!',                                   hint:'A visual taste profile of your eating habits is coming...' },
   { name:'🌺 Passionfruity Pairer',  xp:4200,  reward:'🍽️ Pairing of the Week unlocked in Challenge tab!',                     hint:'A weekly real-life fruit pairing challenge is coming...' },
   { name:'🍹 Bignay Bartender',       xp:5500,  reward:'🍹 Friday Sips unlocked in Challenge tab!',                              hint:'A weekly cocktail trivia feature is being mixed...' },
-  { name:'🍊 Kumquat Kolorist',      xp:7200,  reward:'🏆 Fruit Bucket List unlocked in Challenge tab!',                        hint:'A legendary fruit challenge awaits the truly dedicated...' },
+  { name:'🍏 Cherimoya Challenger',      xp:7200,  reward:'🏆 Fruit Bucket List unlocked in Challenge tab!',                        hint:'A legendary fruit challenge awaits the truly dedicated...' },
   { name:'👑 King Durian',           xp:10000, reward:'🎨 Custom Accent + 🪪 Fruit Identity Card unlocked!',                    hint:null },
 ];
 
@@ -1717,7 +1717,7 @@ const LEVELS = [
 const FRUITS = [
   // EVERYDAY STAPLES
   { e:'🍎', n:'Apple',           months:[8,9,10,11,12,1,2],   v:['C','K','B6'],        xp:10, note:"Germany\'s favourite — great fibre, vitamin C & K",          cat:'Everyday' },
-  { e:'🍌', n:'Banana',          months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['B6','C','Folate'],   xp:10, note:'Year-round energy boost — rich in B6 & potassium',           cat:'Everyday', imported:true },
+  { e:'🍌', n:'Banana',          months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['B6','C','Folate'],   xp:10, note:'Year-round energy boost — rich in B6 & potassium',           cat:'LatAm', imported:true },
   { e:'🍊', n:'Orange',          months:[11,12,1,2,3,4],       v:['C','Folate','A'],    xp:10, note:'Classic vitamin C powerhouse — great for immunity',            cat:'Citrus' },
   { e:'🍋', n:'Lemon',           months:[1,2,3,4,5,6,7,8,9,10,11,12], v:['C','B6'],           xp:10, note:'Zesty & alkalising — brilliant in cooking & drinks',          cat:'Citrus' },
   { e:'🍇', n:'Grape',           months:[8,9,10],              v:['C','K','B6'],        xp:12, note:'Antioxidant-rich — local German varieties peak in autumn',      cat:'Everyday' },
@@ -1728,14 +1728,14 @@ const FRUITS = [
   { e:'🍐', n:'Pear',            months:[8,9,10,11],           v:['C','K','B6'],        xp:10, note:'Gentle on digestion — good fibre & vitamin C',                 cat:'Everyday' },
   { e:'🥝', n:'Kiwi',            months:[11,12,1,2,3],         v:['C','K','E','Folate'],xp:14, note:'Vitamin C king — more C per gram than oranges',               cat:'Everyday' },
   { e:'🍉', n:'Watermelon',      months:[6,7,8,9],             v:['C','A'],             xp:12, note:'Hydrating summer fruit — 92% water, rich in lycopene',         cat:'Everyday' },
-  { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6','Folate'],xp:15, note:'Tropical vitamin bomb — one mango = 100% daily vitamin C', cat:'Tropical', imported:true },
-  { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6'],           xp:14, note:'Contains bromelain enzyme — aids digestion & reduces inflammation', cat:'Tropical', imported:true },
+  { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6','Folate'],xp:15, note:'Tropical vitamin bomb — one mango = 100% daily vitamin C', cat:'Asian', imported:true },
+  { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6'],           xp:14, note:'Contains bromelain enzyme — aids digestion & reduces inflammation', cat:'LatAm', imported:true },
   { e:'🍈', n:'Honeydew Melon',   months:[7,8,9],               v:['C','B6','K'],        xp:12, note:'Mellow sweetness — good source of vitamin C & B6',             cat:'Everyday' },
   { e:'🍊', n:'Mandarin',        months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Easy-peel winter favourite — great vitamin C & folate',        cat:'Citrus' },
   { e:'🍊', n:'Grapefruit',      months:[11,12,1,2,3],         v:['C','A','Folate'],    xp:12, note:'Bitter & bright — powerful antioxidant and metabolism booster', cat:'Citrus' },
   { e:'🍋', n:'Lime',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6','Folate'],  xp:11, note:'Sharper than lemon — essential in Mexican & Asian cooking',  cat:'Citrus', imported:true },
-  { e:'🥥', n:'Coconut',         months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['B6'],               xp:15, note:'Versatile tropical — milk, water, flesh all nutritious',      cat:'Tropical', imported:true },
-  { e:'🍌', n:'Plantain',        months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],       xp:14, note:'Starchy cooking banana — staple in African & Caribbean cuisine', cat:'Tropical', imported:true },
+  { e:'🥥', n:'Coconut',         months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['B6'],               xp:15, note:'Versatile tropical — milk, water, flesh all nutritious',      cat:'Asian', imported:true },
+  { e:'🍌', n:'Plantain',        months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],       xp:14, note:'Starchy cooking banana — staple in African & Caribbean cuisine', cat:'LatAm', imported:true },
   { e:'🍑', n:'Apricot',         months:[6,7],                 v:['C','A','K'],         xp:13, note:'Delicate stone fruit — excellent beta-carotene source',        cat:'Stone Fruits' },
   { e:'🌿', n:'Mirabelle',       months:[7,8],                 v:['C','K','A'],         xp:16, note:'Tiny golden plum — German delicacy, intensely sweet',          cat:'Stone Fruits' },
   { e:'🫒', n:'Damson',          months:[8,9],                 v:['C','K'],             xp:16, note:'Tart wild plum — perfect for jam and gin',                     cat:'Stone Fruits' },
@@ -1754,23 +1754,35 @@ const FRUITS = [
   { e:'🌿', n:'Sea Buckthorn',   months:[8,9,10],              v:['C','E','A','K'],     xp:22, note:'German superfruit — extraordinary vitamin C, almost medicinal', cat:'Berries' },
   { e:'🌿', n:'Elderberry',      months:[8,9],                 v:['C','A','B6'],        xp:19, note:'Never eat raw — cooked elderberry is a powerful immune booster', cat:'Berries' },
   { e:'🍒', n:'Cranberry',       months:[10,11],               v:['C','K','E'],         xp:16, note:'Urinary tract superhero — tart and medicinal',                 cat:'Berries' },
-  { e:'🍊', n:'Physalis',        months:[9,10,11],             v:['C','A','K'],         xp:18, note:'Cape gooseberry in a husk — exotic but increasingly in German shops', cat:'Everyday' },
+  { e:'🍊', n:'Physalis',        months:[9,10,11],             v:['C','A','K'],         xp:18, note:'Cape gooseberry in a husk — exotic but increasingly in German shops', cat:'Berries' },
   { e:'🥝', n:'Golden Kiwi',     months:[11,12,1,2,3], imported:true,         v:['C','K','E','Folate'],xp:15, note:'Sweeter & less tart than green kiwi — same vitamin powerhouse', cat:'Everyday', imported:true },
-  { e:'🧡', n:'Papaya',          months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','Folate'],   xp:15, note:'Tropical enzyme source — papain aids protein digestion',       cat:'Tropical', imported:true },
+  { e:'🧡', n:'Papaya',          months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','Folate'],   xp:15, note:'Tropical enzyme source — papain aids protein digestion',       cat:'Asian', imported:true },
   { e:'❤️', n:'Pomegranate',     months:[9,10,11,12],          v:['C','K','Folate','E'],xp:16, note:'Ancient fruit — rich in punicalagins, powerful antioxidants',   cat:'Everyday' },
-  { e:'🍋', n:'Passion Fruit',   months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],       xp:17, note:'Intense tropical flavour — great vitamin A & C',               cat:'Tropical', imported:true },
-  { e:'🐉', n:'Dragon Fruit',    months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','E'],            xp:18, note:'Striking pink flesh — mild flavour but rich in antioxidants', cat:'Tropical', imported:true },
-  { e:'⭐', n:'Star Fruit',      months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6','Folate'],  xp:19, note:'Waxy tropical fruit — beautiful star cross-section, tangy taste', cat:'Tropical', imported:true },
-  { e:'🍏', n:'Cherimoya',       months:[11,12,1,2,3,4], imported:true,       v:['C','B6','Folate'],   xp:22, note:'Custard apple — called the most delicious fruit by Mark Twain', cat:'Tropical', imported:true },
+  { e:'🍋', n:'Passion Fruit',   months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],       xp:17, note:'Intense tropical flavour — great vitamin A & C',               cat:'LatAm', imported:true },
+  { e:'🐉', n:'Dragon Fruit',    months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','E'],            xp:18, note:'Striking pink flesh — mild flavour but rich in antioxidants', cat:'Asian', imported:true },
+  { e:'⭐', n:'Star Fruit',      months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6','Folate'],  xp:19, note:'Waxy tropical fruit — beautiful star cross-section, tangy taste', cat:'Asian', imported:true },
+  { e:'🍏', n:'Cherimoya',       months:[11,12,1,2,3,4], imported:true,       v:['C','B6','Folate'],   xp:22, note:'Custard apple — called the most delicious fruit by Mark Twain', cat:'LatAm', imported:true },
   { e:'🍊', n:'Pomelo',          months:[11,12,1,2,3],         v:['C','B6','Folate'],   xp:17, note:'Grandfather of grapefruit — milder, sweeter, less bitter',      cat:'Citrus' },
   { e:'🧡', n:'Persimmon',       months:[10,11,12],            v:['C','A','K'],         xp:18, note:'Japanese kaki — wait until fully soft or it\'s incredibly astringent', cat:'Everyday' },
-  { e:'🫐', n:'Açaí',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','E'],        xp:20, note:'Amazonian superfruit — usually sold frozen, extremely rich in antioxidants', cat:'Tropical', imported:true },
-  { e:'🍏', n:'Guava',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','K','Folate'],xp:17, note:'Tropical vitamin bomb — four times more vitamin C than oranges', cat:'Tropical', imported:true },
+  { e:'🫐', n:'Açaí',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','E'],        xp:20, note:'Amazonian superfruit — usually sold frozen, extremely rich in antioxidants', cat:'LatAm', imported:true },
+  { e:'🍏', n:'Guava',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','K','Folate'],xp:17, note:'Tropical vitamin bomb — four times more vitamin C than oranges', cat:'LatAm', imported:true },
   { e:'🍊', n:'Cantaloupe Melon',      months:[7,8,9],               v:['C','A','Folate'],    xp:13, note:'Orange-fleshed melon — exceptional beta-carotene content',      cat:'Everyday', imported:true },
-  { e:'🍒', n:'Lychee',          months:[5,6,7], imported:true,               v:['C','B6'],            xp:17, note:'Floral tropical gem — very high vitamin C content',             cat:'Tropical', imported:true },
+  { e:'🍒', n:'Lychee',          months:[5,6,7], imported:true,               v:['C','B6'],            xp:17, note:'Floral tropical gem — very high vitamin C content',             cat:'Asian', imported:true },
   { e:'🍊', n:'Clementine',      months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Seedless easy-peel citrus — a German Christmas staple',         cat:'Citrus' },
   { e:'🍊', n:'Blood Orange',    months:[12,1,2,3],            v:['C','A','Folate'],    xp:14, note:'Ruby-red flesh from anthocyanins — spectacular in tarts & salads', cat:'Citrus' },
-  { e:'🍋', n:'Yuzu',            months:[11,12,1,2], imported:true,           v:['C','B6'],            xp:25, note:'Japanese citrus — imported, increasingly in Asian shops',       cat:'Citrus', imported:true },
+  { e:'🍋', n:'Bergamot',        months:[11,12,1,2], imported:true,  v:['C','B6'],            xp:22, note:'Fragrant Italian citrus — the secret behind Earl Grey tea',        cat:'Citrus', imported:true },
+  { e:'🍦', n:'Custard Apple',   months:[9,10,11,12], imported:true, v:['C','B6','Folate'],   xp:21, note:'Soft grainy flesh with vanilla-custard sweetness — South Asian staple', cat:'LatAm', imported:true },
+  { e:'🌴', n:'Date',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['B6','Folate'],       xp:14, note:'Intensely sweet dried or fresh — one of the oldest cultivated fruits', cat:'Asian', imported:true },
+  { e:'🟡', n:'Durian',          months:[5,6,7,8], imported:true,    v:['C','B6','Folate'],   xp:25, note:'King of Fruits — notorious smell, extraordinary rich custard flesh',   cat:'Asian', imported:true },
+  { e:'🌿', n:'Guanabana',       months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6','Folate'],   xp:24, note:'Soursop — creamy white flesh with a tart tropical flavour',          cat:'LatAm', imported:true },
+  { e:'🫐', n:'Juniper Berry',   months:[9,10,11],                  v:['C','A'],             xp:20, note:'Piney and aromatic — essential in gin, foraged wild in German forests', cat:'Berries' },
+  { e:'🍊', n:'Kumquat',         months:[11,12,1,2,3], imported:true, v:['C','A','Folate'],   xp:18, note:'Eat whole including the peel — sweet skin, tart flesh, Chinese origin',  cat:'Citrus', imported:true },
+  { e:'🍇', n:'Longan',          months:[6,7,8], imported:true,      v:['C','B6'],            xp:20, note:'Dragon Eye fruit — translucent white flesh, intensely sweet and floral', cat:'Asian', imported:true },
+  { e:'🟣', n:'Mangosteen',      months:[5,6,7,8], imported:true,    v:['C','Folate'],        xp:23, note:'Queen of Fruits — snow-white segments, perfectly balanced sweet-sour',   cat:'Asian', imported:true },
+  { e:'🔴', n:'Rambutan',        months:[5,6,7,8,9], imported:true,  v:['C','B6'],            xp:20, note:'Hairy red shell hides juicy white flesh — closely related to lychee',    cat:'Asian', imported:true },
+  { e:'🟤', n:'Sapodilla',       months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6'],        xp:22, note:'Chikoo — grainy brown flesh tasting of brown sugar and pear',          cat:'LatAm', imported:true },
+  { e:'🍊', n:'Tangerine',       months:[11,12,1,2],                 v:['C','A','Folate'],    xp:11, note:'Deep orange citrus with loose skin — sweeter and richer than mandarin',  cat:'Citrus' },
+  { e:'🍋', n:'Yuzu',            months:[11,12,1,2], imported:true,           v:['C','B6'],            xp:22, note:'Japanese citrus — imported, increasingly in Asian shops',       cat:'Citrus', imported:true },
 ];
 
 // ============================================================
@@ -1796,6 +1808,10 @@ const FLAVOUR_PROFILES = {
   'Pomelo':['Bitter','Sour'],'Persimmon':['Sweet','Earthy'],'Açaí':['Earthy','Bitter'],
   'Guava':['Sweet','Tropical','Floral'],'Cantaloupe Melon':['Sweet','Floral'],'Lychee':['Sweet','Floral'],
   'Clementine':['Sweet','Sour'],'Blood Orange':['Sweet','Sour'],'Yuzu':['Sour','Floral'],
+  'Bergamot':['Sour','Floral'],'Custard Apple':['Sweet','Tropical'],'Date':['Sweet','Earthy'],
+  'Durian':['Sweet','Earthy','Tropical'],'Guanabana':['Sour','Sweet','Tropical'],'Juniper Berry':['Bitter','Earthy'],
+  'Kumquat':['Sour','Sweet'],'Longan':['Sweet','Floral'],'Mangosteen':['Sweet','Sour'],
+  'Rambutan':['Sweet','Floral'],'Sapodilla':['Sweet','Earthy'],'Tangerine':['Sweet','Sour'],
 };
 
 // ============================================================
@@ -1906,6 +1922,18 @@ const FRUIT_KEEPER = {
   'Clementine':   { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Mould, dry shrivelled skin', ripen:null },
   'Blood Orange': { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Mould, dry skin, hollow feel', ripen:null },
   'Yuzu':         { temp:'🌡️ Fridge', life:'2–3 weeks in fridge', bad:'Very soft spots, mould, dried out skin', ripen:null },
+  'Bergamot':     { temp:'🌡️ Fridge', life:'2–3 weeks in fridge', bad:'Soft spots, mould, dried out skin', ripen:null },
+  'Custard Apple':{ temp:'🌡️ Room temp to ripen, fridge once ripe', life:'3–5 days once ripe', bad:'Blackened skin, fermented smell', ripen:'Ripen at room temp until skin gives to gentle pressure.' },
+  'Date':         { temp:'🌡️ Room temp or fridge (airtight)', life:'Months at room temp dried, 1 year fridge', bad:'Crystallised white sugar on surface is fine; mould or sour smell is not', ripen:null },
+  'Durian':       { temp:'🌡️ Sealed airtight, fridge or freezer', life:'3–4 days fridge sealed, months frozen', bad:'Sour or ammonia smell beyond the normal funk', ripen:'Ripen at room temp. Husk cracks slightly when ripe.' },
+  'Guanabana':    { temp:'🌡️ Room temp to ripen, fridge once soft', life:'2–3 days once ripe', bad:'Brown sunken flesh, fermented smell', ripen:'Ripen at room temp until it gives to gentle pressure — similar to avocado.' },
+  'Juniper Berry':{ temp:'🌡️ Cool dry place or fridge', life:'Months dried, 2–3 days fresh', bad:'Mould, shrivelled soft texture in fresh', ripen:null },
+  'Kumquat':      { temp:'🌡️ Fridge', life:'2–3 weeks in fridge', bad:'Soft wrinkled skin, mould', ripen:null },
+  'Longan':       { temp:'🌡️ Fridge in bunch', life:'1 week in fridge', bad:'Brown shrivelled shell, sour fermented smell', ripen:null },
+  'Mangosteen':   { temp:'🌡️ Room temp short term, fridge up to 4 weeks', life:'1 week room temp, 3–4 weeks fridge', bad:'Very hard shell that never softens (too old), mould at stem', ripen:null },
+  'Rambutan':     { temp:'🌡️ Fridge in bunch', life:'1 week in fridge', bad:'Brown dried spines, sour smell, shrivelled', ripen:null },
+  'Sapodilla':    { temp:'🌡️ Room temp to ripen, fridge once ripe', life:'2–3 days once ripe', bad:'Very mushy dark flesh, fermented smell', ripen:'Ripen at room temp — ready when it gives like a ripe peach.' },
+  'Tangerine':    { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Mould, dry shrivelled skin, hollow feel', ripen:null },
 };
 
 // ============================================================
@@ -3086,7 +3114,7 @@ function todayKey() {
 
 function defaultState() {
   return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null, roulette: null, triviaQuiz: {}, originsQuiz: {}, pairing: {}, bucketList: {},
-      passportCats: {}, pixelArt: {},
+      passportCats: {}, pixelArt: {}, settings: {},
       fridaySips: {},
       trioChallenge: {} };
 }
@@ -3586,8 +3614,8 @@ function answerTrivia(answer) {
   const correct = answer === quiz.correct;
   STATE.triviaQuiz[quiz.weekKey] = { answered: true, answer };
   if (correct) {
-    STATE.totalXP += 10;
-    setTimeout(() => showToast('🧠 Correct! +10 XP'), 400);
+    STATE.totalXP += 20;
+    setTimeout(() => showToast('🧠 Correct! +20 XP'), 400);
   }
   saveState();
   renderHeader();
@@ -3906,10 +3934,10 @@ function savePixelArt() {
   if (!pixelState.currentFruit) return;
   if (!STATE.pixelArt) STATE.pixelArt = {};
   STATE.pixelArt[pixelState.currentFruit] = pixelState.grid.slice();
-  STATE.totalXP += 150;
+  STATE.totalXP += 50;
   saveState();
   renderHeader();
-  showToast('🎨 ' + pixelState.currentFruit + ' drawing saved! +150 XP');
+  showToast('🎨 ' + pixelState.currentFruit + ' drawing saved! +50 XP');
   pixelState.currentFruit = null;
   pixelState.grid = Array(256).fill('#ffffff');
   renderChallengePage();
@@ -3918,38 +3946,15 @@ function savePixelArt() {
 
 
 // ============================================================
-// FRUIT LAB RENDERER (Lvl 11)
+// FRUIT LAB RENDERER (Lvl 7)
 // ============================================================
 function renderFruitLab(containerId) {
   const el = document.getElementById(containerId);
   if (!el) return;
   const entry = getFruitLabEntry();
   const isTea = entry.type === 'tea';
-  const typeLabel = isTea ? '🍵 Fruit Tea' : '🧫 Fruit Ferment';
-  const cardClass = isTea ? 'fruit-lab-tea' : 'fruit-lab-ferment';
-
-  el.innerHTML =
-    '<div class="fruit-lab-card ' + cardClass + '">' +
-      '<div class="fruit-lab-badge">' + typeLabel + '</div>' +
-      '<div class="fruit-lab-title">' + entry.e + ' ' + entry.fruit + ' × ' + entry.partner + '</div>' +
-      '<div class="fruit-lab-partner">' + entry.why + '</div>' +
-      '<div class="fruit-lab-formula">' +
-        '<div class="fruit-lab-formula-label">Formula</div>' +
-        entry.formula +
-      '</div>' +
-      '<div class="fruit-lab-refresh">🔄 New idea in ' + entry.daysLeft + ' day' + (entry.daysLeft !== 1 ? 's' : '') + ' • alternates tea ↔ ferment</div>' +
-    '</div>';
-}
-
-
-// ============================================================
-// FRUIT LAB RENDERER (Lvl 11)
-// ============================================================
-function renderFruitLab(containerId) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  const entry = getFruitLabEntry();
-  const isTea = entry.type === 'tea';
+  const labState = STATE.fruitLab || {};
+  const claimed = !!(labState[entry.weekKey]);
 
   el.innerHTML =
     '<div class="fruit-lab-card ' + entry.type + '">' +
@@ -3974,8 +3979,46 @@ function renderFruitLab(containerId) {
           '<div class="fruit-lab-row-text">' + entry.why + '</div>' +
         '</div>' +
       '</div>' +
+      (claimed
+        ? '<div style="background:rgba(255,255,255,0.6);border:2px solid #a5d6a7;border-radius:12px;padding:12px;text-align:center;margin-top:10px;color:#2e7d32;font-weight:800">✅ Cheers! +50 XP earned this period<br><span style="font-size:10px;font-weight:700;opacity:0.7;cursor:pointer" onclick="unclaimFruitLab()">↩ Undo</span></div>'
+        : '<label style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.5);border:2px solid rgba(255,255,255,0.4);border-radius:12px;padding:12px 14px;margin-top:10px;cursor:pointer">' +
+            '<input type="checkbox" onchange="claimFruitLab(this.checked)" style="width:20px;height:20px;cursor:pointer;accent-color:#2e7d32;flex-shrink:0">' +
+            '<div>' +
+              '<div style="font-size:13px;font-weight:800;color:#1b5e20">I made this ' + (isTea ? 'tea' : 'ferment') + '! 🧪</div>' +
+              '<div style="font-size:11px;color:#33691e;font-weight:700">+50 XP reward</div>' +
+            '</div>' +
+          '</label>'
+      ) +
       '<div class="fruit-lab-footer">🔄 New idea in ' + entry.daysLeft + ' day' + (entry.daysLeft !== 1 ? 's' : '') + ' • alternates tea & ferment</div>' +
     '</div>';
+}
+
+function claimFruitLab(checked) {
+  const entry = getFruitLabEntry();
+  if (!STATE.fruitLab) STATE.fruitLab = {};
+  if (checked && !STATE.fruitLab[entry.weekKey]) {
+    STATE.fruitLab[entry.weekKey] = { claimed: true };
+    const prevLevel = getLevelIndex(STATE.totalXP);
+    STATE.totalXP += 50;
+    saveState();
+    renderHeader();
+    renderFruitLab('fruitLabContainer');
+    showToast('🧪 Lab experiment done! +50 XP');
+    const newLevel = getLevelIndex(STATE.totalXP);
+    if (newLevel > prevLevel) setTimeout(() => showLevelUp(newLevel), 600);
+  } else if (!checked) {
+    unclaimFruitLab();
+  }
+}
+
+function unclaimFruitLab() {
+  const entry = getFruitLabEntry();
+  if (!STATE.fruitLab || !STATE.fruitLab[entry.weekKey]) return;
+  delete STATE.fruitLab[entry.weekKey];
+  STATE.totalXP = Math.max(0, STATE.totalXP - 50);
+  saveState();
+  renderHeader();
+  renderFruitLab('fruitLabContainer');
 }
 
 
@@ -4207,12 +4250,12 @@ function renderFridaySips(containerId) {
       '</div>' +
       // Claim checkbox
       (sipState.claimed
-        ? '<div style="background:rgba(249,217,35,0.15);border:2px solid #f9d923;border-radius:12px;padding:12px;text-align:center;color:#f9d923;font-weight:800">🍹 Cheers! +25 XP earned this week</div>'
+        ? '<div style="background:rgba(249,217,35,0.15);border:2px solid #f9d923;border-radius:12px;padding:12px;text-align:center;color:#f9d923;font-weight:800">🍹 Cheers! +50 XP earned this week<br><span style="font-size:10px;font-weight:700;opacity:0.7;cursor:pointer;color:#c084fc" onclick="unclaimFridaySip()">↩ Undo</span></div>'
         : '<label style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px;cursor:pointer">' +
             '<input type="checkbox" onchange="claimFridaySipCurrent(this.checked)" style="width:20px;height:20px;cursor:pointer;accent-color:#f9d923;flex-shrink:0">' +
             '<div>' +
               '<div style="font-size:13px;font-weight:800;color:#fff">I ordered or made this cocktail 🍹</div>' +
-              '<div style="font-size:11px;color:#c084fc;font-weight:700">+25 XP reward</div>' +
+              '<div style="font-size:11px;color:#c084fc;font-weight:700">+50 XP reward</div>' +
             '</div>' +
           '</label>'
       ) +
@@ -4229,13 +4272,22 @@ function claimFridaySip(weekKey, checked) {
   if ((STATE.fridaySips[weekKey] || {}).claimed) return;
   STATE.fridaySips[weekKey] = { claimed: true };
   const prevLevel = getLevelIndex(STATE.totalXP);
-  STATE.totalXP += 25;
+  STATE.totalXP += 50;
   saveState();
   renderHeader();
   renderFridaySips('fridaySipsContainer');
-  showToast('🍹 Cheers! +25 XP');
+  showToast('🍹 Cheers! +50 XP');
   const newLevel = getLevelIndex(STATE.totalXP);
   if (newLevel > prevLevel) setTimeout(() => showLevelUp(newLevel), 600);
+}
+function unclaimFridaySip() {
+  const sip = getFridaySip();
+  if (!(STATE.fridaySips[sip.weekKey] || {}).claimed) return;
+  delete STATE.fridaySips[sip.weekKey];
+  STATE.totalXP = Math.max(0, STATE.totalXP - 50);
+  saveState();
+  renderHeader();
+  renderFridaySips('fridaySipsContainer');
 }
 
 // ============================================================
@@ -4264,9 +4316,11 @@ function renderHeader() {
   // Next unlock hint
   const hintEl = document.getElementById('nextHint');
   if (hintEl) {
-    if (next && next.hint) {
+    if (next) {
       hintEl.style.display = 'block';
-      hintEl.innerHTML = '<span style="opacity:0.8">Next unlock at <strong>' + next.name + '</strong> (' + next.xp.toLocaleString() + ' XP):</span><br>🔮 <em>' + next.hint + '</em><br><span style="font-size:10px;opacity:0.75;margin-top:4px;display:block">🌿 Tip: eating in-season fruits earns double XP!</span>';
+      const hintText = next.hint ? '<br>🔮 <em>' + next.hint + '</em>' : '';
+      const rewardText = next.reward ? '<br>🎁 <em>' + next.reward + '</em>' : '';
+      hintEl.innerHTML = '<span style="opacity:0.8">Next unlock at <strong>' + next.name + '</strong> (' + next.xp.toLocaleString() + ' XP):</span>' + (hintText || rewardText) + '<br><span style="font-size:10px;opacity:0.75;margin-top:4px;display:block">🌿 Tip: eating in-season fruits earns double XP!</span>';
     } else {
       hintEl.style.display = 'none';
     }
@@ -4370,25 +4424,6 @@ function renderTodayPage() {
       : `No ${wv.label} yet today. Look for fruits rich in ${wv.label}!`;
   }
 
-  // Try Something New nudge
-  const everLogged = new Set(Object.values(STATE.history || {}).flat());
-  const nudgeFruit = FRUITS.filter(f =>
-    !f.imported &&
-    getSeasonStatus(f) === 'in-season' &&
-    !everLogged.has(f.n)
-  ).sort((a,b) => a.xp - b.xp)[0];
-
-  const nudgeHtml = nudgeFruit
-    ? '<div style="border:2px dashed #f59e0b;border-radius:14px;padding:14px 16px;margin-bottom:12px;background:#fffbeb;display:flex;align-items:center;gap:12px;cursor:pointer" onclick="document.getElementById(\'fruitSearch\').value=\''+nudgeFruit.n+'\';document.getElementById(\'fruitSearch\').dispatchEvent(new Event(\'input\'))">' +
-        '<span style="font-size:32px">' + nudgeFruit.e + '</span>' +
-        '<div style="flex:1">' +
-          '<div style="font-size:11px;font-weight:800;color:#d97706;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">🌟 Try something new!</div>' +
-          '<div style="font-size:14px;font-weight:800;color:#92400e">' + nudgeFruit.n + ' is in season — you haven\'t tried it yet!</div>' +
-        '</div>' +
-        '<span style="background:#f59e0b;color:#fff;border-radius:99px;padding:4px 10px;font-size:11px;font-weight:800">+' + (nudgeFruit.xp * 2) + ' XP 🌿</span>' +
-      '</div>'
-    : '';
-
   // Suggestions
   const loggedNames = new Set(fruits);
   const suggestions = FRUITS.filter(f => !loggedNames.has(f.n)).map(f => {
@@ -4448,25 +4483,38 @@ function renderTodayPage() {
       <div class="fruit-grid" id="fruitGrid"></div>
     </div>
 
-    ${nudgeHtml}
 
     ${suggestions.length > 0 ? `
     <div class="section-title">💡 Suggestions</div>
     <div class="card" style="padding:14px;margin-bottom:14px">
-      ${suggestions.map(s => `
-        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)" onclick="addFruit('${s.f.n.replace(/'/g,"\\'")}')">
-          <span style="font-size:28px">${s.f.e}</span>
-          <div style="flex:1">
-            <div style="font-weight:800;font-size:13px">${s.f.n}</div>
-            <div style="font-size:11px;color:var(--muted);font-weight:700">${s.f.note}</div>
-          </div>
-          <span class="fruit-tag ${s.tag}">${s.tagLabel}</span>
-        </div>`).join('')}
+      <div style="font-size:10px;font-weight:800;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.4px">Use the search bar above to log these ↑</div>
+      ${suggestions.map(function(s){ return '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">' +
+          '<span style="font-size:28px">' + s.f.e + '</span>' +
+          '<div style="flex:1">' +
+            '<div style="font-weight:800;font-size:13px">' + s.f.n + '</div>' +
+            '<div style="font-size:11px;color:var(--muted);font-weight:700">' + s.f.note + '</div>' +
+          '</div>' +
+          '<span class="fruit-tag ' + s.tag + '">' + s.tagLabel + '</span>' +
+        '</div>'; }).join('')}
     </div>` : ''}
 
   `;
 
-  renderFruitGrid([...FRUITS].sort((a,b) => a.n.localeCompare(b.n)));
+  // Build list based on Settings toggles — Everyday always shown
+  const gridCats = new Set(['Everyday']);
+  const ASIAN_GRID = new Set(['Mango','Coconut','Papaya','Dragon Fruit','Star Fruit','Golden Kiwi','Lychee','Date','Durian','Longan','Mangosteen','Rambutan','Kumquat','Tangerine']);
+  const LATAM_GRID = new Set(['Pineapple','Banana','Plantain','Açaí','Passion Fruit','Guava','Cherimoya','Star Fruit','Sapodilla','Guanabana','Custard Apple','Papaya']);
+  ['Stone Fruits','Berries','Citrus','Asian','LatAm'].forEach(function(cat) {
+    const key = 'gridCat_' + cat.replace(' ','_');
+    if (STATE.settings && STATE.settings[key]) gridCats.add(cat);
+  });
+  const gridFruits = FRUITS.filter(function(f) {
+    if (gridCats.has(f.cat)) return true;
+    if (gridCats.has('Asian') && ASIAN_GRID.has(f.n)) return true;
+    if (gridCats.has('LatAm') && LATAM_GRID.has(f.n)) return true;
+    return false;
+  });
+  renderFruitGrid(gridFruits);
 }
 
 function renderFruitGrid(list) {
@@ -4504,7 +4552,7 @@ function filterFruits() {
 function challengeKey() { return `${currentYear()}-${currentMonth()}`; }
 
 function getChallengeState() {
-  return (STATE.challenges && STATE.challenges[challengeKey()]) || { picked: null, completed: false, madeIt: false };
+  return (STATE.challenges && STATE.challenges[challengeKey()]) || { picked: null, completed: false, madeIt: false, done: [] };
 }
 
 function pickChallenge(optionIdx) {
@@ -4518,15 +4566,24 @@ function pickChallenge(optionIdx) {
 function confirmMadeIt() {
   const key = challengeKey();
   if (!STATE.challenges[key]) return;
-  STATE.challenges[key].madeIt = true;
-  STATE.challenges[key].completed = true;
+  const cs = STATE.challenges[key];
+  const picked = cs.picked;
+  if (picked === null) return;
+  if (!cs.done) cs.done = [];
+  if (cs.done.includes(picked)) return; // already claimed this option
+  cs.done.push(picked);
+  cs.madeIt = true; // keep for compatibility
+  cs.completed = true;
   const ch = CHALLENGES[currentMonth()];
-  const opt = ch.options[STATE.challenges[key].picked];
-  const isHard = opt.label === 'Difficult' || opt.label === 'Trio';
-  const xpGain = isHard ? 250 : 150;
+  const opt = ch.options[picked];
+  const xpGain = opt.label === 'Trio' ? 250 : opt.label === 'Difficult' ? 150 : opt.label === 'Classic' ? 100 : 50;
   const prevLevel = getLevelIndex(STATE.totalXP);
   STATE.totalXP += xpGain;
   const newLevel = getLevelIndex(STATE.totalXP);
+  // Reset picked so they can pick another
+  cs.picked = null;
+  cs.madeIt = false;
+  cs.completed = cs.done.length > 0;
   saveState();
   renderHeader();
   confetti(); confetti();
@@ -4550,7 +4607,8 @@ function renderChallengePage() {
     monthKeys.forEach(k => STATE.history[k].forEach(fn => fruitsLogged.add(fn)));
   }
 
-  const bothLogged = cs.picked !== null && !cs.madeIt &&
+  const alreadyClaimedPick = cs.picked !== null && cs.done && cs.done.includes(cs.picked);
+  const bothLogged = cs.picked !== null && !alreadyClaimedPick &&
     ch.options[cs.picked].fruits.every(fn => fruitsLogged.has(fn));
 
   // Year strip
@@ -4575,12 +4633,12 @@ function renderChallengePage() {
   // Challenge options
   const optionsHtml = ch.options.filter(opt => opt.label !== 'Trio' || isUnlocked(10)).map((opt, i) => {
     const isPicked = cs.picked === i;
-    const isCompleted = cs.completed && isPicked;
+    const isCompleted = cs.done && cs.done.includes(i);
     const isHard = opt.label === 'Difficult' || opt.label === 'Trio';
     const badgeCls = opt.label === 'Trio' ? 'badge-trio' : opt.label === 'Easy' ? 'badge-easy' : opt.label === 'Classic' ? 'badge-classic' : 'badge-hard';
     const isTrio = opt.label === 'Trio';
     const cardCls = isCompleted ? 'completed-card' : isPicked ? (isTrio ? 'selected-trio' : isHard ? 'selected-hard' : 'selected') : '';
-    const xpLabel = opt.label === 'Trio' ? '+500 XP 👑' : opt.label === 'Difficult' ? '+250 XP ⭐' : opt.label === 'Classic' ? '+150 XP' : '+50 XP';
+    const xpLabel = opt.label === 'Trio' ? '+250 XP 👑' : opt.label === 'Difficult' ? '+150 XP ⭐' : opt.label === 'Classic' ? '+100 XP' : '+50 XP';
 
     const fruitsHtml = opt.fruits.map(fn => {
       const f = FRUITS.find(x => x.n === fn);
@@ -4595,12 +4653,13 @@ function renderChallengePage() {
       ? (opt.fruits.filter(fn => fruitsLogged.has(fn)).length / opt.fruits.length) * 100
       : 0;
 
-    return `<div class="challenge-card ${cardCls}" onclick="${cs.madeIt ? '' : `pickChallenge(${i})`}">
+    const alreadyDone = cs.done && cs.done.includes(i);
+    return `<div class="challenge-card ${cardCls}" onclick="${alreadyDone ? '' : `pickChallenge(${i})`}">
       <span class="challenge-xp">${xpLabel}</span>
       <div class="challenge-badge ${badgeCls}">${opt.label === 'Difficult' ? '🔥' : opt.label === 'Classic' ? '⭐' : '🌿'} ${opt.label}</div>
       <div class="challenge-fruits">${fruitsHtml}</div>
       <div class="challenge-dish">🍽️ Idea: ${opt.dish} — ${opt.tip}</div>
-      ${isPicked && !cs.madeIt ? `
+      ${isPicked && !alreadyDone ? `
         <div class="ch-progress-wrap">
           <div class="ch-progress-label">Fruits logged: ${opt.fruits.filter(fn => fruitsLogged.has(fn)).length} / ${opt.fruits.length}</div>
           <div class="ch-progress-track"><div class="ch-progress-fill" style="width:${progressPct}%"></div></div>
@@ -4617,35 +4676,24 @@ function renderChallengePage() {
     <div class="card" style="margin-bottom:16px">
       <div class="section-title" style="font-size:17px;margin-bottom:4px">${ch.title}</div>
       <div style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:${cs.picked === null ? '14px' : '0'}">
-        ${cs.madeIt ? 'Challenge completed! 🎉' : cs.picked === null ? 'Pick a combination to cook with this month 👇' : 'You picked a combo — you can still change your mind until you claim! 🍳'}
+        ${cs.done && cs.done.length > 0 ? '✅ ' + cs.done.length + ' challenge' + (cs.done.length > 1 ? 's' : '') + ' completed this month!' : cs.picked === null ? 'Pick a combination to cook with this month 👇' : 'You picked a combo — cook it, then claim! 🍳'}
       </div>
     </div>
 
     ${optionsHtml}
 
-    ${!isUnlocked(10) ? `
-      <div style="border:2px dashed #ce93d8;border-radius:14px;padding:14px 16px;margin-bottom:14px;background:#fce4ec22;display:flex;align-items:center;gap:12px">
-        <span style="font-size:28px">👑</span>
-        <div>
-          <div style="font-family:Fredoka One,cursive;font-size:14px;color:#7b1fa2">Trio Challenge — Lvl 10</div>
-          <div style="font-size:11px;font-weight:700;color:#9c27b0">Cook with 3 fruits at once for +500 XP. Unlocks at Loquat Legend.</div>
-        </div>
-        <span style="margin-left:auto;font-size:20px">🔒</span>
-      </div>
-    ` : ''}
+    ${!isUnlocked(10) ?
+      '<div style="border:2px dashed #ce93d8;border-radius:14px;padding:14px 16px;margin-bottom:14px;background:#fce4ec22;display:flex;align-items:center;gap:12px"><span style="font-size:28px">👑</span><div><div style="font-family:Fredoka One,cursive;font-size:14px;color:#7b1fa2">Trio Challenge — Lvl 10</div><div style="font-size:11px;font-weight:700;color:#9c27b0">Cook with 3 fruits at once for +250 XP. Unlocks at Loquat Legend.</div></div><span style="margin-left:auto;font-size:20px">🔒</span></div>'
+      : ''}
 
-    ${bothLogged ? `
-      <button class="btn-confirm" onclick="confirmMadeIt()">
-        ✅ I made the dish! Claim my XP 🎉
-      </button>
-    ` : cs.picked !== null && !cs.completed ? `
-      <button class="btn-confirm" disabled>
-        Log all required fruits first to claim 🍽️
-      </button>
-    ` : ''}
+    ${bothLogged ?
+      '<button class="btn-confirm" onclick="confirmMadeIt()">✅ I made the dish! Claim my XP 🎉</button>'
+      : cs.picked !== null && !cs.completed ?
+      '<button class="btn-confirm" disabled>Log all required fruits first to claim 🍽️</button>'
+      : ''}
   <div class="section-title" style="margin-top:6px">🎰 Fruit Roulette</div>
   ${(() => {
-    if (!isUnlocked(8)) return '<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🎰</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Roulette</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Figgy Wild Card</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Roulette</div><div class="lock-sub">Unlocks at Figgy Wild Card</div></div></div>';
+    if (!isUnlocked(4)) return '<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🎰</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Roulette</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Guanabana Gambler</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Roulette</div><div class="lock-sub">Unlocks at Guanabana Gambler</div></div></div>';
     const rs = getRouletteState();
     if (!rs) return '<div class="card" style="text-align:center;padding:24px"><div style="font-size:13px;font-weight:700;color:var(--muted)">🎉 Amazing — you\'ve tried every fruit! No more dares!</div></div>';
     const rf = FRUITS.find(f => f.n === rs.fruit);
@@ -4659,32 +4707,36 @@ function renderChallengePage() {
             '<div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:3px">' + (isCompleted ? '✅ Dare complete!' : 'Your dare: ' + (rf ? rf.e + ' ' + rf.n : '')) + '</div>' +
             (isCompleted
               ? '<div style="font-size:12px;opacity:0.9">You logged ' + rs.fruit + ' this week! +100 XP earned 🎉</div>'
-              : '<div style="font-size:11px;opacity:0.85;margin-bottom:6px">Log ' + rs.fruit + ' before Monday for +100 bonus XP</div>' + (rf ? '<div style="font-size:11px;opacity:0.75">' + rf.note + '</div>' : '')
+              : '<div style="font-size:11px;opacity:0.85;margin-bottom:6px">Your dare this week</div>' + (rf ? '<div style="font-size:11px;opacity:0.75">' + rf.note + '</div>' : '')
             ) +
           '</div>' +
-          (!isCompleted ? '<button class="roulette-spin-btn" onclick="spinRoulette()" style="margin-top:12px">🔄 Respin</button>' : '')
+          (isCompleted ? '' : '<div style="text-align:center;font-size:11px;font-weight:700;color:rgba(255,255,255,0.75);margin-top:10px">📱 Log this fruit under Today to earn your +100 XP bonus!</div>')
         : '<button class="roulette-spin-btn" onclick="spinRoulette()">🎰 Spin!</button>'
       ) +
     '</div>';
   })()}
+  <div class="section-title" style="margin-top:6px">🧪 Fruit Lab</div>
+  ${isUnlocked(7) ?
+    '<div id="fruitLabContainer"></div>' :
+    '<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Lab</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Bergamot Brewer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Lab</div><div class="lock-sub">Unlocks at Bergamot Brewer</div></div></div>'
+  }
   <div class="section-title" style="margin-top:6px">🍽️ Pairing of the Week</div>
   ${isUnlocked(12) ?
-    `<div id="pairingContainer"></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍽️</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Pairing of the Week</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Passionfruity Pairer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Pairing of the Week</div><div class="lock-sub">Unlocks at Passionfruity Pairer</div></div></div>`
+    '<div id="pairingContainer"></div>' :
+    '<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍽️</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Pairing of the Week</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Passionfruity Pairer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Pairing of the Week</div><div class="lock-sub">Unlocks at Passionfruity Pairer</div></div></div>'
   }
-
-
   <div class="section-title" style="margin-top:6px">🍹 Friday Sips</div>
   ${isUnlocked(13) ?
-    `<div id="fridaySipsContainer"></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍹</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Friday Sips</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Bignay Bartender</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Friday Sips</div><div class="lock-sub">Unlocks at Bignay Bartender</div></div></div>`
+    '<div id="fridaySipsContainer"></div>' :
+    '<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍹</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Friday Sips</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Bignay Bartender</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Friday Sips</div><div class="lock-sub">Unlocks at Bignay Bartender</div></div></div>'
   }
   <div class="section-title" style="margin-top:6px">🏆 Fruit Bucket List</div>
   ${isUnlocked(14) ?
-    `<div id="bucketListContainer"></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🏆</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Bucket List</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Kumquat Kolorist</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Bucket List</div><div class="lock-sub">Unlocks at Kumquat Kolorist</div></div></div>`
+    '<div id="bucketListContainer"></div>' :
+    '<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🏆</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Fruit Bucket List</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Cherimoya Challenger</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Fruit Bucket List</div><div class="lock-sub">Unlocks at Cherimoya Challenger</div></div></div>'
   }
   `;
+  if (isUnlocked(7)) renderFruitLab('fruitLabContainer');
   if (isUnlocked(12)) renderPairingOfWeek('pairingContainer');
   if (isUnlocked(13)) renderFridaySips('fridaySipsContainer');
   if (isUnlocked(14)) renderBucketList('bucketListContainer');
@@ -4721,16 +4773,14 @@ function renderKnowledgePage() {
 
   document.getElementById('pageKnowledge').innerHTML =
     '<div class="section-title" style="margin-top:4px">🧠 Fruit Knowledge</div>' +
-    renderKnowledgeSection(2, '📖', 'Fruit Trivia', 'New question every 2 days — +10 XP per correct answer', triviaContent) +
+    renderKnowledgeSection(2, '📖', 'Fruit Trivia', 'New question every 2 days — +20 XP per correct answer', triviaContent) +
     renderKnowledgeSection(5, '🧊', 'Fruit Keeper', 'How to store & ripen any fruit', keeperContent) +
     renderKnowledgeSection(6, '🌍', 'Fruit Origins Quiz', 'Weekly spotlight fruit — +60 XP every Friday', originsContent) +
-    renderKnowledgeSection(9, '🍓', 'What to make with...', 'This month\'s featured fruit — ideas & inspiration', makeWithContent) +
-    renderKnowledgeSection(7, '🧪', 'Fruit Lab', 'Tea & ferment ideas — new concept every 3 days', '<div id="fruitLabContainer"></div>');
+    renderKnowledgeSection(9, '🍓', 'What to make with...', 'This month\'s featured fruit — ideas & inspiration', makeWithContent);
 
   if (isUnlocked(2)) renderTriviaQuiz('triviaQuizContainer');
   if (isUnlocked(5)) renderFruitKeeper('fruitKeeperContainer');
   if (isUnlocked(6)) renderOriginsQuiz('originsQuizContainer');
-  if (isUnlocked(7)) renderFruitLab('fruitLabContainer');
 }
 
 
@@ -4769,7 +4819,7 @@ function renderPassportPage() {
   const found = discovered.size;
   const pct = Math.round((found / total) * 100);
 
-  const passportUnlocked = isUnlocked(2);
+  const passportUnlocked = isUnlocked(3);
 
   if (!passportUnlocked) {
     document.getElementById('pagePassport').innerHTML = `
@@ -4778,17 +4828,35 @@ function renderPassportPage() {
         <div class="card" style="text-align:center;padding:40px 20px">
           <div style="font-size:52px;margin-bottom:12px">🔒</div>
           <div style="font-family:'Fredoka One',cursive;font-size:20px;margin-bottom:6px">Passport Locked</div>
-          <div style="font-size:13px;color:var(--muted);font-weight:700">Reach ${LEVELS[1].name} to unlock your Fruit Passport & Achievements!</div>
+          <div style="font-size:13px;color:var(--muted);font-weight:700">Reach ${LEVELS[2].name} to unlock your Fruit Passport & Achievements!</div>
         </div>
       </div>
     `;
     return;
   }
 
-  const categories = ['Everyday','Berries','Stone Fruits','Citrus','Tropical'];
+  const PASSPORT_CATS = [
+    { key:'Everyday',    label:'Everyday',         emoji:'🛒', xp:200,  fruits: f => f.cat === 'Everyday' },
+    { key:'Berries',     label:'Berries',           emoji:'🫐', xp:500,  fruits: f => f.cat === 'Berries' },
+    { key:'Stone_Fruits',label:'Stone Fruits',      emoji:'🍑', xp:400,  fruits: f => f.cat === 'Stone Fruits' },
+    { key:'Citrus',      label:'Citrus',            emoji:'🍊', xp:300,  fruits: f => f.cat === 'Citrus' },
+    { key:'Asian',       label:'🌏 Asian Fruits',   emoji:'🌏', xp:400,  fruits: f => ['Asian','LatAm'].includes(f.cat) ? f.cat === 'Asian' || ['Mango','Coconut','Papaya','Dragon Fruit','Star Fruit','Golden Kiwi','Lychee','Date'].includes(f.n) : false },
+    { key:'LatAm',       label:'🌎 Latin American', emoji:'🌎', xp:400,  fruits: f => f.cat === 'LatAm' || ['Star Fruit','Papaya','Passion Fruit','Guava','Cherimoya','Pineapple','Banana','Plantain','Açaí'].includes(f.n) },
+  ];
 
-  const categoriesHtml = categories.map(cat => {
-    const catFruits = FRUITS.filter(f => f.cat === cat);
+  // Multi-cat: a fruit can appear in multiple passport sections
+  const ASIAN_FRUITS = new Set(['Mango','Coconut','Papaya','Dragon Fruit','Star Fruit','Golden Kiwi','Lychee','Date','Durian','Longan','Mangosteen','Rambutan','Kumquat','Tangerine']);
+  const LATAM_FRUITS = new Set(['Pineapple','Banana','Plantain','Açaí','Passion Fruit','Guava','Cherimoya','Star Fruit','Sapodilla','Guanabana','Custard Apple','Papaya']);
+
+  const getCatFruits = (catKey) => {
+    if (catKey === 'Asian') return FRUITS.filter(f => ASIAN_FRUITS.has(f.n) || f.cat === 'Asian');
+    if (catKey === 'LatAm') return FRUITS.filter(f => LATAM_FRUITS.has(f.n) || f.cat === 'LatAm');
+    return FRUITS.filter(f => f.cat === catKey.replace('_',' '));
+  };
+
+  const categoriesHtml = PASSPORT_CATS.map(catDef => {
+    const cat = catDef.key;
+    const catFruits = getCatFruits(cat);
     const foundInCat = catFruits.filter(f => discovered.has(f.n)).length;
     const stampsHtml = catFruits.map(f => {
       const isDisc = discovered.has(f.n);
@@ -4800,11 +4868,10 @@ function renderPassportPage() {
     }).join('');
 
     const catComplete = foundInCat === catFruits.length;
-    const avgXP = cat === 'Everyday' ? 25 : 50;
-    const bonusXP = avgXP * catFruits.length;
-    const catKey = 'cat_' + cat.replace(' ','_');
+    const bonusXP = catDef.xp;
+    const catKey = 'cat_' + cat;
     const alreadyClaimed = STATE.passportCats && STATE.passportCats[catKey];
-    const catEmoji = cat === 'Everyday' ? '🛒' : cat === 'Berries' ? '🫐' : cat === 'Stone Fruits' ? '🍑' : cat === 'Citrus' ? '🍊' : '🌴';
+    const catEmoji = catDef.emoji;
 
     // Auto-claim if complete and not yet claimed
     if (catComplete && !alreadyClaimed) {
@@ -4813,14 +4880,14 @@ function renderPassportPage() {
       STATE.totalXP += bonusXP;
       saveState();
       renderHeader();
-      setTimeout(() => showToast('🏅 ' + cat + ' collection complete! +' + bonusXP + ' XP!'), 300);
+      setTimeout(() => showToast('🏅 ' + catDef.label + ' collection complete! +' + bonusXP + ' XP!'), 300);
     }
 
     return `
       <div class="passport-category" style="${catComplete ? 'border:2px solid #f59e0b;' : ''}">
         <div class="category-title">
           ${catEmoji}
-          ${cat} <span style="margin-left:auto;font-size:12px">${foundInCat}/${catFruits.length}</span>
+          ${catDef.label} <span style="margin-left:auto;font-size:12px">${foundInCat}/${catFruits.length}</span>
           ${catComplete ? '<span style="margin-left:6px;font-size:13px">🏅</span>' : ''}
         </div>
         <div class="passport-grid">${stampsHtml}</div>
@@ -4877,6 +4944,15 @@ function renderPassportPage() {
 // ============================================================
 // ME PAGE
 // ============================================================
+
+function toggleGridCat(cat, on) {
+  if (!STATE.settings) STATE.settings = {};
+  const key = 'gridCat_' + cat.replace(' ','_');
+  STATE.settings[key] = on;
+  saveState();
+  renderMePage();
+  renderTodayPage();
+}
 function renderMePage() {
   const allFruits = Object.values(STATE.history || {}).flat();
   const discovered = new Set(allFruits);
@@ -4962,12 +5038,6 @@ function renderMePage() {
     '</div>';
   }
 
-  const flavourSection = '<div class="section-title">🎡 Flavour Wheel</div>' +
-    lockedOrContent(11,
-      '<div class="card" style="padding:16px;margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Based on all your logged fruits — how varied is your taste profile?</div><div id="flavourWheelContainer"></div></div>',
-      '🎡', 'Flavour Wheel', 'Tangerine Taster'
-    );
-
   const pixelArtSection = '<div class="section-title">🎨 Your Fruit Icons</div>' +
     lockedOrContent(8,
       '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px">' +
@@ -4975,13 +5045,19 @@ function renderMePage() {
         '<div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Pixel Fruit Artist</div>' +
         '<div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — draw your own pixel art icons for each fruit. They\'ll replace the emoji across the app!</div>' +
       '</div>',
-      '🎨', 'Your Fruit Icons', 'Fruit Bowl Sketcher'
+      '🎨', 'Your Fruit Icons', 'Cherimoya Challenger'
+    );
+
+  const flavourSection = '<div class="section-title">🎡 Flavour Wheel</div>' +
+    lockedOrContent(11,
+      '<div class="card" style="padding:16px;margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Based on all your logged fruits — how varied is your taste profile?</div><div id="flavourWheelContainer"></div></div>',
+      '🎡', 'Flavour Wheel', 'Tangerine Taster'
     );
 
   const yearlySection = '<div class="section-title">📊 Yearly Stats</div>' +
     lockedOrContent(14,
       '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px"><div style="font-size:40px;margin-bottom:10px">📊</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Yearly Stats</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — your full year of fruit eating visualised!</div></div>',
-      '📊', 'Yearly Stats', 'Kumquat Kolorist'
+      '📊', 'Yearly Stats', 'Cherimoya Challenger'
     );
 
   const settingsSection = '<div class="section-title">⚙️ Settings</div>' +
@@ -4990,8 +5066,21 @@ function renderMePage() {
         '<span style="font-size:28px">⚙️</span>' +
         '<div>' +
           '<div style="font-family:Fredoka One,cursive;font-size:16px">App Settings</div>' +
-          '<div style="font-size:11px;font-weight:700;color:var(--muted)">More settings coming soon — notifications, data export, and more</div>' +
+          '<div style="font-size:11px;font-weight:700;color:var(--muted)">Customise your Fruity experience</div>' +
         '</div>' +
+      '</div>' +
+      '<div style="margin-top:12px;padding-top:12px;border-top:2px solid var(--border)">' +
+        '<div style="font-size:12px;font-weight:800;margin-bottom:4px">🍎 Today Fruit Grid</div>' +
+        '<div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:12px">Everyday fruits always shown. Toggle categories to add more to your quick-tap grid.</div>' +
+        ['Stone Fruits','Berries','Citrus','Asian','LatAm'].map(function(cat) {
+          const labels = { 'Stone Fruits':'🍑 Stone Fruits', 'Berries':'🫐 Berries', 'Citrus':'🍊 Citrus', 'Asian':'🌏 Asian Fruits', 'LatAm':'🌎 Latin American' };
+          const key = 'gridCat_' + cat.replace(' ','_');
+          const on = !!(STATE.settings && STATE.settings[key]);
+          return '<label style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)">' +
+            '<span style="font-size:13px;font-weight:700">' + labels[cat] + '</span>' +
+            '<input type="checkbox" ' + (on ? 'checked' : '') + ' onchange="toggleGridCat(\'' + cat + '\',this.checked)" style="width:18px;height:18px;accent-color:var(--orange);cursor:pointer">' +
+          '</label>';
+        }).join('') +
       '</div>' +
       (isUnlocked(14) ?
         '<div style="margin-top:12px;padding-top:12px;border-top:2px solid var(--border)">' +
@@ -4999,7 +5088,7 @@ function renderMePage() {
           '<div style="font-size:11px;color:var(--muted);font-weight:700">Coming Soon — personalise your Fruity colour theme</div>' +
         '</div>'
         : '<div style="margin-top:12px;padding-top:12px;border-top:2px solid var(--border);opacity:0.5">' +
-            '<div style="font-size:11px;font-weight:700;color:var(--muted)">🔒 Custom Accent Colour — unlocks at Kumquat Kolorist (Lvl 14)</div>' +
+            '<div style="font-size:11px;font-weight:700;color:var(--muted)">🔒 Custom Accent Colour — unlocks at Cherimoya Challenger (Lvl 14)</div>' +
           '</div>'
       ) +
     '</div>';
@@ -5026,8 +5115,8 @@ function renderMePage() {
     <div class="section-title">📅 History</div>
     ${historyHtml}
 
-    ${flavourSection}
     ${pixelArtSection}
+    ${flavourSection}
 
     ${identitySection}
   `;
