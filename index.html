@@ -1013,6 +1013,7 @@ body {
 .tag-season { background: var(--green-light); color: var(--green); border: 1.5px solid #a5d6a7; }
 .tag-vitamin { background: var(--yellow-light); color: #e65100; border: 1.5px solid #ffe082; }
 .tag-imported { background: var(--blue-light); color: var(--blue); border: 1.5px solid #90caf9; }
+.fruit-tag { font-size:10px; font-weight:800; border-radius:99px; padding:3px 8px; white-space:nowrap; }
 
 /* ============================================================
    RESPONSIVE
@@ -1544,7 +1545,8 @@ body {
   font-weight: 700;
   text-align: center;
   margin-top: 10px;
-  opacity: 0.7;
+  opacity: 0.85;
+  color: #1b5e20;
 }
 
 </style>
@@ -1614,7 +1616,7 @@ body {
       <span class="help-tab-icon">🍎</span>
       <div class="help-tab-info">
         <div class="help-tab-name">Today</div>
-        <div class="help-tab-desc">Log every fruit you eat each day. See your vitamin coverage, get smart suggestions based on what you\'re missing, and build your daily streak.</div>
+        <div class="help-tab-desc">Log every fruit you eat each day. See your vitamin coverage, get smart suggestions based on what you\'re missing, and build your daily streak. Fruits in season earn double XP!</div>
       </div>
     </div>
 
@@ -1622,7 +1624,7 @@ body {
       <span class="help-tab-icon">🍳</span>
       <div class="help-tab-info">
         <div class="help-tab-name">Challenge</div>
-        <div class="help-tab-desc">Each month has a cooking challenge — pick a fruit pairing and cook something with them. Complete it to earn XP. Harder combos earn more!</div>
+        <div class="help-tab-desc">Each month has a cooking challenge — pick a pairing and cook something. Harder combos earn more XP. Unlock Fruit Roulette, Trio Challenges, Pairing of the Week, Friday Sips and Fruit Bucket List as you level up!</div>
       </div>
     </div>
 
@@ -1630,7 +1632,7 @@ body {
       <span class="help-tab-icon">🧠</span>
       <div class="help-tab-info">
         <div class="help-tab-name">Knowledge</div>
-        <div class="help-tab-desc">Unlock fruit trivia, origin quizzes and creative recipe ideas as you level up. New content every week.</div>
+        <div class="help-tab-desc">Fruit Trivia, Origins Quiz, Fruit Lab (tea & ferment ideas), Fruit Keeper (storage tips) and more — all unlock as you level up. Content rotates regularly so there\'s always something new.</div>
       </div>
     </div>
 
@@ -1638,7 +1640,7 @@ body {
       <span class="help-tab-icon">🗺️</span>
       <div class="help-tab-info">
         <div class="help-tab-name">Passport</div>
-        <div class="help-tab-desc">Every new fruit you log gets stamped in your Passport. Try to discover all 57 varieties! Achievements unlock as you hit milestones.</div>
+        <div class="help-tab-desc">Every new fruit you log gets stamped in your Passport. Try to discover all 55 varieties! Achievements unlock as you hit milestones. Explore fruits by country of origin.</div>
       </div>
     </div>
 
@@ -1646,13 +1648,13 @@ body {
       <span class="help-tab-icon">👤</span>
       <div class="help-tab-info">
         <div class="help-tab-name">Me</div>
-        <div class="help-tab-desc">Your personal stats, XP progress, full history and unlockable features. See the full level ladder and what\'s coming next.</div>
+        <div class="help-tab-desc">Your personal stats, full history, XP progress and unlockable features like the Flavour Wheel and Fruit Identity Card. See the full level ladder and what unlocks next.</div>
       </div>
     </div>
 
     <div class="help-progression">
       <div class="help-progression-title">⚡ How progression works</div>
-      Every fruit you log earns XP — rarer fruits earn more. Complete monthly challenges for bonus XP. As you level up from 🌱 Seedling to 👑 The Fruit Obsessive, new features unlock one by one. The app literally grows with you!
+      Every fruit you log earns XP — rarer and seasonal fruits earn more. Complete monthly challenges for bonus XP. As you level up from 🌱 Seedling to 👑 King Durian, new features unlock one by one across all tabs. There are 15 levels to reach!
     </div>
 
     <button class="btn-modal" style="margin-top:16px" onclick="closeHelp()">Got it! Let\'s eat fruit 🍎</button>
@@ -1728,8 +1730,7 @@ const FRUITS = [
   { e:'🍉', n:'Watermelon',      months:[6,7,8,9],             v:['C','A'],             xp:12, note:'Hydrating summer fruit — 92% water, rich in lycopene',         cat:'Everyday' },
   { e:'🥭', n:'Mango',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','B6','Folate'],xp:15, note:'Tropical vitamin bomb — one mango = 100% daily vitamin C', cat:'Tropical', imported:true },
   { e:'🍍', n:'Pineapple',       months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6'],           xp:14, note:'Contains bromelain enzyme — aids digestion & reduces inflammation', cat:'Tropical', imported:true },
-  { e:'🍈', n:'Melon',           months:[7,8,9],               v:['C','A','Folate'],    xp:12, note:'Summer hydrator — good source of vitamins A & C',              cat:'Everyday' },
-  { e:'🍈', n:'Honeydew',        months:[7,8,9],               v:['C','B6','K'],        xp:12, note:'Mellow sweetness — good source of vitamin C & B6',             cat:'Everyday' },
+  { e:'🍈', n:'Honeydew Melon',   months:[7,8,9],               v:['C','B6','K'],        xp:12, note:'Mellow sweetness — good source of vitamin C & B6',             cat:'Everyday' },
   { e:'🍊', n:'Mandarin',        months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Easy-peel winter favourite — great vitamin C & folate',        cat:'Citrus' },
   { e:'🍊', n:'Grapefruit',      months:[11,12,1,2,3],         v:['C','A','Folate'],    xp:12, note:'Bitter & bright — powerful antioxidant and metabolism booster', cat:'Citrus' },
   { e:'🍋', n:'Lime',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','B6','Folate'],  xp:11, note:'Sharper than lemon — essential in Mexican & Asian cooking',  cat:'Citrus', imported:true },
@@ -1740,7 +1741,6 @@ const FRUITS = [
   { e:'🫒', n:'Damson',          months:[8,9],                 v:['C','K'],             xp:16, note:'Tart wild plum — perfect for jam and gin',                     cat:'Stone Fruits' },
   { e:'🫒', n:'Plum',            months:[7,8,9,10],            v:['C','K','B6'],        xp:13, note:'Prune precursor — good for digestion & rich in antioxidants', cat:'Stone Fruits' },
   { e:'🍏', n:'Greengage',       months:[7,8,9],               v:['C','K'],             xp:16, note:'Sweet green plum — underrated German summer gem',              cat:'Stone Fruits' },
-  { e:'🍇', n:'Riesling Grape',  months:[9,10],                v:['C','K'],             xp:18, note:'Famous wine grape — packed with antioxidants',                 cat:'Everyday' },
   { e:'🌿', n:'Fig',             months:[8,9,10], imported:true,              v:['B6','K','Folate'],   xp:17, note:'Dried or fresh — great source of potassium & copper',          cat:'Everyday' },
   { e:'🍐', n:'Quince',          months:[9,10,11],             v:['C','B6'],            xp:18, note:'Ancient German fruit — too astringent raw but incredible cooked', cat:'Everyday' },
   { e:'🫐', n:'Blueberry',       months:[6,7,8],               v:['C','K','E'],         xp:13, note:'Antioxidant powerhouse — one of the most nutritious berries',  cat:'Berries' },
@@ -1766,7 +1766,7 @@ const FRUITS = [
   { e:'🧡', n:'Persimmon',       months:[10,11,12],            v:['C','A','K'],         xp:18, note:'Japanese kaki — wait until fully soft or it\'s incredibly astringent', cat:'Everyday' },
   { e:'🫐', n:'Açaí',            months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','E'],        xp:20, note:'Amazonian superfruit — usually sold frozen, extremely rich in antioxidants', cat:'Tropical', imported:true },
   { e:'🍏', n:'Guava',           months:[1,2,3,4,5,6,7,8,9,10,11,12], imported:true, v:['C','A','K','Folate'],xp:17, note:'Tropical vitamin bomb — four times more vitamin C than oranges', cat:'Tropical', imported:true },
-  { e:'🍊', n:'Cantaloupe',      months:[7,8,9],               v:['C','A','Folate'],    xp:13, note:'Orange-fleshed melon — exceptional beta-carotene content',      cat:'Everyday', imported:true },
+  { e:'🍊', n:'Cantaloupe Melon',      months:[7,8,9],               v:['C','A','Folate'],    xp:13, note:'Orange-fleshed melon — exceptional beta-carotene content',      cat:'Everyday', imported:true },
   { e:'🍒', n:'Lychee',          months:[5,6,7], imported:true,               v:['C','B6'],            xp:17, note:'Floral tropical gem — very high vitamin C content',             cat:'Tropical', imported:true },
   { e:'🍊', n:'Clementine',      months:[11,12,1,2],           v:['C','A','Folate'],    xp:11, note:'Seedless easy-peel citrus — a German Christmas staple',         cat:'Citrus' },
   { e:'🍊', n:'Blood Orange',    months:[12,1,2,3],            v:['C','A','Folate'],    xp:14, note:'Ruby-red flesh from anthocyanins — spectacular in tarts & salads', cat:'Citrus' },
@@ -1781,11 +1781,11 @@ const FLAVOUR_PROFILES = {
   'Lemon':['Sour'],'Grape':['Sweet','Earthy'],'Strawberry':['Sweet','Floral'],
   'Peach':['Sweet','Floral'],'Nectarine':['Sweet','Floral'],'Cherry':['Sweet','Sour'],
   'Pear':['Sweet','Floral'],'Kiwi':['Sour','Sweet'],'Watermelon':['Sweet'],
-  'Mango':['Sweet','Tropical'],'Pineapple':['Sour','Tropical'],'Melon':['Sweet','Floral'],
-  'Honeydew':['Sweet','Floral'],'Mandarin':['Sweet','Sour'],'Grapefruit':['Bitter','Sour'],
+  'Mango':['Sweet','Tropical'],'Pineapple':['Sour','Tropical'],
+  'Honeydew Melon':['Sweet','Floral'],'Mandarin':['Sweet','Sour'],'Grapefruit':['Bitter','Sour'],
   'Lime':['Sour'],'Coconut':['Sweet','Tropical'],'Plantain':['Sweet','Earthy'],
   'Apricot':['Sweet','Sour'],'Mirabelle':['Sweet'],'Damson':['Sour','Earthy'],
-  'Plum':['Sweet','Sour'],'Greengage':['Sweet','Sour'],'Riesling Grape':['Sweet','Floral'],
+  'Plum':['Sweet','Sour'],'Greengage':['Sweet','Sour'],
   'Fig':['Sweet','Earthy'],'Quince':['Sour','Bitter'],'Blueberry':['Sweet','Sour'],
   'Raspberry':['Sour','Sweet'],'Blackberry':['Sweet','Earthy'],'Redcurrant':['Sour'],
   'Blackcurrant':['Sour','Earthy'],'Gooseberry':['Sour','Bitter'],'Bilberry (Waldheidelbeere)':['Earthy','Sweet'],
@@ -1794,7 +1794,7 @@ const FLAVOUR_PROFILES = {
   'Papaya':['Sweet','Tropical'],'Pomegranate':['Sour','Sweet'],'Passion Fruit':['Sour','Tropical','Floral'],
   'Dragon Fruit':['Sweet','Floral'],'Star Fruit':['Sour','Sweet'],'Cherimoya':['Sweet','Tropical'],
   'Pomelo':['Bitter','Sour'],'Persimmon':['Sweet','Earthy'],'Açaí':['Earthy','Bitter'],
-  'Guava':['Sweet','Tropical','Floral'],'Cantaloupe':['Sweet','Floral'],'Lychee':['Sweet','Floral'],
+  'Guava':['Sweet','Tropical','Floral'],'Cantaloupe Melon':['Sweet','Floral'],'Lychee':['Sweet','Floral'],
   'Clementine':['Sweet','Sour'],'Blood Orange':['Sweet','Sour'],'Yuzu':['Sour','Floral'],
 };
 
@@ -1865,8 +1865,7 @@ const FRUIT_KEEPER = {
   'Watermelon':   { temp:'🌡️ Room temp whole, fridge once cut', life:'2–3 weeks whole, 3–5 days cut in fridge', bad:'Hollow sound when tapped, yellow soft spots', ripen:null },
   'Mango':        { temp:'🌡️ Room temp to ripen, then fridge', life:'2–5 days room temp, 5 days fridge once ripe', bad:'Black fibrous flesh inside, sour fermented smell', ripen:'Ripen at room temp. Store in paper bag to speed up.' },
   'Pineapple':    { temp:'🌡️ Room temp 1–2 days, fridge after cutting', life:'2 days room temp, 5–7 days cut in fridge', bad:'Brown mushy base, fermented smell, mould on crown', ripen:'Briefly ripen upside down at room temp to distribute sugars.' },
-  'Melon':        { temp:'🌡️ Room temp whole, fridge once cut', life:'1 week whole, 3–4 days cut in fridge', bad:'Very soft spots, hollow sound, sour smell', ripen:'Ripen at room temp. Smell the stem end — should be fragrant when ready.' },
-  'Honeydew':     { temp:'🌡️ Room temp whole, fridge once cut', life:'1 week whole, 3–4 days cut', bad:'Slimy texture, off smell when cut', ripen:null },
+  'Honeydew Melon':     { temp:'🌡️ Room temp whole, fridge once cut', life:'1 week whole, 3–4 days cut', bad:'Slimy texture, off smell when cut', ripen:null },
   'Mandarin':     { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 2–3 weeks fridge', bad:'Mould on skin, dry shrivelled segments', ripen:null },
   'Grapefruit':   { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Very soft spots, mould, extremely dry skin', ripen:null },
   'Lime':         { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3–4 weeks fridge', bad:'Hard dry skin, brown patches', ripen:null },
@@ -1877,7 +1876,6 @@ const FRUIT_KEEPER = {
   'Damson':       { temp:'🌡️ Fridge', life:'3–5 days in fridge', bad:'Mould, extremely soft flesh', ripen:null },
   'Plum':         { temp:'🌡️ Room temp to ripen, then fridge', life:'2–3 days room temp, 3–5 days fridge', bad:'Sour fermented smell, mushy flesh', ripen:'Ripen at room temp. Move to fridge once slightly soft.' },
   'Greengage':    { temp:'🌡️ Fridge', life:'4–6 days in fridge', bad:'Wrinkled skin, mushy, off smell', ripen:null },
-  'Riesling Grape':{ temp:'🌡️ Fridge, unwashed', life:'1–2 weeks in fridge', bad:'Shrivelled, sticky, or mouldy grapes', ripen:null },
   'Fig':          { temp:'🌡️ Fridge', life:'2–3 days in fridge', bad:'Sour smell, split skin with oozing, mould', ripen:null },
   'Quince':       { temp:'🌡️ Cool room temp or fridge', life:'2–3 months in cool storage', bad:'Brown soft patches, mould', ripen:null },
   'Blueberry':    { temp:'🌡️ Fridge, unwashed', life:'1–2 weeks in fridge', bad:'Mushy, mouldy, or sour-smelling', ripen:null },
@@ -1903,7 +1901,7 @@ const FRUIT_KEEPER = {
   'Persimmon':    { temp:'🌡️ Room temp to ripen', life:'Days at room temp once soft', bad:'Hard astringent texture means NOT ripe. Must be jelly-soft.', ripen:'Must ripen fully at room temp. Rock hard = inedible and astringent.' },
   'Açaí':         { temp:'🌡️ Freezer only', life:'Months in freezer', bad:'Any thawing and refreezing degrades quality', ripen:null },
   'Guava':        { temp:'🌡️ Room temp to ripen, then fridge', life:'2–3 days room temp, 3–4 days fridge', bad:'Very soft dark spots, strong fermented smell', ripen:'Ripen at room temp until fragrant and slightly soft.' },
-  'Cantaloupe':   { temp:'🌡️ Room temp whole, fridge cut', life:'5 days whole, 3 days cut', bad:'Soft rind, sour smell, slimy cut surface', ripen:'Ripen at room temp. Sweet smell at stem end = ready.' },
+  'Cantaloupe Melon':   { temp:'🌡️ Room temp whole, fridge cut', life:'5 days whole, 3 days cut', bad:'Soft rind, sour smell, slimy cut surface', ripen:'Ripen at room temp. Sweet smell at stem end = ready.' },
   'Lychee':       { temp:'🌡️ Fridge, in bunch', life:'1 week fridge in bunch', bad:'Brown leathery skin, fermented smell — but skin browning is normal', ripen:null },
   'Clementine':   { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Mould, dry shrivelled skin', ripen:null },
   'Blood Orange': { temp:'🌡️ Room temp or fridge', life:'1 week room temp, 3 weeks fridge', bad:'Mould, dry skin, hollow feel', ripen:null },
@@ -1947,7 +1945,7 @@ const TRIVIA_QUIZ = [
   { q:'Raspberries belong to which genus?', a:'Rubus', b:'Prunus', correct:'a', fact:'Raspberries belong to Rubus, the same genus as blackberries and dewberries.' },
   { q:'Which fruit contains the most fibre per 100g?', a:'Raspberry', b:'Guava', correct:'b', fact:'Guava contains about 5.4g of fibre per 100g, slightly more than raspberries at 6.5g — but guava beats most common fruits.' },
   { q:'What is the original home of the strawberry?', a:'France', b:'Americas', correct:'b', fact:'Wild strawberries are native to the Americas. The modern garden strawberry was bred in France from two American species.' },
-  { q:'Which fruit is highest in Vitamin A?', a:'Mango', b:'Cantaloupe', correct:'b', fact:'Cantaloupe provides about 169 mcg RAE of Vitamin A per 100g, slightly more than mango.' },
+  { q:'Which fruit is highest in Vitamin A?', a:'Mango', b:'Cantaloupe Melon', correct:'b', fact:'Cantaloupe provides about 169 mcg RAE of Vitamin A per 100g, slightly more than mango.' },
   { q:'How do you ripen an avocado faster?', a:'Put it in sunlight', b:'Place it with a banana', correct:'b', fact:'Bananas emit ethylene gas which speeds ripening. Sealing an avocado with a banana in a bag works well.' },
   { q:'What fruit was so rare in 17th century Europe it was rented for parties?', a:'Pineapple', b:'Mango', correct:'a', fact:'Pineapples cost the equivalent of £5,000 in 17th century England. Wealthy hosts rented them as centrepieces.' },
   { q:'Which berry is actually a large modified berry?', a:'Pumpkin', b:'Watermelon', correct:'b', fact:'Botanically, watermelons and cucumbers are berries. The technical term is "pepo" — a type of berry with a hard rind.' },
@@ -2382,13 +2380,13 @@ const ORIGINS_SPOTLIGHT = [
       { q:'What percentage of a watermelon is water?', a:'About 92%', b:'About 75%', correct:'a', fact:'Watermelons are 92% water — making them one of the most hydrating foods. The red flesh also contains more lycopene than tomatoes.' },
       { q:'Which country produces the most watermelons?', a:'China', b:'USA', correct:'a', fact:'China produces about 70% of the world\'s watermelons — over 80 million tonnes annually. They\'re grown in every province.' }
     ]},
-  { fruit:'Melon', e:'🍈', intro:'Muskmelons have been cultivated across the Old World for millennia, prized by emperors and pharaohs.',
+  { fruit:'Cantaloupe Melon', e:'🍈', intro:'Muskmelons have been cultivated across the Old World for millennia, prized by emperors and pharaohs.',
     questions:[
       { q:'Where did muskmelons (cantaloupe/honeydew) originate?', a:'South Asia and Persia', b:'Mediterranean', correct:'a', fact:'Muskmelons originated in South Asia and were cultivated in Persia. Egyptian records describe melon cultivation around 2400 BCE.' },
       { q:'How do you tell if a melon is ripe?', a:'Smell the stem end — a ripe melon has strong sweet fragrance', b:'Tap it — hollow sound means ripe', correct:'a', fact:'The stem end of a ripe melon has an unmistakable sweet, musky fragrance. If it has no smell, it won\'t have much flavour either.' },
       { q:'Which German region grows outdoor melons?', a:'Palatinate and Baden-Württemberg', b:'Bavaria', correct:'a', fact:'Germany\'s warmest wine regions grow outdoor melons in hot summers. Most German melons are imported from Spain and France.' }
     ]},
-  { fruit:'Honeydew', e:'🍈', intro:'Honeydew melons are prized for their pale, intensely sweet flesh and long shelf life.',
+  { fruit:'Honeydew Melon', e:'🍈', intro:'Honeydew melons are prized for their pale, intensely sweet flesh and long shelf life.',
     questions:[
       { q:'What makes honeydew different from cantaloupe?', a:'Smooth pale rind, green flesh, sweeter and less fragrant', b:'They are identical', correct:'a', fact:'Honeydew has a smooth yellow-white rind and pale green flesh. Cantaloupe has netted orange skin and orange flesh.' },
       { q:'Where does the honeydew name come from?', a:'The sweet, almost honey-like quality of the flesh', b:'The plant produces a honey-like sap', correct:'a', fact:'Honeydew refers to the intensely sweet, mild and smooth flesh — like honey in liquid form. The French call it Melon Blanc.' },
@@ -2438,9 +2436,9 @@ const ORIGINS_SPOTLIGHT = [
     ]},
   { fruit:'Damson', e:'🔵', intro:'The damson is one of Germany\'s most treasured baking plums — small, oval and intensely flavoured.',
     questions:[
-      { q:'Where did damsons originate?', a:'Damascus, Syria region — brought westward by Romans', b:'England', correct:'a', fact:'The word damson comes from Damascus. Romans spread them across Europe. German Zwetschge is the same fruit under the regional name.' },
-      { q:'What makes Zwetschge ideal for baking?', a:'Firm flesh holds shape when cooked — doesn\'t turn to mush', b:'It has less juice than other plums', correct:'a', fact:'Zwetschge (German damson) has firm, dry flesh that holds shape perfectly in Zwetschgenkuchen. Round plums collapse in baking.' },
-      { q:'What is the harvest season for German Zwetschgen?', a:'August to September', b:'June to July', correct:'a', fact:'German damsons ripen late summer — August to September. The classic Zwetschgenkuchen season is September, alongside new Federweißer wine.' }
+      { q:'Where did damsons originate?', a:'Damascus, Syria region — brought westward by Romans', b:'England', correct:'a', fact:'The word damson comes from Damascus. Romans spread them across Europe. German Zwetschge (Damson) is the same fruit under the regional name.' },
+      { q:'What makes Zwetschge (Damson) ideal for baking?', a:'Firm flesh holds shape when cooked — doesn\'t turn to mush', b:'It has less juice than other plums', correct:'a', fact:'Zwetschge (German damson) has firm, dry flesh that holds shape perfectly in Zwetschgen (damsons)kuchen. Round plums collapse in baking.' },
+      { q:'What is the harvest season for German Zwetschgen (damsons)?', a:'August to September', b:'June to July', correct:'a', fact:'German damsons ripen late summer — August to September. The classic Zwetschgen (damsons)kuchen season is September, alongside new Federweißer wine.' }
     ]},
   { fruit:'Plum', e:'🫒', intro:'Plums are among Europe\'s most culturally embedded fruits, from Pflaumenmus to slivovitz to Chinese plum wine.',
     questions:[
@@ -2452,13 +2450,7 @@ const ORIGINS_SPOTLIGHT = [
     questions:[
       { q:'Where did the greengage originate?', a:'Persia, via Italy to France', b:'England', correct:'a', fact:'Greengages originated in Persia and were cultivated in Italy. France\'s King François I received them from Italy — they were named Reine-Claude after his queen.' },
       { q:'How did greengages get their English name?', a:'Sir William Gage imported them from France to England in 1724', b:'They were found green in hedges', correct:'a', fact:'Sir William Gage of Hengrave Hall imported the trees from France. The label fell off in transit, so gardeners named them after him.' },
-      { q:'What is the German name for greengage?', a:'Reneklode', b:'Mirabelle', correct:'a', fact:'Reneklode is the German corruption of Reine Claude (Queen Claude of France). Mirabelle is a different — though related — golden plum variety.' }
-    ]},
-  { fruit:'Riesling Grape', e:'🍇', intro:'Riesling is Germany\'s greatest wine grape — producing wines from dry and mineral to intensely sweet.',
-    questions:[
-      { q:'Where did Riesling originate?', a:'Rhine Valley, Germany — documented since 1435', b:'Mosel Valley', correct:'a', fact:'Riesling\'s first documented mention is 1435 in the records of Count John IV of Katzenelnbogen near Frankfurt. It\'s Germany\'s native flagship grape.' },
-      { q:'What makes Riesling special compared to other white grapes?', a:'Exceptional acidity that allows very long ageing', b:'Highest sugar content of any grape', correct:'a', fact:'Riesling\'s naturally high acidity preserves the wine for decades. A great German Riesling Spätlese can age 30-50 years.' },
-      { q:'What is the Mosel valley known for in Riesling?', a:'Steep slate slopes producing Germany\'s most aromatic, mineral Rieslings', b:'The warmest climate in Germany', correct:'a', fact:'Mosel\'s blue-grey Devonian slate absorbs heat and drains rain — the extreme slopes can only be harvested by hand.' }
+      { q:'What is the German name for greengage?', a:'Reneklode (Greengage)', b:'Mirabelle', correct:'a', fact:'Reneklode (Greengage) is the German corruption of Reine Claude (Queen Claude of France). Mirabelle is a different — though related — golden plum variety.' }
     ]},
   { fruit:'Fig', e:'🫐', intro:'The fig is one of the oldest cultivated plants — found in Neolithic settlements 11,000 years old.',
     questions:[
@@ -2610,7 +2602,7 @@ const ORIGINS_SPOTLIGHT = [
       { q:'How much Vitamin C does guava contain?', a:'About 228mg per 100g — more than 2x an orange', b:'About 60mg per 100g', correct:'a', fact:'Guava has one of the highest Vitamin C contents of any fruit — about 228mg per 100g. The skin has even more than the flesh.' },
       { q:'What is guava cheese (goiabada)?', a:'A firm paste made from guava and sugar — a Brazilian and Portuguese classic', b:'A savoury cheese dip', correct:'a', fact:'Goiabada (guava paste) is set firm enough to slice. The classic pairing Romeo e Julieta is goiabada with queijo minas (fresh cheese) in Brazil.' }
     ]},
-  { fruit:'Cantaloupe', e:'🍈', intro:'The cantaloupe is Europe\'s most beloved melon — named after the papal estate of Cantalupo near Rome.',
+  { fruit:'Cantaloupe Melon', e:'🍈', intro:'The cantaloupe is Europe\'s most beloved melon — named after the papal estate of Cantalupo near Rome.',
     questions:[
       { q:'Where was the cantaloupe named after?', a:'Cantalupo estate near Rome, Italy', b:'Cantaloupe, a Spanish region', correct:'a', fact:'The cantaloupe was named after the Cantalupo papal estate near Rome where seeds brought from Armenia were first grown in Europe in the 15th century.' },
       { q:'What gives cantaloupe its orange flesh colour?', a:'Beta-carotene', b:'Lycopene', correct:'a', fact:'Cantaloupe flesh gets its orange colour from beta-carotene — one of the richest fruit sources of Vitamin A precursor.' },
@@ -2658,66 +2650,66 @@ function getWeeklyOriginsQuiz() {
 // PAIRING OF THE WEEK (Lvl 10) - refreshes every Monday
 // ============================================================
 const PAIRINGS = [
-  { fruit:'Watermelon', partner:'Feta cheese', e:'🍉', why:'The saltiness of feta cuts through watermelon\'s sweetness — a classic Greek summer combination.' },
-  { fruit:'Peach', partner:'Prosciutto', e:'🍑', why:'Sweet juicy peach with salty cured ham — the contrast is stunning. Try it on a board with some rocket.' },
-  { fruit:'Strawberry', partner:'Balsamic vinegar', e:'🍓', why:'A drizzle of aged balsamic intensifies strawberries\' flavour dramatically. Standard in Italian kitchens.' },
-  { fruit:'Mango', partner:'Chili & lime', e:'🥭', why:'The Mexican combination of sweet mango with chili heat and lime acidity is incredibly addictive.' },
-  { fruit:'Pear', partner:'Gorgonzola', e:'🍐', why:'The soft sweetness of ripe pear with pungent blue cheese is a Northern Italian classic.' },
-  { fruit:'Orange', partner:'Dark chocolate', e:'🍊', why:'Citrus oils and dark chocolate share aromatic compounds — they were made for each other.' },
-  { fruit:'Apple', partner:'Sharp cheddar', e:'🍎', why:'A British classic — the acidity of apple cuts through the richness of aged cheddar perfectly.' },
-  { fruit:'Fig', partner:'Prosciutto & goat cheese', e:'🌿', why:'Fresh fig with salty ham and tangy cheese is one of the most elegant appetisers imaginable.' },
-  { fruit:'Raspberry', partner:'Fresh basil', e:'🫐', why:'The anise notes in basil amplify raspberry\'s floral quality. Try in a salad or dessert.' },
-  { fruit:'Lemon', partner:'Tahini', e:'🍋', why:'Lemon and tahini are inseparable in Middle Eastern cooking — the acid brightens the nutty richness.' },
-  { fruit:'Plum', partner:'Star anise', e:'🫒', why:'Star anise and plum share the same aromatic compound. Together they taste deeply complex and wine-like.' },
-  { fruit:'Banana', partner:'Miso', e:'🍌', why:'Sounds wrong, tastes incredible. Miso\'s umami deepens banana\'s sweetness — try in a caramel sauce.' },
-  { fruit:'Apple', partner:'Sharp cheddar', e:'🍎', why:'Cheddar\'s sharp saltiness is the perfect foil for apple\'s sweetness and acidity. A classic British ploughman\'s staple.' },
-  { fruit:'Pear', partner:'Gorgonzola', e:'🍐', why:'Creamy, pungent blue cheese with gentle sweet pear is one of Italy\'s great cheese board combinations.' },
-  { fruit:'Cherry', partner:'Dark chocolate', e:'🍒', why:'The bittersweet intensity of dark chocolate amplifies cherry\'s fruity tartness. The foundation of Black Forest cake.' },
-  { fruit:'Raspberry', partner:'White chocolate', e:'🍓', why:'White chocolate\'s sweetness and creaminess provides the perfect gentle backdrop for raspberry\'s sharp acidity.' },
-  { fruit:'Blackberry', partner:'Goat cheese', e:'🫐', why:'Tangy, fresh goat cheese with jammy blackberries — try on bruschetta with a drizzle of honey.' },
-  { fruit:'Blueberry', partner:'Lemon curd', e:'🫐', why:'Tart lemon curd intensifies blueberry\'s mild sweetness. Spoon over yoghurt or fill a tart shell.' },
-  { fruit:'Orange', partner:'Dark chocolate', e:'🍊', why:'Candied orange peel dipped in dark chocolate is a classic confection. The oils in the zest make the pairing sing.' },
-  { fruit:'Lemon', partner:'Ricotta', e:'🍋', why:'Lemon zest stirred into ricotta makes one of Italy\'s most versatile ingredients — for pasta, tarts, or toast.' },
-  { fruit:'Mango', partner:'Burrata', e:'🥭', why:'Creamy burrata with ripe mango, fresh basil and a crack of black pepper — a summer salad that needs nothing else.' },
-  { fruit:'Pineapple', partner:'Jalapeño', e:'🍍', why:'Sweet pineapple and fiery jalapeño is the flavour backbone of Hawaiian-Mexican fusion. Works in salsa, pizza, tacos.' },
-  { fruit:'Strawberry', partner:'Black pepper', e:'🍓', why:'A few grinds of black pepper on fresh strawberries dramatically intensifies their flavour. A trick of Italian kitchens.' },
-  { fruit:'Peach', partner:'Burrata', e:'🍑', why:'Grilled peach with burrata, basil and balsamic is a summer dish of extraordinary simplicity and beauty.' },
-  { fruit:'Fig', partner:'Prosciutto', e:'🫐', why:'The classic Italian antipasto — sweet ripe fig with thin-sliced cured ham. The contrast of flavour and texture is perfection.' },
-  { fruit:'Grape', partner:'Brie', e:'🍇', why:'Ripe brie with green or red grapes — the classic cheese board combination for a reason. Try with walnut bread.' },
-  { fruit:'Plum', partner:'Ginger', e:'🫒', why:'Ginger\'s warmth brings out plum\'s earthiness. The combination is classic in Asian plum sauce and German Pflaumenkuchen with ginger.' },
-  { fruit:'Apricot', partner:'Almond', e:'🍑', why:'Apricot and almond are botanical siblings — both Prunus. Together in a frangipane tart they are inseparable.' },
-  { fruit:'Quince', partner:'Manchego', e:'🍋', why:'Membrillo (quince paste) with Manchego cheese is Spain\'s most iconic cheese pairing — sweet-tart meets salty-nutty.' },
-  { fruit:'Pomegranate', partner:'Labneh', e:'🔴', why:'Pomegranate molasses drizzled over labneh (strained yoghurt) is a staple of Lebanese mezze — sweet, tart and creamy.' },
-  { fruit:'Blood Orange', partner:'Rosemary', e:'🍊', why:'Blood orange segments with a sprig of fresh rosemary in a salad dressing or cocktail — floral and herbal meeting tart citrus.' },
-  { fruit:'Mandarin', partner:'Star anise', e:'🍊', why:'Mandarin\'s sweetness is deepened beautifully by anise\'s liquorice notes. Classic in Chinese desserts and mulled drinks.' },
-  { fruit:'Lychee', partner:'Coconut', e:'🔴', why:'Lychee and coconut are the core of Southeast Asian desserts — panna cotta, jelly, or iced drinks. Floral meets creamy.' },
-  { fruit:'Passion Fruit', partner:'Vanilla', e:'🌸', why:'Passion fruit\'s acidity brightens vanilla\'s mellow sweetness into something extraordinary. The pairing found in every French pâtisserie.' },
-  { fruit:'Kiwi', partner:'Strawberry', e:'🥝', why:'Kiwi\'s tartness and bright green against strawberry\'s sweetness and red is a classic fruit salad double act.' },
-  { fruit:'Banana', partner:'Peanut butter', e:'🍌', why:'The simplest and most beloved combination — peanut butter\'s fat and salt elevating banana\'s sweet earthiness. Elvis approved.' },
-  { fruit:'Coconut', partner:'Lime', e:'🥥', why:'The backbone of Thai and Caribbean cooking — coconut\'s sweetness with lime\'s brightness creates instant tropical depth.' },
-  { fruit:'Mango', partner:'Sticky rice', e:'🥭', why:'Thailand\'s national dessert — sweet glutinous rice with mango and coconut milk. Simple perfection.' },
-  { fruit:'Raspberry', partner:'Rose', e:'🍓', why:'Raspberry and rose are aromatic soulmates — both floral and intense. Used together in Turkish delight, ice cream and macarons.' },
-  { fruit:'Blackcurrant', partner:'Mint', e:'🫐', why:'Cassis (blackcurrant) with fresh mint makes one of summer\'s most refreshing combinations. Try muddled in a cocktail.' },
-  { fruit:'Pear', partner:'Ginger', e:'🍐', why:'Ginger\'s heat brings out pear\'s delicate sweetness and spice. The pairing is classic in German Birnenlikör and Asian pear desserts.' },
-  { fruit:'Cherry', partner:'Kirsch', e:'🍒', why:'Cherry schnapps (Kirschwasser) with fresh cherries doubles the intensity. The soul of Black Forest cake.' },
-  { fruit:'Plum', partner:'Cinnamon', e:'🫒', why:'Cinnamon and plum — the heart of German Pflaumenmus, Zwetschgenkuchen and every spiced plum compote. Inseparable.' },
-  { fruit:'Fig', partner:'Honey & walnuts', e:'🫐', why:'Fresh or dried figs with honey and walnuts is Greece\'s most ancient dessert — still found in every taverna.' },
-  { fruit:'Gooseberry', partner:'Elderflower', e:'🍏', why:'Gooseberry and elderflower bloom at the same time for a reason — their flavours are natural complements. Classic British crumble.' },
-  { fruit:'Elderberry', partner:'Apple', e:'🍇', why:'Elderberry and apple is Germany\'s most classic preserving combination — tart elderberry balanced by apple\'s sweetness in Holundersaft.' },
-  { fruit:'Mirabelle', partner:'Vanilla', e:'🟡', why:'Mirabelle plum\'s floral sweetness with vanilla is the pairing behind the finest Alsatian and German plum tarts.' },
-  { fruit:'Sea Buckthorn', partner:'Honey', e:'🟠', why:'Sea buckthorn\'s extreme sourness needs a strong sweet balance — honey is the classic pairing in Sanddorntee and sauces.' },
-  { fruit:'Bilberry (Waldheidelbeere)', partner:'Cream', e:'🫐', why:'Wild bilberries with fresh cream is a German forest tradition — nothing else enhances their intense colour and flavour better.' },
-  { fruit:'Pomelo', partner:'Mint & chilli', e:'🍋', why:'Pomelo with fresh mint and chilli is a classic Thai salad (som tam-style) — the mild fruit takes bold seasoning beautifully.' },
-  { fruit:'Persimmon', partner:'Ricotta & honey', e:'🟠', why:'Very ripe Hachiya persimmon spooned over ricotta with honey is an autumn Italian antipasto of extraordinary simplicity.' },
-  { fruit:'Dragon Fruit', partner:'Lime & mint', e:'🌵', why:'Dragon fruit\'s mild sweetness needs acidity — lime and fresh mint bring the whole combination to life.' },
-  { fruit:'Guava', partner:'Cream cheese', e:'🍃', why:'The classic Brazilian pairing Romeo e Julieta — guava paste (goiabada) with fresh white cheese. Sweet-salty contrast.' },
-  { fruit:'Yuzu', partner:'White chocolate', e:'🍋', why:'Yuzu\'s floral-citrus complexity with white chocolate\'s sweetness is Japan\'s most fashionable confection pairing.' },
-  { fruit:'Açaí', partner:'Banana & granola', e:'🫐', why:'The açaí bowl formula — frozen açaí blended with banana, topped with granola and honey. Brazil\'s export to the world.' },
-  { fruit:'Physalis', partner:'Dark chocolate', e:'🟠', why:'Physalis dipped in dark chocolate — the tart fruit shell and bitter chocolate make an elegant petit four.' },
-  { fruit:'Cantaloupe', partner:'Parma ham', e:'🍈', why:'Melone e prosciutto is Italy\'s most classic antipasto — cool sweet melon with salty cured ham. Summer on a plate.' },
-  { fruit:'Aronia', partner:'Apple & cinnamon', e:'🫐', why:'Aronia\'s intense astringency is tamed beautifully by sweet apple and warm cinnamon — standard in German Aroniasaft blends.' },
-  { fruit:'Greengage', partner:'Almonds', e:'🟢', why:'Greengage and almond frangipane is the most elegant plum tart — the sweetness and floral stone-fruit aroma are perfectly matched.' },
-  { fruit:'Star Fruit', partner:'Ginger & chilli', e:'⭐', why:'Star fruit\'s mild tartness is transformed by the heat of ginger and chilli in Southeast Asian salads and dipping sauces.' },
+  { fruit:'Watermelon', partner:'Feta cheese', e:'🍉', why:'The saltiness of feta cuts through watermelon\'s sweetness — a classic Greek summer combination.', s:'summer' },
+  { fruit:'Peach', partner:'Prosciutto', e:'🍑', why:'Sweet juicy peach with salty cured ham — the contrast is stunning. Try it on a board with some rocket.', s:'summer' },
+  { fruit:'Strawberry', partner:'Balsamic vinegar', e:'🍓', why:'A drizzle of aged balsamic intensifies strawberries\' flavour dramatically. Standard in Italian kitchens.', s:'spring' },
+  { fruit:'Mango', partner:'Chili & lime', e:'🥭', why:'The Mexican combination of sweet mango with chili heat and lime acidity is incredibly addictive.', s:null },
+  { fruit:'Pear', partner:'Gorgonzola', e:'🍐', why:'The soft sweetness of ripe pear with pungent blue cheese is a Northern Italian classic.', s:'autumn' },
+  { fruit:'Orange', partner:'Dark chocolate', e:'🍊', why:'Citrus oils and dark chocolate share aromatic compounds — they were made for each other.', s:null },
+  { fruit:'Apple', partner:'Sharp cheddar', e:'🍎', why:'A British classic — the acidity of apple cuts through the richness of aged cheddar perfectly.', s:'autumn' },
+  { fruit:'Fig', partner:'Prosciutto & goat cheese', e:'🌿', why:'Fresh fig with salty ham and tangy cheese is one of the most elegant appetisers imaginable.', s:'autumn' },
+  { fruit:'Raspberry', partner:'Fresh basil', e:'🫐', why:'The anise notes in basil amplify raspberry\'s floral quality. Try in a salad or dessert.', s:'summer' },
+  { fruit:'Lemon', partner:'Tahini', e:'🍋', why:'Lemon and tahini are inseparable in Middle Eastern cooking — the acid brightens the nutty richness.', s:null },
+  { fruit:'Plum', partner:'Star anise', e:'🫒', why:'Star anise and plum share the same aromatic compound. Together they taste deeply complex and wine-like.', s:'autumn' },
+  { fruit:'Banana', partner:'Miso', e:'🍌', why:'Sounds wrong, tastes incredible. Miso\'s umami deepens banana\'s sweetness — try in a caramel sauce.', s:null },
+  { fruit:'Apple', partner:'Sharp cheddar', e:'🍎', why:'Cheddar\'s sharp saltiness is the perfect foil for apple\'s sweetness and acidity. A classic British ploughman\'s staple.', s:'autumn' },
+  { fruit:'Pear', partner:'Gorgonzola', e:'🍐', why:'Creamy, pungent blue cheese with gentle sweet pear is one of Italy\'s great cheese board combinations.', s:'autumn' },
+  { fruit:'Cherry', partner:'Dark chocolate', e:'🍒', why:'The bittersweet intensity of dark chocolate amplifies cherry\'s fruity tartness. The foundation of Black Forest cake.', s:'summer' },
+  { fruit:'Raspberry', partner:'White chocolate', e:'🍓', why:'White chocolate\'s sweetness and creaminess provides the perfect gentle backdrop for raspberry\'s sharp acidity.', s:'summer' },
+  { fruit:'Blackberry', partner:'Goat cheese', e:'🫐', why:'Tangy, fresh goat cheese with jammy blackberries — try on bruschetta with a drizzle of honey.', s:'summer' },
+  { fruit:'Blueberry', partner:'Lemon curd', e:'🫐', why:'Tart lemon curd intensifies blueberry\'s mild sweetness. Spoon over yoghurt or fill a tart shell.', s:'summer' },
+  { fruit:'Orange', partner:'Dark chocolate', e:'🍊', why:'Candied orange peel dipped in dark chocolate is a classic confection. The oils in the zest make the pairing sing.', s:null },
+  { fruit:'Lemon', partner:'Ricotta', e:'🍋', why:'Lemon zest stirred into ricotta makes one of Italy\'s most versatile ingredients — for pasta, tarts, or toast.', s:null },
+  { fruit:'Mango', partner:'Burrata', e:'🥭', why:'Creamy burrata with ripe mango, fresh basil and a crack of black pepper — a summer salad that needs nothing else.', s:null },
+  { fruit:'Pineapple', partner:'Jalapeño', e:'🍍', why:'Sweet pineapple and fiery jalapeño is the flavour backbone of Hawaiian-Mexican fusion. Works in salsa, pizza, tacos.', s:null },
+  { fruit:'Strawberry', partner:'Black pepper', e:'🍓', why:'A few grinds of black pepper on fresh strawberries dramatically intensifies their flavour. A trick of Italian kitchens.', s:'spring' },
+  { fruit:'Peach', partner:'Burrata', e:'🍑', why:'Grilled peach with burrata, basil and balsamic is a summer dish of extraordinary simplicity and beauty.', s:'summer' },
+  { fruit:'Fig', partner:'Prosciutto', e:'🫐', why:'The classic Italian antipasto — sweet ripe fig with thin-sliced cured ham. The contrast of flavour and texture is perfection.', s:'autumn' },
+  { fruit:'Grape', partner:'Brie', e:'🍇', why:'Ripe brie with green or red grapes — the classic cheese board combination for a reason. Try with walnut bread.', s:'autumn' },
+  { fruit:'Plum', partner:'Ginger', e:'🫒', why:'Ginger\'s warmth brings out plum\'s earthiness. The combination is classic in Asian plum sauce and German Pflaumenkuchen with ginger.', s:'autumn' },
+  { fruit:'Apricot', partner:'Almond', e:'🍑', why:'Apricot and almond are botanical siblings — both Prunus. Together in a frangipane tart they are inseparable.', s:'summer' },
+  { fruit:'Quince', partner:'Manchego', e:'🍋', why:'Membrillo (quince paste) with Manchego cheese is Spain\'s most iconic cheese pairing — sweet-tart meets salty-nutty.', s:'autumn' },
+  { fruit:'Pomegranate', partner:'Labneh', e:'🔴', why:'Pomegranate molasses drizzled over labneh (strained yoghurt) is a staple of Lebanese mezze — sweet, tart and creamy.', s:null },
+  { fruit:'Blood Orange', partner:'Rosemary', e:'🍊', why:'Blood orange segments with a sprig of fresh rosemary in a salad dressing or cocktail — floral and herbal meeting tart citrus.', s:null },
+  { fruit:'Mandarin', partner:'Star anise', e:'🍊', why:'Mandarin\'s sweetness is deepened beautifully by anise\'s liquorice notes. Classic in Chinese desserts and mulled drinks.', s:null },
+  { fruit:'Lychee', partner:'Coconut', e:'🔴', why:'Lychee and coconut are the core of Southeast Asian desserts — panna cotta, jelly, or iced drinks. Floral meets creamy.', s:null },
+  { fruit:'Passion Fruit', partner:'Vanilla', e:'🌸', why:'Passion fruit\'s acidity brightens vanilla\'s mellow sweetness into something extraordinary. The pairing found in every French pâtisserie.', s:null },
+  { fruit:'Kiwi', partner:'Strawberry', e:'🥝', why:'Kiwi\'s tartness and bright green against strawberry\'s sweetness and red is a classic fruit salad double act.', s:null },
+  { fruit:'Banana', partner:'Peanut butter', e:'🍌', why:'The simplest and most beloved combination — peanut butter\'s fat and salt elevating banana\'s sweet earthiness. Elvis approved.', s:null },
+  { fruit:'Coconut', partner:'Lime', e:'🥥', why:'The backbone of Thai and Caribbean cooking — coconut\'s sweetness with lime\'s brightness creates instant tropical depth.', s:null },
+  { fruit:'Mango', partner:'Sticky rice', e:'🥭', why:'Thailand\'s national dessert — sweet glutinous rice with mango and coconut milk. Simple perfection.', s:null },
+  { fruit:'Raspberry', partner:'Rose', e:'🍓', why:'Raspberry and rose are aromatic soulmates — both floral and intense. Used together in Turkish delight, ice cream and macarons.', s:'summer' },
+  { fruit:'Blackcurrant', partner:'Mint', e:'🫐', why:'Cassis (blackcurrant) with fresh mint makes one of summer\'s most refreshing combinations. Try muddled in a cocktail.', s:'summer' },
+  { fruit:'Pear', partner:'Ginger', e:'🍐', why:'Ginger\'s heat brings out pear\'s delicate sweetness and spice. The pairing is classic in German Birnenlikör and Asian pear desserts.', s:'autumn' },
+  { fruit:'Cherry', partner:'Kirsch', e:'🍒', why:'Cherry schnapps (Kirschwasser) with fresh cherries doubles the intensity. The soul of Black Forest cake.', s:'summer' },
+  { fruit:'Plum', partner:'Cinnamon', e:'🫒', why:'Cinnamon and plum — the heart of German Pflaumenmus, Zwetschgenkuchen and every spiced plum compote. Inseparable.', s:'autumn' },
+  { fruit:'Fig', partner:'Honey & walnuts', e:'🫐', why:'Fresh or dried figs with honey and walnuts is Greece\'s most ancient dessert — still found in every taverna.', s:'autumn' },
+  { fruit:'Gooseberry', partner:'Elderflower', e:'🍏', why:'Gooseberry and elderflower bloom at the same time for a reason — their flavours are natural complements. Classic British crumble.', s:'summer' },
+  { fruit:'Elderberry', partner:'Apple', e:'🍇', why:'Elderberry and apple is Germany\'s most classic preserving combination — tart elderberry balanced by apple\'s sweetness in Holundersaft.', s:'autumn' },
+  { fruit:'Mirabelle', partner:'Vanilla', e:'🟡', why:'Mirabelle plum\'s floral sweetness with vanilla is the pairing behind the finest Alsatian and German plum tarts.', s:'summer' },
+  { fruit:'Sea Buckthorn', partner:'Honey', e:'🟠', why:'Sea buckthorn\'s extreme sourness needs a strong sweet balance — honey is the classic pairing in Sanddorntee and sauces.', s:'autumn' },
+  { fruit:'Bilberry (Waldheidelbeere)', partner:'Cream', e:'🫐', why:'Wild bilberries with fresh cream is a German forest tradition — nothing else enhances their intense colour and flavour better.', s:'summer' },
+  { fruit:'Pomelo', partner:'Mint & chilli', e:'🍋', why:'Pomelo with fresh mint and chilli is a classic Thai salad (som tam-style) — the mild fruit takes bold seasoning beautifully.', s:null },
+  { fruit:'Persimmon', partner:'Ricotta & honey', e:'🟠', why:'Very ripe Hachiya persimmon spooned over ricotta with honey is an autumn Italian antipasto of extraordinary simplicity.', s:'autumn' },
+  { fruit:'Dragon Fruit', partner:'Lime & mint', e:'🌵', why:'Dragon fruit\'s mild sweetness needs acidity — lime and fresh mint bring the whole combination to life.', s:null },
+  { fruit:'Guava', partner:'Cream cheese', e:'🍃', why:'The classic Brazilian pairing Romeo e Julieta — guava paste (goiabada) with fresh white cheese. Sweet-salty contrast.', s:null },
+  { fruit:'Yuzu', partner:'White chocolate', e:'🍋', why:'Yuzu\'s floral-citrus complexity with white chocolate\'s sweetness is Japan\'s most fashionable confection pairing.', s:null },
+  { fruit:'Açaí', partner:'Banana & granola', e:'🫐', why:'The açaí bowl formula — frozen açaí blended with banana, topped with granola and honey. Brazil\'s export to the world.', s:null },
+  { fruit:'Physalis', partner:'Dark chocolate', e:'🟠', why:'Physalis dipped in dark chocolate — the tart fruit shell and bitter chocolate make an elegant petit four.', s:null },
+  { fruit:'Cantaloupe Melon', partner:'Parma ham', e:'🍈', why:'Melone e prosciutto is Italy\'s most classic antipasto — cool sweet melon with salty cured ham. Summer on a plate.', s:'summer' },
+  { fruit:'Aronia', partner:'Apple & cinnamon', e:'🫐', why:'Aronia\'s intense astringency is tamed beautifully by sweet apple and warm cinnamon — standard in German Aroniasaft blends.', s:'autumn' },
+  { fruit:'Greengage', partner:'Almonds', e:'🟢', why:'Greengage and almond frangipane is the most elegant plum tart — the sweetness and floral stone-fruit aroma are perfectly matched.', s:'autumn' },
+  { fruit:'Star Fruit', partner:'Ginger & chilli', e:'⭐', why:'Star fruit\'s mild tartness is transformed by the heat of ginger and chilli in Southeast Asian salads and dipping sauces.', s:null },
 ];
 
 function getWeeklyPairing() {
@@ -2728,8 +2720,21 @@ function getWeeklyPairing() {
   mon.setDate(now.getDate() - daysSinceMon);
   mon.setHours(0,0,0,0);
   const weekKey = mon.toISOString().slice(0,10);
-  const idx = Math.floor(mon.getTime() / (7*24*60*60*1000)) % PAIRINGS.length;
-  return { ...PAIRINGS[idx], weekKey };
+  const weekNum = Math.floor(mon.getTime() / (7*24*60*60*1000));
+  // Filter pairings to those matching current season or year-round (s:null)
+  const season = currentSeasonKey();
+  const eligible = PAIRINGS.filter(p => !p.s || p.s === season);
+  const pool = eligible.length > 0 ? eligible : PAIRINGS;
+  // Cycle through all eligible pairings before repeating
+  const idx = weekNum % pool.length;
+  return { ...pool[idx], weekKey };
+}
+function currentSeasonKey() {
+  const m = new Date().getMonth(); // 0=Jan
+  if (m >= 2 && m <= 4) return 'spring';
+  if (m >= 5 && m <= 7) return 'summer';
+  if (m >= 8 && m <= 10) return 'autumn';
+  return 'winter';
 }
 
 // ============================================================
@@ -2842,11 +2847,11 @@ const FRUIT_LAB = [
   { type:'ferment', fruit:'Damson',      e:'🔵', method:'Damson gin',            formula:'Damsons + gin + sugar + jar + 3 months minimum',                                                       why:'German Schlehenschnaps tradition extended to gin — damsons infuse slowly, softening the spirit with stone-fruit depth.' },
   { type:'ferment', fruit:'Physalis',    e:'🟠', method:'Physalis hot sauce',    formula:'Physalis + chilli + garlic + 2% brine + 7 days lacto-ferment',                                        why:'Physalis\'s tart tropical sweetness ferments into a complex, fruity hot sauce — pairs with grilled fish or tacos.' },
   { type:'ferment', fruit:'Coconut',     e:'🥥', method:'Coconut water kefir', formula:'Fresh coconut water + water kefir grains + 24-36 hrs at room temp',                                why:'Coconut water\'s natural sugars and electrolytes create a naturally sweet, probiotic-rich fermented drink.' },
-  { type:'ferment', fruit:'Melon',       e:'🍈', method:'Melon shrub',          formula:'Cantaloupe or honeydew + white wine vinegar + sugar + 1 week infuse',                               why:'Melon\'s mild sweetness and floral aroma carry through into the shrub — delicate and summery.' },
+  { type:'ferment', fruit:'Cantaloupe Melon', e:'🍈', method:'Cantaloupe shrub',          formula:'Cantaloupe or honeydew + white wine vinegar + sugar + 1 week infuse',                               why:'Melon\'s mild sweetness and floral aroma carry through into the shrub — delicate and summery.' },
   { type:'ferment', fruit:'Grapefruit',  e:'🍊', method:'Grapefruit bitters',   formula:'Grapefruit zest + wormwood + gentian + neutral spirit + 2 weeks infuse',                           why:'Homemade bitters use lacto-fermented botanicals — grapefruit zest creates a bright, citrus-forward bitter.' },
   { type:'ferment', fruit:'Lychee',      e:'🔴', method:'Lychee wine',          formula:'Lychees (peeled, stoned) + sugar + water + wine yeast + 2-3 weeks',                                why:'Lychee\'s floral intensity survives fermentation, creating a perfumed wine reminiscent of Gewürztraminer.' },
   { type:'ferment', fruit:'Bilberry (Waldheidelbeere)',e:'🫐',method:'Wild bilberry wine', formula:'Wild bilberries + sugar + water + wine yeast + 4 weeks',                                  why:'Germany\'s wildest fruit wine — intensely purple, earthy and tannic. A forest-forager\'s tradition.' },
-  { type:'ferment', fruit:'Riesling Grape',e:'🍇',method:'Home Riesling',       formula:'Fresh Riesling grapes + crush + wild yeast + cool ferment 12°C + 3-4 weeks',                       why:'Riesling grapes\'s natural acidity and aromatic profile create a stunning home wine — cool fermentation preserves aromas.' },
+  { type:'ferment', fruit:'Grape',         e:'🍇', method:'Home grape wine',     formula:'Fresh grapes + crush + wild yeast + cool ferment 12°C + 3-4 weeks',                              why:'Grape\'s natural acidity and aromatic profile create a stunning home wine — cool fermentation preserves aromas.' },
   { type:'ferment', fruit:'Cherimoya',   e:'🍦', method:'Cherimoya vinegar',    formula:'Cherimoya flesh + water + mother of vinegar + 4-5 weeks',                                          why:'Cherimoya\'s custard-apple sweetness creates a mild, tropical fruit vinegar perfect for dressings.' },
   { type:'ferment', fruit:'Persimmon',   e:'🟠', method:'Persimmon wine',       formula:'Very ripe Hachiya persimmons (jelly-soft) + sugar + water + yeast + 3 weeks',                     why:'Overripe persimmons are perfect for wine — their honeyed sweetness ferments into a rich, amber-coloured wine.' },
   { type:'ferment', fruit:'Guava',       e:'🍃', method:'Guava kvass',          formula:'Guava chunks + rye bread + sugar + water + 2 days at room temp',                                  why:'Guava adds tropical depth to bread-based kvass — creating a pink-tinged naturally fizzy fermented drink.' },
@@ -2936,7 +2941,7 @@ const CHALLENGES = {
   10: { title:'October Wild & Foraged', options:[
     { label:'Easy',    fruits:['Grape'],                                     dish:'Grape & Brie Board',           tip:'Halve grapes, serve with brie, crackers & walnuts' },
     { label:'Classic', fruits:['Fig','Grape'],                               dish:'Fig Grape Flatbread',          tip:'Top flatbread with fig, grape, goat cheese & honey. Bake 12 min at 200°C' },
-    { label:'Difficult',fruits:['Riesling Grape','Aronia'],                  dish:'Fruit Shrub',                  tip:'Equal parts juice, apple cider vinegar, sugar — 3 days, strain' },
+    { label:'Difficult',fruits:['Grape','Aronia'],                  dish:'Fruit Shrub',                  tip:'Equal parts juice, apple cider vinegar, sugar — 3 days, strain' },
     { label:'Trio',    fruits:['Fig','Grape','Aronia'],                      dish:'Wild Harvest Chutney',         tip:'Combine all three with red wine vinegar, brown sugar, star anise and cinnamon — a complex autumn chutney that improves over weeks' },
   ]},
   11: { title:'November Exotic Arrivals', options:[
@@ -2954,8 +2959,8 @@ const CHALLENGES = {
 };
 
 const FRUIT_ORIGINS = {
-  'DE': { name:'Germany',      flag:'🇩🇪', fruits:['Apple','Pear','Cherry','Plum','Strawberry','Raspberry','Blueberry','Blackcurrant','Redcurrant','Gooseberry','Elderberry','Bilberry (Waldheidelbeere)','Mirabelle','Damson','Greengage','Quince','Riesling Grape'] },
-  'ES': { name:'Spain',        flag:'🇪🇸', fruits:['Orange','Lemon','Mandarin','Clementine','Blood Orange','Grape','Peach','Nectarine','Watermelon','Melon','Strawberry'] },
+  'DE': { name:'Germany',      flag:'🇩🇪', fruits:['Apple','Pear','Cherry','Plum','Strawberry','Raspberry','Blueberry','Blackcurrant','Redcurrant','Gooseberry','Elderberry','Bilberry (Waldheidelbeere)','Mirabelle','Damson','Greengage','Quince','Grape'] },
+  'ES': { name:'Spain',        flag:'🇪🇸', fruits:['Orange','Lemon','Mandarin','Clementine','Blood Orange','Grape','Peach','Nectarine','Watermelon','Cantaloupe Melon','Strawberry'] },
   'IT': { name:'Italy',        flag:'🇮🇹', fruits:['Orange','Lemon','Grape','Peach','Nectarine','Cherry','Pear','Kiwi','Blood Orange','Fig','Pomelo'] },
   'TR': { name:'Turkey',       flag:'🇹🇷', fruits:['Nectarine','Peach','Cherry','Fig','Apricot','Plum','Grape','Pomegranate','Mandarin','Orange'] },
   'MA': { name:'Morocco',      flag:'🇲🇦', fruits:['Orange','Mandarin','Clementine','Lemon','Strawberry'] },
@@ -2970,7 +2975,7 @@ const FRUIT_ORIGINS = {
   'PE': { name:'Peru',         flag:'🇵🇪', fruits:['Passion Fruit','Cherimoya','Guava','Mango','Banana','Coconut'] },
   'EC': { name:'Ecuador',      flag:'🇪🇨', fruits:['Banana','Mango','Pineapple','Coconut','Passion Fruit','Guava'] },
   'AU': { name:'Australia',    flag:'🇦🇺', fruits:['Kiwi','Macadamia','Banana','Mango','Passion Fruit'] },
-  'GR': { name:'Greece',       flag:'🇬🇷', fruits:['Orange','Lemon','Grape','Watermelon','Melon','Cherry','Fig','Pomegranate'] },
+  'GR': { name:'Greece',       flag:'🇬🇷', fruits:['Orange','Lemon','Grape','Watermelon','Cantaloupe Melon','Cherry','Fig','Pomegranate'] },
   'PT': { name:'Portugal',     flag:'🇵🇹', fruits:['Orange','Lemon','Grape','Mandarin','Strawberry','Clementine'] },
   'FR': { name:'France',       flag:'🇫🇷', fruits:['Apple','Pear','Grape','Strawberry','Cherry','Peach','Apricot','Mirabelle','Greengage'] },
 };
@@ -3566,7 +3571,7 @@ function renderTriviaQuiz(containerId) {
 
   el.innerHTML =
     '<div class="quiz-card">' +
-      '<div style="font-size:11px;font-weight:800;color:#2e7d32;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">🌿 Weekly Fruit Trivia • +50 XP</div>' +
+      '<div style="font-size:11px;font-weight:800;color:#2e7d32;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">🌿 Fruit Trivia</div>' +
       '<div class="quiz-question">' + quiz.q + '</div>' +
       '<div class="quiz-options">' +
         '<button class="quiz-btn" onclick="answerTrivia(\'a\')">' + quiz.a + '</button>' +
@@ -4204,7 +4209,7 @@ function renderFridaySips(containerId) {
       (sipState.claimed
         ? '<div style="background:rgba(249,217,35,0.15);border:2px solid #f9d923;border-radius:12px;padding:12px;text-align:center;color:#f9d923;font-weight:800">🍹 Cheers! +25 XP earned this week</div>'
         : '<label style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px;cursor:pointer">' +
-            '<input type="checkbox" onchange="claimFridaySipCurrent(this.checked)" style="width:20px;height:20px;cursor:pointer;accent-color:#f9d923;flex-shrink:0">' + +
+            '<input type="checkbox" onchange="claimFridaySipCurrent(this.checked)" style="width:20px;height:20px;cursor:pointer;accent-color:#f9d923;flex-shrink:0">' +
             '<div>' +
               '<div style="font-size:13px;font-weight:800;color:#fff">I ordered or made this cocktail 🍹</div>' +
               '<div style="font-size:11px;color:#c084fc;font-weight:700">+25 XP reward</div>' +
@@ -4443,16 +4448,32 @@ function renderTodayPage() {
       <div class="fruit-grid" id="fruitGrid"></div>
     </div>
 
-    
+    ${nudgeHtml}
+
+    ${suggestions.length > 0 ? `
+    <div class="section-title">💡 Suggestions</div>
+    <div class="card" style="padding:14px;margin-bottom:14px">
+      ${suggestions.map(s => `
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)" onclick="addFruit('${s.f.n.replace(/'/g,"\\'")}')">
+          <span style="font-size:28px">${s.f.e}</span>
+          <div style="flex:1">
+            <div style="font-weight:800;font-size:13px">${s.f.n}</div>
+            <div style="font-size:11px;color:var(--muted);font-weight:700">${s.f.note}</div>
+          </div>
+          <span class="fruit-tag ${s.tag}">${s.tagLabel}</span>
+        </div>`).join('')}
+    </div>` : ''}
+
   `;
 
-  renderFruitGrid(FRUITS);
+  renderFruitGrid([...FRUITS].sort((a,b) => a.n.localeCompare(b.n)));
 }
 
 function renderFruitGrid(list) {
+  const sorted = [...list].sort((a,b) => a.n.localeCompare(b.n));
   const grid = document.getElementById('fruitGrid');
   if (!grid) return;
-  grid.innerHTML = list.map(f => {
+  grid.innerHTML = sorted.map(f => {
     const status = getSeasonStatus(f);
     const cls = status === 'in-season' ? 'in-season'
       : status === 'imported' ? 'imported'
@@ -4647,7 +4668,7 @@ function renderChallengePage() {
     '</div>';
   })()}
   <div class="section-title" style="margin-top:6px">🍽️ Pairing of the Week</div>
-  ${isUnlocked(10) ?
+  ${isUnlocked(12) ?
     `<div id="pairingContainer"></div>` :
     `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍽️</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Pairing of the Week</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Passionfruity Pairer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Pairing of the Week</div><div class="lock-sub">Unlocks at Passionfruity Pairer</div></div></div>`
   }
@@ -4656,7 +4677,7 @@ function renderChallengePage() {
   <div class="section-title" style="margin-top:6px">🍹 Friday Sips</div>
   ${isUnlocked(13) ?
     `<div id="fridaySipsContainer"></div>` :
-    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍹</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Friday Sips</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Cocktail Curator</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Friday Sips</div><div class="lock-sub">Unlocks at Cocktail Curator</div></div></div>`
+    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍹</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Friday Sips</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Bignay Bartender</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Friday Sips</div><div class="lock-sub">Unlocks at Bignay Bartender</div></div></div>`
   }
   <div class="section-title" style="margin-top:6px">🏆 Fruit Bucket List</div>
   ${isUnlocked(14) ?
@@ -4944,7 +4965,7 @@ function renderMePage() {
   const flavourSection = '<div class="section-title">🎡 Flavour Wheel</div>' +
     lockedOrContent(11,
       '<div class="card" style="padding:16px;margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Based on all your logged fruits — how varied is your taste profile?</div><div id="flavourWheelContainer"></div></div>',
-      '🎡', 'Flavour Wheel', 'Strawberry Taster'
+      '🎡', 'Flavour Wheel', 'Tangerine Taster'
     );
 
   const pixelArtSection = '<div class="section-title">🎨 Your Fruit Icons</div>' +
