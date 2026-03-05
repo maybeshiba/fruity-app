@@ -1505,6 +1505,8 @@ body {
 .fruit-lab-title { font-family: 'Fredoka One', cursive; font-size: 18px; }
 .tea .fruit-lab-title { color: #1b5e20; }
 .ferment .fruit-lab-title { color: #e65100; }
+.ferment .fruit-lab-formula { color: #e65100; }
+.ferment .fruit-lab-row-text { color: #bf360c; }
 .fruit-lab-row {
   display: flex;
   gap: 10px;
@@ -1521,7 +1523,7 @@ body {
 }
 .tea .fruit-lab-row-label { color: #388e3c; }
 .ferment .fruit-lab-row-label { color: #f57c00; }
-.fruit-lab-row-text { font-size: 13px; font-weight: 700; line-height: 1.5; }
+.fruit-lab-row-text { font-size: 13px; font-weight: 700; line-height: 1.5; color: #1b5e20; }
 .fruit-lab-formula {
   background: rgba(255,255,255,0.6);
   border-radius: 12px;
@@ -1530,6 +1532,7 @@ body {
   font-weight: 700;
   font-family: 'Nunito', sans-serif;
   line-height: 1.6;
+  color: #1b5e20;
 }
 .fruit-lab-footer {
   font-size: 11px;
@@ -1689,9 +1692,9 @@ const LEVELS = [
   { name:'🍊 Guanabana Gambler',     xp:280,   reward:'🎰 Fruit Roulette unlocked in Challenge tab!',                        hint:'Feeling lucky? Something unpredictable is coming...' },
   { name:'🍎 Russet Ripener',        xp:450,   reward:'🧊 Fruit Keeper unlocked in Knowledge tab!',                          hint:'A handy storage guide for every fruit is coming...' },
   { name:'🍍 Pineapply Pioneer',     xp:700,   reward:'🌍 Fruit Origins Quiz unlocked in Knowledge tab!',                    hint:'A weekly geography challenge with XP rewards is coming...' },
-  { name:'🍑 Peachy Pursuer',        xp:1000,  reward:'🍓 What to make with... unlocked in Knowledge tab!',                  hint:'Monthly fruit cooking inspiration is coming...' },
+  { name:'🍵 Bael Brewer',           xp:1000,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                             hint:'A creative brewing and fermenting lab is almost ready...' },
   { name:'🍋 Loquat Legend',         xp:1350,  reward:'🍳 Trio cooking challenge unlocked in Challenge tab!',                 hint:'A serious cooking upgrade is on its way...' },
-  { name:'🍊 Tangerine Taster',      xp:1750,  reward:'🎡 Flavour Wheel unlocked in Me tab!',                                hint:'A visual taste profile of your eating habits is coming...' },
+  { name:'🍑 Peachy Pursuer',        xp:1750,  reward:'🍓 What to make with... unlocked in Knowledge tab!',                  hint:'Monthly fruit cooking inspiration is coming...' },
   { name:'🌺 Passionfruity Pairer',  xp:2200,  reward:'🍽️ Pairing of the Week unlocked in Challenge tab!',                  hint:'A weekly real-life fruit pairing challenge is coming...' },
   { name:'🌿 Figgy Forager',         xp:3100,  reward:'🧪 Fruit Lab unlocked in Knowledge tab!',                                hint:'Tea concepts and fermentation ideas are brewing...' },
   { name:'🎨 Fruit Bowl Sketcher',   xp:4200,  reward:'🎨 Pixel Fruit Artist unlocked in Challenge tab!',                    hint:'Something creative and completely unique is coming...' },
@@ -1820,18 +1823,18 @@ function getWeeklyTrivia() {
 // WHAT TO MAKE WITH (Lvl 7)
 // ============================================================
 const WHAT_TO_MAKE = {
-  1:  { fruit:'Blood Orange', e:'🍊❤️', ideas:['Marmalade','Curd','Cake','Salad dressing','Sorbet','Juice','Syrup','Compote'] },
-  2:  { fruit:'Banana',       e:'🍌',   ideas:['Banana bread','Smoothie','Ice cream','Pancakes','Chips','Jam','Curry','Muffins'] },
-  3:  { fruit:'Kiwi',         e:'🥝',   ideas:['Jam','Sorbet','Smoothie','Salsa','Marinade','Pavlova topping','Juice','Chutney'] },
-  4:  { fruit:'Mango',        e:'🥭',   ideas:['Sorbet','Smoothie','Salsa','Chutney','Jam','Cake','Lassi','Dried snack'] },
-  5:  { fruit:'Pineapple',    e:'🍍',   ideas:['Juice','Smoothie','Jam','Sorbet','Salsa','Cake','Dried snack','Chutney'] },
-  6:  { fruit:'Apricot',      e:'🍑🌸', ideas:['Jam','Tart','Chutney','Dried snack','Compote','Cake','Sauce','Sorbet'] },
-  7:  { fruit:'Raspberry',    e:'🍓🌿', ideas:['Jam','Vinegar','Coulis','Sorbet','Smoothie','Cake','Cordial','Compote'] },
-  8:  { fruit:'Peach',        e:'🍑',   ideas:['Jam','Bellini','Sorbet','Tarte Tatin','Chutney','Grilled','Cobbler','Dried'] },
-  9:  { fruit:'Plum',         e:'🫒',   ideas:['Jam','Sauce','Chutney','Wine','Cake','Sorbet','Dried (prunes)','Compote'] },
-  10: { fruit:'Apple',        e:'🍎',   ideas:['Cider','Juice','Chutney','Cake','Chips','Sauce','Jam','Butter'] },
-  11: { fruit:'Quince',       e:'🍐🍯', ideas:['Membrillo (paste)','Jam','Jelly','Chutney','Syrup','Tart','Cheese pairing','Cordial'] },
-  12: { fruit:'Pomegranate',  e:'❤️🍎', ideas:['Molasses','Juice','Salad dressing','Sauce','Sorbet','Tea','Jam','Cocktail mixer'] },
+  1:  { fruit:'Blood Orange', e:'🍊❤️', ideas:['Marmalade','Curd','Cake','Salad dressing'] },
+  2:  { fruit:'Banana',       e:'🍌',   ideas:['Banana bread','Smoothie','Ice cream','Pancakes'] },
+  3:  { fruit:'Kiwi',         e:'🥝',   ideas:['Jam','Sorbet','Smoothie','Salsa'] },
+  4:  { fruit:'Mango',        e:'🥭',   ideas:['Sorbet','Smoothie','Salsa','Chutney'] },
+  5:  { fruit:'Pineapple',    e:'🍍',   ideas:['Juice','Smoothie','Jam','Sorbet'] },
+  6:  { fruit:'Apricot',      e:'🍑🌸', ideas:['Jam','Tart','Chutney','Dried snack'] },
+  7:  { fruit:'Raspberry',    e:'🍓🌿', ideas:['Jam','Vinegar','Coulis','Sorbet'] },
+  8:  { fruit:'Peach',        e:'🍑',   ideas:['Jam','Bellini','Sorbet','Tarte Tatin'] },
+  9:  { fruit:'Plum',         e:'🫒',   ideas:['Jam','Sauce','Chutney','Wine'] },
+  10: { fruit:'Apple',        e:'🍎',   ideas:['Cider','Juice','Chutney','Cake'] },
+  11: { fruit:'Quince',       e:'🍐🍯', ideas:['Membrillo (paste)','Jam','Jelly','Chutney'] },
+  12: { fruit:'Pomegranate',  e:'❤️🍎', ideas:['Molasses','Juice','Salad dressing','Sauce'] },
 };
 
 function getMonthlyMakeWith() {
@@ -2067,67 +2070,66 @@ function getFruitLabEntry() {
 
 const CHALLENGES = {
   1:  { title:'January Citrus Haul', options:[
-    { label:'Easy',    fruits:['Blood Orange','Kiwi'],        dish:'Citrus Yogurt Bowl', tip:'Slice over thick yogurt with honey' },
-    { label:'Classic', fruits:['Grapefruit','Clementine'],    dish:'Winter Citrus Salad', tip:'Segment both, toss with mint & chili flakes' },
-    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing', tip:'Squeeze both over a green salad — unusual & amazing' },
+    { label:'Easy',    fruits:['Blood Orange'],               dish:'Blood Orange Yogurt',       tip:'Slice over thick Greek yogurt with honey & mint' },
+    { label:'Classic', fruits:['Grapefruit','Clementine'],    dish:'Winter Citrus Salad',       tip:'Segment both, toss with mint & chili flakes' },
+    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing',      tip:'Squeeze both over a green salad — unusual & amazing' },
   ]},
   2:  { title:'February Tropical Escape', options:[
-    { label:'Easy',    fruits:['Banana','Mango'],             dish:'Tropical Smoothie Bowl', tip:'Blend & top with coconut flakes' },
-    { label:'Classic', fruits:['Pineapple','Papaya'],         dish:'Tropical Fruit Salad', tip:'Dice both, add lime juice & fresh mint' },
-    { label:'Difficult',fruits:['Cherimoya','Passion Fruit'], dish:'Custard Fruit Tart', tip:'Spoon cherimoya flesh into tart shells, top with passion fruit pulp' },
+    { label:'Easy',    fruits:['Banana'],                     dish:'Banana Honey Toast',        tip:'Slice on sourdough with almond butter & honey' },
+    { label:'Classic', fruits:['Mango','Pineapple'],          dish:'Tropical Smoothie Bowl',    tip:'Blend frozen mango, top with pineapple chunks' },
+    { label:'Difficult',fruits:['Papaya','Passion Fruit'],    dish:'Papaya Passion Boat',       tip:'Halve papaya, fill with passion fruit pulp & lime' },
   ]},
-  3:  { title:'March Citrus Bloom', options:[
-    { label:'Easy',    fruits:['Blood Orange','Kiwi'],        dish:'Citrus Breakfast Bowl', tip:'Slice over oats with honey & mint' },
-    { label:'Classic', fruits:['Grapefruit','Mandarin'],      dish:'Winter Citrus Salad', tip:'Segment both, toss with fresh mint & chili flakes' },
-    { label:'Difficult',fruits:['Pomelo','Yuzu'],             dish:'Pomelo Yuzu Dressing', tip:'Squeeze both over a green salad — the contrast is stunning' },
+  3:  { title:'March Green & Sharp', options:[
+    { label:'Easy',    fruits:['Kiwi'],                       dish:'Kiwi Chia Pudding',         tip:'Slice kiwi over overnight chia pudding with coconut milk' },
+    { label:'Classic', fruits:['Lime','Golden Kiwi'],         dish:'Lime Kiwi Sorbet',          tip:'Blend frozen kiwi with lime juice & a pinch of zest' },
+    { label:'Difficult',fruits:['Pomelo','Lime'],             dish:'Thai-Style Citrus Salad',   tip:'Pomelo segments with lime dressing, chili, peanuts & fresh herbs' },
   ]},
-  4:  { title:'April Spring Awakening', options:[
-    { label:'Easy',    fruits:['Orange','Lemon'],             dish:'Citrus Cake', tip:'Classic sponge with orange & lemon zest glaze' },
-    { label:'Classic', fruits:['Kiwi','Pineapple'],           dish:'Tropical Jam', tip:'Cook down both fruits with sugar into a zingy jam' },
-    { label:'Difficult',fruits:['Blood Orange','Yuzu'],       dish:'Yuzu Blood Orange Curd', tip:'Make a curd — butter, eggs, juice, sugar. Spread on everything' },
+  4:  { title:'April Berry Awakening', options:[
+    { label:'Easy',    fruits:['Strawberry'],                 dish:'Strawberries & Cream',      tip:'Hull and halve, serve with whipped cream and a pinch of black pepper' },
+    { label:'Classic', fruits:['Strawberry','Raspberry'],     dish:'Berry Compote',             tip:'Simmer with a splash of orange juice & honey — incredible on pancakes' },
+    { label:'Difficult',fruits:['Gooseberry','Redcurrant'],   dish:'Gooseberry Fool',           tip:'Stew gooseberries with sugar, fold into whipped cream. Add redcurrant on top' },
   ]},
-  5:  { title:'May First Berries', options:[
-    { label:'Easy',    fruits:['Strawberry','Banana'],        dish:'Strawberry Banana Smoothie', tip:'Blend with oat milk & a spoon of peanut butter' },
-    { label:'Classic', fruits:['Strawberry','Lemon'],         dish:'Strawberry Lemonade Jam', tip:'Classic jam with a lemon twist — great on sourdough' },
-    { label:'Difficult',fruits:['Strawberry','Lychee'],       dish:'Strawberry Lychee Sorbet', tip:'Blend, freeze, stir twice — fragrant & unexpected' },
+  5:  { title:'May Stone Fruit Start', options:[
+    { label:'Easy',    fruits:['Apricot'],                    dish:'Apricot on Toast',          tip:'Halve, grill 2 min, serve on ricotta toast with thyme & honey' },
+    { label:'Classic', fruits:['Cherry','Apricot'],           dish:'Stone Fruit Clafoutis',     tip:'A simple French baked batter pudding — mix eggs, milk, flour, fruit, bake' },
+    { label:'Difficult',fruits:['Greengage','Cherry'],        dish:'Greengage Cherry Tart',     tip:'Blind bake pastry, fill with frangipane, press in greengages & cherries' },
   ]},
-  6:  { title:'June Berry Season Begins', options:[
-    { label:'Easy',    fruits:['Cherry','Strawberry'],        dish:'Berry Clafoutis', tip:'Classic French batter bake — 30 minutes, very forgiving' },
-    { label:'Classic', fruits:['Redcurrant','Gooseberry'],    dish:'Summer Berry Compote', tip:'Simmer with sugar, serve over pancakes or porridge' },
-    { label:'Difficult',fruits:['Gooseberry','Elderberry'],   dish:'Eldergooseberry Chutney', tip:'Tangy chutney with onion, vinegar & spices — pairs with cheese' },
+  6:  { title:'June Berry Bonanza', options:[
+    { label:'Easy',    fruits:['Blueberry'],                  dish:'Blueberry Pancakes',        tip:'Fold fresh blueberries into batter and serve with maple syrup' },
+    { label:'Classic', fruits:['Strawberry','Blueberry'],     dish:'Summer Berry Pavlova',      tip:'Top meringue with whipped cream and mixed berries' },
+    { label:'Difficult',fruits:['Redcurrant','Blackcurrant'], dish:'Cassis Coulis',             tip:'Simmer both currants with sugar — incredible with cheese or ice cream' },
   ]},
   7:  { title:'July Peak Summer', options:[
-    { label:'Easy',    fruits:['Peach','Raspberry'],          dish:'Peach Melba', tip:'Peach halves, vanilla ice cream, fresh raspberries. Done.' },
-    { label:'Classic', fruits:['Blueberry','Cherry'],         dish:'Summer Berry Cake', tip:'Simple sponge studded with both fruits, dusted with icing sugar' },
-    { label:'Difficult',fruits:['Mirabelle','Bilberry (Waldheidelbeere)'], dish:'Mirabelle Bilberry Galette', tip:'Rustic open tart — the colour contrast is spectacular' },
+    { label:'Easy',    fruits:['Peach'],                      dish:'Grilled Peach',             tip:'Halve and grill 3 min each side, serve with vanilla ice cream' },
+    { label:'Classic', fruits:['Watermelon','Peach'],         dish:'Stone Fruit Salad',         tip:'Cube watermelon, slice peaches, add mint, lime & feta' },
+    { label:'Difficult',fruits:['Bilberry (Waldheidelbeere)','Blackberry'], dish:'Wild Berry Jam', tip:'Equal weight fruit & sugar, simmer 20 min, bottle hot' },
   ]},
-  8:  { title:'August Stone Fruit Fest', options:[
-    { label:'Easy',    fruits:['Nectarine','Plum'],           dish:'Stone Fruit Salad', tip:'Slice thin, add basil, balsamic glaze & mozzarella' },
-    { label:'Classic', fruits:['Peach','Blackcurrant'],       dish:'Peach & Blackcurrant Crumble', tip:'Oat crumble topping, tart-sweet filling — serve warm' },
-    { label:'Difficult',fruits:['Damson','Aronia'],           dish:'Damson Aronia Jam', tip:'Both are tart & dark — the result is a deep, complex jam' },
+  8:  { title:'August Harvest', options:[
+    { label:'Easy',    fruits:['Raspberry'],                  dish:'Raspberry Fool',            tip:'Crush raspberries with a fork, swirl into whipped cream — done in 3 minutes' },
+    { label:'Classic', fruits:['Plum','Mirabelle'],           dish:'German Pflaumenkuchen',     tip:'Classic German flat cake — plums laid on yeasted dough, baked with sugar & cinnamon' },
+    { label:'Difficult',fruits:['Elderberry','Sea Buckthorn'],dish:'Immune Cordial',         tip:'Simmer elderberries separately from sea buckthorn, combine with sugar & lemon' },
   ]},
-  9:  { title:'September Harvest Time', options:[
-    { label:'Easy',    fruits:['Grape','Apple'],              dish:'Grape & Apple Juice', tip:'Press or blend both — autumn in a glass' },
-    { label:'Classic', fruits:['Blackberry','Pear'],          dish:'Blackberry Pear Tarte Tatin', tip:'Caramelise pears, add blackberries before the pastry goes on' },
-    { label:'Difficult',fruits:['Sea Buckthorn','Physalis'],  dish:'Sea Buckthorn Physalis Sauce', tip:'Tart orange sauce — incredible over duck or pork' },
+  9:  { title:'September Orchard Month', options:[
+    { label:'Easy',    fruits:['Apple'],                      dish:'Baked Apple',               tip:'Core apple, stuff with oats, cinnamon & honey, bake 25 min at 180°C' },
+    { label:'Classic', fruits:['Apple','Pear'],               dish:'Apple Pear Crumble',        tip:'Slice both, toss with cinnamon & brown sugar, top with oat crumble, bake 35 min' },
+    { label:'Difficult',fruits:['Quince','Damson'],           dish:'Quince & Damson Jelly',     tip:'Simmer both separately, strain through muslin overnight, combine juice with sugar & boil to set' },
   ]},
-  10: { title:'October Autumn Gems', options:[
-    { label:'Easy',    fruits:['Pear','Pomegranate'],         dish:'Autumn Salad', tip:'Rocket, pear slices, pomegranate seeds, walnuts & blue cheese' },
-    { label:'Classic', fruits:['Apple','Cranberry'],          dish:'Apple Cranberry Chutney', tip:'Spiced with cinnamon & cloves — Christmas in a jar' },
-    { label:'Difficult',fruits:['Quince','Persimmon'],        dish:'Quince Persimmon Paste', tip:'Slow-cooked into a firm paste (like membrillo) — incredible with cheese' },
+  10: { title:'October Wild & Foraged', options:[
+    { label:'Easy',    fruits:['Grape'],                      dish:'Grape & Brie Board',        tip:'Halve grapes, serve with brie, crackers & walnuts' },
+    { label:'Classic', fruits:['Fig','Grape'],                dish:'Fig Grape Flatbread',       tip:'Top flatbread with fig, grape, goat cheese & honey. Bake 12 min at 200°C' },
+    { label:'Difficult',fruits:['Riesling Grape','Aronia'],   dish:'Fruit Shrub',               tip:'Equal parts juice, apple cider vinegar, sugar — let sit 3 days, strain. Mix with sparkling water' },
   ]},
-  11: { title:'November Late Season', options:[
-    { label:'Easy',    fruits:['Mandarin','Orange'],          dish:'Citrus Marmalade', tip:'Peel, boil with sugar, jar it — better than shop-bought' },
-    { label:'Classic', fruits:['Pomegranate','Cranberry'],    dish:'Winter Berry Sauce', tip:'Simmer both — classic sauce for roast meats or on porridge' },
-    { label:'Difficult',fruits:['Physalis','Pomelo'],         dish:'Physalis Pomelo Chutney', tip:'Unusual but the bitterness of pomelo balances physalis sweetness perfectly' },
+  11: { title:'November Exotic Arrivals', options:[
+    { label:'Easy',    fruits:['Persimmon'],                  dish:'Persimmon Slices',          tip:'Slice ripe persimmon thinly, serve with yogurt & a drizzle of honey' },
+    { label:'Classic', fruits:['Pomegranate','Persimmon'],    dish:'Winter Salad',              tip:'Rocket, pomegranate seeds, persimmon slices, walnuts & balsamic glaze' },
+    { label:'Difficult',fruits:['Cranberry','Physalis'],      dish:'Cranberry Physalis Sauce',  tip:'Simmer cranberries with orange juice & sugar until thick, garnish with physalis' },
   ]},
-  12: { title:'December Winter Feast', options:[
-    { label:'Easy',    fruits:['Clementine','Apple'],         dish:'Mulled Fruit Punch', tip:'Simmer with cinnamon, star anise & cloves — alcohol optional' },
-    { label:'Classic', fruits:['Blood Orange','Pomegranate'], dish:'Winter Citrus Pavlova', tip:'Top meringue with whipped cream, blood orange segments & pomegranate seeds' },
-    { label:'Difficult',fruits:['Yuzu','Persimmon'],          dish:'Yuzu Persimmon Cake', tip:'Japanese-inspired — yuzu zest in sponge, persimmon puree filling' },
+  12: { title:'December Festive Fruits', options:[
+    { label:'Easy',    fruits:['Clementine'],                 dish:'Clementine Curd',           tip:'Whisk juice with eggs, sugar & butter over low heat until thick. Incredible on toast' },
+    { label:'Classic', fruits:['Blood Orange','Pomegranate'], dish:'Festive Pavlova',           tip:'Top meringue with blood orange segments, pomegranate seeds & cream' },
+    { label:'Difficult',fruits:['Quince','Yuzu'],             dish:'Yuzu Quince Cake',          tip:'Yuzu zest in sponge, persimmon puree filling' },
   ]},
 };
-
 
 const FRUIT_ORIGINS = {
   'DE': { name:'Germany',      flag:'🇩🇪', fruits:['Apple','Pear','Cherry','Plum','Strawberry','Raspberry','Blueberry','Blackcurrant','Redcurrant','Gooseberry','Elderberry','Bilberry (Waldheidelbeere)','Mirabelle','Damson','Greengage','Quince','Riesling Grape'] },
@@ -2151,6 +2153,37 @@ const FRUIT_ORIGINS = {
   'FR': { name:'France',       flag:'🇫🇷', fruits:['Apple','Pear','Grape','Strawberry','Cherry','Peach','Apricot','Mirabelle','Greengage'] },
 };
 
+
+// ============================================================
+// TRIO COOKING CHALLENGES (Lvl 8) — bi-weekly, 3 fruits
+// ============================================================
+const TRIO_CHALLENGES = [
+  { e:'🍊🫐🍋', title:'Citrus Berry Burst',    fruits:['Blood Orange','Blueberry','Lemon'],    dish:'Blood Orange Blueberry Tart',       tip:'Blind bake pastry shell, fill with lemon curd, top with blueberries and blood orange segments',       xp:200 },
+  { e:'🥭🍍🌿', title:'Tropical Trinity',       fruits:['Mango','Pineapple','Passion Fruit'],  dish:'Tropical Chia Pudding Bowl',        tip:'Layer coconut chia pudding with all three fruits — the contrast of textures is extraordinary',          xp:200 },
+  { e:'🍑🫐🍒', title:'Stone & Berry',          fruits:['Peach','Blackberry','Cherry'],        dish:'Summer Stone Fruit Crumble',        tip:'Halve peaches, scatter blackberries and cherries, cover with oat crumble, bake 35 min at 180°C',       xp:200 },
+  { e:'🍎🍐🫒', title:'Orchard Harvest',        fruits:['Apple','Pear','Plum'],                dish:'Autumn Orchard Compote',            tip:'Dice all three, simmer with cinnamon, star anise and brown sugar 20 min. Serve over porridge or yogurt', xp:200 },
+  { e:'🍋🥥🥭', title:'Tropical Sour',          fruits:['Lemon','Coconut','Mango'],            dish:'Mango Coconut Lemon Bars',          tip:'Shortbread base, coconut cream filling, mango curd top layer, lemon zest to finish',                   xp:200 },
+  { e:'🫐🍓🌿', title:'Berry Forest',           fruits:['Blackcurrant','Raspberry','Elderberry'],'dish':'German Rote Grütze',            tip:'Simmer all three with sugar and a splash of red wine, thicken with cornstarch. Serve with vanilla sauce', xp:200 },
+  { e:'🍊❤️🍋', title:'Citrus Jewels',          fruits:['Orange','Pomegranate','Lime'],        dish:'Pomegranate Citrus Salad',          tip:'Segment orange, mix with pomegranate seeds, lime juice, fresh mint and a drizzle of honey',              xp:200 },
+  { e:'🍑🥝🍍', title:'Island Stone',           fruits:['Nectarine','Kiwi','Pineapple'],       dish:'Grilled Fruit Skewers',             tip:'Thread all three on skewers, grill 2 min each side, serve with coconut yogurt and chili flakes',         xp:200 },
+];
+
+function getWeeklyTrio() {
+  const now = new Date();
+  const day = now.getDay();
+  const daysSinceMon = (day + 6) % 7;
+  const mon = new Date(now);
+  mon.setDate(now.getDate() - daysSinceMon);
+  mon.setHours(0,0,0,0);
+  // Refreshes every 2 weeks
+  const biWeekNum = Math.floor(mon.getTime() / (14 * 24 * 60 * 60 * 1000));
+  const weekKey = mon.toISOString().slice(0,10);
+  const idx = biWeekNum % TRIO_CHALLENGES.length;
+  const nextReset = new Date((biWeekNum + 1) * 14 * 24 * 60 * 60 * 1000);
+  const daysLeft = Math.ceil((nextReset - now) / (24 * 60 * 60 * 1000));
+  return { ...TRIO_CHALLENGES[idx], weekKey, daysLeft };
+}
+
 // ============================================================
 // STATE
 // ============================================================
@@ -2160,7 +2193,8 @@ function todayKey() {
 }
 
 function defaultState() {
-  return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null, roulette: null, triviaQuiz: {}, originsQuiz: {}, pairing: {}, bucketList: {}, pixelArt: {} };
+  return { history: {}, totalXP: 0, streak: 0, challenges: {}, lastSeen: null, roulette: null, triviaQuiz: {}, originsQuiz: {}, pairing: {}, bucketList: {}, pixelArt: {},
+      trioChallenge: {} };
 }
 
 function saveState() { localStorage.setItem('fruity_v2', JSON.stringify(STATE)); }
@@ -2181,6 +2215,7 @@ function loadState() {
       pairing:    saved.pairing || {},
       bucketList: saved.bucketList || {},
       pixelArt:   saved.pixelArt || {},
+      trioChallenge: saved.trioChallenge || {},
     };
   } catch(e) { return defaultState(); }
 }
@@ -2196,12 +2231,12 @@ function currentMonth() { return new Date().getMonth() + 1; }
 function currentYear() { return new Date().getFullYear(); }
 
 const VITAMINS = [
-  { key:'C',      label:'Vitamin C',  color:'#FF6B6B', tip:'Immunity & skin' },
-  { key:'A',      label:'Vitamin A',  color:'#FFA500', tip:'Eyes & immunity' },
-  { key:'K',      label:'Vitamin K',  color:'#4CAF50', tip:'Blood & bones' },
-  { key:'B6',     label:'Vitamin B6', color:'#9C27B0', tip:'Brain & energy' },
-  { key:'E',      label:'Vitamin E',  color:'#FF9800', tip:'Antioxidant' },
-  { key:'Folate', label:'Folate',     color:'#2196F3', tip:'Cell growth' },
+  { key:'C',      label:'Vitamin C',  icon:'🍊', color:'#FF6B6B', tip:'Immunity & skin' },
+  { key:'A',      label:'Vitamin A',  icon:'🥕', color:'#FFA500', tip:'Eyes & immunity' },
+  { key:'K',      label:'Vitamin K',  icon:'🥦', color:'#4CAF50', tip:'Blood & bones' },
+  { key:'B6',     label:'Vitamin B6', icon:'🧠', color:'#9C27B0', tip:'Brain & energy' },
+  { key:'E',      label:'Vitamin E',  icon:'🌻', color:'#FF9800', tip:'Antioxidant' },
+  { key:'Folate', label:'Folate',     icon:'🌿', color:'#2196F3', tip:'Cell growth' },
 ];
 
 function currentSeason() {
@@ -2213,10 +2248,19 @@ function currentSeason() {
 }
 
 function getSeasonStatus(fruit) {
-  if (fruit.imported) return 'imported';
   const m = currentMonth();
+  // Local fruits: check season first, imported is just a label
+  if (!fruit.imported) {
+    if (fruit.months.includes(m)) return 'in-season';
+    const next1 = (m % 12) + 1;
+    const next2 = (next1 % 12) + 1;
+    if (fruit.months.includes(next1)) return 'coming-1';
+    if (fruit.months.includes(next2)) return 'coming-2';
+    return 'off-season';
+  }
+  // Imported fruits: always available, but check if "peak import season"
   if (fruit.months.includes(m)) return 'in-season';
-  return 'out-of-season';
+  return 'imported';
 }
 
 function addFruit(name) {
@@ -2398,46 +2442,7 @@ function renderFlavourWheel(containerId, fruitNames) {
 
 // ============================================================
 // WORLD MAP (Lvl 7)
-// ============================================================
-function renderWorldMap(containerId, allFruits) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
 
-  const visited = getVisitedCountries(allFruits);
-  const visitedCount = Object.keys(visited).length;
-  const totalCountries = Object.keys(FRUIT_ORIGINS).length;
-
-  const countriesHtml = Object.entries(FRUIT_ORIGINS).map(([code, country]) => {
-    const v = visited[code];
-    const isVisited = !!v;
-    return '<div style="background:' + (isVisited ? 'var(--green-light)' : 'var(--bg)') + ';border:2px solid ' + (isVisited ? '#a5d6a7' : 'var(--border)') + ';border-radius:12px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">' +
-      '<span style="font-size:22px;flex-shrink:0">' + country.flag + '</span>' +
-      '<div style="flex:1;min-width:0">' +
-        '<div style="font-family:Fredoka One,cursive;font-size:13px;color:' + (isVisited ? 'var(--green)' : 'var(--muted)') + '">' + country.name + '</div>' +
-        (isVisited
-          ? '<div style="font-size:10px;font-weight:700;color:var(--green);margin-top:2px">' + v.matched.slice(0,3).join(', ') + (v.matched.length > 3 ? ' +' + (v.matched.length-3) + ' more' : '') + '</div>'
-          : '<div style="font-size:10px;font-weight:700;color:var(--muted);margin-top:2px">' + country.fruits.slice(0,2).join(', ') + '...</div>'
-        ) +
-      '</div>' +
-      '<span style="font-size:14px">' + (isVisited ? '✅' : '🔒') + '</span>' +
-    '</div>';
-  }).join('');
-
-  el.innerHTML =
-    '<div style="background:linear-gradient(135deg,#1e88e5,#0d47a1);border-radius:var(--radius);padding:16px;margin-bottom:12px;color:white">' +
-      '<div style="font-family:Fredoka One,cursive;font-size:20px;margin-bottom:4px">🌍 World Fruit Map</div>' +
-      '<div style="font-size:13px;opacity:0.9;margin-bottom:10px">Countries you\'ve eaten from: ' + visitedCount + ' / ' + totalCountries + '</div>' +
-      '<div style="height:8px;background:rgba(255,255,255,0.25);border-radius:99px;overflow:hidden">' +
-        '<div style="height:100%;background:white;border-radius:99px;width:' + Math.round((visitedCount/totalCountries)*100) + '%;transition:width 1s ease"></div>' +
-      '</div>' +
-    '</div>' +
-    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">' + countriesHtml + '</div>';
-}
-
-
-// ============================================================
-// ROULETTE (Lvl 8)
-// ============================================================
 function getWeekKey() {
   const d = new Date();
   const day = d.getDay();
@@ -2780,6 +2785,16 @@ function renderPairingOfWeek(containerId) {
     '</div>';
 }
 
+
+function togglePairingButtons() {
+  const cb = document.getElementById('pairingConfirm');
+  const reactions = document.getElementById('pairingReactions');
+  if (reactions) {
+    reactions.style.opacity = cb.checked ? '1' : '0.3';
+    reactions.style.pointerEvents = cb.checked ? 'all' : 'none';
+  }
+}
+
 function ratePairing(reaction) {
   const pairing = getWeeklyPairing();
   STATE.pairing[pairing.weekKey] = { reaction };
@@ -3037,6 +3052,182 @@ function renderFruitLab(containerId) {
       '</div>' +
       '<div class="fruit-lab-footer">🔄 New idea in ' + entry.daysLeft + ' day' + (entry.daysLeft !== 1 ? 's' : '') + ' • alternates tea & ferment</div>' +
     '</div>';
+}
+
+
+// ============================================================
+// TRIO CHALLENGE RENDERER (Lvl 8)
+// ============================================================
+function renderTrioChallenge(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const trio = getWeeklyTrio();
+  const state = STATE.trioChallenge[trio.weekKey] || { claimed: false };
+
+  // Check how many trio fruits logged this month
+  const m = currentMonth(), y = currentYear();
+  const monthKeys = Object.keys(STATE.history).filter(k => k.startsWith(`${y}-${String(m).padStart(2,'0')}`));
+  const loggedSet = new Set();
+  monthKeys.forEach(k => STATE.history[k].forEach(fn => loggedSet.add(fn)));
+  const loggedCount = trio.fruits.filter(fn => loggedSet.has(fn)).length;
+  const allLogged = loggedCount === 3;
+
+  const fruitsHtml = trio.fruits.map(fn => {
+    const f = FRUITS.find(x => x.n === fn);
+    const logged = loggedSet.has(fn);
+    return '<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;margin-bottom:6px;background:' + (logged ? '#e8f5e9' : 'var(--bg)') + ';border:2px solid ' + (logged ? '#a5d6a7' : 'var(--border)') + '">' +
+      '<span style="font-size:24px">' + (f ? f.e : '🍎') + '</span>' +
+      '<span style="font-size:13px;font-weight:800;flex:1">' + fn + '</span>' +
+      (logged ? '<span style="color:#388e3c;font-weight:800;font-size:12px">✅ Logged</span>' : '<span style="color:var(--muted);font-size:11px;font-weight:700">Not logged yet</span>') +
+    '</div>';
+  }).join('');
+
+  el.innerHTML =
+    '<div style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border-radius:var(--radius);padding:18px;margin-bottom:14px">' +
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">' +
+        '<span style="font-size:36px">' + trio.e + '</span>' +
+        '<div>' +
+          '<div style="font-family:Fredoka One,cursive;font-size:17px;color:#e65100">' + trio.title + '</div>' +
+          '<div style="font-size:11px;font-weight:700;color:#f57c00">Cook with all 3 this fortnight • +' + trio.xp + ' XP</div>' +
+        '</div>' +
+      '</div>' +
+      fruitsHtml +
+      '<div style="background:rgba(255,255,255,0.6);border-radius:12px;padding:12px;margin:12px 0">' +
+        '<div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:#f57c00;margin-bottom:4px">🍳 Dish Idea</div>' +
+        '<div style="font-size:14px;font-weight:800;color:#e65100;margin-bottom:4px">' + trio.dish + '</div>' +
+        '<div style="font-size:12px;font-weight:700;color:#bf360c">' + trio.tip + '</div>' +
+      '</div>' +
+      (state.claimed
+        ? '<div style="text-align:center;padding:12px;background:#e8f5e9;border-radius:12px;color:#388e3c;font-weight:800">🎉 Completed! +' + trio.xp + ' XP earned</div>'
+        : allLogged
+          ? '<button onclick="claimTrioChallengeCurrent()" style="width:100%;background:var(--orange);color:#fff;border:none;border-radius:14px;padding:14px;font-family:Fredoka One,cursive;font-size:16px;cursor:pointer">✅ All 3 logged — claim +' + trio.xp + ' XP!</button>'
+          : '<button disabled style="width:100%;background:var(--border);color:var(--muted);border:none;border-radius:14px;padding:14px;font-family:Fredoka One,cursive;font-size:16px">Log all 3 fruits to claim (' + loggedCount + '/3 done)</button>'
+      ) +
+      '<div style="text-align:center;font-size:11px;font-weight:700;color:#f57c00;margin-top:10px;opacity:0.7">🔄 New trio in ' + trio.daysLeft + ' days</div>' +
+    '</div>';
+}
+
+
+function claimTrioChallengeCurrent() {
+  const trio = getWeeklyTrio();
+  claimTrioChallenge(trio.weekKey, trio.xp);
+}
+function claimTrioChallenge(weekKey, xp) {
+  if ((STATE.trioChallenge[weekKey] || {}).claimed) return;
+  STATE.trioChallenge[weekKey] = { claimed: true };
+  const prevLevel = getLevelIndex(STATE.totalXP);
+  STATE.totalXP += xp;
+  saveState();
+  renderHeader();
+  renderChallengePage();
+  showToast('🍳 Trio Challenge complete! +' + xp + ' XP!');
+  const newLevel = getLevelIndex(STATE.totalXP);
+  if (newLevel > prevLevel) setTimeout(() => showLevelUp(newLevel), 600);
+}
+
+// ============================================================
+// JUICE LAB RENDERER (Lvl 13) — AI-powered
+// ============================================================
+function renderJuiceLab(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  // Get recently logged fruits (last 7 days, unique)
+  const recentFruits = [];
+  const seen = new Set();
+  const keys = Object.keys(STATE.history).sort().reverse().slice(0,7);
+  keys.forEach(k => STATE.history[k].forEach(fn => { if (!seen.has(fn)) { seen.add(fn); recentFruits.push(fn); }}));
+
+  if (recentFruits.length < 2) {
+    el.innerHTML = '<div class="card" style="text-align:center;padding:32px 20px"><div style="font-size:40px;margin-bottom:10px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Juice Lab</div><div style="font-size:12px;color:var(--muted);font-weight:700">Log at least 2 different fruits over the past week to unlock your personalised juice recipe!</div></div>';
+    return;
+  }
+
+  const selected = new Set();
+
+  function buildUI(result, loading) {
+    const fruitButtons = recentFruits.slice(0,8).map(fn => {
+      const f = FRUITS.find(x => x.n === fn);
+      const sel = selected.has(fn);
+      return '<button data-jidx="' + idx + '" class="jlab-btn" style="padding:8px 14px;border-radius:99px;border:2px solid ' + (sel ? 'var(--orange)' : 'var(--border)') + ';background:' + (sel ? '#fff3e0' : 'var(--bg)') + ';font-weight:800;font-size:13px;cursor:pointer;margin:4px">' +
+        (f ? f.e : '🍎') + ' ' + fn +
+      '</button>';
+    }).join('');
+
+    const resultHtml = result
+      ? '<div style="background:linear-gradient(135deg,#fff8e1,#ffe0b2);border-radius:14px;padding:16px;margin-top:12px">' +
+          '<div style="font-family:Fredoka One,cursive;font-size:18px;color:#e65100;margin-bottom:8px">' + (result.name || '') + '</div>' +
+          '<div style="font-size:12px;font-weight:700;color:#f57c00;margin-bottom:6px">🎨 Colour: ' + (result.colour || '') + '</div>' +
+          '<div style="font-size:13px;font-weight:700;color:#bf360c;line-height:1.5">' + (result.notes || '') + '</div>' +
+          '<div style="font-size:11px;color:#e65100;margin-top:8px;font-weight:700">💡 ' + (result.tip || '') + '</div>' +
+        '</div>'
+      : loading
+        ? '<div style="text-align:center;padding:24px;color:#f57c00;font-weight:800">🧪 Blending your creation...</div>'
+        : '';
+
+    el.innerHTML =
+      '<div style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:var(--radius);padding:18px;margin-bottom:14px">' +
+        '<div style="font-family:Fredoka One,cursive;font-size:18px;color:#1b5e20;margin-bottom:4px">🧪 Juice Lab</div>' +
+        '<div style="font-size:12px;font-weight:700;color:#388e3c;margin-bottom:14px">Pick 2–3 fruits from your recent logs:</div>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:2px;margin-bottom:12px">' + fruitButtons + '</div>' +
+        '<button onclick="juiceLabBlend()" id="juiceBlendBtn" ' +
+          (selected.size >= 2 ? '' : 'disabled') +
+          ' style="width:100%;padding:12px;border-radius:14px;border:none;font-family:Fredoka One,cursive;font-size:16px;cursor:' + (selected.size >= 2 ? 'pointer' : 'default') + ';background:' + (selected.size >= 2 ? 'var(--orange)' : 'var(--border)') + ';color:' + (selected.size >= 2 ? '#fff' : 'var(--muted)') + '">🧪 Blend it! ' + (selected.size >= 2 ? '(' + selected.size + ' selected)' : '(pick 2–3)') + '</button>' +
+        resultHtml +
+      '</div>';
+
+    // Attach click events via delegation
+    setTimeout(() => {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.querySelectorAll('.jlab-btn').forEach((btn, i) => {
+        btn.onclick = () => {
+          const fn = recentFruits[parseInt(btn.getAttribute('data-jidx'))];
+          if (selected.has(fn)) { selected.delete(fn); }
+          else if (selected.size < 3) { selected.add(fn); }
+          buildUI(window._juiceResult, false);
+        };
+      });
+    }, 50);
+
+    // Legacy toggle function
+    window.juiceLabToggle = function(fn) {
+      if (selected.has(fn)) { selected.delete(fn); }
+      else if (selected.size < 3) { selected.add(fn); }
+      buildUI(window._juiceResult, false);
+    };
+
+    window.juiceLabBlend = async function() {
+      if (selected.size < 2) return;
+      window._juiceResult = null;
+      buildUI(null, true);
+      const fruits = Array.from(selected);
+      const fruitList = fruits.map(fn => { const f = FRUITS.find(x => x.n === fn); return (f ? f.e : '') + ' ' + fn; }).join(', ');
+      try {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 300,
+            system: 'You are a creative juice bar mixologist. Respond ONLY with valid JSON, no markdown, no extra text.',
+            messages: [{ role: 'user', content: 'Create a juice/smoothie concept for these fruits: ' + fruitList + '. Return JSON with fields: name (creative drink name), colour (colour description), notes (2 sentence tasting notes), tip (one serving tip).' }]
+          })
+        });
+        const data = await resp.json();
+        const text = data.content.map(i => i.text || '').join('');
+        const clean = text.replace(/```json|```/g,'').trim();
+        window._juiceResult = JSON.parse(clean);
+        buildUI(window._juiceResult, false);
+      } catch(e) {
+        window._juiceResult = { name: 'Mystery Blend', colour: 'vibrant mix', notes: 'Could not generate — check your connection and try again.', tip: '' };
+        buildUI(window._juiceResult, false);
+      }
+    };
+  }
+
+  window._juiceResult = null;
+  buildUI(null, false);
 }
 
 // ============================================================
@@ -3356,7 +3547,7 @@ function renderChallengePage() {
     const isHard = opt.label === 'Difficult';
     const badgeCls = opt.label === 'Easy' ? 'badge-easy' : opt.label === 'Classic' ? 'badge-classic' : 'badge-hard';
     const cardCls = isCompleted ? 'completed-card' : isPicked ? (isHard ? 'selected-hard' : 'selected') : '';
-    const xpLabel = isHard ? '+250 XP ⭐' : '+150 XP';
+    const xpLabel = opt.label === 'Difficult' ? '+250 XP ⭐' : opt.label === 'Classic' ? '+150 XP' : '+50 XP';
 
     const fruitsHtml = opt.fruits.map(fn => {
       const f = FRUITS.find(x => x.n === fn);
@@ -3438,9 +3629,14 @@ function renderChallengePage() {
     `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍽️</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Pairing of the Week</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Passionfruity Pairer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Pairing of the Week</div><div class="lock-sub">Unlocks at Passionfruity Pairer</div></div></div>`
   }
 
+  <div class="section-title" style="margin-top:6px">🍳 Trio Challenge</div>
+  ${isUnlocked(8) ?
+    `<div id="trioChallengeContainer"></div>` :
+    `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🍳</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Trio Challenge</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Loquat Legend</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Trio Challenge</div><div class="lock-sub">Unlocks at Loquat Legend</div></div></div>`
+  }
   <div class="section-title" style="margin-top:6px">🧪 Juice Lab</div>
   ${isUnlocked(13) ?
-    `<div class="card" style="text-align:center;padding:32px 20px"><div style="font-size:40px;margin-bottom:10px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Juice Lab</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — pick fruits from your log and get a creative juice or smoothie recipe!</div></div>` :
+    `<div id="juiceLabContainer"></div>` :
     `<div class="locked-section" style="margin-bottom:14px"><div class="card" style="text-align:center;padding:28px 20px;margin-bottom:0"><div style="font-size:36px;margin-bottom:8px">🧪</div><div style="font-family:Fredoka One,cursive;font-size:16px;margin-bottom:4px">Juice Lab</div><div style="font-size:11px;color:var(--muted);font-weight:700">Unlocks at Jambu Juicer</div></div><div class="locked-overlay"><span class="lock-icon">🔒</span><div class="lock-text">Juice Lab</div><div class="lock-sub">Unlocks at Jambu Juicer</div></div></div>`
   }
   <div class="section-title" style="margin-top:6px">🏆 Fruit Bucket List</div>
@@ -3450,6 +3646,8 @@ function renderChallengePage() {
   }
   `;
   if (isUnlocked(10)) renderPairingOfWeek('pairingContainer');
+  if (isUnlocked(8)) renderTrioChallenge('trioChallengeContainer');
+  if (isUnlocked(13)) renderJuiceLab('juiceLabContainer');
   if (isUnlocked(14)) renderBucketList('bucketListContainer');
 }
 // ============================================================
@@ -3493,7 +3691,7 @@ function renderKnowledgePage() {
   if (isUnlocked(2)) renderTriviaQuiz('triviaQuizContainer');
   if (isUnlocked(5)) renderFruitKeeper('fruitKeeperContainer');
   if (isUnlocked(6)) renderOriginsQuiz('originsQuizContainer');
-  if (isUnlocked(11)) renderFruitLab('fruitLabContainer');
+  if (isUnlocked(7)) renderFruitLab('fruitLabContainer');
 }
 
 
@@ -3704,16 +3902,17 @@ function renderMePage() {
   }
 
   const flavourSection = '<div class="section-title">🎡 Flavour Wheel</div>' +
-    lockedOrContent(9,
+    lockedOrContent(11,
       '<div class="card" style="padding:16px;margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Based on all your logged fruits — how varied is your taste profile?</div><div id="flavourWheelContainer"></div></div>',
       '🎡', 'Flavour Wheel', 'Strawberry Taster'
     );
 
   const pixelArtSection = '<div class="section-title">🎨 Your Fruit Icons</div>' +
     lockedOrContent(12,
-      '<div class="card" style="padding:14px;margin-bottom:14px">' +
-        '<div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:12px">Draw your own icons for any fruit — they replace the default emoji on your Today tab. XP is just a bonus 🎨</div>' +
-        '<div id="pixelArtistContainer"></div>' +
+      '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px">' +
+        '<div style="font-size:40px;margin-bottom:10px">🎨</div>' +
+        '<div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Pixel Fruit Artist</div>' +
+        '<div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — draw your own pixel art icons for each fruit. They\'ll replace the emoji across the app!</div>' +
       '</div>',
       '🎨', 'Your Fruit Icons', 'Fruit Bowl Sketcher'
     );
@@ -3724,13 +3923,38 @@ function renderMePage() {
       '📊', 'Yearly Stats', 'Kumquat Kolorist'
     );
 
+  const settingsSection = '<div class="section-title">⚙️ Settings</div>' +
+    '<div class="card" style="padding:20px;margin-bottom:14px">' +
+      '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">' +
+        '<span style="font-size:28px">⚙️</span>' +
+        '<div>' +
+          '<div style="font-family:Fredoka One,cursive;font-size:16px">App Settings</div>' +
+          '<div style="font-size:11px;font-weight:700;color:var(--muted)">More settings coming soon — notifications, data export, and more</div>' +
+        '</div>' +
+      '</div>' +
+      (isUnlocked(14) ?
+        '<div style="margin-top:12px;padding-top:12px;border-top:2px solid var(--border)">' +
+          '<div style="font-size:12px;font-weight:800;margin-bottom:8px">🎨 Custom Accent Colour</div>' +
+          '<div style="font-size:11px;color:var(--muted);font-weight:700">Coming Soon — personalise your Fruity colour theme</div>' +
+        '</div>'
+        : '<div style="margin-top:12px;padding-top:12px;border-top:2px solid var(--border);opacity:0.5">' +
+            '<div style="font-size:11px;font-weight:700;color:var(--muted)">🔒 Custom Accent Colour — unlocks at Kumquat Kolorist (Lvl 14)</div>' +
+          '</div>'
+      ) +
+    '</div>';
+
   const identitySection = '<div class="section-title">🪪 Fruit Identity Card</div>' +
     lockedOrContent(15,
-      '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px"><div style="font-size:40px;margin-bottom:10px">🪪</div><div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Fruit Identity Card</div><div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — your personalised fruit journey!</div></div>',
+      '<div class="card" style="text-align:center;padding:32px 20px;margin-bottom:14px">' +
+        '<div style="font-size:40px;margin-bottom:10px">🪪</div>' +
+        '<div style="font-family:Fredoka One,cursive;font-size:17px;margin-bottom:6px">Fruit Identity Card</div>' +
+        '<div style="font-size:12px;color:var(--muted);font-weight:700">Coming Soon — a personalised card summarising your unique fruit personality, top flavours, and fruity achievements</div>' +
+      '</div>',
       '🪪', 'Fruit Identity Card', 'King Durian'
-    );
+    )
 
   document.getElementById('pageMe').innerHTML = `
+    ${settingsSection}
     <div class="section-title" style="margin-top:4px">👤 My Journey</div>
 
     <div class="stats-grid">${statsHtml}</div>
@@ -3748,12 +3972,10 @@ function renderMePage() {
   `;
 
   // Render flavour wheel after DOM update
-  if (isUnlocked(9)) {
+  if (isUnlocked(11)) {
     const allF = Object.values(STATE.history || {}).flat();
     renderFlavourWheel('flavourWheelContainer', allF);
   }
-  // Render pixel artist
-  if (isUnlocked(12)) renderPixelArtist('pixelArtistContainer');
 
 }
 
