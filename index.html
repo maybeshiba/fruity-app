@@ -4804,6 +4804,20 @@ function renderKnowledgeSection(requiredLevel, emoji, title, sub, content) {
 // ============================================================
 // PASSPORT PAGE
 // ============================================================
+
+function claimPassportCat(catKey, bonusXP) {
+  if (!STATE.passportCats) STATE.passportCats = {};
+  if (STATE.passportCats[catKey]) return;
+  STATE.passportCats[catKey] = true;
+  const prevLevel = getLevelIndex(STATE.totalXP);
+  STATE.totalXP += bonusXP;
+  const newLevel = getLevelIndex(STATE.totalXP);
+  saveState();
+  renderHeader();
+  renderPassportPage();
+  showToast('🏅 Collection complete! +' + bonusXP + ' XP!');
+  if (newLevel > prevLevel) setTimeout(() => showLevelUp(newLevel), 600);
+}
 function renderPassportPage() {
   const allFruits = Object.values(STATE.history || {}).flat();
   const discovered = new Set(allFruits);
@@ -4828,12 +4842,12 @@ function renderPassportPage() {
   }
 
   const PASSPORT_CATS = [
-    { key:'Everyday',     label:'Everyday',          emoji:'🛒', xp:200 },
+    { key:'Everyday',     label:'Everyday',          emoji:'🛒', xp:300 },
     { key:'Berries',      label:'Berries',            emoji:'🫐', xp:500 },
-    { key:'Pome_Stone',   label:'Pome & Stone Fruits',emoji:'🍑', xp:400 },
-    { key:'Citrus',       label:'Citrus',             emoji:'🍊', xp:300 },
-    { key:'Asian',        label:'🌏 Asian Fruits',    emoji:'🌏', xp:400 },
-    { key:'LatAm',        label:'🌎 Latin American',  emoji:'🌎', xp:400 },
+    { key:'Pome_Stone',   label:'Pome & Stone Fruits',emoji:'🍑', xp:500 },
+    { key:'Citrus',       label:'Citrus',             emoji:'🍊', xp:500 },
+    { key:'Asian',        label:'🌏 Asian Fruits',    emoji:'🌏', xp:700 },
+    { key:'LatAm',        label:'🌎 Latin American',  emoji:'🌎', xp:700 },
   ];
 
   // Multi-cat sets — fruits that appear in multiple Passport sections
@@ -4884,30 +4898,21 @@ function renderPassportPage() {
     const alreadyClaimed = STATE.passportCats && STATE.passportCats[catKey];
     const catEmoji = catDef.emoji;
 
-    // Auto-claim if complete and not yet claimed
-    if (catComplete && !alreadyClaimed) {
-      if (!STATE.passportCats) STATE.passportCats = {};
-      STATE.passportCats[catKey] = true;
-      STATE.totalXP += bonusXP;
-      saveState();
-      renderHeader();
-      setTimeout(() => showToast('🏅 ' + catDef.label + ' collection complete! +' + bonusXP + ' XP!'), 300);
-    }
+    const claimBtn = catComplete && !alreadyClaimed
+      ? '<button onclick="claimPassportCat(\'' + catKey + '\',' + bonusXP + ')" style="width:100%;margin-top:10px;padding:12px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-family:Fredoka One,cursive;font-size:15px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 3px 10px rgba(245,158,11,0.4)">🏅 Claim ' + bonusXP + ' XP!</button>'
+      : catComplete && alreadyClaimed
+      ? '<div style="text-align:center;font-size:11px;font-weight:800;color:#d97706;margin-top:8px;padding:8px;background:#fffbeb;border-radius:8px">🏅 Complete! +' + bonusXP + ' XP claimed</div>'
+      : '<div style="text-align:center;font-size:11px;color:var(--muted);font-weight:700;margin-top:8px">' + (catFruits.length - foundInCat) + ' more to complete · +' + bonusXP + ' XP reward</div>';
 
-    return `
-      <div class="passport-category" style="${catComplete ? 'border:2px solid #f59e0b;' : ''}">
-        <div class="category-title">
-          ${catEmoji}
-          ${catDef.label} <span style="margin-left:auto;font-size:12px">${foundInCat}/${catFruits.length}</span>
-          ${catComplete ? '<span style="margin-left:6px;font-size:13px">🏅</span>' : ''}
-        </div>
-        <div class="passport-grid">${stampsHtml}</div>
-        ${catComplete
-          ? `<div style="text-align:center;font-size:11px;font-weight:800;color:#d97706;margin-top:8px;padding:6px;background:#fffbeb;border-radius:8px">🏅 Complete! +${bonusXP} XP earned</div>`
-          : `<div style="text-align:center;font-size:11px;color:var(--muted);font-weight:700;margin-top:8px">${catFruits.length - foundInCat} more to complete · +${bonusXP} XP bonus</div>`
-        }
-      </div>
-    `;
+    return '<div class="passport-category" style="' + (catComplete ? 'border:2px solid #f59e0b;' : '') + '">' +
+      '<div class="category-title">' +
+        catEmoji + ' ' + catDef.label +
+        '<span style="margin-left:auto;font-size:12px">' + foundInCat + '/' + catFruits.length + '</span>' +
+        (alreadyClaimed ? '<span style="margin-left:6px;font-size:13px">🏅</span>' : '') +
+      '</div>' +
+      '<div class="passport-grid">' + stampsHtml + '</div>' +
+      claimBtn +
+    '</div>';
   }).join('');
 
   // Achievements
