@@ -73,4 +73,4 @@ Found a bug or have a suggestion? [Open an issue →](https://github.com/maybesh
 
 ## License
 
-MIT License — feel free to fork and adapt.
+This project is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — free to share and adapt, but not for commercial use.
