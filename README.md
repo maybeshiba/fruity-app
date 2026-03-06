@@ -74,3 +74,9 @@ Found a bug or have a suggestion? [Open an issue →](https://github.com/maybesh
 ## License
 
 This project is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — free to share and adapt, but not for commercial use.
+
+---
+
+## Credits
+
+<a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Paul J. - Flaticon</a>
