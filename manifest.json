@@ -1,18 +1,35 @@
 {
-  "name": "Fruity 🍊",
+  "name": "Fruity — Daily Fruit Tracker",
   "short_name": "Fruity",
-  "description": "Your daily fruit tracker",
-  "scope": "/fruity-app/",
+  "description": "Track your daily fruit consumption, discover new varieties, and level up your fruit knowledge.",
   "start_url": "/fruity-app/",
+  "scope": "/fruity-app/",
   "display": "standalone",
-  "background_color": "#FFF9F0",
-  "theme_color": "#FF9500",
   "orientation": "portrait",
+  "background_color": "#fff9f0",
+  "theme_color": "#FF9500",
+  "categories": ["health", "lifestyle", "food"],
+  "lang": "en",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ],
   "screenshots": [
-    { "src": "screenshot.png", "sizes": "390x844", "type": "image/png", "form_factor": "narrow", "label": "Fruity — Daily Fruit Tracker" }
+    {
+      "src": "screenshot.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
   ]
 }
