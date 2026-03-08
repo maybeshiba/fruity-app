@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fruity-v2.3.2';
+const CACHE_NAME = 'fruity-v2.4.0';
 const FONT_CACHE = 'fruity-fonts-v1';
 
 // Core app files — all self-contained in index.html (fonts + images base64 embedded)
@@ -9,6 +9,8 @@ const PRECACHE_URLS = [
   '/fruity-app/icon-192.png',
   '/fruity-app/icon-512.png',
   '/fruity-app/screenshot.png',
+  '/fruity-app/sunny-vibes.mp3',
+  '/fruity-app/dream-float.mp3',
 ];
 
 // Install: cache all core files immediately
