@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fruity-v2.7.6';
+const CACHE_NAME = 'fruity-v2.7.7';
 const FONT_CACHE = 'fruity-fonts-v1';
 
 // Core app files — all self-contained in index.html (fonts + images base64 embedded)
